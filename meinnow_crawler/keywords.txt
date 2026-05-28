@@ -1,0 +1,27 @@
+# Keywords tracked by keyword_tracker.py — one per line.
+# Lines starting with # and blank lines are ignored.
+# These are the search terms a prospective student would type on mein-now.de.
+# Edit freely; the tracker records ecomex's rank + the competitive landscape for each.
+
+Online Marketing
+Online Marketing Manager
+Online Marketing Strategie
+Search Engine Marketing
+SEA
+SEO
+Suchmaschinenoptimierung
+Suchmaschinenmarketing
+Content Marketing
+Digital Marketing
+Digitales Marketing
+Social Media Marketing
+Performance Marketing
+Affiliate Marketing
+E-Commerce
+E-Commerce Manager
+Marketing Manager
+Marketing Automation
+Google Ads
+Online Advertising
+Webanalyse
+Digital Strategy

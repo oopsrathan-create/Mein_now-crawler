@@ -21,6 +21,24 @@ Clicks, impressions, and engagement are **not available to any crawler** — the
 live in the platform's private analytics. To track clicks, use your mein-NOW
 provider dashboard or Google Analytics / Search Console on your own pages.
 
+## Keyword tracker (SERP-style rank tracking)
+
+`keyword_tracker.py` is a second tool, modelled on a keyword rank tracker. For
+every keyword in [`keywords.txt`](keywords.txt) it records, daily:
+
+- **Brand rank** — ecomex's best position and how many ecomex listings appear.
+- **Market landscape** — total results for the keyword.
+- **Competitor share** — for the visible first page (`top_n`, default 20), each
+  provider's share of results and their best position. Shows who dominates.
+- **Keyword discovery** — candidate keywords mined from ecomex's own course
+  titles, scored by how well ecomex ranks, so you can promote good ones into
+  `keywords.txt`.
+
+Edit the tracked terms in `keywords.txt` (one per line). Tracker tuning lives in
+the `keyword_tracker` block of `config.json`.
+
+Run locally: `python keyword_tracker.py`
+
 ## Setup
 
 1. Edit [`config.json`](config.json):
@@ -48,6 +66,9 @@ the new snapshots back to the repo — $0/month, full history in git.
 | `data/snapshots/inventory_YYYY-MM-DD.jsonl` | Same, full detail per line |
 | `data/rankings.csv` | Appended every run: `date, keyword, provider, course_id, title, rank, total_results` — your visibility over time |
 | `data/changes/changes_YYYY-MM-DD.md` | Human-readable diff vs the previous snapshot |
+| `data/keyword_ranks.csv` | Appended every run: brand rank + total results per keyword over time |
+| `data/keyword_competitors.csv` | Appended every run: competitor share of the top results per keyword |
+| `data/keyword_discovery.csv` | Refreshed every run: candidate keywords ecomex already ranks for |
 
 Open `rankings.csv` in Excel/Sheets and pivot by keyword to chart rank trends.
 

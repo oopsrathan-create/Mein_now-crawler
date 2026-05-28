@@ -21,5 +21,13 @@
     "max_pages_per_query": 50,
     "ranking_max_pages": 25,
     "request_delay_seconds": 0.4
+  },
+
+  "keyword_tracker": {
+    "_comment": "Used by keyword_tracker.py. Keywords are read from keywords.txt. top_n = how many top results define the visible 'first page' for competitor-share; rank_scan_depth = how deep to scan to find your best rank; top_competitors = how many providers to record per keyword; discovery_max = how many auto-discovered candidate keywords to test.",
+    "top_n": 20,
+    "rank_scan_depth": 500,
+    "top_competitors": 15,
+    "discovery_max": 40
   }
 }

@@ -22,8 +22,11 @@ jobs:
       - name: Install dependencies
         run: pip install -r meinnow_crawler/requirements.txt
 
-      - name: Run crawler
+      - name: Run inventory crawler
         run: python meinnow_crawler/crawl.py
+
+      - name: Run keyword tracker
+        run: python meinnow_crawler/keyword_tracker.py
 
       - name: Commit data
         run: |
