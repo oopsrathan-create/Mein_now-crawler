@@ -28,6 +28,9 @@ jobs:
       - name: Run keyword tracker
         run: python meinnow_crawler/keyword_tracker.py
 
+      - name: Run competitor share snapshot
+        run: python meinnow_crawler/competitor_share.py
+
       - name: Commit data
         run: |
           git config user.name "course-crawler[bot]"

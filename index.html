@@ -103,6 +103,35 @@
     <small class="note">"On page 1" = best rank within the first 20 results (the first page a user sees).</small>
   </section>
 
+  <section id="moversSection" hidden>
+    <h2>Rank movers <span class="muted" id="moversWindow">— vs previous day</span></h2>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px">
+      <div>
+        <h3 style="font-size:13px;color:var(--good);margin:0 0 8px">▲ Improved</h3>
+        <table id="moversUp"><thead><tr><th>Keyword</th><th>Then</th><th>Now</th><th>Δ</th></tr></thead><tbody></tbody></table>
+      </div>
+      <div>
+        <h3 style="font-size:13px;color:var(--bad);margin:0 0 8px">▼ Dropped</h3>
+        <table id="moversDown"><thead><tr><th>Keyword</th><th>Then</th><th>Now</th><th>Δ</th></tr></thead><tbody></tbody></table>
+      </div>
+    </div>
+    <small class="note">Compares the best rank ecomex held for each keyword on the two most recent snapshots in the history.</small>
+  </section>
+
+  <section id="shareSection" hidden>
+    <h2>Competitor share <span class="muted">— who occupies the top 20 results for each keyword</span></h2>
+    <table id="shareTable">
+      <thead><tr>
+        <th data-k="keyword">Keyword</th>
+        <th data-k="brand_share">ecomex share</th>
+        <th data-k="brand_rank">ecomex best</th>
+        <th data-k="top">Top 3 competitors (share% in top 20)</th>
+      </tr></thead>
+      <tbody></tbody>
+    </table>
+    <small class="note">Daily snapshot of the first page of search results. ecomex share = % of the top-20 slots taken by ecomex courses.</small>
+  </section>
+
   <section>
     <h2>Ranking trend over time <span class="muted">— lower is better; builds up as daily crawls accumulate</span></h2>
     <div class="chips" id="chips"></div>
@@ -185,6 +214,8 @@ function latestDate(rows){ return rows.reduce((m,r)=> r.snapshot_date>m?r.snapsh
   try { coverage = await loadCsv("latest_coverage.csv"); } catch(e) { /* optional */ }
   let matrix = [];
   try { matrix = await loadCsv("latest_course_rankings.csv"); } catch(e) { /* optional */ }
+  let share = [];
+  try { share = await loadCsv("latest_competitor_share.csv"); } catch(e) { /* optional */ }
 
   const today = latestDate(rankings) || latestDate(inventory);
   document.getElementById("updated").textContent = "last updated " + (today||"—");
@@ -316,6 +347,64 @@ function latestDate(rows){ return rows.reduce((m,r)=> r.snapshot_date>m?r.snapsh
     }
     document.getElementById("matrixSearch").addEventListener("input", renderMatrix);
     renderMatrix();
+  }
+
+  // ---- rank movers ----
+  (function(){
+    const allDates = [...new Set(rankings.map(r=>r.snapshot_date))].sort();
+    if(allDates.length<2) return;
+    const cur = allDates[allDates.length-1], prev = allDates[allDates.length-2];
+    function bestFor(d){
+      const m = {};
+      for(const r of rankings){ if(r.snapshot_date!==d) continue;
+        const k=r.keyword, v=+r.rank;
+        if(m[k]==null || v<m[k]) m[k]=v;
+      }
+      return m;
+    }
+    const a = bestFor(prev), b = bestFor(cur);
+    const moves = Object.keys({...a,...b}).map(k=>{
+      const then = a[k] ?? null, now = b[k] ?? null;
+      if(then==null && now==null) return null;
+      // missing-from-window means worse than scan; use "—" but treat as huge for sorting
+      const delta = (then!=null && now!=null) ? then-now : (now==null? -Infinity : Infinity);
+      return {keyword:k, then, now, delta};
+    }).filter(Boolean);
+    const ups   = moves.filter(m=>m.delta>0).sort((a,b)=>b.delta-a.delta).slice(0,8);
+    const downs = moves.filter(m=>m.delta<0).sort((a,b)=>a.delta-b.delta).slice(0,8);
+    if(!ups.length && !downs.length) return;
+    document.getElementById("moversSection").hidden = false;
+    document.getElementById("moversWindow").textContent = `— ${prev} → ${cur}`;
+    function fmt(v){ return v==null ? '<span class="muted">—</span>' : `#${v}`; }
+    function row(m){
+      const dcls = m.delta>0?"b-good":m.delta<0?"b-bad":"b-none";
+      const d = m.delta>0?`+${m.delta}`:m.delta;
+      return `<tr><td><span class="kw">${m.keyword}</span></td><td>${fmt(m.then)}</td><td>${fmt(m.now)}</td><td><span class="badge ${dcls}">${d}</span></td></tr>`;
+    }
+    document.querySelector("#moversUp tbody").innerHTML   = ups.map(row).join("")   || `<tr><td colspan="4" class="muted">No improvements yet.</td></tr>`;
+    document.querySelector("#moversDown tbody").innerHTML = downs.map(row).join("") || `<tr><td colspan="4" class="muted">No drops yet.</td></tr>`;
+  })();
+
+  // ---- competitor share ----
+  if(share.length){
+    document.getElementById("shareSection").hidden = false;
+    const byKw = {};
+    for(const r of share){
+      (byKw[r.keyword] ??= []).push({provider:r.provider, share:+r.share_pct, rank:+r.best_rank, brand:r.is_brand==="1"});
+    }
+    const rows = Object.keys(byKw).sort().map(kw=>{
+      const all = byKw[kw].sort((a,b)=>b.share-a.share || a.rank-b.rank);
+      const brand = all.find(p=>p.brand);
+      const competitors = all.filter(p=>!p.brand).slice(0,3);
+      return { keyword:kw, brand_share: brand?brand.share:0, brand_rank: brand?brand.rank:null,
+               top: competitors.map(c=>`${c.provider} <span class="muted">${c.share}%</span>`).join("<br>") };
+    });
+    renderTable("shareTable", rows, {
+      keyword:    r=>`<span class="kw">${r.keyword}</span>`,
+      brand_share:r=>r.brand_share>0?`<span class="badge b-good">${r.brand_share}%</span>`:'<span class="badge b-none">0%</span>',
+      brand_rank: r=>rankBadge(r.brand_rank),
+      top:        r=>r.top || '<span class="muted">—</span>',
+    }, "brand_share", false);
   }
 
   // ---- trend chart ----
