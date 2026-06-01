@@ -227,7 +227,14 @@ def write_snapshot(inventory: dict[int, dict]) -> Path:
     with jsonl_path.open("w", encoding="utf-8") as f:
         for r in rows:
             f.write(json.dumps({"snapshot_date": TODAY, **r}, ensure_ascii=False) + "\n")
-    print(f"wrote {len(rows)} courses -> {csv_path.name}")
+    # Stable-named copy so the dashboard can fetch it without knowing the date.
+    latest = DATA / "latest_inventory.csv"
+    with latest.open("w", newline="", encoding="utf-8") as f:
+        w = csv.DictWriter(f, fieldnames=INVENTORY_FIELDS)
+        w.writeheader()
+        for r in rows:
+            w.writerow({"snapshot_date": TODAY, **r})
+    print(f"wrote {len(rows)} courses -> {csv_path.name} (+ latest_inventory.csv)")
     return csv_path
 
 

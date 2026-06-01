@@ -58,6 +58,25 @@ the new snapshots back to the repo — $0/month, full history in git.
 - The job runs daily at 05:15 UTC; trigger it manually any time from the **Actions**
   tab → *mein-now course crawl* → *Run workflow*.
 
+## Dashboard (shareable web viewer)
+
+A static dashboard lives at [`/index.html`](../index.html) in the repo root. It
+reads `rankings.csv` and `latest_inventory.csv` and shows:
+
+- **Scorecard tiles** — courses listed, keywords on page 1, best/weakest keyword.
+- **Keyword rankings** — where ecomex ranks per keyword, sortable.
+- **Ranking trend** — rank-over-time line chart (fills in as daily crawls run).
+- **Course inventory** — searchable table of every course and where it appears.
+
+### Publish it (free, anyone with the link)
+
+1. GitHub → **Settings → Pages**.
+2. **Source: Deploy from a branch**, branch **main**, folder **/ (root)**, Save.
+3. After a minute the dashboard is live at
+   `https://oopsrathan-create.github.io/claude-test/`.
+
+It refreshes automatically each day once the crawl workflow commits new data.
+
 ## Output files
 
 | File | Contents |

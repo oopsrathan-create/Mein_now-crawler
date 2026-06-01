@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ecomex · mein-now course tracker</title>
+<script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+  :root {
+    --bg:#0f1419; --panel:#1a2029; --panel2:#222b36; --line:#2c3744;
+    --text:#e6edf3; --muted:#8b98a5; --accent:#4cc9f0; --good:#3fb950; --warn:#d29922; --bad:#f85149;
+  }
+  * { box-sizing:border-box; }
+  body { margin:0; font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+         background:var(--bg); color:var(--text); font-size:14px; }
+  header { padding:20px 28px; border-bottom:1px solid var(--line); display:flex;
+           align-items:baseline; gap:14px; flex-wrap:wrap; }
+  header h1 { font-size:18px; margin:0; font-weight:600; }
+  header .sub { color:var(--muted); font-size:13px; }
+  main { max-width:1200px; margin:0 auto; padding:24px 28px 60px; }
+  .tiles { display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:14px; margin-bottom:28px; }
+  .tile { background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:16px 18px; }
+  .tile .n { font-size:26px; font-weight:700; }
+  .tile .l { color:var(--muted); font-size:12px; margin-top:4px; text-transform:uppercase; letter-spacing:.04em; }
+  section { background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:18px 20px; margin-bottom:24px; }
+  section h2 { font-size:15px; margin:0 0 14px; font-weight:600; }
+  table { width:100%; border-collapse:collapse; font-size:13px; }
+  th,td { text-align:left; padding:8px 10px; border-bottom:1px solid var(--line); vertical-align:top; }
+  th { color:var(--muted); font-weight:600; cursor:pointer; user-select:none; white-space:nowrap; }
+  th:hover { color:var(--text); }
+  tr:hover td { background:var(--panel2); }
+  .rank { font-weight:700; }
+  .badge { display:inline-block; padding:2px 7px; border-radius:20px; font-size:11px; font-weight:600; }
+  .b-good { background:rgba(63,185,80,.15); color:var(--good); }
+  .b-warn { background:rgba(210,153,34,.15); color:var(--warn); }
+  .b-bad  { background:rgba(248,81,73,.15); color:var(--bad); }
+  .b-none { background:#2c3744; color:var(--muted); }
+  .kw { color:var(--accent); }
+  input[type=search]{ background:var(--panel2); border:1px solid var(--line); color:var(--text);
+        border-radius:7px; padding:8px 12px; width:280px; max-width:100%; font-size:13px; }
+  .muted{ color:var(--muted); }
+  .chips{ display:flex; flex-wrap:wrap; gap:8px; margin-bottom:14px; }
+  .chip{ border:1px solid var(--line); background:var(--panel2); color:var(--text); border-radius:20px;
+         padding:5px 12px; font-size:12px; cursor:pointer; opacity:.45; }
+  .chip.on{ opacity:1; }
+  canvas{ max-height:360px; }
+  .err{ color:var(--bad); }
+  small.note{ color:var(--muted); display:block; margin-top:10px; }
+  a{ color:var(--accent); }
+</style>
+</head>
+<body>
+<header>
+  <h1>ecomex · mein-now course tracker</h1>
+  <span class="sub" id="updated">loading…</span>
+</header>
+<main>
+  <div class="tiles" id="tiles"></div>
+
+  <section>
+    <h2>Keyword rankings <span class="muted">— where ecomex ranks on the search results</span></h2>
+    <table id="kwTable">
+      <thead><tr>
+        <th data-k="keyword">Keyword</th>
+        <th data-k="best">Best rank</th>
+        <th data-k="page1">On page 1?</th>
+        <th data-k="courses">ecomex courses in results</th>
+        <th data-k="total">Total results</th>
+      </tr></thead>
+      <tbody></tbody>
+    </table>
+    <small class="note">"On page 1" = best rank within the first 20 results (the first page a user sees).</small>
+  </section>
+
+  <section>
+    <h2>Ranking trend over time <span class="muted">— lower is better; builds up as daily crawls accumulate</span></h2>
+    <div class="chips" id="chips"></div>
+    <canvas id="trend"></canvas>
+  </section>
+
+  <section>
+    <h2>Course inventory <span class="muted">— every ecomex course and where it appears</span></h2>
+    <input type="search" id="search" placeholder="Filter by course title, location, keyword…" />
+    <span class="muted" id="courseCount" style="margin-left:12px"></span>
+    <table id="courseTable" style="margin-top:12px">
+      <thead><tr>
+        <th data-k="title">Course</th>
+        <th data-k="best">Best rank</th>
+        <th data-k="kws">Appears for</th>
+        <th data-k="next">Next start</th>
+        <th data-k="cost">Price band</th>
+        <th data-k="locs">Locations</th>
+      </tr></thead>
+      <tbody></tbody>
+    </table>
+  </section>
+  <p class="muted">Data source: mein-now.de / KURSNET. Auto-refreshes when the daily crawl commits new data.</p>
+</main>
+
+<script>
+const DATA = "meinnow_crawler/data/";
+const PALETTE = ["#4cc9f0","#f72585","#3fb950","#d29922","#a371f7","#ff8c42","#56d4dd","#f85149"];
+
+function rankBadge(r){
+  if(r==null||r==="") return '<span class="badge b-none">—</span>';
+  r=+r;
+  const cls = r<=20?"b-good":r<=100?"b-warn":"b-bad";
+  return `<span class="badge ${cls}">#${r}</span>`;
+}
+function fmtCost(c){
+  if(!c) return "—";
+  const m = c.match(/(\d+)_BIS_(\d+)/);
+  if(m) return `€${(+m[1]).toLocaleString("de-DE")}–${(+m[2]).toLocaleString("de-DE")}`;
+  if(c.startsWith("UEBER_")) return "> €"+(+c.replace(/\D/g,"")).toLocaleString("de-DE");
+  if(c.startsWith("BIS_"))  return "< €"+(+c.replace(/\D/g,"")).toLocaleString("de-DE");
+  return c.replace(/_/g," ");
+}
+
+async function loadCsv(name){
+  const res = await fetch(DATA+name, {cache:"no-store"});
+  if(!res.ok) throw new Error(name+" ("+res.status+")");
+  const txt = await res.text();
+  return Papa.parse(txt, {header:true, skipEmptyLines:true}).data;
+}
+
+function latestDate(rows){ return rows.reduce((m,r)=> r.snapshot_date>m?r.snapshot_date:m, ""); }
+
+(async function(){
+  let rankings, inventory;
+  try {
+    [rankings, inventory] = await Promise.all([loadCsv("rankings.csv"), loadCsv("latest_inventory.csv")]);
+  } catch(e){
+    document.getElementById("updated").innerHTML =
+      `<span class="err">Could not load data: ${e.message}. Has the crawler run and committed to data/ yet?</span>`;
+    return;
+  }
+
+  const today = latestDate(rankings) || latestDate(inventory);
+  document.getElementById("updated").textContent = "last updated " + (today||"—");
+
+  // ---- latest-day ranking rows ----
+  const latest = rankings.filter(r=>r.snapshot_date===today);
+  const keywords = [...new Set(latest.map(r=>r.keyword))].sort();
+
+  // best rank + course count + total per keyword
+  const kwStats = keywords.map(kw=>{
+    const rows = latest.filter(r=>r.keyword===kw);
+    const best = Math.min(...rows.map(r=>+r.rank));
+    return { keyword:kw, best, courses:rows.length, total:+(rows[0]?.total_results||0), page1:best<=20 };
+  });
+
+  // ---- tiles ----
+  const onPage1 = kwStats.filter(k=>k.page1).length;
+  const bestKw = kwStats.slice().sort((a,b)=>a.best-b.best)[0];
+  const worstKw = kwStats.slice().sort((a,b)=>b.best-a.best)[0];
+  const tiles = [
+    {n:inventory.length, l:"Courses listed"},
+    {n:keywords.length, l:"Keywords tracked"},
+    {n:`${onPage1}/${keywords.length}`, l:"Keywords on page 1"},
+    {n:bestKw?`#${bestKw.best}`:"—", l:`Best: ${bestKw?bestKw.keyword:""}`},
+    {n:worstKw?`#${worstKw.best}`:"—", l:`Weakest: ${worstKw?worstKw.keyword:""}`},
+  ];
+  document.getElementById("tiles").innerHTML = tiles.map(t=>
+    `<div class="tile"><div class="n">${t.n}</div><div class="l">${t.l}</div></div>`).join("");
+
+  // ---- keyword table ----
+  renderTable("kwTable", kwStats, {
+    keyword: r=>`<span class="kw">${r.keyword}</span>`,
+    best: r=>rankBadge(r.best),
+    page1: r=> r.page1?'<span class="badge b-good">yes</span>':'<span class="badge b-none">no</span>',
+    courses: r=>r.courses,
+    total: r=>r.total.toLocaleString(),
+  }, "best", false);
+
+  // ---- per-course join ----
+  const byCourse = {};
+  for(const r of latest){
+    (byCourse[r.course_id] ??= []).push({kw:r.keyword, rank:+r.rank});
+  }
+  const courses = inventory.map(c=>{
+    const appears = (byCourse[c.course_id]||[]).sort((a,b)=>a.rank-b.rank);
+    return {
+      title:c.title, next:c.next_start||"—", cost:fmtCost(c.cost_bands), locs:c.locations||"—",
+      best: appears.length?appears[0].rank:null,
+      kws: appears.map(a=>`${a.kw} ${rankBadge(a.rank)}`).join("  "),
+      _search:(c.title+" "+c.locations+" "+appears.map(a=>a.kw).join(" ")).toLowerCase(),
+    };
+  });
+
+  function renderCourses(filter=""){
+    const f = courses.filter(c=>c._search.includes(filter.toLowerCase()));
+    document.getElementById("courseCount").textContent = `${f.length} of ${courses.length} courses`;
+    renderTable("courseTable", f, {
+      title: r=>r.title,
+      best: r=>rankBadge(r.best),
+      kws: r=>r.kws||'<span class="muted">not in tracked results</span>',
+      next: r=>r.next,
+      cost: r=>r.cost,
+      locs: r=>`<span class="muted">${r.locs}</span>`,
+    }, "best", false);
+  }
+  renderCourses();
+  document.getElementById("search").addEventListener("input", e=>renderCourses(e.target.value));
+
+  // ---- trend chart ----
+  const dates = [...new Set(rankings.map(r=>r.snapshot_date))].sort();
+  function bestPerDate(kw){
+    return dates.map(d=>{
+      const rs = rankings.filter(r=>r.keyword===kw && r.snapshot_date===d).map(r=>+r.rank);
+      return rs.length?Math.min(...rs):null;
+    });
+  }
+  const datasets = keywords.map((kw,i)=>({
+    label:kw, data:bestPerDate(kw), borderColor:PALETTE[i%PALETTE.length],
+    backgroundColor:PALETTE[i%PALETTE.length], tension:.25, spanGaps:true, pointRadius:3,
+  }));
+  const chart = new Chart(document.getElementById("trend"), {
+    type:"line",
+    data:{ labels:dates, datasets },
+    options:{
+      plugins:{ legend:{display:false} },
+      scales:{
+        y:{ reverse:true, title:{display:true,text:"Best rank (1 = top)"},
+            grid:{color:"#2c3744"}, ticks:{color:"#8b98a5"} },
+        x:{ grid:{color:"#2c3744"}, ticks:{color:"#8b98a5"} },
+      },
+    },
+  });
+  // toggle chips
+  document.getElementById("chips").innerHTML = keywords.map((kw,i)=>
+    `<span class="chip on" data-i="${i}" style="border-color:${PALETTE[i%PALETTE.length]}">${kw}</span>`).join("");
+  document.querySelectorAll(".chip").forEach(chip=>chip.addEventListener("click",()=>{
+    const i=+chip.dataset.i; const meta=chart.getDatasetMeta(i);
+    meta.hidden = !meta.hidden; chip.classList.toggle("on", !meta.hidden); chart.update();
+  }));
+  if(dates.length<2){
+    document.querySelector("#chips").insertAdjacentHTML("afterend",
+      `<p class="muted">Only one day of data so far — the trend lines fill in as the daily crawl runs.</p>`);
+  }
+
+  // ---- generic sortable table renderer ----
+  function renderTable(id, rows, cols, sortKey, asc){
+    const table = document.getElementById(id);
+    const tbody = table.querySelector("tbody");
+    let sk=sortKey, sa=asc;
+    function draw(){
+      const sorted = rows.slice().sort((a,b)=>{
+        let x=a[sk], y=b[sk];
+        if(x==null) x=sa?Infinity:-Infinity; if(y==null) y=sa?Infinity:-Infinity;
+        if(typeof x==="string"&&typeof y==="string") return sa?x.localeCompare(y):y.localeCompare(x);
+        return sa?x-y:y-x;
+      });
+      tbody.innerHTML = sorted.map(r=>"<tr>"+Object.keys(cols).map(k=>`<td>${cols[k](r)}</td>`).join("")+"</tr>").join("");
+    }
+    table.querySelectorAll("th").forEach(th=>th.onclick=()=>{
+      const k=th.dataset.k; if(!(k in (rows[0]||{}))&&k!==sortKey){} sa = (k===sk)?!sa:true; sk=k; draw();
+    });
+    draw();
+  }
+})();
+</script>
+</body>
+</html>
