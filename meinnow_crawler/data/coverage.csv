@@ -83,3 +83,87 @@ snapshot_date,type,tracked_title,status,match_title,course_id,locations,next_sta
 2026-06-01,Coaching,Integrations- und Jobcoaching für Fachkräfte mit Migrationshintergrund Classic 40,missing,,,,,,
 2026-06-01,Coaching,Integrations- und Jobcoaching für Fachkräfte mit Migrationshintergrund Complete 64,missing,,,,,,
 2026-06-01,Coaching,Jobcoaching für Fach- und Führungskräfte Classic 30,missing,,,,,,
+2026-06-02,Weiterbildung,Content Creator,found,Content Creator Kurs,10338430255,Dresden; Hamburg; Lüneburg; Rostock; Stuttgart,2026-06-21,UEBER_1000_BIS_5000_EUR,BERUFLICHE_QUALIFIZIERUNG
+2026-06-02,Weiterbildung,Content Marketing,found,Content Marketing,10342367601,Berlin; Bremen; Hamburg; Hannover; Lübeck,2026-05-31,UEBER_5000_BIS_10000_EUR,BERUFLICHE_QUALIFIZIERUNG
+2026-06-02,Weiterbildung,Content Marketing Expert,found,Content Marketing Expert,10338423309,Berlin; Hannover; Leipzig; Lörrach,2026-05-31,UEBER_1000_BIS_5000_EUR,BERUFLICHE_QUALIFIZIERUNG
+2026-06-02,Weiterbildung,Content Marketing Manager,found,Content Marketing Manager,10338911508,Hamburg; Köln; München,2026-05-31,UEBER_5000_BIS_10000_EUR,BERUFLICHE_QUALIFIZIERUNG
+2026-06-02,Weiterbildung,Design Thinking & Agile Methoden mit KI,found,Design Thinking & Agile Methoden mit KI,10338436964,Bochum; Hamburg; Koblenz am Rhein; Leipzig; Meerbusch,2026-06-07,UEBER_1000_BIS_5000_EUR,BERUFLICHE_QUALIFIZIERUNG
+2026-06-02,Weiterbildung,E-Commerce Shops und E-Commerce Plattformen,missing,,,,,,
+2026-06-02,Weiterbildung,E-Commerce Grundlagen,found,E-Commerce Grundlagen,10338432056,Bremen; Detmold; Hamburg; Iserlohn; Mainz am Rhein,2026-05-31,UEBER_1000_BIS_5000_EUR,BERUFLICHE_QUALIFIZIERUNG
+2026-06-02,Weiterbildung,eCommerce Manager,found,E-Commerce Manager,10338427523,"Dresden; Gießen, Lahn; Hannover; Hof, Saale; Köln",2026-05-31,UEBER_5000_BIS_10000_EUR,BERUFLICHE_QUALIFIZIERUNG
+2026-06-02,Weiterbildung,E-Commerce Manager,found,E-Commerce Manager,10338427523,"Dresden; Gießen, Lahn; Hannover; Hof, Saale; Köln",2026-05-31,UEBER_5000_BIS_10000_EUR,BERUFLICHE_QUALIFIZIERUNG
+2026-06-02,Weiterbildung,Inbound Marketing Experte,found,Inbound Marketing Experte,10338431711,"Augsburg, Bayern; Berlin; Gummersbach; Lüneburg",2026-05-31,UEBER_1000_BIS_5000_EUR,BERUFLICHE_QUALIFIZIERUNG
+2026-06-02,Weiterbildung,KI im Büroalltag – ChatGPT & Co.,found,KI im Büroalltag - ChatGPT & Co.,10338433357,"Dresden; Freiburg im Breisgau; Iserlohn; Karlsruhe, Baden; Krefeld",2026-06-07,UEBER_1000_BIS_5000_EUR,BERUFLICHE_QUALIFIZIERUNG
+2026-06-02,Weiterbildung,KI Manager,found,Datengetriebenes Marketing als KI Manager,10391166704,"Chemnitz, Sachsen; Erfurt; Frankfurt am Main; Gießen, Lahn; Köln",,UEBER_1000_BIS_5000_EUR,BERUFLICHE_QUALIFIZIERUNG
+2026-06-02,Weiterbildung,KI-Anwendung & Agile Arbeitsmethoden,found,KI-Anwendung & Agile Arbeitsmethoden,10338435970,"Berlin; Dresden; Gießen, Lahn; Hannover; Neuss",2026-05-31,UEBER_1000_BIS_5000_EUR,BERUFLICHE_QUALIFIZIERUNG
+2026-06-02,Weiterbildung,KI-Anwendung & KI-Implementierung,missing,,,,,,
+2026-06-02,Weiterbildung,KI-Strategie & KI-Implementierung,missing,,,,,,
+2026-06-02,Weiterbildung,KI-Strategie & KI-Implementierung & Agile Methoden,missing,,,,,,
+2026-06-02,Weiterbildung,Content Creation mit KI,found,Content Creation mit KI,10338431094,Bremen; Duisburg; Hamburg; Mönchengladbach; Wiesbaden,2026-05-31,UEBER_1000_BIS_5000_EUR,BERUFLICHE_QUALIFIZIERUNG
+2026-06-02,Weiterbildung,Social Media Manager,found,Social Media Manager,10340407675,Berlin; Dresden; Leipzig; Mannheim; Wiesbaden,2026-05-31,UEBER_5000_BIS_10000_EUR,BERUFLICHE_QUALIFIZIERUNG
+2026-06-02,Weiterbildung,Social Media Advertising Expert:in,found,Social Media Advertising Expert:in,10338895586,Dresden; Frankfurt am Main; Gummersbach,2026-06-21,UEBER_1000_BIS_5000_EUR,BERUFLICHE_QUALIFIZIERUNG
+2026-06-02,Weiterbildung,Social Media Advertising,found,Social Media Advertising,10338895266,"Augsburg, Bayern; Berlin; Gelsenkirchen; Landau in der Pfalz; Neuss",2026-06-07,UEBER_1000_BIS_5000_EUR,BERUFLICHE_QUALIFIZIERUNG
+2026-06-02,Weiterbildung,Online Marketing,found,Online Marketing,10349701750,"Dresden; Hamburg; Hof, Saale; Iserlohn; Kiel",2026-05-31,UEBER_5000_BIS_10000_EUR,BERUFLICHE_QUALIFIZIERUNG
+2026-06-02,Weiterbildung,Online Marketing Grundlagen für Marketing Manager,found,Online Marketing Grundlagen für Marketing Manager:in,10338910725,Dresden; Frankfurt am Main; Hamburg; Krefeld; Mainz am Rhein,2026-05-31,UEBER_1000_BIS_5000_EUR,BERUFLICHE_QUALIFIZIERUNG
+2026-06-02,Weiterbildung,Online Marketing International,found,Online Marketing,10349701750,"Dresden; Hamburg; Hof, Saale; Iserlohn; Kiel",2026-05-31,UEBER_5000_BIS_10000_EUR,BERUFLICHE_QUALIFIZIERUNG
+2026-06-02,Weiterbildung,Online Marketing Manager,found,Online Marketing Manager,10343394728,Aschaffenburg; Cottbus; Dresden; Kiel,2026-05-31,UEBER_5000_BIS_10000_EUR,BERUFLICHE_QUALIFIZIERUNG
+2026-06-02,Weiterbildung,Online Marketing Manager Weiterbildung,found,Online Marketing Manager Weiterbildung,10342368910,Aschaffenburg; Bonn; Braunschweig; Hannover; Iserlohn,2026-05-31,UEBER_10000_EUR,BERUFLICHE_QUALIFIZIERUNG
+2026-06-02,Weiterbildung,Performance Marketing Experte,found,Performance Marketing Experte,10338428159,Düsseldorf; Erlangen; Leipzig; Magdeburg; Offenbach am Main,2026-05-31,UEBER_1000_BIS_5000_EUR,BERUFLICHE_QUALIFIZIERUNG
+2026-06-02,Weiterbildung,Performance Marketing Manager,found,Performance Marketing Manager,10338424756,Berlin; Lübeck; Meerbusch; Mönchengladbach; Oberursel (Taunus),2026-06-07,UEBER_5000_BIS_10000_EUR,BERUFLICHE_QUALIFIZIERUNG
+2026-06-02,Weiterbildung,Performance Marketing Masterclass,found,Performance Marketing Masterclass,10338430808,Berlin; Dresden; Hamburg; München,2026-05-31,UEBER_5000_BIS_10000_EUR,BERUFLICHE_QUALIFIZIERUNG
+2026-06-02,Weiterbildung,PPC Marketing - Paid Advertising,found,PPC Marketing - Paid Advertising,10338429570,"Chemnitz, Sachsen; Hamburg; München; Nürnberg, Mittelfranken; Teltow",2026-06-14,UEBER_1000_BIS_5000_EUR,BERUFLICHE_QUALIFIZIERUNG
+2026-06-02,Weiterbildung,Search Engine Marketing Expert,found,Search Engine Marketing Expert,10338431852,"Hamburg; Jena; Karlsruhe, Baden; Neuss; Wiesbaden",2026-05-31,UEBER_1000_BIS_5000_EUR,BERUFLICHE_QUALIFIZIERUNG
+2026-06-02,Weiterbildung,Social Media Creation Experte,found,Social Media Creation Experte,10338428797,"Augsburg, Bayern; Hamburg; Hannover; Hof, Saale; Nürnberg, Mittelfranken",2026-05-31,UEBER_1000_BIS_5000_EUR,BERUFLICHE_QUALIFIZIERUNG
+2026-06-02,Weiterbildung,Social Media Expert,found,Social Media Expert:in,10338911376,Bremen; Detmold; Hannover; Landau in der Pfalz; Leipzig,2026-05-31,UEBER_1000_BIS_5000_EUR,BERUFLICHE_QUALIFIZIERUNG
+2026-06-02,Weiterbildung,Social Media Grundlagen,found,Social Media Grundlagen,10338422909,"Detmold; Dresden; Krefeld; Köln; Nürnberg, Mittelfranken",2026-05-31,UEBER_1000_BIS_5000_EUR,BERUFLICHE_QUALIFIZIERUNG
+2026-06-02,Weiterbildung,Social Media Marketing Expert,found,Social Media Marketing,10338427203,"Essen, Ruhr; Gießen, Lahn; Jena; Lüneburg; München",2026-06-07,UEBER_1000_BIS_5000_EUR,BERUFLICHE_QUALIFIZIERUNG
+2026-06-02,Weiterbildung,NEU: Social Media Weiterbildung,found,Social Media Weiterbildung,10342368125,"Augsburg, Bayern; Esslingen am Neckar; Köln; Landau in der Pfalz; Stuttgart",2026-05-31,UEBER_5000_BIS_10000_EUR,BERUFLICHE_QUALIFIZIERUNG
+2026-06-02,Weiterbildung,Social Media Relationship Expert:in,missing,,,,,,
+2026-06-02,Weiterbildung,WordPress,found,WordPress,10338426557,"Göttingen, Niedersachsen; Koblenz am Rhein; Münster, Westfalen; Offenbach am Main; Wuppertal",2026-05-31,UEBER_1000_BIS_5000_EUR,BERUFLICHE_QUALIFIZIERUNG
+2026-06-02,Weiterbildung,KI- und Online Marketing Weiterbildung,found,KI- und Online Marketing Weiterbildung,10392170202,"Dresden; Freiburg im Breisgau; Iserlohn; Köln; Landshut, Isar",2026-06-07,UEBER_10000_EUR,BERUFLICHE_QUALIFIZIERUNG
+2026-06-02,Weiterbildung,KI- und Online Marketing Manager,found,KI- und Online Marketing Manager,10392169953,"Erlangen; Hof, Saale; München; Oberursel (Taunus)",2026-06-07,UEBER_10000_EUR,BERUFLICHE_QUALIFIZIERUNG
+2026-06-02,Coaching,Bewerbungscoaching Advanced,missing,,,,,,
+2026-06-02,Coaching,Bewerbungscoaching Basic,missing,,,,,,
+2026-06-02,Coaching,E-Commerce-Coaching für Gründer,missing,,,,,,
+2026-06-02,Coaching,Existenzgründercoaching (kombiniert),missing,,,,,,
+2026-06-02,Coaching,Existenzgründercoaching Advanced,missing,,,,,,
+2026-06-02,Coaching,Gründercoaching für das Handwerk,missing,,,,,,
+2026-06-02,Coaching,Gründercoaching für Designer & Künstler,missing,,,,,,
+2026-06-02,Coaching,Gründercoaching im Beauty & Gesundheitsbereich,missing,,,,,,
+2026-06-02,Coaching,Gründercoaching in der Gastronomie,missing,,,,,,
+2026-06-02,Coaching,Karrierecoaching Advanced (kombiniert),missing,,,,,,
+2026-06-02,Coaching,Karrierecoaching Basic,missing,,,,,,
+2026-06-02,Coaching,Orientierungscoaching Advanced (Kombiniert),missing,,,,,,
+2026-06-02,Coaching,Orientierungscoaching Basic,missing,,,,,,
+2026-06-02,Coaching,Strategie- und Tragfähigkeitscoaching,missing,,,,,,
+2026-06-02,Coaching,Businessplan-Coaching,missing,,,,,,
+2026-06-02,Coaching,"Coaching für Selbstständige als Coach, Trainer & Berater",missing,,,,,,
+2026-06-02,Coaching,Existenzgründercoaching (Präsenz),missing,,,,,,
+2026-06-02,Coaching,Karrierecoaching Advanced (Präsenz),missing,,,,,,
+2026-06-02,Coaching,Orientierungscoaching Advanced (Präsenz),missing,,,,,,
+2026-06-02,Coaching,Bewerbungscoaching für Akademiker,missing,,,,,,
+2026-06-02,Coaching,Individuelles Karrierecoaching via Live-Video für Akademiker:innen,missing,,,,,,
+2026-06-02,Coaching,Orientierungscoaching,missing,,,,,,
+2026-06-02,Coaching,Karrierecoaching für Fach- und Führungskräfte Classic 32,missing,,,,,,
+2026-06-02,Coaching,Karrierecoaching für Fach- und Führungskräfte Complete 64,missing,,,,,,
+2026-06-02,Coaching,Karrierecoaching für Fach- und Führungskräfte Starter 16,missing,,,,,,
+2026-06-02,Coaching,Bewerbungscoaching für Akademiker Classic 32,missing,,,,,,
+2026-06-02,Coaching,Bewerbungscoaching für Akademiker Complete 64,missing,,,,,,
+2026-06-02,Coaching,Coaching zur Potenzialentfaltung und Potenzialentwicklung Complete 64,missing,,,,,,
+2026-06-02,Coaching,Digitalisierungscoaching für den Arbeitsmarkt Complete 64,missing,,,,,,
+2026-06-02,Coaching,"Individuelles Bewerbungscoaching ""50 plus"" Complete 64",missing,,,,,,
+2026-06-02,Coaching,Individuelles Karrierecoaching Complete 64,missing,,,,,,
+2026-06-02,Coaching,Individuelles Karrierecoaching für Berufseinsteiger Complete 64,missing,,,,,,
+2026-06-02,Coaching,Individuelles Karrierecoaching für Mütter Complete 64,missing,,,,,,
+2026-06-02,Coaching,Individuelles Orientierungscoaching Complete 56,missing,,,,,,
+2026-06-02,Coaching,Individuelles Orientierungscoaching Complete 64,missing,,,,,,
+2026-06-02,Coaching,Karrierecoaching für Fach- und Führungskräfte Premium 76,missing,,,,,,
+2026-06-02,Coaching,Online-Marketing Coaching Complete 56,found,Online Marketing,10349701750,"Dresden; Hamburg; Hof, Saale; Iserlohn; Kiel",2026-05-31,UEBER_5000_BIS_10000_EUR,BERUFLICHE_QUALIFIZIERUNG
+2026-06-02,Coaching,Orientierungscoaching - Neue Perspektiven finden Classic 32,missing,,,,,,
+2026-06-02,Coaching,Orientierungscoaching - Neue Perspektiven finden Complete 64,missing,,,,,,
+2026-06-02,Coaching,Orientierungscoaching - Neue Perspektiven finden Premium 76,missing,,,,,,
+2026-06-02,Coaching,Orientierungscoaching - Neue Perspektiven finden Starter 16,missing,,,,,,
+2026-06-02,Coaching,Stressmanagement und Burn-Out Prophylaxe - gelungene Work-Life-Balance Complete 64,missing,,,,,,
+2026-06-02,Coaching,Integrations- und Jobcoaching für Fachkräfte mit Migrationshintergrund Classic 40,missing,,,,,,
+2026-06-02,Coaching,Integrations- und Jobcoaching für Fachkräfte mit Migrationshintergrund Complete 64,missing,,,,,,
+2026-06-02,Coaching,Jobcoaching für Fach- und Führungskräfte Classic 30,missing,,,,,,
