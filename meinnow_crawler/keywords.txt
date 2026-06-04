@@ -2,26 +2,58 @@
 # Lines starting with # and blank lines are ignored.
 # These are the search terms a prospective student would type on mein-now.de.
 # Edit freely; the tracker records ecomex's rank + the competitive landscape for each.
+#
+# Keywords are grouped into clusters (the "=== ... ===" headers below). The clusters
+# are mirrored in the dashboard (index.html, CLUSTERS) so views can group by category.
+# If you add a keyword here, add it to the matching cluster in index.html too.
 
+# === Online Marketing (core) ===
 Online Marketing
 Online Marketing Manager
 Online Marketing Strategie
-Search Engine Marketing
-SEA
-SEO
-Suchmaschinenoptimierung
-Suchmaschinenmarketing
-Content Marketing
+Online Marketing Grundlagen
 Digital Marketing
 Digitales Marketing
-Social Media Marketing
-Performance Marketing
-Affiliate Marketing
-E-Commerce
-E-Commerce Manager
 Marketing Manager
-Marketing Automation
+Marketing Weiterbildung
+
+# === SEO & SEA ===
+SEO
+SEA
+Suchmaschinenoptimierung
+Suchmaschinenmarketing
+Search Engine Marketing
 Google Ads
 Online Advertising
+
+# === Social Media & Content ===
+Social Media Marketing
+Social Media Manager
+Content Marketing
+Influencer Marketing
+Instagram Marketing
+
+# === Performance & Automation ===
+Performance Marketing
+Affiliate Marketing
+Marketing Automation
+E-Mail Marketing
+Conversion Optimierung
+
+# === E-Commerce ===
+E-Commerce
+E-Commerce Manager
+E-Commerce Marketing
+Amazon Marketing
+
+# === KI / AI Marketing ===
+KI im Online Marketing
+KI Marketing
+AI Marketing
+KI Manager
+
+# === Data & Analytics ===
 Webanalyse
 Digital Strategy
+Google Analytics
+Datenanalyse

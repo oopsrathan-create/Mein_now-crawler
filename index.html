@@ -37,6 +37,8 @@
   .b-bad  { background:rgba(248,81,73,.15); color:var(--bad); }
   .b-none { background:#2c3744; color:var(--muted); }
   .kw { color:var(--accent); }
+  tr.brandrow td { background:rgba(76,201,240,.10); }
+  tr.brandrow td:first-child, tr.brandrow td:nth-child(2){ font-weight:700; }
   input[type=search]{ background:var(--panel2); border:1px solid var(--line); color:var(--text);
         border-radius:7px; padding:8px 12px; width:280px; max-width:100%; font-size:13px; }
   .muted{ color:var(--muted); }
@@ -97,6 +99,7 @@
       <button class="tabbtn" data-tab="coverage" id="tabCoverage" hidden>Uploaded courses <span class="count" id="covCountBadge"></span></button>
       <button class="tabbtn" data-tab="movers" id="tabMovers" hidden>Rank movers</button>
       <button class="tabbtn" data-tab="share" id="tabShare" hidden>Competitor share</button>
+      <button class="tabbtn" data-tab="catrank" id="tabCatRank" hidden>Competitor ranking</button>
       <button class="tabbtn" data-tab="matrix" id="tabMatrix" hidden>Full ranking report</button>
     </nav>
 
@@ -176,6 +179,25 @@
       <small class="note">Daily snapshot of the first page of search results. ecomex share = % of the top-20 slots taken by ecomex courses.</small>
     </div>
 
+    <div class="tabpanel" data-tab="catrank" id="catRankSection">
+      <h2>Competitor ranking by category <span class="muted">— who lists the most courses in each cluster's top 20</span></h2>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px;align-items:center">
+        <select id="catSelect" style="background:var(--panel2);border:1px solid var(--line);color:var(--text);border-radius:7px;padding:8px 10px;font-size:13px"></select>
+        <span class="muted" id="catMeta"></span>
+      </div>
+      <table id="catRankTable">
+        <thead><tr>
+          <th data-k="rank">#</th>
+          <th data-k="provider">Provider</th>
+          <th data-k="courses">Courses listed</th>
+          <th data-k="keywords">Keywords covered</th>
+          <th data-k="best">Best rank</th>
+        </tr></thead>
+        <tbody></tbody>
+      </table>
+      <small class="note">"Courses listed" = total ecomex/competitor course slots in the top 20 results, summed across every keyword in the selected cluster (from the daily competitor-share snapshot). A provider appearing for several keywords is counted once per appearance. <b>ecomex</b> is highlighted.</small>
+    </div>
+
     <div class="tabpanel" data-tab="matrix" id="matrixSection">
       <h2>Full ranking report <span class="muted" id="matrixWeek">— weekly</span></h2>
       <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px;align-items:center">
@@ -200,6 +222,25 @@
 <script>
 const DATA = "meinnow_crawler/data/";
 const PALETTE = ["#4cc9f0","#f72585","#3fb950","#d29922","#a371f7","#ff8c42","#56d4dd","#f85149"];
+
+// Keyword clusters — mirror of the "=== ... ===" groups in meinnow_crawler/keywords.txt.
+// Add a keyword here whenever you add it there, so views can group by category.
+const CLUSTERS = {
+  "Online Marketing (core)": ["Online Marketing","Online Marketing Manager","Online Marketing Strategie","Online Marketing Grundlagen","Digital Marketing","Digitales Marketing","Marketing Manager","Marketing Weiterbildung"],
+  "SEO & SEA": ["SEO","SEA","Suchmaschinenoptimierung","Suchmaschinenmarketing","Search Engine Marketing","Google Ads","Online Advertising"],
+  "Social Media & Content": ["Social Media Marketing","Social Media Manager","Content Marketing","Influencer Marketing","Instagram Marketing"],
+  "Performance & Automation": ["Performance Marketing","Affiliate Marketing","Marketing Automation","E-Mail Marketing","Conversion Optimierung"],
+  "E-Commerce": ["E-Commerce","E-Commerce Manager","E-Commerce Marketing","Amazon Marketing"],
+  "KI / AI Marketing": ["KI im Online Marketing","KI Marketing","AI Marketing","KI Manager"],
+  "Data & Analytics": ["Webanalyse","Digital Strategy","Google Analytics","Datenanalyse"],
+};
+// keyword -> cluster name (keywords not in any cluster fall under "Other").
+const CLUSTER_OF = (() => {
+  const m = {};
+  for(const [name, kws] of Object.entries(CLUSTERS)) for(const kw of kws) m[kw] = name;
+  return m;
+})();
+function clusterOf(kw){ return CLUSTER_OF[kw] || "Other"; }
 
 function rankBadge(r){
   if(r==null||r==="") return '<span class="badge b-none">—</span>';
@@ -428,6 +469,63 @@ function latestDate(rows){ return rows.reduce((m,r)=> r.snapshot_date>m?r.snapsh
       brand_rank: r=>rankBadge(r.brand_rank),
       top:        r=>r.top || '<span class="muted">—</span>',
     }, "brand_share", false);
+  }
+
+  // ---- competitor ranking by category (cluster) ----
+  if(share.length){
+    // group the latest share snapshot's keywords into clusters that actually have data
+    const kwsWithData = new Set(share.map(r=>r.keyword));
+    const cats = {};
+    for(const kw of kwsWithData){
+      const cat = clusterOf(kw);
+      (cats[cat] ??= []).push(kw);
+    }
+    const catNames = Object.keys(cats).sort((a,b)=> a==="Other"?1 : b==="Other"?-1 : a.localeCompare(b));
+    if(catNames.length){
+      document.getElementById("tabCatRank").hidden = false;
+      const sel = document.getElementById("catSelect");
+      sel.innerHTML = catNames.map(c=>`<option value="${c}">${c}</option>`).join("");
+
+      // per category: provider -> {courses, keywords:Set, best}
+      function rankFor(cat){
+        const kws = cats[cat];
+        const byProv = {};
+        for(const r of share){
+          if(!kws.includes(r.keyword)) continue;
+          const p = (byProv[r.provider] ??= {provider:r.provider, courses:0, kws:new Set(), best:Infinity, brand:r.is_brand==="1"});
+          p.courses += +r.count_top_n;
+          p.kws.add(r.keyword);
+          p.best = Math.min(p.best, +r.best_rank);
+          if(r.is_brand==="1") p.brand = true;
+        }
+        return Object.values(byProv)
+          .map(p=>({provider:p.provider, courses:p.courses, keywords:p.kws.size, best:p.best===Infinity?null:p.best, brand:p.brand}))
+          .sort((a,b)=> b.courses-a.courses || a.best-b.best)
+          .map((p,i)=>({...p, rank:i+1}));
+      }
+
+      function renderCatRank(){
+        const cat = sel.value;
+        const rows = rankFor(cat);
+        const provN = rows.length;
+        const courseN = rows.reduce((s,r)=>s+r.courses,0);
+        document.getElementById("catMeta").textContent =
+          `${cats[cat].length} keyword${cats[cat].length>1?"s":""} · ${provN} providers · ${courseN} course slots in top 20`;
+        renderTable("catRankTable", rows, {
+          rank:     r=>`<span class="rank">${r.rank}</span>`,
+          provider: r=> r.brand ? `<span class="kw">${r.provider}</span> <span class="badge b-good">you</span>` : r.provider,
+          courses:  r=>`<b>${r.courses}</b>`,
+          keywords: r=>`<span class="muted">${r.keywords}</span>`,
+          best:     r=>rankBadge(r.best),
+        }, "rank", true);
+        // highlight the ecomex row (robust to re-sorting via the header clicks)
+        document.querySelectorAll("#catRankTable tbody tr").forEach(tr=>{
+          tr.classList.toggle("brandrow", !!tr.querySelector(".kw"));
+        });
+      }
+      sel.addEventListener("change", renderCatRank);
+      renderCatRank();
+    }
   }
 
   // ---- trend chart ----
