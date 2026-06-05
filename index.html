@@ -38,6 +38,7 @@
   .b-none { background:#2c3744; color:var(--muted); }
   .kw { color:var(--accent); }
   tr.brandrow td { background:rgba(76,201,240,.10); }
+  td.brandcol { background:rgba(76,201,240,.08); }
   tr.brandrow td:first-child, tr.brandrow td:nth-child(2){ font-weight:700; }
   input[type=search]{ background:var(--panel2); border:1px solid var(--line); color:var(--text);
         border-radius:7px; padding:8px 12px; width:280px; max-width:100%; font-size:13px; }
@@ -100,6 +101,7 @@
       <button class="tabbtn" data-tab="movers" id="tabMovers" hidden>Rank movers</button>
       <button class="tabbtn" data-tab="share" id="tabShare" hidden>Competitor share</button>
       <button class="tabbtn" data-tab="catrank" id="tabCatRank" hidden>Competitor ranking</button>
+      <button class="tabbtn" data-tab="kwmatrix" id="tabKwMatrix" hidden>Keyword × competitor</button>
       <button class="tabbtn" data-tab="matrix" id="tabMatrix" hidden>Full ranking report</button>
     </nav>
 
@@ -198,6 +200,21 @@
         <tbody></tbody>
       </table>
       <small class="note">"Courses listed" = total ecomex/competitor course slots in the top 20 results, summed across every keyword in the selected cluster (from the daily competitor-share snapshot). A provider appearing for several keywords is counted once per appearance. <b>ecomex</b> is highlighted.</small>
+    </div>
+
+    <div class="tabpanel" data-tab="kwmatrix" id="kwMatrixSection">
+      <h2>Keyword × competitor <span class="muted">— who ranks for each keyword, and how well</span></h2>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px;align-items:center">
+        <select id="kwmSelect" style="background:var(--panel2);border:1px solid var(--line);color:var(--text);border-radius:7px;padding:8px 10px;font-size:13px"></select>
+        <span class="muted" id="kwmMeta"></span>
+      </div>
+      <div style="overflow-x:auto">
+        <table id="kwMatrixTable" style="min-width:700px">
+          <thead><tr id="kwMatrixHead"></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <small class="note">Rows = keywords, columns = the providers with the most courses in scope. Each cell shows that provider's <b>best rank</b> for the keyword, with <span class="muted">×N</span> = how many of their courses sit in the top 20. Blank = not in the top 20. <b>ecomex</b> is the first column.</small>
     </div>
 
     <div class="tabpanel" data-tab="matrix" id="matrixSection">
@@ -547,6 +564,71 @@ function latestDate(rows){ return rows.reduce((m,r)=> r.snapshot_date>m?r.snapsh
       sel.addEventListener("change", renderCatRank);
       renderCatRank();
     }
+  }
+
+  // ---- keyword × competitor matrix ----
+  if(share.length){
+    const kwsWithData = [...new Set(share.map(r=>r.keyword))];
+    const cats = {};
+    for(const kw of kwsWithData) (cats[clusterOf(kw)] ??= []).push(kw);
+    const catNames = Object.keys(cats).sort((a,b)=> a==="Other"?1 : b==="Other"?-1 : a.localeCompare(b));
+    if(kwsWithData.length){
+      document.getElementById("tabKwMatrix").hidden = false;
+      const sel = document.getElementById("kwmSelect");
+      sel.innerHTML = `<option value="__all">All categories</option>` +
+        catNames.map(c=>`<option value="${c}">${c}</option>`).join("");
+
+      const MAX_COLS = 10;  // competitor columns (excluding the pinned ecomex column)
+      function cell(rank, count){
+        if(rank==null) return '<span class="muted">·</span>';
+        return `${rankBadge(rank)}${count>1?` <span class="muted">×${count}</span>`:""}`;
+      }
+      function renderKwMatrix(){
+        const scope = sel.value;
+        const kws = (scope==="__all" ? kwsWithData : cats[scope]).slice().sort();
+        const rows = share.filter(r=>kws.includes(r.keyword));
+        // provider -> {total courses in scope, brand}; pick top columns
+        const agg = {};
+        for(const r of rows){
+          const p = (agg[r.provider] ??= {provider:r.provider, total:0, brand:r.is_brand==="1"});
+          p.total += +r.count_top_n;
+          if(r.is_brand==="1") p.brand = true;
+        }
+        const brand = Object.values(agg).find(p=>p.brand);
+        const competitors = Object.values(agg).filter(p=>!p.brand)
+          .sort((a,b)=>b.total-a.total).slice(0, MAX_COLS);
+        const cols = (brand ? [brand] : []).concat(competitors);
+        // lookup: keyword -> provider -> {best, count}
+        const cellMap = {};
+        for(const r of rows){
+          ((cellMap[r.keyword] ??= {})[r.provider] ??= {best:Infinity, count:0});
+          const c = cellMap[r.keyword][r.provider];
+          c.best = Math.min(c.best, +r.best_rank);
+          c.count += +r.count_top_n;
+        }
+        document.getElementById("kwmMeta").textContent =
+          `${kws.length} keywords · ${cols.length} providers shown (of ${Object.keys(agg).length})`;
+        // header
+        document.getElementById("kwMatrixHead").innerHTML =
+          `<th data-k="keyword">Keyword</th>` +
+          cols.map(p=>`<th title="${p.provider}">${p.brand?`<span class="kw">${shortName(p.provider)}</span>`:shortName(p.provider)}</th>`).join("");
+        // body
+        const tbody = document.querySelector("#kwMatrixTable tbody");
+        tbody.innerHTML = kws.map(kw=>{
+          const m = cellMap[kw] || {};
+          return `<tr><td style="white-space:nowrap"><span class="kw">${kw}</span></td>` +
+            cols.map(p=>{
+              const c = m[p.provider];
+              return `<td${p.brand?' class="brandcol"':''}>${cell(c?c.best:null, c?c.count:0)}</td>`;
+            }).join("") + `</tr>`;
+        }).join("");
+      }
+      sel.addEventListener("change", renderKwMatrix);
+      renderKwMatrix();
+    }
+  }
+  function shortName(name){
+    return (name||"").replace(/\s+(GmbH|GmbH & Co\. KG|AG|e\.V\.|UG)\b.*$/,"").trim() || name;
   }
 
   // ---- trend chart ----
