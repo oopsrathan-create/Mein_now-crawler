@@ -192,6 +192,7 @@
           <th data-k="provider">Provider</th>
           <th data-k="courses">Courses listed</th>
           <th data-k="keywords">Keywords covered</th>
+          <th data-k="kws">Top keywords (best first)</th>
           <th data-k="best">Best rank</th>
         </tr></thead>
         <tbody></tbody>
@@ -505,14 +506,20 @@ function latestDate(rows){ return rows.reduce((m,r)=> r.snapshot_date>m?r.snapsh
         const byProv = {};
         for(const r of share){
           if(!kws.includes(r.keyword)) continue;
-          const p = (byProv[r.provider] ??= {provider:r.provider, courses:0, kws:new Set(), best:Infinity, brand:r.is_brand==="1"});
+          const p = (byProv[r.provider] ??= {provider:r.provider, courses:0, kwRanks:{}, best:Infinity, brand:r.is_brand==="1"});
           p.courses += +r.count_top_n;
-          p.kws.add(r.keyword);
-          p.best = Math.min(p.best, +r.best_rank);
+          const rk = +r.best_rank;
+          p.kwRanks[r.keyword] = Math.min(p.kwRanks[r.keyword] ?? Infinity, rk);
+          p.best = Math.min(p.best, rk);
           if(r.is_brand==="1") p.brand = true;
         }
         return Object.values(byProv)
-          .map(p=>({provider:p.provider, courses:p.courses, keywords:p.kws.size, best:p.best===Infinity?null:p.best, brand:p.brand}))
+          .map(p=>({
+            provider:p.provider, courses:p.courses,
+            keywords:Object.keys(p.kwRanks).length,
+            appears:Object.entries(p.kwRanks).map(([kw,rank])=>({kw,rank})).sort((a,b)=>a.rank-b.rank),
+            best:p.best===Infinity?null:p.best, brand:p.brand,
+          }))
           .sort((a,b)=> b.courses-a.courses || a.best-b.best)
           .map((p,i)=>({...p, rank:i+1}));
       }
@@ -529,6 +536,7 @@ function latestDate(rows){ return rows.reduce((m,r)=> r.snapshot_date>m?r.snapsh
           provider: r=> r.brand ? `<span class="kw">${r.provider}</span> <span class="badge b-good">you</span>` : r.provider,
           courses:  r=>`<b>${r.courses}</b>`,
           keywords: r=>`<span class="muted">${r.keywords}</span>`,
+          kws:      r=>topKwHtml(r),
           best:     r=>rankBadge(r.best),
         }, "rank", true);
         // highlight the ecomex row (robust to re-sorting via the header clicks)
