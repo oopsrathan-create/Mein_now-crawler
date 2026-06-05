@@ -1664,3 +1664,394 @@ snapshot_date,keyword,provider,count_top_n,share_pct,best_rank
 2026-06-04,Datenanalyse,Masters of Digital GmbH,1,5.0,13
 2026-06-04,Datenanalyse,OneCareer,1,5.0,14
 2026-06-04,Datenanalyse,StackFuel GmbH,1,5.0,16
+2026-06-05,Online Marketing,Learning Digital Academy GmbH,2,10.0,1
+2026-06-05,Online Marketing,ecomex GmbH & Co. KG,2,10.0,2
+2026-06-05,Online Marketing,OneCareer,2,10.0,11
+2026-06-05,Online Marketing,LVQ Weiterbildung und Beratung GmbH,2,10.0,17
+2026-06-05,Online Marketing,IU Akademie IU Internationale Hochschule,1,5.0,3
+2026-06-05,Online Marketing,GrandEdu GmbH,1,5.0,4
+2026-06-05,Online Marketing,DAA - Deutsche Angestellten- Akademie gGmbH,1,5.0,5
+2026-06-05,Online Marketing,Karriere Tutor GmbH,1,5.0,6
+2026-06-05,Online Marketing,COMCAVE.COLLEGE GmbH,1,5.0,8
+2026-06-05,Online Marketing,Edvalo Education GmbH,1,5.0,9
+2026-06-05,Online Marketing,Masters of Digital GmbH,1,5.0,10
+2026-06-05,Online Marketing,IFM GmbH,1,5.0,13
+2026-06-05,Online Marketing,Lecturio GmbH,1,5.0,14
+2026-06-05,Online Marketing,CBW College Berufliche Weiterbildung GmbH,1,5.0,15
+2026-06-05,Online Marketing,Spiced Academy GmbH,1,5.0,16
+2026-06-05,Online Marketing Manager,OneCareer,4,20.0,15
+2026-06-05,Online Marketing Manager,alfatraining Bildungszentrum GmbH,3,15.0,2
+2026-06-05,Online Marketing Manager,Talentspring Academy Group,1,5.0,1
+2026-06-05,Online Marketing Manager,COMCAVE.COLLEGE GmbH,1,5.0,3
+2026-06-05,Online Marketing Manager,Wildner Akademie für Digitale Wirtschaft & Management,1,5.0,4
+2026-06-05,Online Marketing Manager,ecomex GmbH & Co. KG,1,5.0,5
+2026-06-05,Online Marketing Manager,DCI Digital Career Institute GmbH,1,5.0,6
+2026-06-05,Online Marketing Manager,Textakademie GmbH,1,5.0,7
+2026-06-05,Online Marketing Manager,Starthilfe Bildungswerk GmbH,1,5.0,8
+2026-06-05,Online Marketing Manager,LVQ Weiterbildung und Beratung GmbH,1,5.0,9
+2026-06-05,Online Marketing Manager,SGD,1,5.0,10
+2026-06-05,Online Marketing Manager,Digiteach GmbH,1,5.0,11
+2026-06-05,Online Marketing Manager,Karriere Tutor GmbH,1,5.0,12
+2026-06-05,Online Marketing Manager,Education partners GmbH,1,5.0,13
+2026-06-05,Online Marketing Manager,Lecturio GmbH,1,5.0,14
+2026-06-05,Online Marketing Strategie,Learning Digital Academy GmbH,6,30.0,2
+2026-06-05,Online Marketing Strategie,Masters of Digital GmbH,4,20.0,5
+2026-06-05,Online Marketing Strategie,Talentspring Academy Group,2,10.0,14
+2026-06-05,Online Marketing Strategie,OneCareer,1,5.0,1
+2026-06-05,Online Marketing Strategie,DAA - Deutsche Angestellten- Akademie gGmbH,1,5.0,3
+2026-06-05,Online Marketing Strategie,ecomex GmbH & Co. KG,1,5.0,4
+2026-06-05,Online Marketing Strategie,Karriere Tutor GmbH,1,5.0,10
+2026-06-05,Online Marketing Strategie,neuefische GmbH,1,5.0,11
+2026-06-05,Online Marketing Strategie,BNW gGmbH - Bildungswerk der Niedersächsischen Wirtschaft gemeinnützige GmbH,1,5.0,17
+2026-06-05,Online Marketing Strategie,Distart Education GmbH,1,5.0,19
+2026-06-05,Online Marketing Strategie,Spiced Academy GmbH,1,5.0,20
+2026-06-05,Online Marketing Grundlagen,ecomex GmbH & Co. KG,7,35.0,7
+2026-06-05,Online Marketing Grundlagen,DCI Digital Career Institute GmbH,2,10.0,4
+2026-06-05,Online Marketing Grundlagen,Masters of Digital GmbH,2,10.0,6
+2026-06-05,Online Marketing Grundlagen,Karriere Tutor GmbH,2,10.0,11
+2026-06-05,Online Marketing Grundlagen,velpTEC GmbH,1,5.0,1
+2026-06-05,Online Marketing Grundlagen,Talentspring Academy Group,1,5.0,2
+2026-06-05,Online Marketing Grundlagen,BNW gGmbH - Bildungswerk der Niedersächsischen Wirtschaft gemeinnützige GmbH,1,5.0,3
+2026-06-05,Online Marketing Grundlagen,neuefische GmbH,1,5.0,5
+2026-06-05,Online Marketing Grundlagen,Spiced Academy GmbH,1,5.0,8
+2026-06-05,Online Marketing Grundlagen,XDi - Experience Design Institut GmbH,1,5.0,10
+2026-06-05,Online Marketing Grundlagen,Distart Education GmbH,1,5.0,19
+2026-06-05,Digital Marketing,Berger Bildungsinstitut GmbH,2,10.0,1
+2026-06-05,Digital Marketing,alfatraining Bildungszentrum GmbH,2,10.0,4
+2026-06-05,Digital Marketing,OneCareer,2,10.0,6
+2026-06-05,Digital Marketing,Learning Digital Academy GmbH,1,5.0,2
+2026-06-05,Digital Marketing,GFN GmbH,1,5.0,3
+2026-06-05,Digital Marketing,Fortbildungsakademie der Wirtschaft (FAW) gGmbH,1,5.0,7
+2026-06-05,Digital Marketing,AWT Akademie für Wirtschaft und Technologie GmbH,1,5.0,8
+2026-06-05,Digital Marketing,Berufliche Fortbildungszentren der Bayerischen Wirtschaft (bfz) gGmbH,1,5.0,9
+2026-06-05,Digital Marketing,Do IT Digital GmbH,1,5.0,10
+2026-06-05,Digital Marketing,bam GmbH,1,5.0,11
+2026-06-05,Digital Marketing,Donner + Partner GmbH Baden-Württemberg,1,5.0,12
+2026-06-05,Digital Marketing,TERTIA Berufsförderung GmbH & Co. KG,1,5.0,13
+2026-06-05,Digital Marketing,Lernstudio Barbarossa/MegaKids Fortbildungs GmbH,1,5.0,15
+2026-06-05,Digital Marketing,BilSE-Institut für Bildung und Forschung GmbH,1,5.0,16
+2026-06-05,Digital Marketing,TÜV Rheinland Akademie GmbH,1,5.0,17
+2026-06-05,Digitales Marketing,Berger Bildungsinstitut GmbH,2,10.0,1
+2026-06-05,Digitales Marketing,alfatraining Bildungszentrum GmbH,2,10.0,4
+2026-06-05,Digitales Marketing,OneCareer,2,10.0,6
+2026-06-05,Digitales Marketing,Learning Digital Academy GmbH,1,5.0,2
+2026-06-05,Digitales Marketing,GFN GmbH,1,5.0,3
+2026-06-05,Digitales Marketing,Fortbildungsakademie der Wirtschaft (FAW) gGmbH,1,5.0,7
+2026-06-05,Digitales Marketing,AWT Akademie für Wirtschaft und Technologie GmbH,1,5.0,8
+2026-06-05,Digitales Marketing,Berufliche Fortbildungszentren der Bayerischen Wirtschaft (bfz) gGmbH,1,5.0,9
+2026-06-05,Digitales Marketing,Do IT Digital GmbH,1,5.0,10
+2026-06-05,Digitales Marketing,bam GmbH,1,5.0,11
+2026-06-05,Digitales Marketing,Donner + Partner GmbH Baden-Württemberg,1,5.0,12
+2026-06-05,Digitales Marketing,TERTIA Berufsförderung GmbH & Co. KG,1,5.0,13
+2026-06-05,Digitales Marketing,Lernstudio Barbarossa/MegaKids Fortbildungs GmbH,1,5.0,15
+2026-06-05,Digitales Marketing,BilSE-Institut für Bildung und Forschung GmbH,1,5.0,16
+2026-06-05,Digitales Marketing,TÜV Rheinland Akademie GmbH,1,5.0,17
+2026-06-05,Marketing Manager,Talentspring Academy Group,4,20.0,1
+2026-06-05,Marketing Manager,OneCareer,3,15.0,2
+2026-06-05,Marketing Manager,alfatraining Bildungszentrum GmbH,2,10.0,9
+2026-06-05,Marketing Manager,Learning Digital Academy GmbH,2,10.0,11
+2026-06-05,Marketing Manager,Talentivo GmbH,1,5.0,3
+2026-06-05,Marketing Manager,Bildung Next Level GmbH,1,5.0,4
+2026-06-05,Marketing Manager,Lernstudio Barbarossa/MegaKids Fortbildungs GmbH,1,5.0,6
+2026-06-05,Marketing Manager,Berger Bildungsinstitut GmbH,1,5.0,7
+2026-06-05,Marketing Manager,Bildungswerk der Hessischen Wirtschaft e. V.,1,5.0,8
+2026-06-05,Marketing Manager,Fortbildungsakademie der Wirtschaft (FAW) gGmbH,1,5.0,10
+2026-06-05,Marketing Manager,Edvalo Education GmbH,1,5.0,12
+2026-06-05,Marketing Manager,Do IT Digital GmbH,1,5.0,13
+2026-06-05,Marketing Manager,Berufliche Fortbildungszentren der Bayerischen Wirtschaft (bfz) gGmbH,1,5.0,19
+2026-06-05,Marketing Weiterbildung,Masters of Digital GmbH,9,45.0,7
+2026-06-05,Marketing Weiterbildung,ecomex GmbH & Co. KG,6,30.0,1
+2026-06-05,Marketing Weiterbildung,OMR Education GmbH,3,15.0,4
+2026-06-05,Marketing Weiterbildung,Spiced Academy GmbH,1,5.0,11
+2026-06-05,Marketing Weiterbildung,WBK Akademie GmbH,1,5.0,19
+2026-06-05,SEO,OneCareer,4,20.0,3
+2026-06-05,SEO,Masters of Digital GmbH,4,20.0,4
+2026-06-05,SEO,Learning Digital Academy GmbH,4,20.0,12
+2026-06-05,SEO,Talentspring Academy Group,1,5.0,1
+2026-06-05,SEO,XDi - Experience Design Institut GmbH,1,5.0,2
+2026-06-05,SEO,DAA - Deutsche Angestellten- Akademie gGmbH,1,5.0,6
+2026-06-05,SEO,velpTEC GmbH,1,5.0,8
+2026-06-05,SEO,Spiced Academy GmbH,1,5.0,15
+2026-06-05,SEO,Berger Bildungsinstitut GmbH,1,5.0,16
+2026-06-05,SEO,Karriere Tutor GmbH,1,5.0,19
+2026-06-05,SEO,Lernstudio Barbarossa/MegaKids Fortbildungs GmbH,1,5.0,20
+2026-06-05,SEA,Masters of Digital GmbH,7,35.0,3
+2026-06-05,SEA,OneCareer,3,15.0,4
+2026-06-05,SEA,mycareernow,3,15.0,6
+2026-06-05,SEA,WBS TRAINING SE,1,5.0,1
+2026-06-05,SEA,Karriere Tutor GmbH,1,5.0,2
+2026-06-05,SEA,velpTEC GmbH,1,5.0,9
+2026-06-05,SEA,IU Akademie IU Internationale Hochschule,1,5.0,12
+2026-06-05,SEA,DCI Digital Career Institute GmbH,1,5.0,14
+2026-06-05,SEA,cimdata Bildungsakademie GmbH,1,5.0,15
+2026-06-05,SEA,Education partners GmbH,1,5.0,18
+2026-06-05,Suchmaschinenoptimierung,Masters of Digital GmbH,6,30.0,5
+2026-06-05,Suchmaschinenoptimierung,OneCareer,4,20.0,3
+2026-06-05,Suchmaschinenoptimierung,velpTEC GmbH,3,15.0,6
+2026-06-05,Suchmaschinenoptimierung,Learning Digital Academy GmbH,2,10.0,2
+2026-06-05,Suchmaschinenoptimierung,Karriere Tutor GmbH,1,5.0,1
+2026-06-05,Suchmaschinenoptimierung,IFM GmbH,1,5.0,7
+2026-06-05,Suchmaschinenoptimierung,Talentspring Academy Group,1,5.0,10
+2026-06-05,Suchmaschinenoptimierung,COMCAVE.COLLEGE GmbH,1,5.0,15
+2026-06-05,Suchmaschinenoptimierung,GrandEdu GmbH,1,5.0,16
+2026-06-05,Suchmaschinenmarketing,Learning Digital Academy GmbH,4,20.0,1
+2026-06-05,Suchmaschinenmarketing,OneCareer,2,10.0,13
+2026-06-05,Suchmaschinenmarketing,Karriere Tutor GmbH,1,5.0,4
+2026-06-05,Suchmaschinenmarketing,Fortbildungsakademie der Wirtschaft (FAW) gGmbH,1,5.0,5
+2026-06-05,Suchmaschinenmarketing,GfM GmbH & Co. KG,1,5.0,6
+2026-06-05,Suchmaschinenmarketing,velpTEC GmbH,1,5.0,8
+2026-06-05,Suchmaschinenmarketing,Berger Bildungsinstitut GmbH,1,5.0,9
+2026-06-05,Suchmaschinenmarketing,Kolping Akademie Bamberg,1,5.0,10
+2026-06-05,Suchmaschinenmarketing,its digital akademie GmbH,1,5.0,11
+2026-06-05,Suchmaschinenmarketing,Lecturio GmbH,1,5.0,12
+2026-06-05,Suchmaschinenmarketing,alfatraining Bildungszentrum GmbH,1,5.0,14
+2026-06-05,Suchmaschinenmarketing,Donner + Partner GmbH Baden-Württemberg,1,5.0,15
+2026-06-05,Suchmaschinenmarketing,NH Schulungscenter für IT und Business GmbH,1,5.0,16
+2026-06-05,Suchmaschinenmarketing,Wirtschaftsakademie Küster GmbH,1,5.0,18
+2026-06-05,Suchmaschinenmarketing,TERTIA Berufsförderung GmbH & Co. KG,1,5.0,19
+2026-06-05,Search Engine Marketing,OneCareer,4,20.0,1
+2026-06-05,Search Engine Marketing,Masters of Digital GmbH,4,20.0,4
+2026-06-05,Search Engine Marketing,XDi - Experience Design Institut GmbH,3,15.0,9
+2026-06-05,Search Engine Marketing,IU Akademie IU Internationale Hochschule,2,10.0,14
+2026-06-05,Search Engine Marketing,Learning Digital Academy GmbH,1,5.0,3
+2026-06-05,Search Engine Marketing,Distart Education GmbH,1,5.0,10
+2026-06-05,Search Engine Marketing,velpTEC GmbH,1,5.0,11
+2026-06-05,Search Engine Marketing,Professionals Online Akademie für Sales und Marketing,1,5.0,12
+2026-06-05,Search Engine Marketing,ecomex GmbH & Co. KG,1,5.0,17
+2026-06-05,Search Engine Marketing,CROAS Education GmbH,1,5.0,19
+2026-06-05,Search Engine Marketing,Karriere Tutor GmbH,1,5.0,20
+2026-06-05,Google Ads,velpTEC GmbH,6,30.0,8
+2026-06-05,Google Ads,Learning Digital Academy GmbH,5,25.0,2
+2026-06-05,Google Ads,Masters of Digital GmbH,5,25.0,4
+2026-06-05,Google Ads,OneCareer,4,20.0,1
+2026-06-05,Online Advertising,Masters of Digital GmbH,6,30.0,4
+2026-06-05,Online Advertising,OneCareer,5,25.0,3
+2026-06-05,Online Advertising,Learning Digital Academy GmbH,4,20.0,1
+2026-06-05,Online Advertising,ecomex GmbH & Co. KG,1,5.0,2
+2026-06-05,Online Advertising,neuefische GmbH,1,5.0,7
+2026-06-05,Online Advertising,GrandEdu GmbH,1,5.0,8
+2026-06-05,Online Advertising,velpTEC GmbH,1,5.0,17
+2026-06-05,Online Advertising,Distart Education GmbH,1,5.0,20
+2026-06-05,Social Media Marketing,IU Akademie IU Internationale Hochschule,3,15.0,1
+2026-06-05,Social Media Marketing,Lernstudio Barbarossa/MegaKids Fortbildungs GmbH,1,5.0,2
+2026-06-05,Social Media Marketing,IFP Gesellschaft für Fortbildung und Personalentwicklung mbH,1,5.0,3
+2026-06-05,Social Media Marketing,GfM GmbH & Co. KG,1,5.0,4
+2026-06-05,Social Media Marketing,TÜV Rheinland Akademie GmbH,1,5.0,5
+2026-06-05,Social Media Marketing,Fortbildungsakademie der Wirtschaft (FAW) gGmbH,1,5.0,6
+2026-06-05,Social Media Marketing,Donner + Partner GmbH Sachsen,1,5.0,7
+2026-06-05,Social Media Marketing,Stiftung Lernen-Fördern-Arbeiten (LFA),1,5.0,8
+2026-06-05,Social Media Marketing,Bildungswerk der Hessischen Wirtschaft e. V.,1,5.0,9
+2026-06-05,Social Media Marketing,its digital akademie GmbH,1,5.0,10
+2026-06-05,Social Media Marketing,DAA - Deutsche Angestellten- Akademie gGmbH,1,5.0,11
+2026-06-05,Social Media Marketing,Berger Bildungsinstitut GmbH,1,5.0,12
+2026-06-05,Social Media Marketing,INI Qualifizierung & Service gGmbH,1,5.0,13
+2026-06-05,Social Media Marketing,Berufliche Fortbildungszentren der Bayerischen Wirtschaft (bfz) gGmbH,1,5.0,14
+2026-06-05,Social Media Marketing,Reha & Beruf gGmbH,1,5.0,15
+2026-06-05,Social Media Manager,Berger Bildungsinstitut GmbH,1,5.0,1
+2026-06-05,Social Media Manager,COMCAVE.COLLEGE GmbH,1,5.0,2
+2026-06-05,Social Media Manager,JOBINKUBATOR Beratung / Bildung / Beruf,1,5.0,3
+2026-06-05,Social Media Manager,alfatraining Bildungszentrum GmbH,1,5.0,4
+2026-06-05,Social Media Manager,OneCareer,1,5.0,5
+2026-06-05,Social Media Manager,Do IT Digital GmbH,1,5.0,6
+2026-06-05,Social Media Manager,Lernstudio Barbarossa/MegaKids Fortbildungs GmbH,1,5.0,7
+2026-06-05,Social Media Manager,Karriere Tutor GmbH,1,5.0,8
+2026-06-05,Social Media Manager,Masters of Digital GmbH,1,5.0,9
+2026-06-05,Social Media Manager,Berufliche Fortbildungszentren der Bayerischen Wirtschaft (bfz) gGmbH,1,5.0,10
+2026-06-05,Social Media Manager,BVH Gesellschaft für angewandte Bildung und Sozialforschung mbH,1,5.0,11
+2026-06-05,Social Media Manager,TERTIA Berufsförderung GmbH & Co. KG,1,5.0,12
+2026-06-05,Social Media Manager,Wirtschaftsakademie Küster GmbH,1,5.0,13
+2026-06-05,Social Media Manager,Fortbildungsakademie der Wirtschaft (FAW) gGmbH,1,5.0,14
+2026-06-05,Social Media Manager,Lecturio GmbH,1,5.0,15
+2026-06-05,Content Marketing,alfatraining Bildungszentrum GmbH,3,15.0,4
+2026-06-05,Content Marketing,velpTEC GmbH,3,15.0,5
+2026-06-05,Content Marketing,Masters of Digital GmbH,3,15.0,11
+2026-06-05,Content Marketing,OneCareer,2,10.0,9
+2026-06-05,Content Marketing,GFN GmbH,1,5.0,1
+2026-06-05,Content Marketing,IU Akademie IU Internationale Hochschule,1,5.0,2
+2026-06-05,Content Marketing,indisoft GmbH,1,5.0,3
+2026-06-05,Content Marketing,ecomex GmbH & Co. KG,1,5.0,7
+2026-06-05,Content Marketing,DAA - Deutsche Angestellten- Akademie gGmbH,1,5.0,10
+2026-06-05,Content Marketing,Distart Education GmbH,1,5.0,13
+2026-06-05,Content Marketing,Akademie Überlingen,1,5.0,15
+2026-06-05,Content Marketing,Karriere Tutor GmbH,1,5.0,16
+2026-06-05,Content Marketing,ebam Akademie für Wirtschaft und Management,1,5.0,20
+2026-06-05,Influencer Marketing,Karriere Tutor GmbH,8,40.0,3
+2026-06-05,Influencer Marketing,alfatraining Bildungszentrum GmbH,5,25.0,1
+2026-06-05,Influencer Marketing,GrandEdu GmbH,1,5.0,8
+2026-06-05,Influencer Marketing,COMCAVE.COLLEGE GmbH,1,5.0,10
+2026-06-05,Influencer Marketing,Talentspring Academy Group,1,5.0,11
+2026-06-05,Influencer Marketing,velpTEC GmbH,1,5.0,12
+2026-06-05,Influencer Marketing,cimdata Bildungsakademie GmbH,1,5.0,14
+2026-06-05,Influencer Marketing,WBS TRAINING SE,1,5.0,15
+2026-06-05,Influencer Marketing,IU Akademie IU Internationale Hochschule,1,5.0,16
+2026-06-05,Instagram Marketing,Distart Education GmbH,8,40.0,2
+2026-06-05,Instagram Marketing,Talentspring Academy Group,4,20.0,4
+2026-06-05,Instagram Marketing,OneCareer,3,15.0,1
+2026-06-05,Instagram Marketing,Masters of Digital GmbH,3,15.0,14
+2026-06-05,Instagram Marketing,Business Trends Academy,1,5.0,18
+2026-06-05,Instagram Marketing,OMR Education GmbH,1,5.0,19
+2026-06-05,Performance Marketing,Masters of Digital GmbH,8,40.0,4
+2026-06-05,Performance Marketing,OneCareer,5,25.0,2
+2026-06-05,Performance Marketing,Learning Digital Academy GmbH,3,15.0,1
+2026-06-05,Performance Marketing,Distart Education GmbH,2,10.0,9
+2026-06-05,Performance Marketing,velpTEC GmbH,1,5.0,12
+2026-06-05,Performance Marketing,neuefische GmbH,1,5.0,17
+2026-06-05,Affiliate Marketing,Masters of Digital GmbH,9,45.0,2
+2026-06-05,Affiliate Marketing,OneCareer,5,25.0,1
+2026-06-05,Affiliate Marketing,DCI Digital Career Institute GmbH,1,5.0,9
+2026-06-05,Affiliate Marketing,Talentspring Academy Group,1,5.0,12
+2026-06-05,Affiliate Marketing,Learnix GmbH,1,5.0,13
+2026-06-05,Affiliate Marketing,HECKER CONSULTING,1,5.0,14
+2026-06-05,Affiliate Marketing,Distart Education GmbH,1,5.0,18
+2026-06-05,Affiliate Marketing,Bildung Next Level GmbH,1,5.0,19
+2026-06-05,Marketing Automation,DCI Digital Career Institute GmbH,7,35.0,2
+2026-06-05,Marketing Automation,velpTEC GmbH,4,20.0,1
+2026-06-05,Marketing Automation,Bildung Next Level GmbH,4,20.0,8
+2026-06-05,Marketing Automation,Ironhack Germany GmbH,2,10.0,14
+2026-06-05,Marketing Automation,Karriere Tutor GmbH,1,5.0,4
+2026-06-05,Marketing Automation,GrandEdu GmbH,1,5.0,6
+2026-06-05,Marketing Automation,Talentspring Academy Group,1,5.0,7
+2026-06-05,E-Mail Marketing,Talentspring Academy Group,4,20.0,2
+2026-06-05,E-Mail Marketing,DCI Digital Career Institute GmbH,4,20.0,6
+2026-06-05,E-Mail Marketing,OneCareer,2,10.0,1
+2026-06-05,E-Mail Marketing,Digiteach GmbH,1,5.0,3
+2026-06-05,E-Mail Marketing,Education partners GmbH,1,5.0,4
+2026-06-05,E-Mail Marketing,velpTEC GmbH,1,5.0,5
+2026-06-05,E-Mail Marketing,ecomex GmbH & Co. KG,1,5.0,7
+2026-06-05,E-Mail Marketing,ImpaQt Education Group,1,5.0,8
+2026-06-05,E-Mail Marketing,IFM GmbH,1,5.0,9
+2026-06-05,E-Mail Marketing,Karriere Tutor GmbH,1,5.0,11
+2026-06-05,E-Mail Marketing,Bold Academy GmbH,1,5.0,13
+2026-06-05,E-Mail Marketing,Bildung Next Level GmbH,1,5.0,17
+2026-06-05,E-Mail Marketing,Masters of Digital GmbH,1,5.0,19
+2026-06-05,Conversion Optimierung,Masters of Digital GmbH,8,40.0,3
+2026-06-05,Conversion Optimierung,Talentspring Academy Group,5,25.0,6
+2026-06-05,Conversion Optimierung,Bold Academy GmbH,3,15.0,1
+2026-06-05,Conversion Optimierung,Business Trends Academy,1,5.0,5
+2026-06-05,Conversion Optimierung,Distart Education GmbH,1,5.0,9
+2026-06-05,Conversion Optimierung,ImpaQt Education Group,1,5.0,12
+2026-06-05,Conversion Optimierung,Mentify Learn GmbH,1,5.0,19
+2026-06-05,E-Commerce,Karriere Tutor GmbH,4,20.0,1
+2026-06-05,E-Commerce,IU Akademie IU Internationale Hochschule,3,15.0,16
+2026-06-05,E-Commerce,Masters of Digital GmbH,2,10.0,2
+2026-06-05,E-Commerce,GFN GmbH,2,10.0,4
+2026-06-05,E-Commerce,velpTEC GmbH,2,10.0,5
+2026-06-05,E-Commerce,Learning Digital Academy GmbH,2,10.0,7
+2026-06-05,E-Commerce,alfatraining Bildungszentrum GmbH,1,5.0,6
+2026-06-05,E-Commerce,Talentspring Academy Group,1,5.0,8
+2026-06-05,E-Commerce,Akademie Überlingen,1,5.0,9
+2026-06-05,E-Commerce,Mentify Learn GmbH,1,5.0,11
+2026-06-05,E-Commerce,WBS TRAINING SE,1,5.0,18
+2026-06-05,E-Commerce Manager,Karriere Tutor GmbH,4,20.0,3
+2026-06-05,E-Commerce Manager,GFN GmbH,2,10.0,1
+2026-06-05,E-Commerce Manager,velpTEC GmbH,2,10.0,2
+2026-06-05,E-Commerce Manager,SGD,1,5.0,5
+2026-06-05,E-Commerce Manager,ecomex GmbH & Co. KG,1,5.0,6
+2026-06-05,E-Commerce Manager,Talentspring Academy Group,1,5.0,7
+2026-06-05,E-Commerce Manager,Digiteach GmbH,1,5.0,9
+2026-06-05,E-Commerce Manager,Akademie Überlingen,1,5.0,11
+2026-06-05,E-Commerce Manager,SMD Performance Media,1,5.0,12
+2026-06-05,E-Commerce Manager,ILS - Institut für Lernsysteme GmbH,1,5.0,13
+2026-06-05,E-Commerce Manager,AKAD Hochschule Stuttgart - staatlich anerkannt,1,5.0,14
+2026-06-05,E-Commerce Manager,academy7,1,5.0,15
+2026-06-05,E-Commerce Manager,IHK-Akademie Ostwestfalen GmbH,1,5.0,16
+2026-06-05,E-Commerce Manager,CROAS Education GmbH,1,5.0,19
+2026-06-05,E-Commerce Manager,alfatraining Bildungszentrum GmbH,1,5.0,20
+2026-06-05,E-Commerce Marketing,Masters of Digital GmbH,5,25.0,3
+2026-06-05,E-Commerce Marketing,ecomex GmbH & Co. KG,4,20.0,13
+2026-06-05,E-Commerce Marketing,Learning Digital Academy GmbH,3,15.0,1
+2026-06-05,E-Commerce Marketing,Karriere Tutor GmbH,2,10.0,6
+2026-06-05,E-Commerce Marketing,GFN GmbH,1,5.0,2
+2026-06-05,E-Commerce Marketing,Akademie Überlingen,1,5.0,4
+2026-06-05,E-Commerce Marketing,Mentify Learn GmbH,1,5.0,8
+2026-06-05,E-Commerce Marketing,Wildner Akademie für Digitale Wirtschaft & Management,1,5.0,10
+2026-06-05,E-Commerce Marketing,IU Akademie IU Internationale Hochschule,1,5.0,12
+2026-06-05,E-Commerce Marketing,IAD Informationsverarbeitung und angewandte Datentechnik GmbH,1,5.0,18
+2026-06-05,Amazon Marketing,Mentify Learn GmbH,20,100.0,1
+2026-06-05,KI im Online Marketing,Masters of Digital GmbH,5,25.0,1
+2026-06-05,KI im Online Marketing,SMD Performance Media,5,25.0,6
+2026-06-05,KI im Online Marketing,ecomex GmbH & Co. KG,4,20.0,2
+2026-06-05,KI im Online Marketing,LVQ Weiterbildung und Beratung GmbH,2,10.0,14
+2026-06-05,KI im Online Marketing,COMCAVE.COLLEGE GmbH,1,5.0,3
+2026-06-05,KI im Online Marketing,neuefische GmbH,1,5.0,11
+2026-06-05,KI im Online Marketing,Bildung Next Level GmbH,1,5.0,12
+2026-06-05,KI im Online Marketing,Distart Education GmbH,1,5.0,17
+2026-06-05,KI Marketing,Masters of Digital GmbH,8,40.0,5
+2026-06-05,KI Marketing,Talentspring Academy Group,4,20.0,1
+2026-06-05,KI Marketing,Karriere Tutor GmbH,3,15.0,2
+2026-06-05,KI Marketing,neuefische GmbH,1,5.0,4
+2026-06-05,KI Marketing,cimdata Bildungsakademie GmbH,1,5.0,6
+2026-06-05,KI Marketing,Berger Bildungsinstitut GmbH,1,5.0,8
+2026-06-05,KI Marketing,GrandEdu GmbH,1,5.0,10
+2026-06-05,KI Marketing,WBS TRAINING SE,1,5.0,13
+2026-06-05,AI Marketing,Masters of Digital GmbH,4,20.0,3
+2026-06-05,AI Marketing,Spiced Academy GmbH,2,10.0,1
+2026-06-05,AI Marketing,Talentspring Academy Group,2,10.0,2
+2026-06-05,AI Marketing,New Horizons München - IT Computer und BusinessTraining Trainings,2,10.0,6
+2026-06-05,AI Marketing,GrandEdu GmbH,2,10.0,7
+2026-06-05,AI Marketing,A-Leecon GmbH,2,10.0,10
+2026-06-05,AI Marketing,Karriere Tutor GmbH,2,10.0,12
+2026-06-05,AI Marketing,New Horizons Hannover/Leipzig,1,5.0,5
+2026-06-05,AI Marketing,Liora,1,5.0,15
+2026-06-05,AI Marketing,ImpaQt Education Group,1,5.0,17
+2026-06-05,AI Marketing,ecomex GmbH & Co. KG,1,5.0,19
+2026-06-05,KI Manager,IQ Bremen GmbH Intelligente Qualifizierung,1,5.0,1
+2026-06-05,KI Manager,IHK-Bildungszentrum Bonn/Rhein-Sieg gGmbH,1,5.0,2
+2026-06-05,KI Manager,COMCAVE.COLLEGE GmbH,1,5.0,3
+2026-06-05,KI Manager,IBB Institut für Berufliche Bildung AG,1,5.0,4
+2026-06-05,KI Manager,TERTIA Berufsförderung GmbH & Co. KG,1,5.0,5
+2026-06-05,KI Manager,GFN GmbH,1,5.0,6
+2026-06-05,KI Manager,BIB Augsburg gGmbH,1,5.0,7
+2026-06-05,KI Manager,Berufliche Fortbildungszentren der Bayerischen Wirtschaft (bfz) gGmbH,1,5.0,8
+2026-06-05,KI Manager,TÜV Rheinland Akademie GmbH,1,5.0,9
+2026-06-05,KI Manager,KeepBlue GmbH,1,5.0,10
+2026-06-05,KI Manager,Lernstudio Barbarossa/MegaKids Fortbildungs GmbH,1,5.0,11
+2026-06-05,KI Manager,Karriere Tutor GmbH,1,5.0,12
+2026-06-05,KI Manager,Smart Future Campus GmbH,1,5.0,13
+2026-06-05,KI Manager,Bildungswerk der Hessischen Wirtschaft e. V.,1,5.0,14
+2026-06-05,KI Manager,Bildungswerk der nordhessischen Wirtschaft gemeinnützige GmbH,1,5.0,15
+2026-06-05,Webanalyse,ChapterNext,3,15.0,1
+2026-06-05,Webanalyse,Masters of Digital GmbH,3,15.0,6
+2026-06-05,Webanalyse,ecomex GmbH & Co. KG,3,15.0,13
+2026-06-05,Webanalyse,OneCareer,2,10.0,4
+2026-06-05,Webanalyse,Talentspring Academy Group,2,10.0,9
+2026-06-05,Webanalyse,GrandEdu GmbH,2,10.0,10
+2026-06-05,Webanalyse,COMCAVE.COLLEGE GmbH,1,5.0,2
+2026-06-05,Webanalyse,neuefische GmbH,1,5.0,11
+2026-06-05,Webanalyse,Webmasters Akademie Nürnberg GmbH,1,5.0,15
+2026-06-05,Webanalyse,MARTINSFELD GmbH & Co. KG,1,5.0,16
+2026-06-05,Webanalyse,Spiced Academy GmbH,1,5.0,17
+2026-06-05,Digital Strategy,A-Leecon GmbH,4,20.0,4
+2026-06-05,Digital Strategy,velpTEC GmbH,2,10.0,1
+2026-06-05,Digital Strategy,New Horizons Stuttgart III Trainings,2,10.0,3
+2026-06-05,Digital Strategy,New Horizons Stuttgart,2,10.0,5
+2026-06-05,Digital Strategy,New Horizons München - IT Computer und Business Trainings,2,10.0,8
+2026-06-05,Digital Strategy,New Horizons Akademie,1,5.0,9
+2026-06-05,Digital Strategy,DFW Akademie,1,5.0,11
+2026-06-05,Digital Strategy,New Horizons Nord,1,5.0,12
+2026-06-05,Digital Strategy,New Horizons München - IT Computer und BusinessTraining Trainings,1,5.0,14
+2026-06-05,Digital Strategy,ESCP Europe Wirtschaftshochschule Berlin e.V.,1,5.0,16
+2026-06-05,Digital Strategy,GFN GmbH,1,5.0,17
+2026-06-05,Digital Strategy,New Horizons Hannover/Leipzig,1,5.0,18
+2026-06-05,Digital Strategy,OMR Education GmbH,1,5.0,19
+2026-06-05,Google Analytics,Masters of Digital GmbH,9,45.0,7
+2026-06-05,Google Analytics,OneCareer,5,25.0,2
+2026-06-05,Google Analytics,Talentspring Academy Group,3,15.0,4
+2026-06-05,Google Analytics,velpTEC GmbH,1,5.0,1
+2026-06-05,Google Analytics,future Training & Consulting GmbH,1,5.0,8
+2026-06-05,Google Analytics,Digitale Leute School,1,5.0,11
+2026-06-05,Datenanalyse,Grimm Bildungszentrum - GBZ,3,15.0,5
+2026-06-05,Datenanalyse,Smart Future Campus GmbH,3,15.0,6
+2026-06-05,Datenanalyse,IU Akademie IU Internationale Hochschule,1,5.0,1
+2026-06-05,Datenanalyse,velpTEC GmbH,1,5.0,2
+2026-06-05,Datenanalyse,Karriere Tutor GmbH,1,5.0,3
+2026-06-05,Datenanalyse,Talentspring Academy Group,1,5.0,4
+2026-06-05,Datenanalyse,Greenbootcamps GmbH,1,5.0,7
+2026-06-05,Datenanalyse,New Horizons München - IT Computer und BusinessTraining Trainings,1,5.0,8
+2026-06-05,Datenanalyse,New Horizons Stuttgart III Trainings,1,5.0,9
+2026-06-05,Datenanalyse,IHK-Akademie Ostwestfalen GmbH,1,5.0,10
+2026-06-05,Datenanalyse,StackFuel GmbH,1,5.0,11
+2026-06-05,Datenanalyse,GrandEdu GmbH,1,5.0,12
+2026-06-05,Datenanalyse,Bold Academy GmbH,1,5.0,14
+2026-06-05,Datenanalyse,cimdata Bildungsakademie GmbH,1,5.0,15
+2026-06-05,Datenanalyse,Masters of Digital GmbH,1,5.0,16
