@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Keyword filter — 3 approaches (demo)</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+  :root{
+    --bg:#0f1419; --panel:#1a2029; --panel2:#222b36; --line:#2c3744;
+    --text:#e6edf3; --muted:#8b98a5; --accent:#4cc9f0; --good:#3fb950; --warn:#d29922; --bad:#f85149;
+  }
+  *{ box-sizing:border-box; }
+  body{ margin:0; font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+        background:var(--bg); color:var(--text); font-size:14px; }
+  main{ max-width:1080px; margin:0 auto; padding:24px 28px 80px; }
+  h1{ font-size:20px; } .lead{ color:var(--muted); margin:0 0 28px; max-width:760px; }
+  section{ background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:18px 20px; margin-bottom:28px; }
+  section h2{ font-size:15px; margin:0 0 4px; } section .desc{ color:var(--muted); font-size:13px; margin:0 0 14px; }
+  .pill{ display:inline-block; background:var(--panel2); border:1px solid var(--line); color:var(--accent);
+         border-radius:6px; padding:2px 8px; font-size:11px; font-weight:600; margin-right:6px; }
+  table{ width:100%; border-collapse:collapse; font-size:13px; margin-top:12px; }
+  th,td{ text-align:left; padding:8px 10px; border-bottom:1px solid var(--line); }
+  th{ color:var(--muted); font-weight:600; }
+  tr:hover td{ background:var(--panel2); }
+  .kw{ color:var(--accent); }
+  .badge{ display:inline-block; padding:2px 7px; border-radius:20px; font-size:11px; font-weight:600; }
+  .b-good{ background:rgba(63,185,80,.15); color:var(--good); }
+  .b-warn{ background:rgba(210,153,34,.15); color:var(--warn); }
+  .b-bad{ background:rgba(248,81,73,.15); color:var(--bad); }
+  .b-none{ background:#2c3744; color:var(--muted); }
+  input[type=search]{ background:var(--panel2); border:1px solid var(--line); color:var(--text);
+        border-radius:7px; padding:8px 12px; width:300px; max-width:100%; font-size:13px; }
+  select{ background:var(--panel2); border:1px solid var(--line); color:var(--text);
+        border-radius:7px; padding:8px 10px; font-size:13px; }
+  .bar{ display:flex; gap:10px; align-items:center; flex-wrap:wrap; }
+  .muted{ color:var(--muted); }
+  .chips{ display:flex; flex-wrap:wrap; gap:8px; margin:12px 0 4px; }
+  .chip{ border:1px solid var(--line); background:var(--panel2); color:var(--text); border-radius:20px;
+         padding:5px 12px; font-size:12px; cursor:pointer; opacity:.5; }
+  .chip.on{ opacity:1; border-color:var(--accent); }
+  .btn{ background:var(--panel2); border:1px solid var(--line); color:var(--text); border-radius:7px;
+        padding:7px 12px; font-size:12px; font-weight:600; cursor:pointer; }
+  .btn.on{ border-color:var(--accent); color:var(--accent); }
+  .star{ cursor:pointer; font-size:15px; color:var(--muted); user-select:none; }
+  .star.on{ color:var(--warn); }
+  canvas{ max-height:240px; margin-top:14px; }
+  .count{ color:var(--muted); font-size:12px; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Keyword filter — 3 approaches</h1>
+  <p class="lead">Same real June&nbsp;10 data in each. All three filter as you <b>type</b>. They differ in how much
+  more they let you do. Click around — pick whichever feels right and I'll wire it into the real
+  <code>index.html</code> keyword section.</p>
+
+  <!-- ============ APPROACH 1 ============ -->
+  <section>
+    <h2><span class="pill">Approach&nbsp;1</span>Table filter only <span class="muted">— lightest</span></h2>
+    <p class="desc">A search box + a cluster dropdown above the existing rankings table. Type to narrow; pick a category to scope. Nothing else changes.</p>
+    <div class="bar">
+      <input type="search" id="s1" placeholder="Type a keyword… e.g. SEO, KI, manager" />
+      <select id="c1"></select>
+      <span class="count" id="n1"></span>
+    </div>
+    <table id="t1"><thead><tr><th>Keyword</th><th>Best rank</th><th>Page 1?</th><th>ecomex courses</th><th>Total results</th></tr></thead><tbody></tbody></table>
+  </section>
+
+  <!-- ============ APPROACH 2 ============ -->
+  <section>
+    <h2><span class="pill">Approach&nbsp;2</span>Unified filter — table + trend together <span class="muted">— recommended</span></h2>
+    <p class="desc">One filter drives <b>both</b> the table and the trend chart. Type to search, and/or click cluster chips. "Show me just SEO" narrows everything at once.</p>
+    <div class="bar">
+      <input type="search" id="s2" placeholder="Type a keyword…" />
+      <span class="count" id="n2"></span>
+    </div>
+    <div class="chips" id="chips2"></div>
+    <table id="t2"><thead><tr><th>Keyword</th><th>Best rank</th><th>Page 1?</th><th>Courses</th><th>Total</th></tr></thead><tbody></tbody></table>
+    <canvas id="trend2"></canvas>
+  </section>
+
+  <!-- ============ APPROACH 3 ============ -->
+  <section>
+    <h2><span class="pill">Approach&nbsp;3</span>Saved watchlist <span class="muted">— richest</span></h2>
+    <p class="desc">Everything in #2, plus: star ★ keywords into "My watchlist" (saved in your browser, persists on reload), and one-click presets.</p>
+    <div class="bar">
+      <input type="search" id="s3" placeholder="Type a keyword…" />
+      <button class="btn" id="p3watch">★ My watchlist only</button>
+      <button class="btn" id="p3top">Top 5 ranked</button>
+      <button class="btn" id="p3page1">On page 1</button>
+      <button class="btn" id="p3clear">Clear</button>
+      <span class="count" id="n3"></span>
+    </div>
+    <div class="chips" id="chips3"></div>
+    <table id="t3"><thead><tr><th></th><th>Keyword</th><th>Best rank</th><th>Page 1?</th><th>Courses</th><th>Total</th></tr></thead><tbody></tbody></table>
+    <canvas id="trend3"></canvas>
+  </section>
+</main>
+
+<script>
+const CLUSTERS = {
+  "Online Marketing (core)":["Online Marketing","Online Marketing Manager","Online Marketing Strategie","Online Marketing Grundlagen","Digital Marketing","Digitales Marketing","Marketing Manager","Marketing Weiterbildung"],
+  "SEO & SEA":["SEO","SEA","Suchmaschinenoptimierung","Suchmaschinenmarketing","Search Engine Marketing","Google Ads","Online Advertising"],
+  "Social Media & Content":["Social Media Marketing","Social Media Manager","Content Marketing","Influencer Marketing","Instagram Marketing"],
+  "Performance & Automation":["Performance Marketing","Affiliate Marketing","Marketing Automation","E-Mail Marketing","Conversion Optimierung"],
+  "E-Commerce":["E-Commerce","E-Commerce Manager","E-Commerce Marketing","Amazon Marketing"],
+  "KI / AI Marketing":["KI im Online Marketing","KI Marketing","AI Marketing","KI Manager"],
+  "Data & Analytics":["Webanalyse","Digital Strategy","Google Analytics","Datenanalyse"],
+};
+const CLUSTER_OF={}; for(const[n,ks] of Object.entries(CLUSTERS)) for(const k of ks) CLUSTER_OF[k]=n;
+
+// real best/courses/total from data/keyword_ranks.csv @ 2026-06-10
+const RAW = {
+  "Online Marketing":[2,2,6625],"Online Marketing Manager":[8,1,2263],"Online Marketing Strategie":[4,1,4205],
+  "Online Marketing Grundlagen":[5,6,4720],"Digital Marketing":[22,0,7349],"Digitales Marketing":[22,0,7349],
+  "Marketing Manager":[17,1,4055],"Marketing Weiterbildung":[1,7,9395],
+  "SEO":[273,0,4030],"SEA":[290,0,1583],"Suchmaschinenoptimierung":[236,0,1792],"Suchmaschinenmarketing":[325,0,978],
+  "Search Engine Marketing":[15,1,275],"Google Ads":[81,0,1150],"Online Advertising":[2,1,862],
+  "Social Media Marketing":[21,0,4889],"Social Media Manager":[51,0,1724],"Content Marketing":[9,1,5312],
+  "Influencer Marketing":[321,0,838],"Instagram Marketing":[31,0,914],
+  "Performance Marketing":[33,0,3070],"Affiliate Marketing":[237,0,514],"Marketing Automation":[38,0,537],
+  "E-Mail Marketing":[6,1,1731],"Conversion Optimierung":[139,0,1539],
+  "E-Commerce":[29,0,2481],"E-Commerce Manager":[7,1,745],"E-Commerce Marketing":[16,3,1851],"Amazon Marketing":[56,0,98],
+  "KI im Online Marketing":[1,4,2156],"KI Marketing":[35,0,4191],"AI Marketing":[1,1,952],"KI Manager":[16,1,5881],
+  "Webanalyse":[14,3,281],"Digital Strategy":[null,0,220],"Google Analytics":[50,0,1100],"Datenanalyse":[null,0,7503],
+};
+const STATS = Object.entries(RAW).map(([keyword,[best,courses,total]])=>(
+  { keyword, best, courses, total, page1: best!=null && best<=20, cluster: CLUSTER_OF[keyword]||"Other" }
+));
+const PALETTE=["#4cc9f0","#f72585","#b5179e","#7209b7","#3a0ca3","#4361ee","#43aa8b","#90be6d","#f9c74f","#f8961e","#f3722c","#f94144"];
+const DATES=["Jun 5","Jun 6","Jun 7","Jun 8","Jun 9","Jun 10"];
+
+function badge(r){ if(r==null) return '<span class="badge b-none">—</span>';
+  const c=r<=20?"b-good":r<=100?"b-warn":"b-bad"; return `<span class="badge ${c}">#${r}</span>`; }
+function page1Badge(p){ return p?'<span class="badge b-good">yes</span>':'<span class="badge b-none">no</span>'; }
+// synthetic 6-day trend wobbling around the real best rank (demo only)
+function series(best){ if(best==null) return [null,null,null,null,null,null];
+  const seed=best; return DATES.map((_,i)=>Math.max(1, Math.round(best + Math.sin(seed+i)*Math.min(4,best*0.15)))); }
+
+/* ---------- Approach 1 ---------- */
+(function(){
+  const sel=document.getElementById("c1");
+  sel.innerHTML='<option value="">All clusters</option>'+Object.keys(CLUSTERS).map(c=>`<option>${c}</option>`).join("");
+  const tb=document.querySelector("#t1 tbody");
+  function draw(){
+    const q=document.getElementById("s1").value.toLowerCase().trim();
+    const cl=sel.value;
+    const rows=STATS.filter(r=>(!q||r.keyword.toLowerCase().includes(q))&&(!cl||r.cluster===cl))
+                    .sort((a,b)=>(a.best??1e9)-(b.best??1e9));
+    document.getElementById("n1").textContent=`${rows.length} keyword(s)`;
+    tb.innerHTML=rows.map(r=>`<tr><td><span class="kw">${r.keyword}</span></td><td>${badge(r.best)}</td><td>${page1Badge(r.page1)}</td><td>${r.courses}</td><td>${r.total.toLocaleString()}</td></tr>`).join("");
+  }
+  document.getElementById("s1").oninput=draw; sel.onchange=draw; draw();
+})();
+
+/* ---------- Approach 2 ---------- */
+(function(){
+  const active=new Set(); // active cluster filters
+  const tb=document.querySelector("#t2 tbody");
+  const chips=document.getElementById("chips2");
+  chips.innerHTML=Object.keys(CLUSTERS).map(c=>`<span class="chip" data-c="${c}">${c}</span>`).join("");
+  const chart=new Chart(document.getElementById("trend2"),{type:"line",
+    data:{labels:DATES,datasets:[]},
+    options:{plugins:{legend:{display:false}},scales:{y:{reverse:true,title:{display:true,text:"Best rank (1=top)"},grid:{color:"#2c3744"},ticks:{color:"#8b98a5"}},x:{grid:{color:"#2c3744"},ticks:{color:"#8b98a5"}}}}});
+  function current(){
+    const q=document.getElementById("s2").value.toLowerCase().trim();
+    return STATS.filter(r=>(!q||r.keyword.toLowerCase().includes(q))&&(active.size===0||active.has(r.cluster)));
+  }
+  function draw(){
+    const rows=current().sort((a,b)=>(a.best??1e9)-(b.best??1e9));
+    document.getElementById("n2").textContent=`${rows.length} keyword(s) — filters table + chart`;
+    tb.innerHTML=rows.map(r=>`<tr><td><span class="kw">${r.keyword}</span></td><td>${badge(r.best)}</td><td>${page1Badge(r.page1)}</td><td>${r.courses}</td><td>${r.total.toLocaleString()}</td></tr>`).join("");
+    chart.data.datasets=rows.slice(0,12).map((r,i)=>({label:r.keyword,data:series(r.best),borderColor:PALETTE[i%PALETTE.length],backgroundColor:PALETTE[i%PALETTE.length],tension:.25,spanGaps:true,pointRadius:2}));
+    chart.update();
+  }
+  chips.querySelectorAll(".chip").forEach(ch=>ch.onclick=()=>{
+    const c=ch.dataset.c; active.has(c)?active.delete(c):active.add(c); ch.classList.toggle("on",active.has(c)); draw();
+  });
+  document.getElementById("s2").oninput=draw; draw();
+})();
+
+/* ---------- Approach 3 ---------- */
+(function(){
+  const KEY="kwWatch.demo";
+  const watch=new Set(JSON.parse(localStorage.getItem(KEY)||"[]"));
+  const active=new Set();
+  let mode=null; // null | 'watch' | 'top' | 'page1'
+  const tb=document.querySelector("#t3 tbody");
+  const chips=document.getElementById("chips3");
+  chips.innerHTML=Object.keys(CLUSTERS).map(c=>`<span class="chip" data-c="${c}">${c}</span>`).join("");
+  const chart=new Chart(document.getElementById("trend3"),{type:"line",
+    data:{labels:DATES,datasets:[]},
+    options:{plugins:{legend:{display:false}},scales:{y:{reverse:true,title:{display:true,text:"Best rank (1=top)"},grid:{color:"#2c3744"},ticks:{color:"#8b98a5"}},x:{grid:{color:"#2c3744"},ticks:{color:"#8b98a5"}}}}});
+  function save(){ localStorage.setItem(KEY,JSON.stringify([...watch])); }
+  function current(){
+    const q=document.getElementById("s3").value.toLowerCase().trim();
+    let rows=STATS.filter(r=>(!q||r.keyword.toLowerCase().includes(q))&&(active.size===0||active.has(r.cluster)));
+    if(mode==="watch") rows=rows.filter(r=>watch.has(r.keyword));
+    if(mode==="page1") rows=rows.filter(r=>r.page1);
+    rows=rows.sort((a,b)=>(a.best??1e9)-(b.best??1e9));
+    if(mode==="top") rows=rows.slice(0,5);
+    return rows;
+  }
+  function draw(){
+    const rows=current();
+    document.getElementById("n3").textContent=`${rows.length} shown · ${watch.size} starred`;
+    tb.innerHTML=rows.map(r=>`<tr><td><span class="star ${watch.has(r.keyword)?'on':''}" data-k="${r.keyword}">${watch.has(r.keyword)?'★':'☆'}</span></td><td><span class="kw">${r.keyword}</span></td><td>${badge(r.best)}</td><td>${page1Badge(r.page1)}</td><td>${r.courses}</td><td>${r.total.toLocaleString()}</td></tr>`).join("");
+    tb.querySelectorAll(".star").forEach(s=>s.onclick=()=>{const k=s.dataset.k; watch.has(k)?watch.delete(k):watch.add(k); save(); draw();});
+    chart.data.datasets=rows.slice(0,12).map((r,i)=>({label:r.keyword,data:series(r.best),borderColor:PALETTE[i%PALETTE.length],backgroundColor:PALETTE[i%PALETTE.length],tension:.25,spanGaps:true,pointRadius:2}));
+    chart.update();
+  }
+  function setMode(m){ mode=(mode===m)?null:m;
+    document.getElementById("p3watch").classList.toggle("on",mode==="watch");
+    document.getElementById("p3top").classList.toggle("on",mode==="top");
+    document.getElementById("p3page1").classList.toggle("on",mode==="page1"); draw(); }
+  document.getElementById("p3watch").onclick=()=>setMode("watch");
+  document.getElementById("p3top").onclick=()=>setMode("top");
+  document.getElementById("p3page1").onclick=()=>setMode("page1");
+  document.getElementById("p3clear").onclick=()=>{ document.getElementById("s3").value=""; active.clear(); mode=null;
+    chips.querySelectorAll(".chip").forEach(c=>c.classList.remove("on"));
+    document.querySelectorAll("#p3watch,#p3top,#p3page1").forEach(b=>b.classList.remove("on")); draw(); };
+  chips.querySelectorAll(".chip").forEach(ch=>ch.onclick=()=>{
+    const c=ch.dataset.c; active.has(c)?active.delete(c):active.add(c); ch.classList.toggle("on",active.has(c)); draw();
+  });
+  document.getElementById("s3").oninput=draw; draw();
+})();
+</script>
+</body>
+</html>
