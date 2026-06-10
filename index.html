@@ -75,6 +75,11 @@
 
   <section>
     <h2>Keyword rankings <span class="muted">— where ecomex ranks on the search results</span></h2>
+    <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:4px">
+      <input type="search" id="kwSearch" placeholder="Type to filter keywords… e.g. SEO, KI, manager" />
+      <span class="muted" id="kwCount"></span>
+    </div>
+    <div class="chips" id="kwChips"></div>
     <table id="kwTable">
       <thead><tr>
         <th data-k="keyword">Keyword</th>
@@ -329,14 +334,34 @@ function latestDate(rows){ return rows.reduce((m,r)=> r.snapshot_date>m?r.snapsh
   document.getElementById("tiles").innerHTML = tiles.map(t=>
     `<div class="tile"><div class="n">${t.n}</div><div class="l">${t.l}</div></div>`).join("");
 
-  // ---- keyword table ----
-  renderTable("kwTable", kwStats, {
+  // ---- keyword table (type-to-search + cluster filter) ----
+  const kwColumns = {
     keyword: r=>`<span class="kw">${r.keyword}</span>`,
     best: r=>rankBadge(r.best),
     page1: r=> r.page1?'<span class="badge b-good">yes</span>':'<span class="badge b-none">no</span>',
     courses: r=>r.courses,
     total: r=>r.total.toLocaleString(),
-  }, "best", false);
+  };
+  const kwClusters = [...new Set(kwStats.map(k=>clusterOf(k.keyword)))];
+  const kwActive = new Set(); // selected cluster chips; empty = show all
+  document.getElementById("kwChips").innerHTML = kwClusters.map(c=>
+    `<span class="chip" data-c="${c}">${c}</span>`).join("");
+  function renderKwTable(){
+    const q = document.getElementById("kwSearch").value.toLowerCase().trim();
+    const rows = kwStats.filter(r=>
+      (!q || r.keyword.toLowerCase().includes(q)) &&
+      (kwActive.size===0 || kwActive.has(clusterOf(r.keyword)))
+    );
+    document.getElementById("kwCount").textContent =
+      `${rows.length} of ${kwStats.length} keyword${rows.length===1?"":"s"}`;
+    renderTable("kwTable", rows, kwColumns, "best", false);
+  }
+  document.getElementById("kwSearch").addEventListener("input", renderKwTable);
+  document.querySelectorAll("#kwChips .chip").forEach(ch=>ch.addEventListener("click",()=>{
+    const c=ch.dataset.c; kwActive.has(c)?kwActive.delete(c):kwActive.add(c);
+    ch.classList.toggle("on", kwActive.has(c)); renderKwTable();
+  }));
+  renderKwTable();
 
   // ---- coverage section ----
   if(coverage.length){
