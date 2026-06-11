@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>ecomex · mein-now course tracker</title>
+<title>ecomex · mein-now Kurs-Tracker</title>
 <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 <style>
@@ -67,88 +67,88 @@
 </head>
 <body>
 <header>
-  <h1>ecomex · mein-now course tracker</h1>
-  <span class="sub" id="updated">loading…</span>
+  <h1>ecomex · mein-now Kurs-Tracker</h1>
+  <span class="sub" id="updated">lädt…</span>
 </header>
 <main>
   <div class="tiles" id="tiles"></div>
 
   <section id="librarySection">
-    <h2>Listing keyword library <span class="muted">— every keyword used across ecomex listings; search to find one and see if it's tracked &amp; where it ranks</span></h2>
+    <h2>Keyword-Bibliothek <span class="muted">— alle Keywords aus den ecomex-Listings; suchen, um zu sehen, ob ein Keyword getrackt wird und wo es rankt</span></h2>
     <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px;align-items:center">
-      <input type="search" id="libSearch" placeholder="Search keywords… (e.g. KI, Social Media, SEO)" />
+      <input type="search" id="libSearch" placeholder="Keywords suchen… (z. B. KI, Social Media, SEO)" />
       <select id="libFilter" style="background:var(--panel2);border:1px solid var(--line);color:var(--text);border-radius:7px;padding:8px 10px;font-size:13px">
-        <option value="">All keywords</option>
-        <option value="tracked">Tracked by crawler</option>
-        <option value="untracked">Not yet tracked</option>
+        <option value="">Alle Keywords</option>
+        <option value="tracked">Vom Crawler getrackt</option>
+        <option value="untracked">Noch nicht getrackt</option>
       </select>
       <span class="muted" id="libCount"></span>
     </div>
     <table id="libTable">
       <thead><tr>
         <th data-k="keyword">Keyword</th>
-        <th data-k="tracked">Tracked?</th>
-        <th data-k="best">Best rank</th>
-        <th data-k="page1">On page 1?</th>
+        <th data-k="tracked">Getrackt?</th>
+        <th data-k="best">Beste Position</th>
+        <th data-k="page1">Auf Seite 1?</th>
       </tr></thead>
       <tbody></tbody>
     </table>
-    <small class="note">"Tracked" = the crawler monitors this keyword (it's in <code>keywords.txt</code>). Best rank then shows ecomex's position from the latest crawl: <b>pending</b> = tracked but the next crawl hasn't recorded it yet; <b>not ranked</b> = crawled but ecomex isn't in the results. Edit the full list in <code>meinnow_crawler/listing_keywords.txt</code> — to start rank-tracking a keyword, copy it into <code>meinnow_crawler/keywords.txt</code>.</small>
+    <small class="note">„Getrackt“ = der Crawler überwacht dieses Keyword (es steht in <code>keywords.txt</code>). Die beste Position zeigt ecomex' Platzierung aus dem letzten Crawl: <b>ausstehend</b> = getrackt, aber der nächste Crawl hat es noch nicht erfasst; <b>nicht gerankt</b> = gecrawlt, aber ecomex ist nicht in den Ergebnissen. Die vollständige Liste bearbeiten Sie in <code>meinnow_crawler/listing_keywords.txt</code> — um ein Keyword zu tracken, kopieren Sie es in <code>meinnow_crawler/keywords.txt</code>.</small>
   </section>
 
   <section>
-    <h2>Keyword rankings <span class="muted">— where ecomex ranks on the search results</span></h2>
+    <h2>Keyword-Rankings <span class="muted">— wo ecomex in den Suchergebnissen rankt</span></h2>
     <table id="kwTable">
       <thead><tr>
         <th data-k="keyword">Keyword</th>
-        <th data-k="best">Best rank</th>
-        <th data-k="page1">On page 1?</th>
-        <th data-k="courses">ecomex courses in results</th>
-        <th data-k="total">Total results</th>
+        <th data-k="best">Beste Position</th>
+        <th data-k="page1">Auf Seite 1?</th>
+        <th data-k="courses">ecomex-Kurse in den Ergebnissen</th>
+        <th data-k="total">Ergebnisse gesamt</th>
       </tr></thead>
       <tbody></tbody>
     </table>
-    <small class="note">"On page 1" = best rank within the first 20 results (the first page a user sees).</small>
+    <small class="note">„Auf Seite 1“ = beste Position innerhalb der ersten 20 Ergebnisse (die erste Seite, die Nutzer sehen).</small>
   </section>
 
   <section>
-    <h2>Ranking trend over time <span class="muted">— lower is better; builds up as daily crawls accumulate</span></h2>
+    <h2>Ranking-Verlauf <span class="muted">— niedriger ist besser; baut sich mit den täglichen Crawls auf</span></h2>
     <div class="chips" id="chips"></div>
     <canvas id="trend"></canvas>
   </section>
 
   <div class="tabs">
     <nav class="tabnav" id="tabnav">
-      <button class="tabbtn active" data-tab="inventory">Course inventory <span class="count" id="invCountBadge"></span></button>
-      <button class="tabbtn" data-tab="spotlight" id="tabSpotlight" hidden>Course spotlight</button>
-      <button class="tabbtn" data-tab="coverage" id="tabCoverage" hidden>Uploaded courses <span class="count" id="covCountBadge"></span></button>
-      <button class="tabbtn" data-tab="movers" id="tabMovers" hidden>Rank movers</button>
-      <button class="tabbtn" data-tab="share" id="tabShare" hidden>Competitor share</button>
-      <button class="tabbtn" data-tab="catrank" id="tabCatRank" hidden>Competitor ranking</button>
-      <button class="tabbtn" data-tab="kwmatrix" id="tabKwMatrix" hidden>Keyword × competitor</button>
-      <button class="tabbtn" data-tab="matrix" id="tabMatrix" hidden>Full ranking report</button>
+      <button class="tabbtn active" data-tab="inventory">Kursübersicht <span class="count" id="invCountBadge"></span></button>
+      <button class="tabbtn" data-tab="spotlight" id="tabSpotlight" hidden>Kurs-Spotlight</button>
+      <button class="tabbtn" data-tab="coverage" id="tabCoverage" hidden>Hochgeladene Kurse <span class="count" id="covCountBadge"></span></button>
+      <button class="tabbtn" data-tab="movers" id="tabMovers" hidden>Ranking-Veränderungen</button>
+      <button class="tabbtn" data-tab="share" id="tabShare" hidden>Wettbewerber-Anteil</button>
+      <button class="tabbtn" data-tab="catrank" id="tabCatRank" hidden>Wettbewerber-Ranking</button>
+      <button class="tabbtn" data-tab="kwmatrix" id="tabKwMatrix" hidden>Keyword × Wettbewerber</button>
+      <button class="tabbtn" data-tab="matrix" id="tabMatrix" hidden>Vollständiger Ranking-Bericht</button>
     </nav>
 
     <div class="tabpanel active" data-tab="inventory">
-      <h2>Course inventory <span class="muted">— every ecomex course and where it appears</span></h2>
-      <input type="search" id="search" placeholder="Filter by course title, location, keyword…" />
+      <h2>Kursübersicht <span class="muted">— jeder ecomex-Kurs und wo er erscheint</span></h2>
+      <input type="search" id="search" placeholder="Nach Kurstitel, Ort, Keyword filtern…" />
       <span class="muted" id="courseCount" style="margin-left:12px"></span>
       <table id="courseTable" style="margin-top:12px">
         <thead><tr>
-          <th data-k="title">Course</th>
-          <th data-k="best">Best rank</th>
-          <th data-k="kwCount"># keywords</th>
-          <th data-k="kws">Top keywords (best first)</th>
-          <th data-k="next">Next start</th>
-          <th data-k="cost">Price band</th>
-          <th data-k="locs">Locations</th>
+          <th data-k="title">Kurs</th>
+          <th data-k="best">Beste Position</th>
+          <th data-k="kwCount">Anzahl Keywords</th>
+          <th data-k="kws">Top-Keywords (beste zuerst)</th>
+          <th data-k="next">Nächster Start</th>
+          <th data-k="cost">Preisspanne</th>
+          <th data-k="locs">Standorte</th>
         </tr></thead>
         <tbody></tbody>
       </table>
     </div>
 
     <div class="tabpanel" data-tab="spotlight" id="spotlightSection">
-      <h2>Course spotlight <span class="muted">— pick one of your courses, see its best keyword and who you're up against</span></h2>
+      <h2>Kurs-Spotlight <span class="muted">— wählen Sie einen Kurs und sehen Sie sein bestes Keyword und Ihre Wettbewerber</span></h2>
       <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px;align-items:center">
         <select id="spotCourse" style="background:var(--panel2);border:1px solid var(--line);color:var(--text);border-radius:7px;padding:8px 10px;font-size:13px;max-width:480px"></select>
         <span class="muted" id="spotMeta"></span>
@@ -157,66 +157,60 @@
     </div>
 
     <div class="tabpanel" data-tab="coverage" id="coverageSection">
-      <h2>My uploaded courses <span class="muted">— is each course you listed actually visible on mein-now?</span></h2>
+      <h2>Meine hochgeladenen Kurse <span class="muted">— ist jeder gelistete Kurs auf mein-now sichtbar?</span></h2>
       <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px">
-        <input type="search" id="covSearch" placeholder="Filter by title…" />
-        <select id="covType" style="background:var(--panel2);border:1px solid var(--line);color:var(--text);border-radius:7px;padding:8px 10px;font-size:13px">
-          <option value="">All types</option>
-          <option value="Weiterbildung">Weiterbildung</option>
-          <option value="Coaching">Coaching</option>
-        </select>
+        <input type="search" id="covSearch" placeholder="Nach Titel filtern…" />
         <select id="covStatus" style="background:var(--panel2);border:1px solid var(--line);color:var(--text);border-radius:7px;padding:8px 10px;font-size:13px">
-          <option value="">All statuses</option>
-          <option value="found">Found</option>
-          <option value="missing">Missing</option>
+          <option value="">Alle Status</option>
+          <option value="found">Gefunden</option>
+          <option value="missing">Fehlt</option>
         </select>
         <span class="muted" id="covCount" style="align-self:center"></span>
       </div>
       <table id="coverageTable">
         <thead><tr>
           <th data-k="status">Status</th>
-          <th data-k="type">Type</th>
-          <th data-k="tracked_title">Your title</th>
-          <th data-k="match_title">As listed on mein-now</th>
-          <th data-k="next_start">Next start</th>
-          <th data-k="locations">Locations</th>
+          <th data-k="tracked_title">Ihr Titel</th>
+          <th data-k="match_title">So gelistet auf mein-now</th>
+          <th data-k="next_start">Nächster Start</th>
+          <th data-k="locations">Standorte</th>
         </tr></thead>
         <tbody></tbody>
       </table>
-      <small class="note">"Missing" = your listed course title isn't surfaced for ecomex by mein-now's search. For Weiterbildung this usually means a listing gap or a title change. <b>Coaching offerings won't appear in mein-now's search</b> — they're indexed in KURSNET but not exposed in the public Weiterbildungssuche; that's a platform behaviour, not a listing problem.</small>
+      <small class="note">„Fehlt“ = Ihr gelisteter Kurstitel wird von der mein-now-Suche nicht für ecomex angezeigt. Das deutet meist auf eine Lücke im Listing oder eine geänderte Bezeichnung hin.</small>
     </div>
 
     <div class="tabpanel" data-tab="movers" id="moversSection">
-      <h2>Rank movers <span class="muted" id="moversWindow">— vs previous day</span></h2>
+      <h2>Ranking-Veränderungen <span class="muted" id="moversWindow">— ggü. Vortag</span></h2>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px">
         <div>
-          <h3 style="font-size:13px;color:var(--good);margin:0 0 8px">▲ Improved</h3>
-          <table id="moversUp"><thead><tr><th>Keyword</th><th>Then</th><th>Now</th><th>Δ</th></tr></thead><tbody></tbody></table>
+          <h3 style="font-size:13px;color:var(--good);margin:0 0 8px">▲ Verbessert</h3>
+          <table id="moversUp"><thead><tr><th>Keyword</th><th>Vorher</th><th>Jetzt</th><th>Δ</th></tr></thead><tbody></tbody></table>
         </div>
         <div>
-          <h3 style="font-size:13px;color:var(--bad);margin:0 0 8px">▼ Dropped</h3>
-          <table id="moversDown"><thead><tr><th>Keyword</th><th>Then</th><th>Now</th><th>Δ</th></tr></thead><tbody></tbody></table>
+          <h3 style="font-size:13px;color:var(--bad);margin:0 0 8px">▼ Verschlechtert</h3>
+          <table id="moversDown"><thead><tr><th>Keyword</th><th>Vorher</th><th>Jetzt</th><th>Δ</th></tr></thead><tbody></tbody></table>
         </div>
       </div>
-      <small class="note">Compares the best rank ecomex held for each keyword on the two most recent snapshots in the history.</small>
+      <small class="note">Vergleicht ecomex' beste Position je Keyword aus den beiden letzten Snapshots im Verlauf.</small>
     </div>
 
     <div class="tabpanel" data-tab="share" id="shareSection">
-      <h2>Competitor share <span class="muted">— who occupies the top 20 results for each keyword</span></h2>
+      <h2>Wettbewerber-Anteil <span class="muted">— wer die Top-20-Ergebnisse je Keyword belegt</span></h2>
       <table id="shareTable">
         <thead><tr>
           <th data-k="keyword">Keyword</th>
-          <th data-k="brand_share">ecomex share</th>
-          <th data-k="brand_rank">ecomex best</th>
-          <th data-k="top">Top 3 competitors (share% in top 20)</th>
+          <th data-k="brand_share">ecomex-Anteil</th>
+          <th data-k="brand_rank">ecomex beste</th>
+          <th data-k="top">Top-3-Wettbewerber (Anteil % in Top 20)</th>
         </tr></thead>
         <tbody></tbody>
       </table>
-      <small class="note">Daily snapshot of the first page of search results. ecomex share = % of the top-20 slots taken by ecomex courses.</small>
+      <small class="note">Täglicher Snapshot der ersten Ergebnisseite. ecomex-Anteil = % der Top-20-Plätze, die von ecomex-Kursen belegt werden.</small>
     </div>
 
     <div class="tabpanel" data-tab="catrank" id="catRankSection">
-      <h2>Competitor ranking by category <span class="muted">— who lists the most courses in each cluster's top 20</span></h2>
+      <h2>Wettbewerber-Ranking nach Kategorie <span class="muted">— wer in den Top 20 jeder Kategorie die meisten Kurse listet</span></h2>
       <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px;align-items:center">
         <select id="catSelect" style="background:var(--panel2);border:1px solid var(--line);color:var(--text);border-radius:7px;padding:8px 10px;font-size:13px"></select>
         <span class="muted" id="catMeta"></span>
@@ -224,19 +218,19 @@
       <table id="catRankTable">
         <thead><tr>
           <th data-k="rank">#</th>
-          <th data-k="provider">Provider</th>
-          <th data-k="courses">Courses listed</th>
-          <th data-k="keywords">Keywords covered</th>
-          <th data-k="kws">Top keywords (best first)</th>
-          <th data-k="best">Best rank</th>
+          <th data-k="provider">Anbieter</th>
+          <th data-k="courses">Gelistete Kurse</th>
+          <th data-k="keywords">Abgedeckte Keywords</th>
+          <th data-k="kws">Top-Keywords (beste zuerst)</th>
+          <th data-k="best">Beste Position</th>
         </tr></thead>
         <tbody></tbody>
       </table>
-      <small class="note">"Courses listed" = total ecomex/competitor course slots in the top 20 results, summed across every keyword in the selected cluster (from the daily competitor-share snapshot). A provider appearing for several keywords is counted once per appearance. <b>ecomex</b> is highlighted.</small>
+      <small class="note">„Gelistete Kurse“ = Gesamtzahl der ecomex-/Wettbewerber-Kursplätze in den Top-20-Ergebnissen, summiert über alle Keywords der gewählten Kategorie (aus dem täglichen Wettbewerber-Anteil-Snapshot). Ein Anbieter, der für mehrere Keywords erscheint, wird je Vorkommen einmal gezählt. <b>ecomex</b> ist hervorgehoben.</small>
     </div>
 
     <div class="tabpanel" data-tab="kwmatrix" id="kwMatrixSection">
-      <h2>Keyword × competitor <span class="muted">— who ranks for each keyword, and how well</span></h2>
+      <h2>Keyword × Wettbewerber <span class="muted">— wer für jedes Keyword rankt und wie gut</span></h2>
       <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px;align-items:center">
         <select id="kwmSelect" style="background:var(--panel2);border:1px solid var(--line);color:var(--text);border-radius:7px;padding:8px 10px;font-size:13px"></select>
         <span class="muted" id="kwmMeta"></span>
@@ -247,16 +241,16 @@
           <tbody></tbody>
         </table>
       </div>
-      <small class="note">Rows = keywords, columns = the providers with the most courses in scope. Each cell shows that provider's <b>best rank</b> for the keyword, with <span class="muted">×N</span> = how many of their courses sit in the top 20. Blank = not in the top 20. <b>ecomex</b> is the first column.</small>
+      <small class="note">Zeilen = Keywords, Spalten = die Anbieter mit den meisten Kursen im Bereich. Jede Zelle zeigt die <b>beste Position</b> dieses Anbieters für das Keyword, mit <span class="muted">×N</span> = wie viele seiner Kurse in den Top 20 liegen. Leer = nicht in den Top 20. <b>ecomex</b> ist die erste Spalte.</small>
     </div>
 
     <div class="tabpanel" data-tab="matrix" id="matrixSection">
-      <h2>Full ranking report <span class="muted" id="matrixWeek">— weekly</span></h2>
+      <h2>Vollständiger Ranking-Bericht <span class="muted" id="matrixWeek">— wöchentlich</span></h2>
       <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px;align-items:center">
-        <input type="search" id="matrixSearch" placeholder="Filter by course title…" />
+        <input type="search" id="matrixSearch" placeholder="Nach Kurstitel filtern…" />
         <span class="muted" id="matrixCount"></span>
         <a id="matrixDl" href="meinnow_crawler/data/latest_course_rankings.csv" download
-           style="margin-left:auto;text-decoration:none;background:var(--panel2);border:1px solid var(--line);padding:6px 12px;border-radius:7px;font-size:12px">⬇ Download CSV</a>
+           style="margin-left:auto;text-decoration:none;background:var(--panel2);border:1px solid var(--line);padding:6px 12px;border-radius:7px;font-size:12px">⬇ CSV herunterladen</a>
       </div>
       <div style="overflow-x:auto">
         <table id="matrixTable" style="min-width:800px">
@@ -264,11 +258,11 @@
           <tbody></tbody>
         </table>
       </div>
-      <small class="note">Each cell shows the course's position for that keyword in the weekly scan. Blank = not in top results. Updated every Monday.</small>
+      <small class="note">Jede Zelle zeigt die Position des Kurses für dieses Keyword im wöchentlichen Scan. Leer = nicht in den Top-Ergebnissen. Aktualisierung jeden Montag.</small>
     </div>
   </div>
 
-  <p class="muted">Data source: mein-now.de / KURSNET. Auto-refreshes when the daily / weekly crawls commit new data.</p>
+  <p class="muted">Datenquelle: mein-now.de / KURSNET. Aktualisiert sich automatisch, wenn die täglichen/wöchentlichen Crawls neue Daten committen.</p>
 </main>
 
 <script>
@@ -278,17 +272,17 @@ const PALETTE = ["#4cc9f0","#f72585","#3fb950","#d29922","#a371f7","#ff8c42","#5
 // Keyword clusters — mirror of the "=== ... ===" groups in meinnow_crawler/keywords.txt.
 // Add a keyword here whenever you add it there, so views can group by category.
 const CLUSTERS = {
-  "Online Marketing (core)": ["Online Marketing","Online Marketing Manager","Online Marketing Strategie","Online Marketing Grundlagen","Online Marketing Management","Online Marketing Leadership","Online Marketing lernen","Online Marketing Manager Weiterbildung","Online Marketing Kampagnen","Online Marketing - Webshop","Online Marketing und Inbound Marketing","Online Kampagnen","Online Werbung","Digitale Werbung","Digitale Kommunikation","Automatisierung im Online Marketing","Marketing Kampagnen","Marketing Manager","Digital Marketing","Digitales Marketing","Digital Marketing Analyst","Digital Marketing Manager","Weiterbildung Digital Marketing","Marketing Weiterbildung","International Marketing","Projektmanager Marketing"],
+  "Online Marketing (Kern)": ["Online Marketing","Online Marketing Manager","Online Marketing Strategie","Online Marketing Grundlagen","Online Marketing Management","Online Marketing Leadership","Online Marketing lernen","Online Marketing Manager Weiterbildung","Online Marketing Kampagnen","Online Marketing - Webshop","Online Marketing und Inbound Marketing","Online Kampagnen","Online Werbung","Digitale Werbung","Digitale Kommunikation","Automatisierung im Online Marketing","Marketing Kampagnen","Marketing Manager","Digital Marketing","Digitales Marketing","Digital Marketing Analyst","Digital Marketing Manager","Weiterbildung Digital Marketing","Marketing Weiterbildung","International Marketing","Projektmanager Marketing"],
   "SEO & SEA": ["SEO","SEA","Suchmaschinenoptimierung","Suchmaschinenmarketing","Suchmaschinenmarketing und Google Ads","Suchmaschinenwerbung","Weiterbildung Suchmaschinenmarketing","Search Engine Marketing","Google Ads","Online Advertising","PPC Marketing"],
   "Social Media & Content": ["Social Media","Social Media Betreuung","Social Media Canva","Social Media Content","Social Media Creation","Social Media Expert","Social Media Grundlagen","Social Media Kampagnen","Social Media Kurs","Social Media Manager","Social Media Marketing","Social Media Performance","Social Media Performance Monitoring","Social Media Relationship Experte","Social Media Strategien","Social Media: Marketing und Optimierung","Onlinemarketing und Social-Media-Marketing","Webanalyse & Social Media","Influencer Marketing","Instagram Marketing","Content Marketing","Content Marketing Manager","Content Creator Kurs","Contentpflege"],
-  "Inbound & Email": ["Inbound Marketing","Inbound Marketing Weiterbildung","Inbound- und Content Marketing","Email Marketing","E-Mail Marketing"],
-  "Performance & Automation": ["Performance Marketing","Performance Marketing Experte","Performance Marketing mit Wordpress","Performance Marketing, Content Marketing","Marketing Automation","Affiliate Marketing","Conversion Optimierung"],
+  "Inbound & E-Mail": ["Inbound Marketing","Inbound Marketing Weiterbildung","Inbound- und Content Marketing","Email Marketing","E-Mail Marketing"],
+  "Performance & Automatisierung": ["Performance Marketing","Performance Marketing Experte","Performance Marketing mit Wordpress","Performance Marketing, Content Marketing","Marketing Automation","Affiliate Marketing","Conversion Optimierung"],
   "E-Commerce": ["E-Commerce","E-Commerce Grundlagen","E-Commerce Kampagnen","E-Commerce Manager","eCommerce Manager","E-Commerce Marketing","Aufbaukurs - E-Commerce","Weiterbildung im E-Commerce","Social Ads im E-Commerce","Social Ads Manager","Social Commerce","Online-Handel","Amazon Marketing"],
   "KI / AI — Marketing": ["AI Marketing","KI Marketing","KI im Online Marketing","Online Marketing KI","Online Marketing Grundlagen KI","Marketing mit AI","Marketingkampagnen mit AI","Marketingstrategie mit KI","Marktanalyse mit KI","Content & Online Werbung KI","Content Creation mit KI","Contenterstellung mit KI","Kampagnenerstellung mit KI","E-Mail Automatisierung mit KI","KI im datengetriebenen Marketing","KI im Inbound Marketing","KI im Vertrieb","KI für E-Commerce","Performance Marketing KI","Performance Marketing mit AI","SEO Manager KI","Social Media mit KI","Texterstellung mit KI","Videoerstellung mit KI","Websites mit KI"],
-  "KI / AI — Skills, Tools & Career": ["AI für Anfänger","AI Weiterbildung","AI-Kurs","AI-Manager","Grundlagen AI","Grundlagen KI","KI Anwendung","KI Coach","KI im Arbeitsalltag","KI im Büroalltag","KI Lernen","KI Manager","KI Manager Weiterbildung","KI Strategie","KI Tools für Marketing","KI und Agile Methoden","KI und Automatisierung","KI-Manager:in","KI-Manager:in Weiterbildung","KI-Projektmanager","KI-Weiterbildung","Weiterbildung KI","Künstliche Intelligenz","Künstliche Intelligenz Weiterbildung","Einführung ins Prompt Engineering","KI Prompt Engineering","Prompt Enginnering","Prompt Kurs","Projektmanagement mit AI","ChatGPT","Claude"],
+  "KI / AI — Skills, Tools & Karriere": ["AI für Anfänger","AI Weiterbildung","AI-Kurs","AI-Manager","Grundlagen AI","Grundlagen KI","KI Anwendung","KI Coach","KI im Arbeitsalltag","KI im Büroalltag","KI Lernen","KI Manager","KI Manager Weiterbildung","KI Strategie","KI Tools für Marketing","KI und Agile Methoden","KI und Automatisierung","KI-Manager:in","KI-Manager:in Weiterbildung","KI-Projektmanager","KI-Weiterbildung","Weiterbildung KI","Künstliche Intelligenz","Künstliche Intelligenz Weiterbildung","Einführung ins Prompt Engineering","KI Prompt Engineering","Prompt Enginnering","Prompt Kurs","Projektmanagement mit AI","ChatGPT","Claude"],
   "Tools & Skills": ["Canva","CRM","WordPress","Google Analytics 4","Website Management","Website Optimierung"],
-  "Methods & Leadership": ["Design Thinking","Design Thinking und Agile Methoden","Führungskräftetraining","Projektmanagement Kurs"],
-  "Data & Analytics": ["Webanalyse","Webanalyse für Online Marketing Manager","Digital Strategy","Google Analytics","Datenanalyse"],
+  "Methoden & Führung": ["Design Thinking","Design Thinking und Agile Methoden","Führungskräftetraining","Projektmanagement Kurs"],
+  "Daten & Analyse": ["Webanalyse","Webanalyse für Online Marketing Manager","Digital Strategy","Google Analytics","Datenanalyse"],
 };
 // keyword -> cluster name (keywords not in any cluster fall under "Other").
 const CLUSTER_OF = (() => {
@@ -296,7 +290,7 @@ const CLUSTER_OF = (() => {
   for(const [name, kws] of Object.entries(CLUSTERS)) for(const kw of kws) m[kw] = name;
   return m;
 })();
-function clusterOf(kw){ return CLUSTER_OF[kw] || "Other"; }
+function clusterOf(kw){ return CLUSTER_OF[kw] || "Sonstige"; }
 
 function rankBadge(r){
   if(r==null||r==="") return '<span class="badge b-none">—</span>';
@@ -336,7 +330,7 @@ function latestDate(rows){ return rows.reduce((m,r)=> r.snapshot_date>m?r.snapsh
     [rankings, inventory] = await Promise.all([loadCsv("rankings.csv"), loadCsv("latest_inventory.csv")]);
   } catch(e){
     document.getElementById("updated").innerHTML =
-      `<span class="err">Could not load data: ${e.message}. Has the crawler run and committed to data/ yet?</span>`;
+      `<span class="err">Daten konnten nicht geladen werden: ${e.message}. Wurde der Crawler bereits ausgeführt und nach data/ committet?</span>`;
     return;
   }
   try { coverage = await loadCsv("latest_coverage.csv"); } catch(e) { /* optional */ }
@@ -351,8 +345,13 @@ function latestDate(rows){ return rows.reduce((m,r)=> r.snapshot_date>m?r.snapsh
   let kwRanks = [];
   try { kwRanks = await loadCsv("keyword_ranks.csv"); } catch(e) { /* optional */ }
 
+  // Coaching is out of scope — drop any coaching courses/rows from every view.
+  const isCoaching = s => /coaching/i.test(s||"");
+  inventory = inventory.filter(c => !isCoaching(c.title));
+  coverage  = coverage.filter(r => r.type!=="Coaching" && !isCoaching(r.tracked_title));
+
   const today = latestDate(rankings) || latestDate(inventory);
-  document.getElementById("updated").textContent = "last updated " + (today||"—");
+  document.getElementById("updated").textContent = "zuletzt aktualisiert " + (today||"—");
 
   // ---- latest-day ranking rows ----
   const latest = rankings.filter(r=>r.snapshot_date===today);
@@ -386,12 +385,12 @@ function latestDate(rows){ return rows.reduce((m,r)=> r.snapshot_date>m?r.snapsh
   const worstKw = kwStats.slice().sort((a,b)=>b.best-a.best)[0];
   const covFound = coverage.filter(r=>r.status==="found").length;
   const tiles = [
-    {n:inventory.length, l:"Courses listed"},
-    {n:listingKws.length||"—", l:"Listing keywords"},
-    {n:trackedCount, l:"Keywords tracked"},
-    {n:`${trackedOnPage1}/${trackedCount}`, l:"Keywords on page 1"},
-    {n:bestKw?`#${bestKw.best}`:"—", l:`Best: ${bestKw?bestKw.keyword:""}`},
-    {n:worstKw?`#${worstKw.best}`:"—", l:`Weakest: ${worstKw?worstKw.keyword:""}`},
+    {n:inventory.length, l:"Gelistete Kurse"},
+    {n:listingKws.length||"—", l:"Listing-Keywords"},
+    {n:trackedCount, l:"Getrackte Keywords"},
+    {n:`${trackedOnPage1}/${trackedCount}`, l:"Keywords auf Seite 1"},
+    {n:bestKw?`#${bestKw.best}`:"—", l:`Beste: ${bestKw?bestKw.keyword:""}`},
+    {n:worstKw?`#${worstKw.best}`:"—", l:`Schwächste: ${worstKw?worstKw.keyword:""}`},
   ];
   document.getElementById("tiles").innerHTML = tiles.map(t=>
     `<div class="tile"><div class="n">${t.n}</div><div class="l">${t.l}</div></div>`).join("");
@@ -400,7 +399,7 @@ function latestDate(rows){ return rows.reduce((m,r)=> r.snapshot_date>m?r.snapsh
   renderTable("kwTable", kwStats, {
     keyword: r=>`<span class="kw">${r.keyword}</span>`,
     best: r=>rankBadge(r.best),
-    page1: r=> r.page1?'<span class="badge b-good">yes</span>':'<span class="badge b-none">no</span>',
+    page1: r=> r.page1?'<span class="badge b-good">ja</span>':'<span class="badge b-none">nein</span>',
     courses: r=>r.courses,
     total: r=>r.total.toLocaleString(),
   }, "best", false);
@@ -409,7 +408,7 @@ function latestDate(rows){ return rows.reduce((m,r)=> r.snapshot_date>m?r.snapsh
   {
     const tbody = document.querySelector("#libTable tbody");
     if(!listingKws.length){
-      tbody.innerHTML = `<tr><td colspan="4" class="muted">No listing keywords yet — add them to meinnow_crawler/listing_keywords.txt.</td></tr>`;
+      tbody.innerHTML = `<tr><td colspan="4" class="muted">Noch keine Listing-Keywords — fügen Sie sie in meinnow_crawler/listing_keywords.txt hinzu.</td></tr>`;
     } else {
       // tracked = keyword is in keywords.txt (what the crawler monitors).
       // hasRank = the latest crawl has a result for it yet; best may be null
@@ -430,18 +429,18 @@ function latestDate(rows){ return rows.reduce((m,r)=> r.snapshot_date>m?r.snapsh
         );
         const t = rows.filter(r=>r.tracked).length;
         document.getElementById("libCount").textContent =
-          `${rows.length} of ${libRows.length} keywords · ${t} tracked`;
+          `${rows.length} von ${libRows.length} Keywords · ${t} getrackt`;
         renderTable("libTable", rows, {
           keyword: r=>`<span class="kw">${r.keyword}</span>`,
           tracked: r=> r.tracked
-                       ? '<span class="badge b-good">tracked</span>'
-                       : '<span class="badge b-none">not tracked</span>',
+                       ? '<span class="badge b-good">getrackt</span>'
+                       : '<span class="badge b-none">nicht getrackt</span>',
           best:    r=> !r.tracked  ? '<span class="muted">—</span>'
-                     : !r.hasRank  ? '<span class="badge b-warn">pending</span>'
+                     : !r.hasRank  ? '<span class="badge b-warn">ausstehend</span>'
                      : r.best!=null ? rankBadge(r.best)
-                     : '<span class="badge b-none">not ranked</span>',
+                     : '<span class="badge b-none">nicht gerankt</span>',
           page1:   r=> (!r.tracked || !r.hasRank || r.best==null) ? '<span class="muted">—</span>'
-                       : (r.page1?'<span class="badge b-good">yes</span>':'<span class="badge b-none">no</span>'),
+                       : (r.page1?'<span class="badge b-good">ja</span>':'<span class="badge b-none">nein</span>'),
         }, "keyword", true);
       }
       document.getElementById("libSearch").addEventListener("input", renderLib);
@@ -457,19 +456,17 @@ function latestDate(rows){ return rows.reduce((m,r)=> r.snapshot_date>m?r.snapsh
     document.getElementById("covCountBadge").textContent = `${cf}/${coverage.length}`;
     function renderCoverage(){
       const q  = document.getElementById("covSearch").value.toLowerCase();
-      const tf = document.getElementById("covType").value;
       const sf = document.getElementById("covStatus").value;
       const rows = coverage.filter(r=>
         (!q || (r.tracked_title+" "+r.match_title).toLowerCase().includes(q)) &&
-        (!tf || r.type===tf) && (!sf || r.status===sf)
+        (!sf || r.status===sf)
       );
       const f = rows.filter(r=>r.status==="found").length;
-      document.getElementById("covCount").textContent = `${f}/${rows.length} found`;
+      document.getElementById("covCount").textContent = `${f}/${rows.length} gefunden`;
       renderTable("coverageTable", rows, {
         status:  r=> r.status==="found"
-                     ? '<span class="badge b-good">found</span>'
-                     : '<span class="badge b-bad">missing</span>',
-        type:    r=> `<span class="muted">${r.type}</span>`,
+                     ? '<span class="badge b-good">gefunden</span>'
+                     : '<span class="badge b-bad">fehlt</span>',
         tracked_title: r=> r.tracked_title,
         match_title:   r=> r.match_title || '<span class="muted">—</span>',
         next_start:    r=> r.next_start  || '<span class="muted">—</span>',
@@ -477,7 +474,6 @@ function latestDate(rows){ return rows.reduce((m,r)=> r.snapshot_date>m?r.snapsh
       }, "status", true);
     }
     document.getElementById("covSearch").addEventListener("input", renderCoverage);
-    document.getElementById("covType").addEventListener("change", renderCoverage);
     document.getElementById("covStatus").addEventListener("change", renderCoverage);
     renderCoverage();
   }
@@ -500,17 +496,17 @@ function latestDate(rows){ return rows.reduce((m,r)=> r.snapshot_date>m?r.snapsh
 
   const TOP_KW = 5;  // how many of a course's best keywords to show before "+N more"
   function topKwHtml(r){
-    if(!r.appears.length) return '<span class="muted">not in tracked results</span>';
+    if(!r.appears.length) return '<span class="muted">nicht in getrackten Ergebnissen</span>';
     const shown = r.appears.slice(0, TOP_KW)
       .map(a=>`<span style="white-space:nowrap">${rankBadge(a.rank)} <span class="kw">${a.kw}</span></span>`)
       .join("  ");
     const extra = r.appears.length - TOP_KW;
-    return shown + (extra>0 ? ` <span class="muted">+${extra} more</span>` : "");
+    return shown + (extra>0 ? ` <span class="muted">+${extra} weitere</span>` : "");
   }
 
   function renderCourses(filter=""){
     const f = courses.filter(c=>c._search.includes(filter.toLowerCase()));
-    document.getElementById("courseCount").textContent = `${f.length} of ${courses.length} courses`;
+    document.getElementById("courseCount").textContent = `${f.length} von ${courses.length} Kursen`;
     renderTable("courseTable", f, {
       title: r=>r.title,
       best: r=>rankBadge(r.best),
@@ -528,7 +524,7 @@ function latestDate(rows){ return rows.reduce((m,r)=> r.snapshot_date>m?r.snapsh
   if(matrix.length){
     document.getElementById("tabMatrix").hidden = false;
     const week = matrix[0].week || "";
-    document.getElementById("matrixWeek").textContent = "— week " + week;
+    document.getElementById("matrixWeek").textContent = "— Woche " + week;
     const allKws = [...new Set(matrix.map(r=>r.keyword))].sort();
     const byCourse = {};
     for(const r of matrix){
@@ -539,12 +535,12 @@ function latestDate(rows){ return rows.reduce((m,r)=> r.snapshot_date>m?r.snapsh
     const courses = Object.values(byCourse);
     // header
     document.getElementById("matrixHead").innerHTML =
-      `<th>Course</th><th>Best</th>` + allKws.map(k=>`<th title="${k}">${k}</th>`).join("");
+      `<th>Kurs</th><th>Beste</th>` + allKws.map(k=>`<th title="${k}">${k}</th>`).join("");
     function renderMatrix(){
       const q = document.getElementById("matrixSearch").value.toLowerCase();
       const f = courses.filter(c=>!q || c.title.toLowerCase().includes(q));
       f.sort((a,b)=>a._best-b._best);
-      document.getElementById("matrixCount").textContent = `${f.length} of ${courses.length} courses · ${allKws.length} keywords`;
+      document.getElementById("matrixCount").textContent = `${f.length} von ${courses.length} Kursen · ${allKws.length} Keywords`;
       const body = document.querySelector("#matrixTable tbody");
       body.innerHTML = f.map(c=>
         `<tr><td style="max-width:240px">${c.title}</td><td>${rankBadge(c._best===Infinity?null:c._best)}</td>` +
@@ -588,8 +584,8 @@ function latestDate(rows){ return rows.reduce((m,r)=> r.snapshot_date>m?r.snapsh
       const d = m.delta>0?`+${m.delta}`:m.delta;
       return `<tr><td><span class="kw">${m.keyword}</span></td><td>${fmt(m.then)}</td><td>${fmt(m.now)}</td><td><span class="badge ${dcls}">${d}</span></td></tr>`;
     }
-    document.querySelector("#moversUp tbody").innerHTML   = ups.map(row).join("")   || `<tr><td colspan="4" class="muted">No improvements yet.</td></tr>`;
-    document.querySelector("#moversDown tbody").innerHTML = downs.map(row).join("") || `<tr><td colspan="4" class="muted">No drops yet.</td></tr>`;
+    document.querySelector("#moversUp tbody").innerHTML   = ups.map(row).join("")   || `<tr><td colspan="4" class="muted">Noch keine Verbesserungen.</td></tr>`;
+    document.querySelector("#moversDown tbody").innerHTML = downs.map(row).join("") || `<tr><td colspan="4" class="muted">Noch keine Verschlechterungen.</td></tr>`;
   })();
 
   // ---- competitor share ----
@@ -623,7 +619,7 @@ function latestDate(rows){ return rows.reduce((m,r)=> r.snapshot_date>m?r.snapsh
       const cat = clusterOf(kw);
       (cats[cat] ??= []).push(kw);
     }
-    const catNames = Object.keys(cats).sort((a,b)=> a==="Other"?1 : b==="Other"?-1 : a.localeCompare(b));
+    const catNames = Object.keys(cats).sort((a,b)=> a==="Sonstige"?1 : b==="Sonstige"?-1 : a.localeCompare(b));
     if(catNames.length){
       document.getElementById("tabCatRank").hidden = false;
       const sel = document.getElementById("catSelect");
@@ -659,10 +655,10 @@ function latestDate(rows){ return rows.reduce((m,r)=> r.snapshot_date>m?r.snapsh
         const provN = rows.length;
         const courseN = rows.reduce((s,r)=>s+r.courses,0);
         document.getElementById("catMeta").textContent =
-          `${cats[cat].length} keyword${cats[cat].length>1?"s":""} · ${provN} providers · ${courseN} course slots in top 20`;
+          `${cats[cat].length} Keyword${cats[cat].length>1?"s":""} · ${provN} Anbieter · ${courseN} Kursplätze in Top 20`;
         renderTable("catRankTable", rows, {
           rank:     r=>`<span class="rank">${r.rank}</span>`,
-          provider: r=> r.brand ? `<span class="kw">${r.provider}</span> <span class="badge b-good">you</span>` : r.provider,
+          provider: r=> r.brand ? `<span class="kw">${r.provider}</span> <span class="badge b-good">Sie</span>` : r.provider,
           courses:  r=>`<b>${r.courses}</b>`,
           keywords: r=>`<span class="muted">${r.keywords}</span>`,
           kws:      r=>topKwHtml(r),
@@ -683,11 +679,11 @@ function latestDate(rows){ return rows.reduce((m,r)=> r.snapshot_date>m?r.snapsh
     const kwsWithData = [...new Set(share.map(r=>r.keyword))];
     const cats = {};
     for(const kw of kwsWithData) (cats[clusterOf(kw)] ??= []).push(kw);
-    const catNames = Object.keys(cats).sort((a,b)=> a==="Other"?1 : b==="Other"?-1 : a.localeCompare(b));
+    const catNames = Object.keys(cats).sort((a,b)=> a==="Sonstige"?1 : b==="Sonstige"?-1 : a.localeCompare(b));
     if(kwsWithData.length){
       document.getElementById("tabKwMatrix").hidden = false;
       const sel = document.getElementById("kwmSelect");
-      sel.innerHTML = `<option value="__all">All categories</option>` +
+      sel.innerHTML = `<option value="__all">Alle Kategorien</option>` +
         catNames.map(c=>`<option value="${c}">${c}</option>`).join("");
 
       const MAX_COLS = 10;  // competitor columns (excluding the pinned ecomex column)
@@ -719,7 +715,7 @@ function latestDate(rows){ return rows.reduce((m,r)=> r.snapshot_date>m?r.snapsh
           c.count += +r.count_top_n;
         }
         document.getElementById("kwmMeta").textContent =
-          `${kws.length} keywords · ${cols.length} providers shown (of ${Object.keys(agg).length})`;
+          `${kws.length} Keywords · ${cols.length} Anbieter angezeigt (von ${Object.keys(agg).length})`;
         // header
         document.getElementById("kwMatrixHead").innerHTML =
           `<th data-k="keyword">Keyword</th>` +
@@ -750,7 +746,7 @@ function latestDate(rows){ return rows.reduce((m,r)=> r.snapshot_date>m?r.snapsh
     if(ranked.length){
       document.getElementById("tabSpotlight").hidden = false;
       const sel = document.getElementById("spotCourse");
-      sel.innerHTML = ranked.map((c,i)=>`<option value="${i}">${c.title} — best #${c.best}</option>`).join("");
+      sel.innerHTML = ranked.map((c,i)=>`<option value="${i}">${c.title} — beste #${c.best}</option>`).join("");
       const shareByKw = {};
       for(const r of share) (shareByKw[r.keyword] ??= []).push(r);
 
@@ -758,7 +754,7 @@ function latestDate(rows){ return rows.reduce((m,r)=> r.snapshot_date>m?r.snapsh
         const c = ranked[+sel.value];
         let activeKw = c.appears[0].kw;   // default to the course's best keyword
         document.getElementById("spotMeta").textContent =
-          `ranks for ${c.appears.length} keyword${c.appears.length>1?"s":""} · best position #${c.best}`;
+          `rankt für ${c.appears.length} Keyword${c.appears.length>1?"s":""} · beste Position #${c.best}`;
         function draw(){
           const kwRows = c.appears.map(a=>{
             const on = a.kw===activeKw;
@@ -769,21 +765,21 @@ function latestDate(rows){ return rows.reduce((m,r)=> r.snapshot_date>m?r.snapsh
           const compRows = comp.length
             ? comp.map((r,i)=>`<tr class="${r.is_brand==="1"?"brandrow":""}">`+
                 `<td class="rank">${i+1}</td>`+
-                `<td>${r.is_brand==="1"?`<span class="kw">${r.provider}</span> <span class="badge b-good">you</span>`:r.provider}</td>`+
+                `<td>${r.is_brand==="1"?`<span class="kw">${r.provider}</span> <span class="badge b-good">Sie</span>`:r.provider}</td>`+
                 `<td>${rankBadge(r.best_rank)}</td>`+
                 `<td>${r.count_top_n}</td>`+
                 `<td>${(+r.share_pct).toFixed(1)}%</td></tr>`).join("")
-            : `<tr><td colspan="5" class="muted">No competitor snapshot for "${activeKw}" — it isn't in the tracked set (keywords.txt), so there's no first-page comparison for it yet.</td></tr>`;
+            : `<tr><td colspan="5" class="muted">Kein Wettbewerber-Snapshot für „${activeKw}“ — es ist nicht im getrackten Set (keywords.txt), daher gibt es dafür noch keinen Vergleich der ersten Seite.</td></tr>`;
           document.getElementById("spotBody").innerHTML = `
             <div style="display:grid;grid-template-columns:minmax(240px,1fr) 2fr;gap:22px;align-items:start">
               <div>
-                <h3 style="font-size:13px;color:var(--muted);margin:0 0 8px">This course ranks for <span class="muted">— click a keyword</span></h3>
-                <table id="spotKws"><thead><tr><th>Rank</th><th>Keyword</th></tr></thead><tbody>${kwRows}</tbody></table>
+                <h3 style="font-size:13px;color:var(--muted);margin:0 0 8px">Dieser Kurs rankt für <span class="muted">— Keyword anklicken</span></h3>
+                <table id="spotKws"><thead><tr><th>Position</th><th>Keyword</th></tr></thead><tbody>${kwRows}</tbody></table>
               </div>
               <div>
-                <h3 style="font-size:13px;color:var(--muted);margin:0 0 8px">Who else ranks for <span class="kw">${activeKw}</span> <span class="muted">— first page (top 20)</span></h3>
-                <table><thead><tr><th>#</th><th>Provider</th><th>Best rank</th><th>Courses in top 20</th><th>Share</th></tr></thead><tbody>${compRows}</tbody></table>
-                <small class="note">Competitor data is company-level: which providers rank and how many of their courses sit in the top 20 — not the competitors' individual course titles. <b>ecomex</b> is highlighted.</small>
+                <h3 style="font-size:13px;color:var(--muted);margin:0 0 8px">Wer sonst für <span class="kw">${activeKw}</span> rankt <span class="muted">— erste Seite (Top 20)</span></h3>
+                <table><thead><tr><th>#</th><th>Anbieter</th><th>Beste Position</th><th>Kurse in Top 20</th><th>Anteil</th></tr></thead><tbody>${compRows}</tbody></table>
+                <small class="note">Wettbewerberdaten sind auf Unternehmensebene: welche Anbieter ranken und wie viele ihrer Kurse in den Top 20 liegen — nicht die einzelnen Kurstitel der Wettbewerber. <b>ecomex</b> ist hervorgehoben.</small>
               </div>
             </div>`;
           document.querySelectorAll("#spotKws tbody tr").forEach(tr=>tr.addEventListener("click",()=>{
@@ -815,7 +811,7 @@ function latestDate(rows){ return rows.reduce((m,r)=> r.snapshot_date>m?r.snapsh
     options:{
       plugins:{ legend:{display:false} },
       scales:{
-        y:{ reverse:true, title:{display:true,text:"Best rank (1 = top)"},
+        y:{ reverse:true, title:{display:true,text:"Beste Position (1 = oben)"},
             grid:{color:"#2c3744"}, ticks:{color:"#8b98a5"} },
         x:{ grid:{color:"#2c3744"}, ticks:{color:"#8b98a5"} },
       },
@@ -830,7 +826,7 @@ function latestDate(rows){ return rows.reduce((m,r)=> r.snapshot_date>m?r.snapsh
   }));
   if(dates.length<2){
     document.querySelector("#chips").insertAdjacentHTML("afterend",
-      `<p class="muted">Only one day of data so far — the trend lines fill in as the daily crawl runs.</p>`);
+      `<p class="muted">Bisher nur ein Tag an Daten — die Verlaufslinien füllen sich, sobald der tägliche Crawl läuft.</p>`);
   }
 
   // ---- inventory count badge + tab switching ----
