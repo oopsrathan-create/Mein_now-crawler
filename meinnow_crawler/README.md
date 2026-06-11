@@ -39,6 +39,17 @@ the `keyword_tracker` block of `config.json`.
 
 Run locally: `python keyword_tracker.py`
 
+### Listing keyword library
+
+[`listing_keywords.txt`](listing_keywords.txt) is the full, searchable list of
+every keyword the team uses across ecomex's listings (one per line). It's a
+reference list — separate from `keywords.txt`, which is the curated set the
+crawler actively rank-tracks. The dashboard shows it in the **Listing keyword
+library** section: search the list, filter by tracked / not-yet-tracked, and for
+any keyword the crawler already tracks see ecomex's best rank and page-1 status.
+Anyone can add keywords by editing the file; to start rank-tracking one, copy it
+into `keywords.txt`.
+
 ## Setup
 
 1. Edit [`config.json`](config.json):
@@ -64,6 +75,8 @@ A static dashboard lives at [`/index.html`](../index.html) in the repo root. It
 reads `rankings.csv` and `latest_inventory.csv` and shows:
 
 - **Scorecard tiles** — courses listed, keywords on page 1, best/weakest keyword.
+- **Listing keyword library** — searchable list of every listing keyword (from
+  `listing_keywords.txt`), flagged tracked / not-tracked with best rank.
 - **Keyword rankings** — where ecomex ranks per keyword, sortable.
 - **Ranking trend** — rank-over-time line chart (fills in as daily crawls run).
 - **Course inventory** — searchable table of every course and where it appears.

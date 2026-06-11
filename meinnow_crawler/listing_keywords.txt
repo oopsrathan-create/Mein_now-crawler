@@ -1,0 +1,153 @@
+# Listing keyword library — every keyword ecomex uses across its course listings.
+# One keyword per line. Lines starting with # and blank lines are ignored.
+#
+# The dashboard (index.html) loads this file into the "Listing keyword library"
+# section, where the team can search the list and see — for any keyword the
+# crawler already tracks — ecomex's best rank and whether it's on page 1.
+#
+# This is a reference list (what we WRITE in our listings); it is separate from
+# keywords.txt (the curated set the crawler actively rank-tracks on mein-now).
+# To start rank-tracking one of these, copy it into keywords.txt.
+#
+# Add new keywords freely — keep them sorted-ish so they're easy to scan.
+
+AI für Anfänger
+AI Marketing
+AI Weiterbildung
+AI-Kurs
+AI-Manager
+Aufbaukurs - E-Commerce
+Automatisierung im Online Marketing
+Canva
+ChatGPT
+Claude
+Content & Online Werbung KI
+Content Creation mit KI
+Content Creator Kurs
+Content Marketing
+Content Marketing Manager
+Contenterstellung mit KI
+Contentpflege
+CRM
+Design Thinking
+Design Thinking und Agile Methoden
+Digital Marketing
+Digital Marketing Analyst
+Digital Marketing Manager
+Digitale Kommunikation
+Digitale Werbung
+E-Commerce
+E-Commerce Grundlagen
+E-Commerce Kampagnen
+eCommerce Manager
+Einführung ins Prompt Engineering
+E-Mail Automatisierung mit KI
+Email Marketing
+Führungskräftetraining
+Google Ads
+Google Analytics 4
+Grundlagen AI
+Grundlagen KI
+Inbound Marketing
+Inbound Marketing Weiterbildung
+Inbound- und Content Marketing
+International Marketing
+Kampagnenerstellung mit KI
+KI Anwendung
+KI Coach
+KI für E-Commerce
+KI im Arbeitsalltag
+KI im Büroalltag
+KI im datengetriebenen Marketing
+KI im Inbound Marketing
+KI im Vertrieb
+KI Lernen
+KI Manager
+KI Manager Weiterbildung
+KI Marketing
+KI Prompt Engineering
+KI Strategie
+KI Tools für Marketing
+KI und Agile Methoden
+KI und Automatisierung
+KI-Manager:in
+KI-Manager:in Weiterbildung
+KI-Projektmanager
+KI-Weiterbildung
+Künstliche Intelligenz
+Künstliche Intelligenz Weiterbildung
+Marketing Automation
+Marketing Kampagnen
+Marketing Manager
+Marketing mit AI
+Marketingkampagnen mit AI
+Marketingstrategie mit KI
+Marktanalyse mit KI
+Online Kampagnen
+Online Marketing
+Online Marketing - Webshop
+Online Marketing Grundlagen
+Online Marketing Grundlagen KI
+Online Marketing Kampagnen
+Online Marketing KI
+Online Marketing Leadership
+Online Marketing lernen
+Online Marketing Management
+Online Marketing Manager
+Online Marketing Manager Weiterbildung
+Online Marketing Strategie
+Online Marketing und Inbound Marketing
+Online Werbung
+Online-Handel
+Onlinemarketing und Social-Media-Marketing
+Performance Marketing
+Performance Marketing Experte
+Performance Marketing KI
+Performance Marketing mit AI
+Performance Marketing mit Wordpress
+Performance Marketing, Content Marketing
+PPC Marketing
+Projektmanagement Kurs
+Projektmanagement mit AI
+Projektmanager Marketing
+Prompt Enginnering
+Prompt Kurs
+SEA
+SEO
+SEO Manager KI
+Social Ads im E-Commerce
+Social Ads Manager
+Social Commerce
+Social Media
+Social Media Betreuung
+Social Media Canva
+Social Media Content
+Social Media Creation
+Social Media Expert
+Social Media Grundlagen
+Social Media Kampagnen
+Social Media Kurs
+Social Media Manager
+Social Media Marketing
+Social Media mit KI
+Social Media Performance
+Social Media Performance Monitoring
+Social Media Relationship Experte
+Social Media Strategien
+Social Media: Marketing und Optimierung
+Suchmaschinenmarketing
+Suchmaschinenmarketing und Google Ads
+Suchmaschinenoptimierung
+Suchmaschinenwerbung
+Texterstellung mit KI
+Videoerstellung mit KI
+Webanalyse & Social Media
+Webanalyse für Online Marketing Manager
+Website Management
+Website Optimierung
+Websites mit KI
+Weiterbildung Digital Marketing
+Weiterbildung im E-Commerce
+Weiterbildung KI
+Weiterbildung Suchmaschinenmarketing
+WordPress

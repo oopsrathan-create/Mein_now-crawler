@@ -73,6 +73,29 @@
 <main>
   <div class="tiles" id="tiles"></div>
 
+  <section id="librarySection">
+    <h2>Listing keyword library <span class="muted">— every keyword used across ecomex listings; search to find one and see if it's tracked &amp; where it ranks</span></h2>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px;align-items:center">
+      <input type="search" id="libSearch" placeholder="Search keywords… (e.g. KI, Social Media, SEO)" />
+      <select id="libFilter" style="background:var(--panel2);border:1px solid var(--line);color:var(--text);border-radius:7px;padding:8px 10px;font-size:13px">
+        <option value="">All keywords</option>
+        <option value="tracked">Tracked by crawler</option>
+        <option value="untracked">Not yet tracked</option>
+      </select>
+      <span class="muted" id="libCount"></span>
+    </div>
+    <table id="libTable">
+      <thead><tr>
+        <th data-k="keyword">Keyword</th>
+        <th data-k="tracked">Tracked?</th>
+        <th data-k="best">Best rank</th>
+        <th data-k="page1">On page 1?</th>
+      </tr></thead>
+      <tbody></tbody>
+    </table>
+    <small class="note">"Tracked" = the crawler actively rank-tracks this exact keyword on mein-now (it's in <code>keywords.txt</code>); rank/page-1 then show ecomex's best result. Edit the full list in <code>meinnow_crawler/listing_keywords.txt</code> — to start rank-tracking a keyword, copy it into <code>meinnow_crawler/keywords.txt</code>.</small>
+  </section>
+
   <section>
     <h2>Keyword rankings <span class="muted">— where ecomex ranks on the search results</span></h2>
     <table id="kwTable">
@@ -283,6 +306,14 @@ async function loadCsv(name){
   return Papa.parse(txt, {header:true, skipEmptyLines:true}).data;
 }
 
+// Load a plain-text, one-item-per-line file (skips blanks and # comments).
+async function loadLines(path){
+  const res = await fetch(path, {cache:"no-store"});
+  if(!res.ok) throw new Error(path+" ("+res.status+")");
+  const txt = await res.text();
+  return txt.split(/\r?\n/).map(l=>l.trim()).filter(l=>l && !l.startsWith("#"));
+}
+
 function latestDate(rows){ return rows.reduce((m,r)=> r.snapshot_date>m?r.snapshot_date:m, ""); }
 
 (async function(){
@@ -299,6 +330,8 @@ function latestDate(rows){ return rows.reduce((m,r)=> r.snapshot_date>m?r.snapsh
   try { matrix = await loadCsv("latest_course_rankings.csv"); } catch(e) { /* optional */ }
   let share = [];
   try { share = await loadCsv("latest_competitor_share.csv"); } catch(e) { /* optional */ }
+  let listingKws = [];
+  try { listingKws = await loadLines("meinnow_crawler/listing_keywords.txt"); } catch(e) { /* optional */ }
 
   const today = latestDate(rankings) || latestDate(inventory);
   document.getElementById("updated").textContent = "last updated " + (today||"—");
@@ -321,6 +354,7 @@ function latestDate(rows){ return rows.reduce((m,r)=> r.snapshot_date>m?r.snapsh
   const covFound = coverage.filter(r=>r.status==="found").length;
   const tiles = [
     {n:inventory.length, l:"Courses listed"},
+    {n:listingKws.length||"—", l:"Listing keywords"},
     {n:keywords.length, l:"Keywords tracked"},
     {n:`${onPage1}/${keywords.length}`, l:"Keywords on page 1"},
     {n:bestKw?`#${bestKw.best}`:"—", l:`Best: ${bestKw?bestKw.keyword:""}`},
@@ -337,6 +371,46 @@ function latestDate(rows){ return rows.reduce((m,r)=> r.snapshot_date>m?r.snapsh
     courses: r=>r.courses,
     total: r=>r.total.toLocaleString(),
   }, "best", false);
+
+  // ---- listing keyword library (searchable) ----
+  {
+    const tbody = document.querySelector("#libTable tbody");
+    if(!listingKws.length){
+      tbody.innerHTML = `<tr><td colspan="4" class="muted">No listing keywords yet — add them to meinnow_crawler/listing_keywords.txt.</td></tr>`;
+    } else {
+      // exact (case-insensitive) match of a listing keyword to a tracked keyword
+      const statByKw = {};
+      for(const k of kwStats) statByKw[k.keyword.toLowerCase()] = k;
+      const libRows = listingKws.map(kw=>{
+        const st = statByKw[kw.toLowerCase()];
+        return { keyword:kw, tracked:!!st, best: st?st.best:null, page1: st?!!st.page1:false };
+      });
+      function renderLib(){
+        const q = document.getElementById("libSearch").value.toLowerCase();
+        const f = document.getElementById("libFilter").value;
+        const rows = libRows.filter(r=>
+          (!q || r.keyword.toLowerCase().includes(q)) &&
+          (!f || (f==="tracked" && r.tracked) || (f==="untracked" && !r.tracked))
+        );
+        const t = rows.filter(r=>r.tracked).length;
+        document.getElementById("libCount").textContent =
+          `${rows.length} of ${libRows.length} keywords · ${t} tracked`;
+        renderTable("libTable", rows, {
+          keyword: r=>`<span class="kw">${r.keyword}</span>`,
+          tracked: r=> r.tracked
+                       ? '<span class="badge b-good">tracked</span>'
+                       : '<span class="badge b-none">not tracked</span>',
+          best:    r=> r.tracked ? rankBadge(r.best) : '<span class="muted">—</span>',
+          page1:   r=> r.tracked
+                       ? (r.page1?'<span class="badge b-good">yes</span>':'<span class="badge b-none">no</span>')
+                       : '<span class="muted">—</span>',
+        }, "keyword", true);
+      }
+      document.getElementById("libSearch").addEventListener("input", renderLib);
+      document.getElementById("libFilter").addEventListener("change", renderLib);
+      renderLib();
+    }
+  }
 
   // ---- coverage section ----
   if(coverage.length){
