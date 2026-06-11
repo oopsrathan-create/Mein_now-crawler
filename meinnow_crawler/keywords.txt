@@ -6,54 +6,186 @@
 # Keywords are grouped into clusters (the "=== ... ===" headers below). The clusters
 # are mirrored in the dashboard (index.html, CLUSTERS) so views can group by category.
 # If you add a keyword here, add it to the matching cluster in index.html too.
+#
+# NOTE: every tracked keyword = one search query per daily run, so this list is
+# intentionally large (it mirrors meinnow_crawler/listing_keywords.txt). Trim it
+# if daily runs get too slow or noisy.
 
 # === Online Marketing (core) ===
 Online Marketing
 Online Marketing Manager
 Online Marketing Strategie
 Online Marketing Grundlagen
+Online Marketing Management
+Online Marketing Leadership
+Online Marketing lernen
+Online Marketing Manager Weiterbildung
+Online Marketing Kampagnen
+Online Marketing - Webshop
+Online Marketing und Inbound Marketing
+Online Kampagnen
+Online Werbung
+Digitale Werbung
+Digitale Kommunikation
+Automatisierung im Online Marketing
+Marketing Kampagnen
+Marketing Manager
 Digital Marketing
 Digitales Marketing
-Marketing Manager
+Digital Marketing Analyst
+Digital Marketing Manager
+Weiterbildung Digital Marketing
 Marketing Weiterbildung
+International Marketing
+Projektmanager Marketing
 
 # === SEO & SEA ===
 SEO
 SEA
 Suchmaschinenoptimierung
 Suchmaschinenmarketing
+Suchmaschinenmarketing und Google Ads
+Suchmaschinenwerbung
+Weiterbildung Suchmaschinenmarketing
 Search Engine Marketing
 Google Ads
 Online Advertising
+PPC Marketing
 
 # === Social Media & Content ===
-Social Media Marketing
+Social Media
+Social Media Betreuung
+Social Media Canva
+Social Media Content
+Social Media Creation
+Social Media Expert
+Social Media Grundlagen
+Social Media Kampagnen
+Social Media Kurs
 Social Media Manager
-Content Marketing
+Social Media Marketing
+Social Media Performance
+Social Media Performance Monitoring
+Social Media Relationship Experte
+Social Media Strategien
+Social Media: Marketing und Optimierung
+Onlinemarketing und Social-Media-Marketing
+Webanalyse & Social Media
 Influencer Marketing
 Instagram Marketing
+Content Marketing
+Content Marketing Manager
+Content Creator Kurs
+Contentpflege
+
+# === Inbound & Email ===
+Inbound Marketing
+Inbound Marketing Weiterbildung
+Inbound- und Content Marketing
+Email Marketing
+E-Mail Marketing
 
 # === Performance & Automation ===
 Performance Marketing
-Affiliate Marketing
+Performance Marketing Experte
+Performance Marketing mit Wordpress
+Performance Marketing, Content Marketing
 Marketing Automation
-E-Mail Marketing
+Affiliate Marketing
 Conversion Optimierung
 
 # === E-Commerce ===
 E-Commerce
+E-Commerce Grundlagen
+E-Commerce Kampagnen
 E-Commerce Manager
+eCommerce Manager
 E-Commerce Marketing
+Aufbaukurs - E-Commerce
+Weiterbildung im E-Commerce
+Social Ads im E-Commerce
+Social Ads Manager
+Social Commerce
+Online-Handel
 Amazon Marketing
 
-# === KI / AI Marketing ===
-KI im Online Marketing
-KI Marketing
+# === KI / AI — Marketing ===
 AI Marketing
+KI Marketing
+KI im Online Marketing
+Online Marketing KI
+Online Marketing Grundlagen KI
+Marketing mit AI
+Marketingkampagnen mit AI
+Marketingstrategie mit KI
+Marktanalyse mit KI
+Content & Online Werbung KI
+Content Creation mit KI
+Contenterstellung mit KI
+Kampagnenerstellung mit KI
+E-Mail Automatisierung mit KI
+KI im datengetriebenen Marketing
+KI im Inbound Marketing
+KI im Vertrieb
+KI für E-Commerce
+Performance Marketing KI
+Performance Marketing mit AI
+SEO Manager KI
+Social Media mit KI
+Texterstellung mit KI
+Videoerstellung mit KI
+Websites mit KI
+
+# === KI / AI — Skills, Tools & Career ===
+AI für Anfänger
+AI Weiterbildung
+AI-Kurs
+AI-Manager
+Grundlagen AI
+Grundlagen KI
+KI Anwendung
+KI Coach
+KI im Arbeitsalltag
+KI im Büroalltag
+KI Lernen
 KI Manager
+KI Manager Weiterbildung
+KI Strategie
+KI Tools für Marketing
+KI und Agile Methoden
+KI und Automatisierung
+KI-Manager:in
+KI-Manager:in Weiterbildung
+KI-Projektmanager
+KI-Weiterbildung
+Weiterbildung KI
+Künstliche Intelligenz
+Künstliche Intelligenz Weiterbildung
+Einführung ins Prompt Engineering
+KI Prompt Engineering
+Prompt Enginnering
+Prompt Kurs
+Projektmanagement mit AI
+ChatGPT
+Claude
+
+# === Tools & Skills ===
+Canva
+CRM
+WordPress
+Google Analytics 4
+Website Management
+Website Optimierung
+
+# === Methods & Leadership ===
+Design Thinking
+Design Thinking und Agile Methoden
+Führungskräftetraining
+Projektmanagement Kurs
 
 # === Data & Analytics ===
 Webanalyse
+Webanalyse für Online Marketing Manager
 Digital Strategy
 Google Analytics
 Datenanalyse
