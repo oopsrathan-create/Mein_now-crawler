@@ -1,40 +1,40 @@
 snapshot_date,type,tracked_title,status,match_title,course_id,locations,next_start,cost_bands,weiterbildungsart
-2026-06-12,Weiterbildung,Content Creator,found,Content Creator Kurs,10338430255,Braunschweig; Hamburg; Hannover; München,2026-06-21,UEBER_1000_BIS_5000_EUR,BERUFLICHE_QUALIFIZIERUNG
-2026-06-12,Weiterbildung,Content Marketing,found,Content Marketing,10342367601,"Bonn; Cottbus; Mainz am Rhein; München; Nürnberg, Mittelfranken",2026-06-14,UEBER_5000_BIS_10000_EUR,BERUFLICHE_QUALIFIZIERUNG
-2026-06-12,Weiterbildung,Content Marketing Expert,found,Content Marketing Expert,10338423309,"Bremen; Cottbus; Dresden; Göttingen, Niedersachsen; Köln",2026-06-14,UEBER_1000_BIS_5000_EUR,BERUFLICHE_QUALIFIZIERUNG
-2026-06-12,Weiterbildung,Content Marketing Manager,found,Content Marketing Manager,10338911508,"Berlin; Freiburg im Breisgau; Koblenz am Rhein; Landshut, Isar; Magdeburg",2026-06-14,UEBER_5000_BIS_10000_EUR,BERUFLICHE_QUALIFIZIERUNG
-2026-06-12,Weiterbildung,Design Thinking & Agile Methoden mit KI,found,Design Thinking & Agile Methoden mit KI,10338436964,Bonn; Düsseldorf; Gummersbach; Hannover,2026-07-05,UEBER_1000_BIS_5000_EUR,BERUFLICHE_QUALIFIZIERUNG
-2026-06-12,Weiterbildung,E-Commerce Shops und E-Commerce Plattformen,missing,,,,,,
-2026-06-12,Weiterbildung,E-Commerce Grundlagen,found,E-Commerce Grundlagen,10338432056,"Braunschweig; Dresden; Landshut, Isar; Mönchengladbach; Stuttgart",2026-06-14,UEBER_1000_BIS_5000_EUR,BERUFLICHE_QUALIFIZIERUNG
-2026-06-12,Weiterbildung,eCommerce Manager,found,E-Commerce Manager,10338427523,"Berlin; Hamburg; Heidelberg, Neckar",2026-06-14,UEBER_5000_BIS_10000_EUR,BERUFLICHE_QUALIFIZIERUNG
-2026-06-12,Weiterbildung,E-Commerce Manager,found,E-Commerce Manager,10338427523,"Berlin; Hamburg; Heidelberg, Neckar",2026-06-14,UEBER_5000_BIS_10000_EUR,BERUFLICHE_QUALIFIZIERUNG
-2026-06-12,Weiterbildung,Inbound Marketing Experte,found,Inbound Marketing Experte,10338431711,"Gelsenkirchen; Hamburg; Heidelberg, Neckar; Neubrandenburg, Mecklenburg; Offenbach am Main",2026-06-28,UEBER_1000_BIS_5000_EUR,BERUFLICHE_QUALIFIZIERUNG
-2026-06-12,Weiterbildung,KI im Büroalltag – ChatGPT & Co.,found,KI im Büroalltag - ChatGPT & Co.,10338433357,"Augsburg, Bayern; Bonn; Gelsenkirchen; Hamburg; Mainz am Rhein",2026-06-21,UEBER_1000_BIS_5000_EUR,BERUFLICHE_QUALIFIZIERUNG
-2026-06-12,Weiterbildung,KI Manager,found,Datengetriebenes Marketing als KI Manager,10391166704,Esslingen am Neckar; Leverkusen; München; Neuss; Stuttgart,,UEBER_1000_BIS_5000_EUR,BERUFLICHE_QUALIFIZIERUNG
-2026-06-12,Weiterbildung,KI-Anwendung & Agile Arbeitsmethoden,found,KI-Anwendung & Agile Arbeitsmethoden,10338435970,Detmold; Dresden; Hamburg; Köln; München,2026-06-28,UEBER_1000_BIS_5000_EUR,BERUFLICHE_QUALIFIZIERUNG
-2026-06-12,Weiterbildung,KI-Anwendung & KI-Implementierung,missing,,,,,,
-2026-06-12,Weiterbildung,KI-Strategie & KI-Implementierung,missing,,,,,,
-2026-06-12,Weiterbildung,KI-Strategie & KI-Implementierung & Agile Methoden,missing,,,,,,
-2026-06-12,Weiterbildung,Content Creation mit KI,found,Content Creation mit KI,10338431094,Bahlingen am Kaiserstuhl; Düsseldorf; Lübeck; Mainz am Rhein; Stuttgart,2026-06-14,UEBER_1000_BIS_5000_EUR,BERUFLICHE_QUALIFIZIERUNG
-2026-06-12,Weiterbildung,Social Media Manager,found,Social Media Manager,10340407675,Berlin; Bremen; Esslingen am Neckar; Iserlohn; Köln,2026-06-14,UEBER_5000_BIS_10000_EUR,BERUFLICHE_QUALIFIZIERUNG
-2026-06-12,Weiterbildung,Social Media Advertising Expert:in,found,Social Media Advertising Expert:in,10338895586,"Düsseldorf; Hof, Saale; Leipzig; Stuttgart",2026-06-21,UEBER_1000_BIS_5000_EUR,BERUFLICHE_QUALIFIZIERUNG
-2026-06-12,Weiterbildung,Social Media Advertising,found,Social Media Advertising,10338895266,"Detmold; Karlsruhe, Baden; Köln; München; Stuttgart",2026-07-05,UEBER_1000_BIS_5000_EUR,BERUFLICHE_QUALIFIZIERUNG
-2026-06-12,Weiterbildung,Online Marketing,found,Online Marketing,10349701750,"Freiburg im Breisgau; Gießen, Lahn; Hamburg; Magdeburg",2026-06-14,UEBER_10000_EUR,BERUFLICHE_QUALIFIZIERUNG
-2026-06-12,Weiterbildung,Online Marketing Grundlagen für Marketing Manager,found,Online Marketing Grundlagen für Marketing Manager:in,10338910725,"Hof, Saale; Jena; Koblenz am Rhein; Köln; Oberhausen, Rheinland",2026-06-14,UEBER_1000_BIS_5000_EUR,BERUFLICHE_QUALIFIZIERUNG
-2026-06-12,Weiterbildung,Online Marketing International,found,Online Marketing,10349701750,"Freiburg im Breisgau; Gießen, Lahn; Hamburg; Magdeburg",2026-06-14,UEBER_10000_EUR,BERUFLICHE_QUALIFIZIERUNG
-2026-06-12,Weiterbildung,Online Marketing Manager,found,Online Marketing Manager,10343394728,"Göttingen, Niedersachsen; Hamburg; Karlsruhe, Baden; Krefeld; Leipzig",2026-06-14,UEBER_5000_BIS_10000_EUR,BERUFLICHE_QUALIFIZIERUNG
-2026-06-12,Weiterbildung,Online Marketing Manager Weiterbildung,found,Online Marketing Manager Weiterbildung,10342368910,"Bahlingen am Kaiserstuhl; Düsseldorf; Iserlohn; Krefeld; Nürnberg, Mittelfranken",2026-06-14,UEBER_10000_EUR,BERUFLICHE_QUALIFIZIERUNG
-2026-06-12,Weiterbildung,Performance Marketing Experte,found,Performance Marketing Experte,10338428159,Erfurt; Hamburg; Hannover; Wuppertal,2026-06-28,UEBER_1000_BIS_5000_EUR,BERUFLICHE_QUALIFIZIERUNG
-2026-06-12,Weiterbildung,Performance Marketing Manager,found,Performance Marketing Manager,10338424756,Berlin; Bremen; Hamburg; Köln,2026-06-14,UEBER_5000_BIS_10000_EUR,BERUFLICHE_QUALIFIZIERUNG
-2026-06-12,Weiterbildung,Performance Marketing Masterclass,found,Performance Marketing Masterclass,10338430808,"Augsburg, Bayern; Dresden; Köln; Lörrach",2026-06-14,UEBER_5000_BIS_10000_EUR,BERUFLICHE_QUALIFIZIERUNG
-2026-06-12,Weiterbildung,PPC Marketing - Paid Advertising,found,PPC Marketing - Paid Advertising,10338429570,Berlin; Hamburg; Hannover; Mainz am Rhein,2026-06-14,UEBER_1000_BIS_5000_EUR,BERUFLICHE_QUALIFIZIERUNG
-2026-06-12,Weiterbildung,Search Engine Marketing Expert,found,Search Engine Marketing Expert,10338431852,"Detmold; Düsseldorf; Frankfurt am Main; Hof, Saale; Lüneburg",2026-06-14,UEBER_1000_BIS_5000_EUR,BERUFLICHE_QUALIFIZIERUNG
-2026-06-12,Weiterbildung,Social Media Creation Experte,found,Social Media Creation Experte,10338428797,Dresden; Frankfurt am Main; Hamburg; Hannover; Konstanz,2026-06-21,UEBER_1000_BIS_5000_EUR,BERUFLICHE_QUALIFIZIERUNG
-2026-06-12,Weiterbildung,Social Media Expert,found,Social Media Expert:in,10338911376,Bonn; Cottbus; Flensburg; Gummersbach; Landau in der Pfalz,2026-06-14,UEBER_1000_BIS_5000_EUR,BERUFLICHE_QUALIFIZIERUNG
-2026-06-12,Weiterbildung,Social Media Grundlagen,found,Social Media Grundlagen,10338422909,"Hannover; Köln; München; Nürnberg, Mittelfranken; Offenburg",2026-06-14,UEBER_1000_BIS_5000_EUR,BERUFLICHE_QUALIFIZIERUNG
-2026-06-12,Weiterbildung,Social Media Marketing Expert,found,Social Media Marketing,10338427203,Berlin; Gummersbach; Hamburg; Rostock,2026-06-14,UEBER_1000_BIS_5000_EUR,BERUFLICHE_QUALIFIZIERUNG
-2026-06-12,Weiterbildung,NEU: Social Media Weiterbildung,found,Social Media Weiterbildung,10342368125,Berlin; Hamburg; Hannover; Koblenz am Rhein,2026-06-14,UEBER_5000_BIS_10000_EUR,BERUFLICHE_QUALIFIZIERUNG
-2026-06-12,Weiterbildung,Social Media Relationship Expert:in,missing,,,,,,
-2026-06-12,Weiterbildung,WordPress,found,WordPress,10338426557,Berlin; Freiburg im Breisgau; Hamburg; Köln; Neuss,2026-06-28,UEBER_1000_BIS_5000_EUR,BERUFLICHE_QUALIFIZIERUNG
-2026-06-12,Weiterbildung,KI- und Online Marketing Weiterbildung,found,KI- und Online Marketing Weiterbildung,10392170202,Bremen; Dresden; Esslingen am Neckar; Jena; Lörrach,2026-07-05,UEBER_10000_EUR,BERUFLICHE_QUALIFIZIERUNG
-2026-06-12,Weiterbildung,KI- und Online Marketing Manager,found,KI- und Online Marketing Manager,10392169953,"Berlin; Dortmund; Gießen, Lahn; Hannover; Lübeck",2026-07-05,UEBER_10000_EUR,BERUFLICHE_QUALIFIZIERUNG
+2026-06-13,Weiterbildung,Content Creator,found,Content Creator Kurs,10338430255,Braunschweig; Hamburg; Hannover; München,2026-06-21,UEBER_1000_BIS_5000_EUR,BERUFLICHE_QUALIFIZIERUNG
+2026-06-13,Weiterbildung,Content Marketing,found,Content Marketing,10342367601,"Bonn; Cottbus; Mainz am Rhein; München; Nürnberg, Mittelfranken",2026-06-14,UEBER_5000_BIS_10000_EUR,BERUFLICHE_QUALIFIZIERUNG
+2026-06-13,Weiterbildung,Content Marketing Expert,found,Content Marketing Expert,10338423309,"Bremen; Cottbus; Dresden; Göttingen, Niedersachsen; Köln",2026-06-14,UEBER_1000_BIS_5000_EUR,BERUFLICHE_QUALIFIZIERUNG
+2026-06-13,Weiterbildung,Content Marketing Manager,found,Content Marketing Manager,10338911508,"Berlin; Freiburg im Breisgau; Koblenz am Rhein; Landshut, Isar; Magdeburg",2026-06-14,UEBER_5000_BIS_10000_EUR,BERUFLICHE_QUALIFIZIERUNG
+2026-06-13,Weiterbildung,Design Thinking & Agile Methoden mit KI,found,Design Thinking & Agile Methoden mit KI,10338436964,Bonn; Düsseldorf; Gummersbach; Hannover,2026-07-05,UEBER_1000_BIS_5000_EUR,BERUFLICHE_QUALIFIZIERUNG
+2026-06-13,Weiterbildung,E-Commerce Shops und E-Commerce Plattformen,missing,,,,,,
+2026-06-13,Weiterbildung,E-Commerce Grundlagen,found,E-Commerce Grundlagen,10338432056,"Braunschweig; Dresden; Landshut, Isar; Mönchengladbach; Stuttgart",2026-06-14,UEBER_1000_BIS_5000_EUR,BERUFLICHE_QUALIFIZIERUNG
+2026-06-13,Weiterbildung,eCommerce Manager,found,E-Commerce Manager,10338427523,"Berlin; Hamburg; Heidelberg, Neckar",2026-06-14,UEBER_5000_BIS_10000_EUR,BERUFLICHE_QUALIFIZIERUNG
+2026-06-13,Weiterbildung,E-Commerce Manager,found,E-Commerce Manager,10338427523,"Berlin; Hamburg; Heidelberg, Neckar",2026-06-14,UEBER_5000_BIS_10000_EUR,BERUFLICHE_QUALIFIZIERUNG
+2026-06-13,Weiterbildung,Inbound Marketing Experte,found,Inbound Marketing Experte,10338431711,"Gelsenkirchen; Hamburg; Heidelberg, Neckar; Neubrandenburg, Mecklenburg; Offenbach am Main",2026-06-28,UEBER_1000_BIS_5000_EUR,BERUFLICHE_QUALIFIZIERUNG
+2026-06-13,Weiterbildung,KI im Büroalltag – ChatGPT & Co.,found,KI im Büroalltag - ChatGPT & Co.,10338433357,"Augsburg, Bayern; Bonn; Gelsenkirchen; Hamburg; Mainz am Rhein",2026-06-21,UEBER_1000_BIS_5000_EUR,BERUFLICHE_QUALIFIZIERUNG
+2026-06-13,Weiterbildung,KI Manager,found,Datengetriebenes Marketing als KI Manager,10391166704,Esslingen am Neckar; Leverkusen; München; Neuss; Stuttgart,,UEBER_1000_BIS_5000_EUR,BERUFLICHE_QUALIFIZIERUNG
+2026-06-13,Weiterbildung,KI-Anwendung & Agile Arbeitsmethoden,found,KI-Anwendung & Agile Arbeitsmethoden,10338435970,Detmold; Dresden; Hamburg; Köln; München,2026-06-28,UEBER_1000_BIS_5000_EUR,BERUFLICHE_QUALIFIZIERUNG
+2026-06-13,Weiterbildung,KI-Anwendung & KI-Implementierung,missing,,,,,,
+2026-06-13,Weiterbildung,KI-Strategie & KI-Implementierung,missing,,,,,,
+2026-06-13,Weiterbildung,KI-Strategie & KI-Implementierung & Agile Methoden,missing,,,,,,
+2026-06-13,Weiterbildung,Content Creation mit KI,found,Content Creation mit KI,10338431094,Bahlingen am Kaiserstuhl; Düsseldorf; Lübeck; Mainz am Rhein; Stuttgart,2026-06-14,UEBER_1000_BIS_5000_EUR,BERUFLICHE_QUALIFIZIERUNG
+2026-06-13,Weiterbildung,Social Media Manager,found,Social Media Manager,10340407675,Berlin; Bremen; Esslingen am Neckar; Iserlohn; Köln,2026-06-14,UEBER_5000_BIS_10000_EUR,BERUFLICHE_QUALIFIZIERUNG
+2026-06-13,Weiterbildung,Social Media Advertising Expert:in,found,Social Media Advertising Expert:in,10338895586,"Düsseldorf; Hof, Saale; Leipzig; Stuttgart",2026-06-21,UEBER_1000_BIS_5000_EUR,BERUFLICHE_QUALIFIZIERUNG
+2026-06-13,Weiterbildung,Social Media Advertising,found,Social Media Advertising,10338895266,"Detmold; Karlsruhe, Baden; Köln; München; Stuttgart",2026-07-05,UEBER_1000_BIS_5000_EUR,BERUFLICHE_QUALIFIZIERUNG
+2026-06-13,Weiterbildung,Online Marketing,found,Online Marketing,10349701750,"Freiburg im Breisgau; Gießen, Lahn; Hamburg; Magdeburg",2026-06-14,UEBER_10000_EUR,BERUFLICHE_QUALIFIZIERUNG
+2026-06-13,Weiterbildung,Online Marketing Grundlagen für Marketing Manager,found,Online Marketing Grundlagen für Marketing Manager:in,10338910725,"Hof, Saale; Jena; Koblenz am Rhein; Köln; Oberhausen, Rheinland",2026-06-14,UEBER_1000_BIS_5000_EUR,BERUFLICHE_QUALIFIZIERUNG
+2026-06-13,Weiterbildung,Online Marketing International,found,Online Marketing,10349701750,"Freiburg im Breisgau; Gießen, Lahn; Hamburg; Magdeburg",2026-06-14,UEBER_10000_EUR,BERUFLICHE_QUALIFIZIERUNG
+2026-06-13,Weiterbildung,Online Marketing Manager,found,Online Marketing Manager,10343394728,"Göttingen, Niedersachsen; Hamburg; Karlsruhe, Baden; Krefeld; Leipzig",2026-06-14,UEBER_5000_BIS_10000_EUR,BERUFLICHE_QUALIFIZIERUNG
+2026-06-13,Weiterbildung,Online Marketing Manager Weiterbildung,found,Online Marketing Manager Weiterbildung,10342368910,"Bahlingen am Kaiserstuhl; Düsseldorf; Iserlohn; Krefeld; Nürnberg, Mittelfranken",2026-06-14,UEBER_10000_EUR,BERUFLICHE_QUALIFIZIERUNG
+2026-06-13,Weiterbildung,Performance Marketing Experte,found,Performance Marketing Experte,10338428159,Erfurt; Hamburg; Hannover; Wuppertal,2026-06-28,UEBER_1000_BIS_5000_EUR,BERUFLICHE_QUALIFIZIERUNG
+2026-06-13,Weiterbildung,Performance Marketing Manager,found,Performance Marketing Manager,10338424756,Berlin; Bremen; Hamburg; Köln,2026-06-14,UEBER_5000_BIS_10000_EUR,BERUFLICHE_QUALIFIZIERUNG
+2026-06-13,Weiterbildung,Performance Marketing Masterclass,found,Performance Marketing Masterclass,10338430808,"Augsburg, Bayern; Dresden; Köln; Lörrach",2026-06-14,UEBER_5000_BIS_10000_EUR,BERUFLICHE_QUALIFIZIERUNG
+2026-06-13,Weiterbildung,PPC Marketing - Paid Advertising,found,PPC Marketing - Paid Advertising,10338429570,Berlin; Hamburg; Hannover; Mainz am Rhein,2026-06-14,UEBER_1000_BIS_5000_EUR,BERUFLICHE_QUALIFIZIERUNG
+2026-06-13,Weiterbildung,Search Engine Marketing Expert,found,Search Engine Marketing Expert,10338431852,"Detmold; Düsseldorf; Frankfurt am Main; Hof, Saale; Lüneburg",2026-06-14,UEBER_1000_BIS_5000_EUR,BERUFLICHE_QUALIFIZIERUNG
+2026-06-13,Weiterbildung,Social Media Creation Experte,found,Social Media Creation Experte,10338428797,Dresden; Frankfurt am Main; Hamburg; Hannover; Konstanz,2026-06-21,UEBER_1000_BIS_5000_EUR,BERUFLICHE_QUALIFIZIERUNG
+2026-06-13,Weiterbildung,Social Media Expert,found,Social Media Expert:in,10338911376,Bonn; Cottbus; Flensburg; Gummersbach; Landau in der Pfalz,2026-06-14,UEBER_1000_BIS_5000_EUR,BERUFLICHE_QUALIFIZIERUNG
+2026-06-13,Weiterbildung,Social Media Grundlagen,found,Social Media Grundlagen,10338422909,"Hannover; Köln; München; Nürnberg, Mittelfranken; Offenburg",2026-06-14,UEBER_1000_BIS_5000_EUR,BERUFLICHE_QUALIFIZIERUNG
+2026-06-13,Weiterbildung,Social Media Marketing Expert,found,Social Media Marketing,10338427203,Berlin; Gummersbach; Hamburg; Rostock,2026-06-14,UEBER_1000_BIS_5000_EUR,BERUFLICHE_QUALIFIZIERUNG
+2026-06-13,Weiterbildung,NEU: Social Media Weiterbildung,found,Social Media Weiterbildung,10342368125,Berlin; Hamburg; Hannover; Koblenz am Rhein,2026-06-14,UEBER_5000_BIS_10000_EUR,BERUFLICHE_QUALIFIZIERUNG
+2026-06-13,Weiterbildung,Social Media Relationship Expert:in,missing,,,,,,
+2026-06-13,Weiterbildung,WordPress,found,WordPress,10338426557,Berlin; Freiburg im Breisgau; Hamburg; Köln; Neuss,2026-06-28,UEBER_1000_BIS_5000_EUR,BERUFLICHE_QUALIFIZIERUNG
+2026-06-13,Weiterbildung,KI- und Online Marketing Weiterbildung,found,KI- und Online Marketing Weiterbildung,10392170202,Bremen; Dresden; Esslingen am Neckar; Jena; Lörrach,2026-07-05,UEBER_10000_EUR,BERUFLICHE_QUALIFIZIERUNG
+2026-06-13,Weiterbildung,KI- und Online Marketing Manager,found,KI- und Online Marketing Manager,10392169953,"Berlin; Dortmund; Gießen, Lahn; Hannover; Lübeck",2026-07-05,UEBER_10000_EUR,BERUFLICHE_QUALIFIZIERUNG
