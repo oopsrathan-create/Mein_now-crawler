@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ecomex · Wettbewerber-Kurse</title>
+<script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+<style>
+  :root {
+    --bg:#0f1419; --panel:#1a2029; --panel2:#222b36; --line:#2c3744;
+    --text:#e6edf3; --muted:#8b98a5; --accent:#4cc9f0; --good:#3fb950; --warn:#d29922; --bad:#f85149;
+  }
+  * { box-sizing:border-box; }
+  body { margin:0; font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+         background:var(--bg); color:var(--text); font-size:14px; }
+  header { padding:20px 28px; border-bottom:1px solid var(--line); display:flex;
+           align-items:baseline; gap:14px; flex-wrap:wrap; }
+  header h1 { font-size:18px; margin:0; font-weight:600; }
+  header .sub { color:var(--muted); font-size:13px; }
+  header a { color:var(--accent); text-decoration:none; font-size:13px; }
+  main { max-width:1200px; margin:0 auto; padding:24px 28px 60px; }
+  .tiles { display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:14px; margin-bottom:24px; }
+  .tile { background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:16px 18px; }
+  .tile .n { font-size:26px; font-weight:700; }
+  .tile .l { color:var(--muted); font-size:12px; margin-top:4px; text-transform:uppercase; letter-spacing:.04em; }
+  table { width:100%; border-collapse:collapse; font-size:13px; }
+  th,td { text-align:left; padding:8px 10px; border-bottom:1px solid var(--line); vertical-align:top; }
+  th { color:var(--muted); font-weight:600; cursor:pointer; user-select:none; white-space:nowrap; }
+  th:hover { color:var(--text); }
+  tr.company:hover td { background:var(--panel2); cursor:pointer; }
+  tr.brandrow td { background:rgba(76,201,240,.10); }
+  .badge { display:inline-block; padding:2px 7px; border-radius:20px; font-size:11px; font-weight:600; }
+  .b-good { background:rgba(63,185,80,.15); color:var(--good); }
+  .b-warn { background:rgba(210,153,34,.15); color:var(--warn); }
+  .b-none { background:#2c3744; color:var(--muted); }
+  .kw { color:var(--accent); }
+  .muted{ color:var(--muted); }
+  input[type=search]{ background:var(--panel2); border:1px solid var(--line); color:var(--text);
+        border-radius:7px; padding:8px 12px; width:320px; max-width:100%; font-size:13px; }
+  .tabs{ background:var(--panel); border:1px solid var(--line); border-radius:10px; margin-bottom:24px; overflow:hidden; }
+  .tabnav{ display:flex; border-bottom:1px solid var(--line); }
+  .tabbtn{ background:transparent; color:var(--muted); border:0; border-bottom:2px solid transparent;
+           padding:13px 18px; font-size:13px; font-weight:600; cursor:pointer; font-family:inherit; }
+  .tabbtn:hover{ color:var(--text); }
+  .tabbtn.active{ color:var(--text); border-bottom-color:var(--accent); }
+  .tabpanel{ display:none; padding:18px 20px; }
+  .tabpanel.active{ display:block; }
+  .tabpanel h2{ font-size:15px; margin:0 0 14px; font-weight:600; }
+  .courses{ margin:6px 0 2px; padding-left:0; list-style:none; columns:2; column-gap:28px; }
+  .courses li{ padding:3px 0; break-inside:avoid; }
+  .detail td{ background:#11161d; }
+  small.note{ color:var(--muted); display:block; margin-top:12px; }
+  .err{ color:var(--bad); }
+</style>
+</head>
+<body>
+<header>
+  <h1>ecomex · Wettbewerber-Kurse</h1>
+  <span class="sub" id="updated">lädt…</span>
+  <a href="index.html" style="margin-left:auto">← zurück zum Dashboard</a>
+</header>
+<main>
+  <div class="tiles" id="tiles"></div>
+
+  <div class="tabs">
+    <nav class="tabnav">
+      <button class="tabbtn active" data-tab="companies">Nach Unternehmen</button>
+      <button class="tabbtn" data-tab="topic">Themensuche</button>
+    </nav>
+
+    <div class="tabpanel active" data-tab="companies">
+      <h2>Kurse nach Unternehmen <span class="muted">— Unternehmen suchen, um alle Kurse und die Gesamtzahl zu sehen</span></h2>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px;align-items:center">
+        <input type="search" id="compSearch" placeholder="Unternehmen suchen… (z. B. IU, Academy)" />
+        <span class="muted" id="compCount"></span>
+      </div>
+      <table id="compTable">
+        <thead><tr>
+          <th data-k="provider">Unternehmen</th>
+          <th data-k="count">Kurse gesamt</th>
+          <th data-k="best">Beste Position</th>
+          <th data-k="kwc">Keywords abgedeckt</th>
+        </tr></thead>
+        <tbody></tbody>
+      </table>
+      <small class="note">Klicken Sie auf ein Unternehmen, um alle erfassten Kurse aufzulisten. „Kurse gesamt“ = eindeutige Kurse dieses Anbieters, die in einem Ihrer getrackten Keyword-Suchen erscheinen (dedupliziert).</small>
+    </div>
+
+    <div class="tabpanel" data-tab="topic">
+      <h2>Themensuche <span class="muted">— Begriff eingeben und sehen, wie viele Kurse jedes Unternehmen dazu hat</span></h2>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px;align-items:center">
+        <input type="search" id="topicSearch" placeholder="Thema/Kurs suchen… (z. B. Online Marketing, SEO, KI)" />
+        <span class="muted" id="topicCount"></span>
+      </div>
+      <table id="topicTable">
+        <thead><tr>
+          <th data-k="provider">Unternehmen</th>
+          <th data-k="count">Passende Kurse</th>
+          <th data-k="best">Beste Position</th>
+        </tr></thead>
+        <tbody></tbody>
+      </table>
+      <small class="note">Zählt je Unternehmen die Kurse, deren Titel den Suchbegriff enthält oder die für ein passendes Keyword ranken. Klicken Sie auf eine Zeile, um die Kurse zu sehen.</small>
+    </div>
+  </div>
+
+  <p class="muted">Datenquelle: mein-now.de / KURSNET. Hinweis: Die mein-now-API bietet keinen Anbieterfilter — die Kurslisten umfassen alle Kurse eines Anbieters, die in Ihren getrackten Keyword-Suchen erscheinen (nicht zwingend den gesamten Katalog des Anbieters).</p>
+</main>
+
+<script>
+const DATA = "meinnow_crawler/data/";
+function esc(s){ return (s||"").replace(/[&<>"]/g, c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c])); }
+function prettyArt(a){ return (a||"").replace(/_/g," ").toLowerCase().replace(/\b\w/g,m=>m.toUpperCase()); }
+function rankBadge(r){
+  if(r==null||r===""||!isFinite(r)) return '<span class="badge b-none">—</span>';
+  r=+r; const cls = r<=20?"b-good":r<=100?"b-warn":"b-bad";
+  return `<span class="badge ${cls}">#${r}</span>`;
+}
+
+async function loadCsv(name){
+  const res = await fetch(DATA+name, {cache:"no-store"});
+  if(!res.ok) throw new Error(name+" ("+res.status+")");
+  return Papa.parse(await res.text(), {header:true, skipEmptyLines:true}).data;
+}
+
+(async function(){
+  let cat;
+  try { cat = await loadCsv("latest_competitor_catalog.csv"); }
+  catch(e){
+    document.getElementById("updated").innerHTML =
+      `<span class="err">Katalog noch nicht verfügbar: ${e.message}. Er entsteht beim nächsten Crawl-Lauf.</span>`;
+    return;
+  }
+  if(!cat.length){
+    document.getElementById("updated").textContent = "Noch keine Katalogdaten — beim nächsten Crawl wird er befüllt.";
+    return;
+  }
+  document.getElementById("updated").textContent = "Stand " + (cat[0].snapshot_date || "—");
+
+  // ---- group courses by company ----
+  const byCompany = {};
+  for(const r of cat){
+    const p = r.provider || "(ohne Anbieter)";
+    (byCompany[p] ??= { provider:p, brand:r.is_brand==="1", courses:[] }).courses.push({
+      title: r.title || "(ohne Titel)",
+      art: r.weiterbildungsart || "",
+      best: +r.best_rank || Infinity,
+      kwc: +r.keyword_count || 0,
+      keywords: (r.keywords||"").toLowerCase(),
+    });
+  }
+  const companies = Object.values(byCompany).map(c=>({
+    provider:c.provider, brand:c.brand, courses:c.courses,
+    count:c.courses.length,
+    best: Math.min(...c.courses.map(x=>x.best)),
+    kwc: new Set(c.courses.flatMap(x=>x.keywords.split("; ").filter(Boolean))).size,
+  }));
+
+  // ---- tiles ----
+  const tiles = [
+    {n:companies.length, l:"Unternehmen"},
+    {n:cat.length, l:"Kurse erfasst"},
+    {n:companies.slice().sort((a,b)=>b.count-a.count)[0]?.count ?? "—", l:"Meiste Kurse (ein Anbieter)"},
+  ];
+  document.getElementById("tiles").innerHTML = tiles.map(t=>
+    `<div class="tile"><div class="n">${t.n}</div><div class="l">${t.l}</div></div>`).join("");
+
+  // ---- generic: render a company table with expandable course lists ----
+  function courseListHtml(courses){
+    const sorted = courses.slice().sort((a,b)=>a.best-b.best);
+    return `<ul class="courses">` + sorted.map(c=>
+      `<li>${rankBadge(c.best===Infinity?null:c.best)} ${esc(c.title)}`+
+      (c.art?` <span class="muted">· ${esc(prettyArt(c.art))}</span>`:"")+`</li>`).join("") + `</ul>`;
+  }
+  function renderCompanyTable(tableId, rows, courseGetter, cols){
+    const tbody = document.querySelector(`#${tableId} tbody`);
+    tbody.innerHTML = rows.map((r,i)=>{
+      const cells = cols.map(c=>`<td>${c(r)}</td>`).join("");
+      return `<tr class="company${r.brand?" brandrow":""}" data-i="${i}">${cells}</tr>`+
+             `<tr class="detail" data-d="${i}" style="display:none"><td colspan="${cols.length}">${courseListHtml(courseGetter(r))}</td></tr>`;
+    }).join("");
+    tbody.querySelectorAll("tr.company").forEach(tr=>tr.addEventListener("click",()=>{
+      const d = tbody.querySelector(`tr.detail[data-d="${tr.dataset.i}"]`);
+      if(d) d.style.display = d.style.display==="none" ? "" : "none";
+    }));
+  }
+
+  // ---- tab 1: by company (searchable) ----
+  function renderCompanies(){
+    const q = document.getElementById("compSearch").value.toLowerCase().trim();
+    const rows = companies
+      .filter(c=> !q || c.provider.toLowerCase().includes(q))
+      .sort((a,b)=> b.count-a.count || a.best-b.best);
+    document.getElementById("compCount").textContent =
+      `${rows.length} von ${companies.length} Unternehmen`;
+    renderCompanyTable("compTable", rows, r=>r.courses, [
+      r=> `${r.brand?'<span class="kw">'+esc(r.provider)+'</span> <span class="badge b-good">Sie</span>':esc(r.provider)}`,
+      r=> `<b>${r.count}</b>`,
+      r=> rankBadge(r.best===Infinity?null:r.best),
+      r=> `<span class="muted">${r.kwc}</span>`,
+    ]);
+  }
+  document.getElementById("compSearch").addEventListener("input", renderCompanies);
+  renderCompanies();
+
+  // ---- tab 2: topic search ----
+  function renderTopic(){
+    const q = document.getElementById("topicSearch").value.toLowerCase().trim();
+    const tbody = document.querySelector("#topicTable tbody");
+    if(!q){
+      tbody.innerHTML = `<tr><td colspan="3" class="muted">Begriff eingeben, z. B. „Online Marketing“.</td></tr>`;
+      document.getElementById("topicCount").textContent = "";
+      return;
+    }
+    const rows = companies.map(c=>{
+      const hits = c.courses.filter(x=> x.title.toLowerCase().includes(q) || x.keywords.includes(q));
+      return hits.length ? {provider:c.provider, brand:c.brand, count:hits.length,
+                            best:Math.min(...hits.map(x=>x.best)), courses:hits} : null;
+    }).filter(Boolean).sort((a,b)=> b.count-a.count || a.best-b.best);
+    const total = rows.reduce((s,r)=>s+r.count,0);
+    document.getElementById("topicCount").textContent =
+      `${total} Kurse bei ${rows.length} Unternehmen für „${q}“`;
+    if(!rows.length){
+      tbody.innerHTML = `<tr><td colspan="3" class="muted">Keine Kurse für „${esc(q)}“ gefunden.</td></tr>`;
+      return;
+    }
+    renderCompanyTable("topicTable", rows, r=>r.courses, [
+      r=> `${r.brand?'<span class="kw">'+esc(r.provider)+'</span> <span class="badge b-good">Sie</span>':esc(r.provider)}`,
+      r=> `<b>${r.count}</b>`,
+      r=> rankBadge(r.best===Infinity?null:r.best),
+    ]);
+  }
+  document.getElementById("topicSearch").addEventListener("input", renderTopic);
+  renderTopic();
+
+  // ---- tab switching ----
+  document.querySelectorAll(".tabbtn").forEach(btn=>btn.addEventListener("click",()=>{
+    document.querySelectorAll(".tabbtn").forEach(b=>b.classList.toggle("active", b===btn));
+    document.querySelectorAll(".tabpanel").forEach(p=>p.classList.toggle("active", p.dataset.tab===btn.dataset.tab));
+  }));
+})();
+</script>
+</body>
+</html>

@@ -99,7 +99,11 @@ def matches(name: str, providers: list[str]) -> bool:
 
 
 def analyse_keyword(client: Client, keyword: str, providers: list[str], top_n: int, scan_depth: int):
-    """Return (rank_row, competitor_rows) for one keyword."""
+    """Return (rank_row, competitor_rows, catalog_obs) for one keyword.
+
+    catalog_obs is one entry per scanned course (any provider) so callers can
+    build a full competitor catalogue — the titles are already in the responses
+    we fetch here, so capturing them costs no extra requests."""
     first = client.page(keyword, 0)
     total = first.get("page", {}).get("totalElements", 0)
     total_pages = first.get("page", {}).get("totalPages", 1)
@@ -111,12 +115,20 @@ def analyse_keyword(client: Client, keyword: str, providers: list[str], top_n: i
     brand_in_scan = 0
     top_n_provider_counts: Counter = Counter()
     top_n_provider_best: dict[str, int] = {}
+    catalog_obs: list[dict] = []
 
     def consume(data: dict):
         nonlocal rank, brand_best, brand_course, brand_in_top_n, brand_in_scan
         for c in listings(data):
             name = (c.get("bildungsanbieter") or {}).get("name", "")
             pos = rank + 1
+            catalog_obs.append({
+                "course_id": c.get("id"),
+                "title": c.get("titel", ""),
+                "provider": name,
+                "weiterbildungsart": c.get("weiterbildungsart", ""),
+                "pos": pos,
+            })
             if rank < top_n:
                 top_n_provider_counts[name] += 1
                 top_n_provider_best.setdefault(name, pos)
@@ -155,7 +167,7 @@ def analyse_keyword(client: Client, keyword: str, providers: list[str], top_n: i
             "share_pct": round(100 * cnt / max(rank if rank < top_n else top_n, 1), 1),
             "best_rank": top_n_provider_best.get(name, ""),
         })
-    return rank_row, comp_rows
+    return rank_row, comp_rows, catalog_obs
 
 
 def discover_candidates(client: Client, providers: list[str], limit: int) -> list[str]:
@@ -175,6 +187,7 @@ def discover_candidates(client: Client, providers: list[str], limit: int) -> lis
 RANK_FIELDS = ["snapshot_date", "keyword", "total_results", "brand_best_rank", "brand_course", "brand_in_top_n", "brand_in_scan", "top_n", "scanned"]
 COMP_FIELDS = ["snapshot_date", "keyword", "provider", "count_top_n", "share_pct", "best_rank"]
 DISC_FIELDS = ["keyword", "brand_best_rank", "brand_course", "total_results"]
+CATALOG_FIELDS = ["snapshot_date", "provider", "is_brand", "course_id", "title", "weiterbildungsart", "keyword_count", "best_rank", "keywords"]
 
 
 def append_csv(path: Path, fields: list[str], rows: list[dict]):
@@ -208,22 +221,62 @@ def main() -> int:
     keywords = load_keywords()
 
     rank_rows, comp_rows = [], []
+    catalog: dict = {}   # course_id -> aggregated course record across all keywords
     for kw in keywords:
-        rr, cr = analyse_keyword(client, kw, providers, top_n, scan_depth)
+        rr, cr, cat = analyse_keyword(client, kw, providers, top_n, scan_depth)
         rank_rows.append(rr)
         comp_rows.extend(cr[:top_competitors])
+        for obs in cat:
+            cid = obs["course_id"]
+            if cid is None or cid == "":
+                continue
+            a = catalog.get(cid)
+            if a is None:
+                catalog[cid] = {
+                    "provider": obs["provider"],
+                    "is_brand": 1 if matches(obs["provider"], providers) else 0,
+                    "title": obs["title"],
+                    "weiterbildungsart": obs["weiterbildungsart"],
+                    "best_rank": obs["pos"],
+                    "kws": {kw},
+                }
+            else:
+                a["kws"].add(kw)
+                if obs["pos"] < a["best_rank"]:
+                    a["best_rank"] = obs["pos"]
         print(f"[rank] {kw}: brand best={rr['brand_best_rank'] or '—'} of {rr['total_results']}")
 
     append_csv(DATA / "keyword_ranks.csv", RANK_FIELDS, rank_rows)
     append_csv(DATA / "keyword_competitors.csv", COMP_FIELDS, comp_rows)
     print(f"wrote {len(rank_rows)} rank rows, {len(comp_rows)} competitor rows")
 
+    # Competitor catalogue: one row per unique course (any provider) seen across
+    # the keyword scans, deduped by id. Powers the separate competitors page.
+    cat_rows = []
+    for cid, a in catalog.items():
+        kws = sorted(a["kws"])
+        cat_rows.append({
+            "snapshot_date": TODAY,
+            "provider": a["provider"],
+            "is_brand": a["is_brand"],
+            "course_id": cid,
+            "title": a["title"],
+            "weiterbildungsart": a["weiterbildungsart"],
+            "keyword_count": len(kws),
+            "best_rank": a["best_rank"],
+            "keywords": "; ".join(kws[:12]),
+        })
+    cat_rows.sort(key=lambda r: (r["provider"].casefold(), r["best_rank"]))
+    write_csv(DATA / "latest_competitor_catalog.csv", CATALOG_FIELDS, cat_rows)
+    providers_n = len({r["provider"] for r in cat_rows})
+    print(f"wrote {len(cat_rows)} catalogue courses across {providers_n} providers -> latest_competitor_catalog.csv")
+
     # Discovery: candidates mined from brand titles, not already tracked.
     tracked = {k.casefold() for k in keywords}
     candidates = [c for c in discover_candidates(client, providers, discovery_max) if c.casefold() not in tracked]
     disc_rows = []
     for kw in candidates:
-        rr, _ = analyse_keyword(client, kw, providers, top_n, scan_depth)
+        rr, _, _ = analyse_keyword(client, kw, providers, top_n, scan_depth)
         if rr["brand_best_rank"] != "":
             disc_rows.append({
                 "keyword": kw,

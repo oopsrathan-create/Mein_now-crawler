@@ -81,6 +81,15 @@ reads `rankings.csv` and `latest_inventory.csv` and shows:
 - **Ranking trend** — rank-over-time line chart (fills in as daily crawls run).
 - **Course inventory** — searchable table of every course and where it appears.
 
+### Competitors page (`competitors.html`)
+
+A separate page listing competitor courses, built from `latest_competitor_catalog.csv`:
+
+- **Nach Unternehmen** — every provider with its full list of course titles and a total count; search a company name to see all their courses.
+- **Themensuche** — type a term (e.g. "Online Marketing") to see how many matching courses each company has, ranked.
+
+Because the mein-now API has no provider filter, each company's list covers the courses that surface across the tracked keyword searches (deduplicated), not necessarily their entire catalogue. The catalogue is captured at no extra request cost — the titles are already in the responses `keyword_tracker.py` fetches.
+
 ### Publish it (free, anyone with the link)
 
 1. GitHub → **Settings → Pages**.
@@ -99,6 +108,7 @@ It refreshes automatically each day once the crawl workflow commits new data.
 | `data/rankings.csv` | Appended every run: `date, keyword, provider, course_id, title, rank, total_results` — your visibility over time |
 | `data/changes/changes_YYYY-MM-DD.md` | Human-readable diff vs the previous snapshot |
 | `data/keyword_ranks.csv` | Appended every run: brand rank + total results per keyword over time |
+| `data/latest_competitor_catalog.csv` | Overwritten every run: one row per unique course (any provider) seen across the keyword scans — provider, title, type, best rank, keywords. Powers `competitors.html`. |
 | `data/keyword_competitors.csv` | Appended every run: competitor share of the top results per keyword |
 | `data/keyword_discovery.csv` | Refreshed every run: candidate keywords ecomex already ranks for |
 
