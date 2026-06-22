@@ -63,6 +63,7 @@
 
   .courses{ display:flex; flex-direction:column; gap:10px; }
   .course{ background:var(--panel2); border:1px solid var(--line); border-radius:10px; padding:13px 15px; }
+  .course.dim{ opacity:.72; }
   .course .top{ display:flex; align-items:baseline; gap:9px; flex-wrap:wrap; }
   .course h4{ margin:0; font-size:14px; font-weight:600; flex:1; min-width:200px; }
   .course .art{ color:var(--muted); font-size:12px; margin-top:5px; }
@@ -188,6 +189,11 @@ async function loadCsv(name){
   if(!cat.length){ document.getElementById("updated").textContent = "Noch keine Katalogdaten — beim nächsten Crawl wird er befüllt."; return; }
   document.getElementById("updated").textContent = "Stand " + (cat[0].snapshot_date || "—");
 
+  // optional: accurate per-provider totals from the provider-name search
+  let provs = [];
+  try { provs = await loadCsv("latest_competitor_providers.csv"); } catch(e) { /* optional */ }
+  const provBy = Object.fromEntries(provs.map(p=>[p.provider, p]));
+
   // ---- group by company ----
   const byCompany = {};
   for(const r of cat){
@@ -200,14 +206,21 @@ async function loadCsv(name){
       keywords: r.keywords || "",
       kwLower: (r.keywords||"").toLowerCase(),
       desc: r.description || "",
+      inScope: r.in_scope!=null ? r.in_scope==="1" : !!(r.keywords||"").trim(),
     });
   }
-  const companies = Object.values(byCompany).map(c=>({
-    provider:c.provider, brand:c.brand, major:c.major, courses:c.courses,
-    count:c.courses.length,
-    best: Math.min(...c.courses.map(x=>x.best)),
-    kwc: new Set(c.courses.flatMap(x=>x.keywords.split("; ").map(s=>s.replace(/\s*\(S\.\d+\)\s*$/,"").trim().toLowerCase()).filter(Boolean))).size,
-  }));
+  const companies = Object.values(byCompany).map(c=>{
+    const pr = provBy[c.provider];
+    const inScope = c.courses.filter(x=>x.inScope).length;
+    return {
+      provider:c.provider, brand:c.brand, major:c.major, courses:c.courses,
+      count: c.courses.length,
+      meinNow: pr ? +pr.search_total || null : null,   // accurate mein-now total
+      inScope,
+      best: Math.min(...c.courses.map(x=>x.best)),
+      kwc: new Set(c.courses.flatMap(x=>x.keywords.split("; ").map(s=>s.replace(/\s*\([^)]*\)\s*$/,"").trim().toLowerCase()).filter(Boolean))).size,
+    };
+  });
 
   // ---- tiles ----
   const topCount = companies.slice().sort((a,b)=>b.count-a.count)[0];
@@ -224,15 +237,16 @@ async function loadCsv(name){
     const ks = parseKw(c.keywords);
     const head = ks.length
       ? `<div class="ckw-h">Ranking je Keyword <span class="muted">(${ks.length})</span></div>${kwRankTable(c.keywords)}`
-      : "";
-    const more = c.desc
-      ? `<details class="cdesc"><summary>Beschreibung</summary><p>${esc(c.desc)}</p></details>`
-      : `<a class="clink" href="${meinNowLink(c.title)}" target="_blank" rel="noopener">auf mein-now ansehen ↗</a>`;
-    return `<article class="course"><div class="top"><h4>${esc(c.title)}</h4></div>`+
-           (c.art?`<div class="art">${esc(prettyArt(c.art))}</div>`:"")+head+more+`</article>`;
+      : `<div class="ckw-h muted" style="font-weight:500">Kein Ranking für getrackte Keywords</div>`;
+    const desc = c.desc ? `<details class="cdesc"><summary>Beschreibung</summary><p>${esc(c.desc)}</p></details>` : "";
+    const link = `<a class="clink" href="${meinNowLink(c.title)}" target="_blank" rel="noopener">auf mein-now ansehen ↗</a>`;
+    return `<article class="course${c.inScope?"":" dim"}"><div class="top"><h4>${esc(c.title)}</h4></div>`+
+           (c.art?`<div class="art">${esc(prettyArt(c.art))}</div>`:"")+head+desc+link+`</article>`;
   }
   function coursesHtml(courses){
-    return `<div class="courses">`+courses.slice().sort((a,b)=>a.best-b.best).map(courseCard).join("")+`</div>`;
+    // ranked-for-your-keywords first, then the rest of the catalogue
+    const sorted = courses.slice().sort((a,b)=> (b.inScope-a.inScope) || (a.best-b.best) || a.title.localeCompare(b.title));
+    return `<div class="courses">`+sorted.map(courseCard).join("")+`</div>`;
   }
   function tag(c){
     return c.brand ? ' <span class="badge b-good">Sie</span>'
@@ -246,12 +260,13 @@ async function loadCsv(name){
 
   function renderDetail(c){
     if(!c){ detailEl.innerHTML = `<div class="empty">Kein Unternehmen ausgewählt.</div>`; return; }
+    const totalLine = c.meinNow ? ` · <span>${c.meinNow.toLocaleString("de-DE")} auf mein-now</span>` : "";
     detailEl.innerHTML =
       `<div class="dhead">
          <div><h3>${esc(c.provider)}${tag(c)}</h3>
-           <div class="meta">Beste Position ${rankBadge(c.best===Infinity?null:c.best)} · <span>${c.kwc} Keywords abgedeckt</span></div>
+           <div class="meta">Beste Position ${rankBadge(c.best===Infinity?null:c.best)} · <span>${c.inScope} im Keyword-Bereich</span> · <span>${c.kwc} Keywords abgedeckt</span>${totalLine}</div>
          </div>
-         <div class="dcount"><span class="big">${c.count}</span><span class="lbl">Kurse</span></div>
+         <div class="dcount"><span class="big">${c.count}</span><span class="lbl">Kurse erfasst</span></div>
        </div>${coursesHtml(c.courses)}`;
   }
   function renderCompanies(){

@@ -24,10 +24,17 @@
   },
 
   "keyword_tracker": {
-    "_comment": "Used by keyword_tracker.py. Keywords are read from keywords.txt. top_n = how many top results define the visible 'first page' for competitor-share; rank_scan_depth = how deep to scan to find your best rank; top_competitors = how many providers to record per keyword; discovery_max = how many auto-discovered candidate keywords to test.",
+    "_comment": "Used by keyword_tracker.py. Keywords are read from keywords.txt. top_n = how many top results define the visible 'first page' for competitor-share; rank_scan_depth = how deep to scan to find your best rank; top_competitors = how many providers to record per keyword; discovery_max = how many auto-discovered candidate keywords to test; major_competitors = how many top providers (by course count) get full course descriptions in the catalogue.",
     "top_n": 20,
     "rank_scan_depth": 500,
     "top_competitors": 15,
-    "discovery_max": 40
+    "discovery_max": 40,
+    "major_competitors": 25
+  },
+
+  "provider_catalog": {
+    "_comment": "Used by competitor_catalog.py to pull each competitor's full mein-now catalogue via provider-name search. Bounds the crawl: max_providers = how many competitors to crawl (most courses first); max_pages_per_provider = pages of each one's catalogue to fetch (page_size per page). Raising these makes the daily crawl longer and the dataset larger.",
+    "max_providers": 150,
+    "max_pages_per_provider": 15
   }
 }
