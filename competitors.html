@@ -47,7 +47,12 @@
   .tabpanel.active{ display:block; }
   .tabpanel h2{ font-size:15px; margin:0 0 14px; font-weight:600; }
   .courses{ margin:6px 0 2px; padding-left:0; list-style:none; columns:2; column-gap:28px; }
-  .courses li{ padding:3px 0; break-inside:avoid; }
+  .courses.one{ columns:1; }
+  .courses li{ padding:6px 0; break-inside:avoid; border-bottom:1px solid #1c232c; }
+  .cmeta{ font-size:12px; color:var(--muted); margin-top:3px; }
+  .cmeta a.toggle, .cmeta a{ color:var(--accent); cursor:pointer; text-decoration:none; }
+  .descbox{ margin-top:5px; padding:8px 10px; background:#11161d; border:1px solid var(--line);
+            border-radius:6px; color:var(--text); font-size:12px; line-height:1.5; max-width:760px; }
   .detail td{ background:#11161d; }
   small.note{ color:var(--muted); display:block; margin-top:12px; }
   .err{ color:var(--bad); }
@@ -141,19 +146,22 @@ async function loadCsv(name){
   const byCompany = {};
   for(const r of cat){
     const p = r.provider || "(ohne Anbieter)";
-    (byCompany[p] ??= { provider:p, brand:r.is_brand==="1", courses:[] }).courses.push({
+    (byCompany[p] ??= { provider:p, brand:r.is_brand==="1", major:r.major==="1", courses:[] }).courses.push({
       title: r.title || "(ohne Titel)",
       art: r.weiterbildungsart || "",
       best: +r.best_rank || Infinity,
+      page: +r.best_page || null,
       kwc: +r.keyword_count || 0,
-      keywords: (r.keywords||"").toLowerCase(),
+      keywords: r.keywords || "",                 // "kw (S.p); …" display form
+      kwLower: (r.keywords||"").toLowerCase(),
+      desc: r.description || "",
     });
   }
   const companies = Object.values(byCompany).map(c=>({
-    provider:c.provider, brand:c.brand, courses:c.courses,
+    provider:c.provider, brand:c.brand, major:c.major, courses:c.courses,
     count:c.courses.length,
     best: Math.min(...c.courses.map(x=>x.best)),
-    kwc: new Set(c.courses.flatMap(x=>x.keywords.split("; ").filter(Boolean))).size,
+    kwc: new Set(c.courses.flatMap(x=>x.keywords.split("; ").map(s=>s.replace(/\s*\(S\.\d+\)\s*$/,"").trim().toLowerCase()).filter(Boolean))).size,
   }));
 
   // ---- tiles ----
@@ -166,11 +174,20 @@ async function loadCsv(name){
     `<div class="tile"><div class="n">${t.n}</div><div class="l">${t.l}</div></div>`).join("");
 
   // ---- generic: render a company table with expandable course lists ----
+  function meinNowLink(title){
+    return `https://mein-now.de/weiterbildungssuche/suche?sw=${encodeURIComponent(title)}`;
+  }
   function courseListHtml(courses){
     const sorted = courses.slice().sort((a,b)=>a.best-b.best);
-    return `<ul class="courses">` + sorted.map(c=>
-      `<li>${rankBadge(c.best===Infinity?null:c.best)} ${esc(c.title)}`+
-      (c.art?` <span class="muted">· ${esc(prettyArt(c.art))}</span>`:"")+`</li>`).join("") + `</ul>`;
+    return `<ul class="courses one">` + sorted.map((c,i)=>{
+      const page = c.page ? `<span class="muted">Seite ${c.page}</span>` : "";
+      const kws = c.keywords ? `<div class="cmeta">Keywords: ${esc(c.keywords)}</div>` : "";
+      const desc = c.desc
+        ? `<div class="cmeta"><a class="toggle" data-desc>Beschreibung anzeigen ▾</a><div class="descbox" style="display:none">${esc(c.desc)}</div></div>`
+        : `<div class="cmeta"><a href="${meinNowLink(c.title)}" target="_blank" rel="noopener">↗ auf mein-now ansehen</a></div>`;
+      return `<li><div>${rankBadge(c.best===Infinity?null:c.best)} ${page} <b>${esc(c.title)}</b>`+
+             (c.art?` <span class="muted">· ${esc(prettyArt(c.art))}</span>`:"")+`</div>${kws}${desc}</li>`;
+    }).join("") + `</ul>`;
   }
   function renderCompanyTable(tableId, rows, courseGetter, cols){
     const tbody = document.querySelector(`#${tableId} tbody`);
@@ -183,6 +200,18 @@ async function loadCsv(name){
       const d = tbody.querySelector(`tr.detail[data-d="${tr.dataset.i}"]`);
       if(d) d.style.display = d.style.display==="none" ? "" : "none";
     }));
+    tbody.querySelectorAll("a[data-desc]").forEach(a=>a.addEventListener("click",e=>{
+      e.stopPropagation();
+      const box = a.nextElementSibling;
+      const open = box.style.display==="none";
+      box.style.display = open ? "" : "none";
+      a.textContent = open ? "Beschreibung ausblenden ▴" : "Beschreibung anzeigen ▾";
+    }));
+  }
+  function providerCell(r){
+    const badges = (r.brand ? ' <span class="badge b-good">Sie</span>' : "")
+                 + (r.major && !r.brand ? ' <span class="badge b-warn">Top-Wettbewerber</span>' : "");
+    return `${r.brand?'<span class="kw">'+esc(r.provider)+'</span>':esc(r.provider)}${badges}`;
   }
 
   // ---- tab 1: by company (searchable) ----
@@ -194,7 +223,7 @@ async function loadCsv(name){
     document.getElementById("compCount").textContent =
       `${rows.length} von ${companies.length} Unternehmen`;
     renderCompanyTable("compTable", rows, r=>r.courses, [
-      r=> `${r.brand?'<span class="kw">'+esc(r.provider)+'</span> <span class="badge b-good">Sie</span>':esc(r.provider)}`,
+      providerCell,
       r=> `<b>${r.count}</b>`,
       r=> rankBadge(r.best===Infinity?null:r.best),
       r=> `<span class="muted">${r.kwc}</span>`,
@@ -214,7 +243,7 @@ async function loadCsv(name){
     }
     const rows = companies.map(c=>{
       const hits = c.courses.filter(x=> x.title.toLowerCase().includes(q) || x.keywords.includes(q));
-      return hits.length ? {provider:c.provider, brand:c.brand, count:hits.length,
+      return hits.length ? {provider:c.provider, brand:c.brand, major:c.major, count:hits.length,
                             best:Math.min(...hits.map(x=>x.best)), courses:hits} : null;
     }).filter(Boolean).sort((a,b)=> b.count-a.count || a.best-b.best);
     const total = rows.reduce((s,r)=>s+r.count,0);
@@ -225,7 +254,7 @@ async function loadCsv(name){
       return;
     }
     renderCompanyTable("topicTable", rows, r=>r.courses, [
-      r=> `${r.brand?'<span class="kw">'+esc(r.provider)+'</span> <span class="badge b-good">Sie</span>':esc(r.provider)}`,
+      providerCell,
       r=> `<b>${r.count}</b>`,
       r=> rankBadge(r.best===Infinity?null:r.best),
     ]);
