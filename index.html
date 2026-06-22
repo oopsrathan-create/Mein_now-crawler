@@ -42,6 +42,21 @@
   tr.brandrow td:first-child, tr.brandrow td:nth-child(2){ font-weight:700; }
   input[type=search]{ background:var(--panel2); border:1px solid var(--line); color:var(--text);
         border-radius:7px; padding:8px 12px; width:280px; max-width:100%; font-size:13px; }
+  input[type=search]:focus{ outline:none; border-color:var(--accent); }
+  .combo{ display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-bottom:6px; }
+  .combo-field{ position:relative; }
+  .combo-menu{ position:absolute; top:100%; left:0; z-index:30; margin-top:4px; width:340px; max-width:90vw;
+        max-height:320px; overflow:auto; background:var(--panel2); border:1px solid var(--line);
+        border-radius:9px; padding:5px; box-shadow:0 10px 30px rgba(0,0,0,.4); }
+  .combo-opt{ display:flex; justify-content:space-between; align-items:center; gap:12px;
+        padding:7px 10px; border-radius:6px; cursor:pointer; font-size:13px; }
+  .combo-opt:hover, .combo-opt.active{ background:rgba(76,201,240,.13); }
+  .combo-opt .s{ flex-shrink:0; }
+  .kwprev{ background:var(--panel2); border:1px solid var(--line); border-radius:10px; padding:16px 18px; margin-top:10px; }
+  .kwprev.empty{ color:var(--muted); }
+  .kwprev .kwt{ font-size:16px; font-weight:650; }
+  .kwprev-row{ display:flex; gap:10px 14px; align-items:center; flex-wrap:wrap; margin-top:11px; }
+  .kwprev-meta{ color:var(--muted); font-size:12px; margin-top:11px; }
   .muted{ color:var(--muted); }
   .chips{ display:flex; flex-wrap:wrap; gap:8px; margin-bottom:14px; }
   .chip{ border:1px solid var(--line); background:var(--panel2); color:var(--text); border-radius:20px;
@@ -76,8 +91,11 @@
 
   <section id="librarySection">
     <h2>Keyword-Bibliothek <span class="muted">— alle Keywords aus den ecomex-Listings; suchen, um zu sehen, ob ein Keyword getrackt wird und wo es rankt</span></h2>
-    <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px;align-items:center">
-      <input type="search" id="libSearch" placeholder="Keywords suchen… (z. B. KI, Social Media, SEO)" />
+    <div class="combo">
+      <div class="combo-field">
+        <input type="search" id="libSearch" placeholder="Keyword suchen oder auswählen…" autocomplete="off" />
+        <div id="libMenu" class="combo-menu" hidden></div>
+      </div>
       <select id="libFilter" style="background:var(--panel2);border:1px solid var(--line);color:var(--text);border-radius:7px;padding:8px 10px;font-size:13px">
         <option value="">Alle Keywords</option>
         <option value="tracked">Vom Crawler getrackt</option>
@@ -85,15 +103,7 @@
       </select>
       <span class="muted" id="libCount"></span>
     </div>
-    <table id="libTable">
-      <thead><tr>
-        <th data-k="keyword">Keyword</th>
-        <th data-k="tracked">Getrackt?</th>
-        <th data-k="best">Beste Position</th>
-        <th data-k="page1">Auf Seite 1?</th>
-      </tr></thead>
-      <tbody></tbody>
-    </table>
+    <div id="libPreview" class="kwprev empty">Keyword auswählen, um Details zu sehen.</div>
     <small class="note">„Getrackt“ = der Crawler überwacht dieses Keyword (es steht in <code>keywords.txt</code>). Die beste Position zeigt ecomex' Platzierung aus dem letzten Crawl: <b>ausstehend</b> = getrackt, aber der nächste Crawl hat es noch nicht erfasst; <b>nicht gerankt</b> = gecrawlt, aber ecomex ist nicht in den Ergebnissen. Die vollständige Liste bearbeiten Sie in <code>meinnow_crawler/listing_keywords.txt</code> — um ein Keyword zu tracken, kopieren Sie es in <code>meinnow_crawler/keywords.txt</code>.</small>
   </section>
 
@@ -405,48 +415,77 @@ function latestDate(rows){ return rows.reduce((m,r)=> r.snapshot_date>m?r.snapsh
     total: r=>r.total.toLocaleString(),
   }, "best", false);
 
-  // ---- listing keyword library (searchable) ----
+  // ---- keyword library (searchable dropdown + live preview) ----
   {
-    const tbody = document.querySelector("#libTable tbody");
+    const input = document.getElementById("libSearch");
+    const menu  = document.getElementById("libMenu");
+    const prev  = document.getElementById("libPreview");
     if(!listingKws.length){
-      tbody.innerHTML = `<tr><td colspan="4" class="muted">Noch keine Listing-Keywords — fügen Sie sie in meinnow_crawler/listing_keywords.txt hinzu.</td></tr>`;
+      prev.textContent = "Noch keine Listing-Keywords — in meinnow_crawler/listing_keywords.txt hinzufügen.";
     } else {
-      // tracked = keyword is in keywords.txt (what the crawler monitors).
-      // hasRank = the latest crawl has a result for it yet; best may be null
-      // (tracked, crawled, but ecomex isn't in the results).
+      // tracked = in keywords.txt (what the crawler monitors); rank from latest crawl.
       const libRows = listingKws.map(kw=>{
         const lc = kw.toLowerCase();
-        const tracked = trackedSet.has(lc);
         const rk = krMap[lc];
-        return { keyword:kw, tracked, hasRank: !!rk,
-                 best: rk ? rk.best : null, page1: rk ? rk.page1 : false };
+        return { keyword:kw, tracked:trackedSet.has(lc), hasRank:!!rk,
+                 best: rk?rk.best:null, page1: rk?rk.page1:false };
       });
-      function renderLib(){
-        const q = document.getElementById("libSearch").value.toLowerCase();
+      let current = [], active = -1;
+      const bestBadge = r => !r.tracked  ? '<span class="badge b-none">—</span>'
+                           : !r.hasRank  ? '<span class="badge b-warn">ausstehend</span>'
+                           : r.best!=null ? rankBadge(r.best)
+                           : '<span class="badge b-none">nicht gerankt</span>';
+      function buildMenu(){
+        const q = input.value.toLowerCase().trim();
         const f = document.getElementById("libFilter").value;
-        const rows = libRows.filter(r=>
+        current = libRows.filter(r=>
           (!q || r.keyword.toLowerCase().includes(q)) &&
-          (!f || (f==="tracked" && r.tracked) || (f==="untracked" && !r.tracked))
-        );
-        const t = rows.filter(r=>r.tracked).length;
+          (!f || (f==="tracked" && r.tracked) || (f==="untracked" && !r.tracked)));
+        const t = current.filter(r=>r.tracked).length;
         document.getElementById("libCount").textContent =
-          `${rows.length} von ${libRows.length} Keywords · ${t} getrackt`;
-        renderTable("libTable", rows, {
-          keyword: r=>`<span class="kw">${r.keyword}</span>`,
-          tracked: r=> r.tracked
-                       ? '<span class="badge b-good">getrackt</span>'
-                       : '<span class="badge b-none">nicht getrackt</span>',
-          best:    r=> !r.tracked  ? '<span class="muted">—</span>'
-                     : !r.hasRank  ? '<span class="badge b-warn">ausstehend</span>'
-                     : r.best!=null ? rankBadge(r.best)
-                     : '<span class="badge b-none">nicht gerankt</span>',
-          page1:   r=> (!r.tracked || !r.hasRank || r.best==null) ? '<span class="muted">—</span>'
-                       : (r.page1?'<span class="badge b-good">ja</span>':'<span class="badge b-none">nein</span>'),
-        }, "keyword", true);
+          `${current.length} von ${libRows.length} Keywords · ${t} getrackt`;
+        menu.innerHTML = current.length
+          ? current.slice(0,250).map((r,i)=>
+              `<div class="combo-opt" data-i="${i}"><span class="kw">${r.keyword}</span><span class="s">${bestBadge(r)}</span></div>`).join("")
+          : `<div class="combo-opt muted">Keine Treffer</div>`;
+        active = -1;
       }
-      document.getElementById("libSearch").addEventListener("input", renderLib);
-      document.getElementById("libFilter").addEventListener("change", renderLib);
-      renderLib();
+      function showPreview(r){
+        if(!r){ prev.className="kwprev empty"; prev.textContent="Keyword auswählen, um Details zu sehen."; return; }
+        const p1 = (!r.tracked || !r.hasRank || r.best==null) ? '<span class="muted">—</span>'
+                 : (r.page1?'<span class="badge b-good">ja</span>':'<span class="badge b-none">nein</span>');
+        prev.className = "kwprev";
+        prev.innerHTML =
+          `<div class="kwt kw">${r.keyword}</div>
+           <div class="kwprev-row">
+             ${r.tracked?'<span class="badge b-good">getrackt</span>':'<span class="badge b-none">nicht getrackt</span>'}
+             <span><span class="muted">Beste Position:</span> ${bestBadge(r)}</span>
+             <span><span class="muted">Auf Seite 1:</span> ${p1}</span>
+           </div>
+           <div class="kwprev-meta">Kategorie: ${clusterOf(r.keyword)}</div>`;
+      }
+      const open  = ()=>{ buildMenu(); menu.hidden=false; };
+      const close = ()=>{ menu.hidden=true; active=-1; };
+      function pick(i){ const r=current[i]; if(!r) return; input.value=r.keyword; showPreview(r); close(); }
+      function highlight(){
+        const opts=[...menu.querySelectorAll(".combo-opt[data-i]")];
+        opts.forEach((o,i)=>o.classList.toggle("active", i===active));
+        if(opts[active]){ opts[active].scrollIntoView({block:"nearest"}); showPreview(current[active]); }
+      }
+      input.addEventListener("focus", open);
+      input.addEventListener("input", open);
+      input.addEventListener("blur", ()=>setTimeout(close,150));
+      document.getElementById("libFilter").addEventListener("change", ()=>{ if(!menu.hidden) buildMenu(); });
+      menu.addEventListener("mousedown", e=>{ const o=e.target.closest(".combo-opt[data-i]"); if(o){ e.preventDefault(); pick(+o.dataset.i); } });
+      menu.addEventListener("mouseover", e=>{ const o=e.target.closest(".combo-opt[data-i]"); if(o) showPreview(current[+o.dataset.i]); });
+      input.addEventListener("keydown", e=>{
+        if(menu.hidden && e.key==="ArrowDown"){ open(); return; }
+        if(e.key==="ArrowDown"){ e.preventDefault(); active=Math.min(active+1, current.length-1); highlight(); }
+        else if(e.key==="ArrowUp"){ e.preventDefault(); active=Math.max(active-1, 0); highlight(); }
+        else if(e.key==="Enter"){ if(active>=0){ e.preventDefault(); pick(active); } }
+        else if(e.key==="Escape"){ close(); }
+      });
+      buildMenu();
     }
   }
 
