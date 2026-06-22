@@ -278,9 +278,10 @@ def main() -> int:
     cat_rows = []
     for cid, a in catalog.items():
         is_major = a["provider"] in major_providers
-        # keyword -> page, best keyword first
+        # keyword -> best position (rank), best keyword first. Format "keyword (#rank)";
+        # the page is derivable as ceil(rank / top_n) in the dashboard.
         kw_items = sorted(a["kw_pos"].items(), key=lambda kv: kv[1])
-        kw_str = "; ".join(f"{k} (S.{page_of(p)})" for k, p in kw_items[:15])
+        kw_str = "; ".join(f"{k} (#{p})" for k, p in kw_items[:15])
         cat_rows.append({
             "snapshot_date": TODAY,
             "provider": a["provider"],

@@ -66,8 +66,11 @@
   .course .top{ display:flex; align-items:baseline; gap:9px; flex-wrap:wrap; }
   .course h4{ margin:0; font-size:14px; font-weight:600; flex:1; min-width:200px; }
   .course .art{ color:var(--muted); font-size:12px; margin-top:5px; }
-  .course .ckw{ color:var(--muted); font-size:12px; margin-top:6px; }
-  .course .ckw b{ color:#c3cdd7; font-weight:600; }
+  .course .ckw-h{ font-size:12px; color:#c3cdd7; font-weight:600; margin:9px 0 4px; }
+  table.kwrank{ width:auto; border-collapse:collapse; font-size:12.5px; }
+  table.kwrank td{ padding:3px 16px 3px 0; border:0; vertical-align:middle; }
+  table.kwrank td.k{ color:var(--text); }
+  table.kwrank td.pg{ color:var(--muted); font-size:11px; }
   .seite{ font-size:11px; color:var(--muted); border:1px solid var(--line); border-radius:6px; padding:1px 6px; }
   details.cdesc{ margin-top:8px; }
   details.cdesc summary{ color:var(--accent); cursor:pointer; font-size:12px; list-style:none; }
@@ -153,6 +156,20 @@ function rankBadge(r){
   return `<span class="badge ${cls} num">#${r}</span>`;
 }
 function meinNowLink(title){ return `https://mein-now.de/weiterbildungssuche/suche?sw=${encodeURIComponent(title)}`; }
+// "Online Marketing (#3); SEO (#15)" -> [{kw, rank, page}], best rank first
+function parseKw(s){
+  return (s||"").split(";").map(t=>t.trim()).filter(Boolean).map(t=>{
+    const m = t.match(/^(.*?)\s*\(#(\d+)\)\s*$/);
+    return m ? {kw:m[1], rank:+m[2], page:Math.ceil(m[2]/20)} : {kw:t, rank:null, page:null};
+  }).sort((a,b)=>(a.rank??1e9)-(b.rank??1e9));
+}
+function kwRankTable(s){
+  const ks = parseKw(s);
+  if(!ks.length) return "";
+  return `<table class="kwrank"><tbody>`+ks.map(k=>
+    `<tr><td class="k">${esc(k.kw)}</td><td>${k.rank!=null?rankBadge(k.rank):""}</td>`+
+    `<td class="pg">${k.page?("Seite "+k.page):""}</td></tr>`).join("")+`</tbody></table>`;
+}
 
 async function loadCsv(name){
   const res = await fetch(DATA+name, {cache:"no-store"});
@@ -204,13 +221,15 @@ async function loadCsv(name){
 
   // ---- shared course renderer ----
   function courseCard(c){
-    const pg = c.page ? `<span class="seite num">Seite ${c.page}</span>` : "";
-    const kw = c.keywords ? `<div class="ckw"><b>Keywords:</b> ${esc(c.keywords)}</div>` : "";
+    const ks = parseKw(c.keywords);
+    const head = ks.length
+      ? `<div class="ckw-h">Ranking je Keyword <span class="muted">(${ks.length})</span></div>${kwRankTable(c.keywords)}`
+      : "";
     const more = c.desc
       ? `<details class="cdesc"><summary>Beschreibung</summary><p>${esc(c.desc)}</p></details>`
       : `<a class="clink" href="${meinNowLink(c.title)}" target="_blank" rel="noopener">auf mein-now ansehen ↗</a>`;
-    return `<article class="course"><div class="top">${rankBadge(c.best===Infinity?null:c.best)} ${pg}<h4>${esc(c.title)}</h4></div>`+
-           (c.art?`<div class="art">${esc(prettyArt(c.art))}</div>`:"")+kw+more+`</article>`;
+    return `<article class="course"><div class="top"><h4>${esc(c.title)}</h4></div>`+
+           (c.art?`<div class="art">${esc(prettyArt(c.art))}</div>`:"")+head+more+`</article>`;
   }
   function coursesHtml(courses){
     return `<div class="courses">`+courses.slice().sort((a,b)=>a.best-b.best).map(courseCard).join("")+`</div>`;
