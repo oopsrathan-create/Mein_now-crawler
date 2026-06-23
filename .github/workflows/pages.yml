@@ -16,7 +16,7 @@ on:
   # public site would stay frozen at the last human push. workflow_run fires on
   # the completion of those workflows regardless of who pushed.
   workflow_run:
-    workflows: ["mein-now course crawl", "weekly course ranking report"]
+    workflows: ["mein-now course crawl", "weekly course ranking report", "competitor analysis crawl"]
     types: [completed]
     branches: [main]
 
