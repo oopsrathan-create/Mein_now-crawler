@@ -31,6 +31,9 @@ jobs:
       - name: Run competitor share snapshot
         run: python meinnow_crawler/competitor_share.py
 
+      - name: Build competitor catalogues (catalog page)
+        run: python meinnow_crawler/competitor_catalog.py
+
       - name: Competitor analysis (full catalogues + top keywords)
         run: python meinnow_crawler/competitor_analysis.py
 
