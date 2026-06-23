@@ -44,6 +44,7 @@
     "max_providers": 200,
     "max_pages_per_provider": 25,
     "top_keywords": 60,
+    "top_courses_per_keyword": 25,
     "focus_competitors": [
       "OneCareer",
       "A-Leecon",

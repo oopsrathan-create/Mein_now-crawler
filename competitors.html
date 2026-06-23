@@ -62,13 +62,14 @@
                    background:#11161d; border:1px solid var(--line); border-radius:7px; padding:10px 12px; white-space:pre-wrap; }
   a.clink{ display:inline-block; margin-top:8px; color:var(--accent); text-decoration:none; font-size:12px; }
   a.clink:hover{ text-decoration:underline; }
-  /* top keywords */
-  .krow{ display:flex; align-items:center; gap:14px; padding:10px 4px; border-bottom:1px solid var(--line); }
-  .krow .nm{ width:300px; max-width:40%; flex-shrink:0; font-size:13px; }
-  .bar{ flex:1; height:8px; background:var(--panel2); border-radius:999px; overflow:hidden; }
-  .bar i{ display:block; height:100%; background:linear-gradient(90deg,var(--accent),#2f9fd0); }
-  .krow .qty{ font-variant-numeric:tabular-nums; font-weight:750; width:54px; text-align:right; }
-  .krow .pv{ color:var(--muted); font-size:12px; width:90px; text-align:right; }
+  /* market SERP table */
+  table#kwTable{ width:100%; border-collapse:collapse; font-size:13px; }
+  #kwTable th,#kwTable td{ text-align:left; padding:8px 11px; border-bottom:1px solid var(--line); vertical-align:top; }
+  #kwTable th{ color:var(--muted); cursor:pointer; user-select:none; white-space:nowrap; font-weight:600; }
+  #kwTable th:hover{ color:var(--text); }
+  #kwTable td.num{ font-variant-numeric:tabular-nums; text-align:right; white-space:nowrap; }
+  #kwTable tbody tr:hover td{ background:var(--panel2); }
+  #kwTable tr.brand td{ background:rgba(76,201,240,.10); }
   .kw{ color:var(--accent); } .muted{ color:var(--muted); }
   .empty{ color:var(--muted); padding:40px 10px; text-align:center; }
   .err{ color:var(--bad); }
@@ -101,9 +102,20 @@
   </section>
 
   <section class="panel" data-tab="keywords">
-    <div style="max-width:520px"><input type="search" id="kwSearch" placeholder="Keyword filtern…" /></div>
-    <p class="muted" style="font-size:12px;margin:10px 2px">Die häufigsten Begriffe in den Kurstiteln des Wettbewerbsumfelds — wonach der Markt benannt ist. „Kurse" = Anzahl Kurse mit dem Begriff, „Anbieter" = wie viele Firmen ihn nutzen.</p>
-    <div id="kwList" style="margin-top:8px"></div>
+    <div style="max-width:560px"><input type="search" id="kwSearch" placeholder="Keyword, Anbieter oder Kurs filtern…" /></div>
+    <p class="muted" id="kwMeta" style="font-size:12px;margin:10px 2px">Markt-SERP: für jedes Keyword die rankenden Kurse mit Anbieter und Position. Spalten klicken zum Sortieren.</p>
+    <div style="overflow-x:auto">
+      <table id="kwTable">
+        <thead><tr>
+          <th data-k="keyword">Keyword</th>
+          <th data-k="provider">Anbieter</th>
+          <th data-k="title">Kurs</th>
+          <th data-k="position">Position</th>
+          <th data-k="page">Seite</th>
+        </tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
   </section>
 </main>
 
@@ -176,24 +188,33 @@ async function loadJson(p){ const r=await fetch(DATA+p,{cache:"no-store"}); if(!
   document.getElementById("focusOnly").addEventListener("change", renderList);
   renderList();
 
-  // ---- tab 2: Top-Keywords im Markt ----
-  let kws=[];
-  try { kws = await loadCsv("competitor_top_keywords.csv"); } catch(e){ /* optional */ }
-  function renderKws(){
+  // ---- tab 2: market SERP — keyword × company × course × position ----
+  let kwc=[];
+  try { kwc = await loadCsv("competitor_keyword_courses.csv"); } catch(e){ /* optional */ }
+  const kwcRows = kwc.map(r=>({ keyword:r.keyword||"", provider:r.provider||"", brand:r.is_brand==="1",
+                                title:r.title||"", position:+r.position||0, page:+r.page||0 }));
+  let ksort="keyword", kasc=true; const CAP=1500;
+  function renderKwc(){
     const q=document.getElementById("kwSearch").value.toLowerCase().trim();
-    const rows=kws.map(k=>({term:k.term, courses:+k.courses||0, providers:+k.providers||0}))
-                  .filter(k=>!q||k.term.toLowerCase().includes(q))
-                  .sort((a,b)=>b.courses-a.courses);
-    const el=document.getElementById("kwList");
-    if(!rows.length){ el.innerHTML=`<div class="empty">${kws.length?"Keine Treffer.":"Noch keine Keyword-Daten."}</div>`; return; }
-    const max=rows[0].courses||1;
-    el.innerHTML=rows.map(k=>
-      `<div class="krow"><span class="nm kw">${esc(k.term)}</span>`+
-      `<span class="bar"><i style="width:${Math.max(4,Math.round(100*k.courses/max))}%"></i></span>`+
-      `<span class="qty num">${k.courses}</span><span class="pv num">${k.providers} Anbieter</span></div>`).join("");
+    const rows=kwcRows.filter(r=>!q || (r.keyword+" "+r.provider+" "+r.title).toLowerCase().includes(q));
+    rows.sort((a,b)=>{
+      let x=a[ksort], y=b[ksort];
+      if(typeof x==="string"&&typeof y==="string"){ const c=x.localeCompare(y); return kasc?c:-c; }
+      return kasc?(x-y):(y-x);
+    });
+    document.getElementById("kwMeta").textContent = kwcRows.length
+      ? `${rows.length.toLocaleString("de-DE")} Einträge${rows.length>CAP?` (zeige erste ${CAP})`:""} · Spalten klicken zum Sortieren`
+      : "Noch keine SERP-Daten — beim nächsten Crawl wird befüllt.";
+    document.querySelector("#kwTable tbody").innerHTML = rows.slice(0,CAP).map(r=>
+      `<tr class="${r.brand?"brand":""}"><td>${esc(r.keyword)}</td>`+
+      `<td>${r.brand?'<span class="kw">'+esc(r.provider)+'</span>':esc(r.provider)}</td>`+
+      `<td>${esc(r.title)}</td><td class="num">${r.position||""}</td><td class="num">${r.page||""}</td></tr>`).join("");
   }
-  document.getElementById("kwSearch").addEventListener("input", renderKws);
-  renderKws();
+  document.querySelectorAll("#kwTable th").forEach(th=>th.addEventListener("click",()=>{
+    const k=th.dataset.k; kasc = (k===ksort)?!kasc:true; ksort=k; renderKwc();
+  }));
+  document.getElementById("kwSearch").addEventListener("input", renderKwc);
+  renderKwc();
 
   document.querySelectorAll(".tabbtn").forEach(btn=>btn.addEventListener("click",()=>{
     document.querySelectorAll(".tabbtn").forEach(b=>b.classList.toggle("active",b===btn));

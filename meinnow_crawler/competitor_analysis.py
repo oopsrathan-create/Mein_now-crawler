@@ -49,6 +49,7 @@ _STOP = {
 }
 PROV_FIELDS = ["snapshot_date", "provider", "slug", "is_brand", "focus", "courses", "top_terms"]
 KW_FIELDS = ["term", "courses", "providers"]
+KWC_FIELDS = ["keyword", "provider", "is_brand", "course_id", "title", "position", "page"]
 
 
 def slugify(name: str) -> str:
@@ -73,16 +74,26 @@ def field_terms() -> list[str]:
     return out
 
 
-def discover_providers(client: Client, terms: list[str], depth: int) -> list[str]:
-    """Distinct Anbieter appearing in the field's search results, most-frequent first."""
+def discover(client: Client, terms: list[str], depth: int, top_courses: int, brand: list[str]):
+    """Scan each field term. Return (providers most-frequent first, per-keyword ranked
+    course rows). The keyword rows capture the top `top_courses` results per term:
+    keyword, provider, course title and numeric position/page — the market SERP."""
     freq: Counter = Counter()
+    kw_rows: list[dict] = []
     for t in terms:
-        for _rank, listing, _total in client.iter_listings(t, depth):
+        for rank, listing, _total in client.iter_listings(t, depth):
             name = (listing.get("bildungsanbieter") or {}).get("name")
             if name:
                 freq[name] += 1
+            if rank < top_courses:
+                kw_rows.append({
+                    "keyword": t, "provider": name or "",
+                    "is_brand": 1 if provider_matches(name, brand) else 0,
+                    "course_id": listing.get("id"), "title": listing.get("titel", ""),
+                    "position": rank + 1, "page": rank // 20 + 1,
+                })
         print(f"[discover] '{t}': {len(freq)} providers so far")
-    return [p for p, _ in freq.most_common()]
+    return [p for p, _ in freq.most_common()], kw_rows
 
 
 def course_link(course_id, title: str) -> str:
@@ -132,6 +143,7 @@ def main() -> int:
     max_providers = int(ca.get("max_providers", 200))
     max_pages = int(ca.get("max_pages_per_provider", 25))
     top_n = int(ca.get("top_keywords", 60))
+    top_courses = int(ca.get("top_courses_per_keyword", 25))
     brand = cfg["providers"]
     focus_frags = [f.casefold() for f in ca.get("focus_competitors", []) if f]
     def is_focus(name: str) -> bool:
@@ -141,12 +153,18 @@ def main() -> int:
     client = Client(cfg["settings"])
     COMP.mkdir(parents=True, exist_ok=True)
 
-    discovered = discover_providers(client, field_terms(), depth)
+    discovered, kw_rows = discover(client, field_terms(), depth, top_courses, brand)
     # crawl focus competitors first so they're always covered, then the rest by frequency
     providers = [p for p in discovered if is_focus(p)] + [p for p in discovered if not is_focus(p)]
     providers = providers[:max_providers]
     print(f"discovered {len(discovered)} providers in field; "
           f"{sum(is_focus(p) for p in providers)} match the focus list")
+
+    # market SERP: keyword × company × course × position
+    kw_rows.sort(key=lambda r: (r["keyword"].casefold(), r["position"]))
+    with (DATA / "competitor_keyword_courses.csv").open("w", newline="", encoding="utf-8") as f:
+        w = csv.DictWriter(f, fieldnames=KWC_FIELDS); w.writeheader(); w.writerows(kw_rows)
+    print(f"wrote {len(kw_rows)} keyword×course rows -> competitor_keyword_courses.csv")
 
     prov_rows = []
     field_titles: list[str] = []
