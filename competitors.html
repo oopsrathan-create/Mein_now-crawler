@@ -40,6 +40,9 @@
   .crow .nm{ flex:1; min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; font-size:13px; }
   .crow .ct{ font-variant-numeric:tabular-nums; font-weight:700; font-size:13px; color:var(--muted); }
   .crow.on .ct{ color:var(--accent); }
+  .crow .star{ color:var(--warn); flex-shrink:0; }
+  .focusrow{ display:flex; align-items:center; gap:7px; margin-top:9px; font-size:12px; color:var(--muted); cursor:pointer; }
+  .badge{ display:inline-block; padding:2px 8px; border-radius:999px; font-size:11px; font-weight:650; background:rgba(210,153,34,.16); color:var(--warn); }
   .detail{ background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:22px 24px; min-height:320px; }
   .dhead{ display:flex; align-items:flex-start; gap:20px; padding-bottom:16px; border-bottom:1px solid var(--line); margin-bottom:16px; }
   .dhead h3{ margin:0 0 6px; font-size:18px; font-weight:650; }
@@ -89,6 +92,7 @@
     <div class="md">
       <aside class="rail">
         <input type="search" id="compSearch" placeholder="Anbieter suchen…" />
+        <label class="focusrow"><input type="checkbox" id="focusOnly" /> Nur Fokus-Wettbewerber</label>
         <div class="list" id="compList"></div>
       </aside>
       <section class="detail" id="compDetail"><div class="empty">Anbieter wählen.</div></section>
@@ -119,13 +123,14 @@ async function loadJson(p){ const r=await fetch(DATA+p,{cache:"no-store"}); if(!
   document.getElementById("updated").textContent = "Stand " + (providers[0].snapshot_date || "—");
 
   providers = providers.map(p=>({ provider:p.provider, slug:p.slug, brand:p.is_brand==="1",
-                                  courses:+p.courses||0, top:p.top_terms||"" }))
-                       .sort((a,b)=>b.courses-a.courses);
+                                  focus:p.focus==="1", courses:+p.courses||0, top:p.top_terms||"" }))
+                       .sort((a,b)=> (b.focus-a.focus) || (b.courses-a.courses));
   const totalCourses = providers.reduce((s,p)=>s+p.courses,0);
+  const focusN = providers.filter(p=>p.focus).length;
   document.getElementById("tiles").innerHTML = [
     {n:providers.length, l:"Anbieter"},
+    {n:focusN, l:"Fokus-Wettbewerber"},
     {n:totalCourses.toLocaleString("de-DE"), l:"Kurse erfasst"},
-    {n:providers[0]?.courses ?? "—", l:"Größter Anbieter (Kurse)"},
   ].map(t=>`<div class="tile"><div class="n num">${t.n}</div><div class="l">${t.l}</div></div>`).join("");
 
   // ---- tab 1: Anbieter & Kurse ----
@@ -145,19 +150,21 @@ async function loadJson(p){ const r=await fetch(DATA+p,{cache:"no-store"}); if(!
     catch(e){ detailEl.innerHTML=`<div class="empty err">Kurse für ${esc(p.provider)} nicht ladbar.</div>`; return; }
     const courses=(data.courses||[]).slice().sort((a,b)=>(a.title||"").localeCompare(b.title||""));
     detailEl.innerHTML=
-      `<div class="dhead"><div><h3>${p.brand?'<span class="kw">'+esc(p.provider)+'</span>':esc(p.provider)}</h3>`+
+      `<div class="dhead"><div><h3>${p.brand?'<span class="kw">'+esc(p.provider)+'</span>':esc(p.provider)}${p.focus?' <span class="badge">Fokus</span>':''}</h3>`+
       (p.top?`<div class="meta">Schwerpunkte: ${esc(p.top)}</div>`:"")+`</div>`+
       `<div class="dcount"><span class="big">${courses.length}</span><span class="lbl">Kurse</span></div></div>`+
       `<div class="courses">${courses.map(courseCard).join("")}</div>`;
   }
   function renderList(){
     const q=document.getElementById("compSearch").value.toLowerCase().trim();
-    const rows=providers.filter(p=>!q||p.provider.toLowerCase().includes(q));
+    const fo=document.getElementById("focusOnly").checked;
+    const rows=providers.filter(p=>(!q||p.provider.toLowerCase().includes(q)) && (!fo||p.focus));
     if(!rows.length){ listEl.innerHTML=`<div class="empty">Keine Treffer.</div>`; return; }
     if(!rows.some(p=>p.slug===selected)){ selected=rows[0].slug; }
     listEl.innerHTML=rows.map(p=>
       `<button class="crow${p.slug===selected?" on":""}" data-s="${p.slug}">
          <span class="nm">${p.brand?'<span class="kw">'+esc(p.provider)+'</span>':esc(p.provider)}</span>
+         ${p.focus?'<span class="star" title="Fokus-Wettbewerber">★</span>':''}
          <span class="ct num">${p.courses}</span></button>`).join("");
     listEl.querySelectorAll(".crow").forEach(b=>b.addEventListener("click",()=>{
       selected=b.dataset.s; listEl.querySelectorAll(".crow").forEach(x=>x.classList.toggle("on",x===b));
@@ -166,6 +173,7 @@ async function loadJson(p){ const r=await fetch(DATA+p,{cache:"no-store"}); if(!
     renderDetail(rows.find(p=>p.slug===selected));
   }
   document.getElementById("compSearch").addEventListener("input", renderList);
+  document.getElementById("focusOnly").addEventListener("change", renderList);
   renderList();
 
   // ---- tab 2: Top-Keywords im Markt ----

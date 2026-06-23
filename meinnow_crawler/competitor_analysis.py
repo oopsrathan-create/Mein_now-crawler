@@ -47,7 +47,7 @@ _STOP = {
     "zur", "den", "des", "auf", "als", "bei", "the", "and", "for", "with", "ihk",
     "online", "kurs", "weiterbildung", "schulung", "seminar",
 }
-PROV_FIELDS = ["snapshot_date", "provider", "slug", "is_brand", "courses", "top_terms"]
+PROV_FIELDS = ["snapshot_date", "provider", "slug", "is_brand", "focus", "courses", "top_terms"]
 KW_FIELDS = ["term", "courses", "providers"]
 
 
@@ -133,12 +133,20 @@ def main() -> int:
     max_pages = int(ca.get("max_pages_per_provider", 25))
     top_n = int(ca.get("top_keywords", 60))
     brand = cfg["providers"]
+    focus_frags = [f.casefold() for f in ca.get("focus_competitors", []) if f]
+    def is_focus(name: str) -> bool:
+        n = (name or "").casefold()
+        return any(f in n for f in focus_frags)
 
     client = Client(cfg["settings"])
     COMP.mkdir(parents=True, exist_ok=True)
 
-    providers = discover_providers(client, field_terms(), depth)[:max_providers]
-    print(f"discovered {len(providers)} providers in field")
+    discovered = discover_providers(client, field_terms(), depth)
+    # crawl focus competitors first so they're always covered, then the rest by frequency
+    providers = [p for p in discovered if is_focus(p)] + [p for p in discovered if not is_focus(p)]
+    providers = providers[:max_providers]
+    print(f"discovered {len(discovered)} providers in field; "
+          f"{sum(is_focus(p) for p in providers)} match the focus list")
 
     prov_rows = []
     field_titles: list[str] = []
@@ -165,12 +173,13 @@ def main() -> int:
         prov_rows.append({
             "snapshot_date": TODAY, "provider": prov, "slug": slug,
             "is_brand": 1 if provider_matches(prov, brand) else 0,
+            "focus": 1 if is_focus(prov) else 0,
             "courses": len(courses),
             "top_terms": "; ".join(t for t, _ in tt),
         })
         print(f"[{i}/{len(providers)}] {prov}: {len(courses)} Kurse")
 
-    prov_rows.sort(key=lambda r: r["courses"], reverse=True)
+    prov_rows.sort(key=lambda r: (r["focus"], r["courses"]), reverse=True)
     with (COMP / "providers.csv").open("w", newline="", encoding="utf-8") as f:
         w = csv.DictWriter(f, fieldnames=PROV_FIELDS); w.writeheader(); w.writerows(prov_rows)
 
