@@ -1,0 +1,42 @@
+name: competitor analysis crawl
+
+# Pulls the competitor field on its own — discovers every Anbieter, crawls the
+# focus competitors' full catalogues + the market SERP table. Kept separate from
+# the daily crawl so it isn't blocked by the (slow) inventory/keyword steps.
+
+on:
+  workflow_dispatch: {}
+  schedule:
+    # 06:30 UTC every Monday (after the weekly report).
+    - cron: "30 6 * * 1"
+
+permissions:
+  contents: write
+
+jobs:
+  competitors:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install -r meinnow_crawler/requirements.txt
+
+      - name: Run competitor analysis
+        run: python meinnow_crawler/competitor_analysis.py
+
+      - name: Commit data
+        run: |
+          git config user.name "course-crawler[bot]"
+          git config user.email "actions@github.com"
+          git add meinnow_crawler/data
+          if git diff --cached --quiet; then
+            echo "No data changes."
+          else
+            git commit -m "data: competitor analysis $(date -u +%Y-%m-%d)"
+            git push
+          fi
