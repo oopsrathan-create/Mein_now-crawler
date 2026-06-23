@@ -24,10 +24,46 @@
   },
 
   "keyword_tracker": {
-    "_comment": "Used by keyword_tracker.py. Keywords are read from keywords.txt. top_n = how many top results define the visible 'first page' for competitor-share; rank_scan_depth = how deep to scan to find your best rank; top_competitors = how many providers to record per keyword; discovery_max = how many auto-discovered candidate keywords to test.",
+    "_comment": "Used by keyword_tracker.py. Keywords are read from keywords.txt. top_n = how many top results define the visible 'first page' for competitor-share; rank_scan_depth = how deep to scan to find your best rank; top_competitors = how many providers to record per keyword; discovery_max = how many auto-discovered candidate keywords to test; major_competitors = how many top providers (by course count) get full course descriptions in the catalogue.",
     "top_n": 20,
     "rank_scan_depth": 500,
     "top_competitors": 15,
-    "discovery_max": 40
+    "discovery_max": 40,
+    "major_competitors": 25
+  },
+
+  "competitor_analysis": {
+    "_comment": "Used by competitor_analysis.py. Discovers every Anbieter in our field by scanning keywords.txt, then pulls each one's full catalogue (id, title, full description, link) and computes the field's top keywords. discovery_depth = pages per field term when discovering providers; max_providers = how many providers to crawl (most-seen first); max_pages_per_provider = pages of each provider's catalogue; top_keywords = how many field-wide terms to keep. focus_competitors = name fragments (case-insensitive substring) that are crawled first and flagged 'focus' so the page pins them.",
+    "discovery_depth": 10,
+    "max_providers": 200,
+    "max_pages_per_provider": 25,
+    "top_keywords": 60,
+    "top_courses_per_keyword": 25,
+    "focus_competitors": [
+      "OneCareer",
+      "A-Leecon",
+      "Masters of Digital",
+      "mycareernow",
+      "Karriere Tutor",
+      "velpTEC",
+      "Learning Digital Academy",
+      "Talentspring",
+      "neuefische",
+      "Distart",
+      "GrandEdu",
+      "SMD Performance Media",
+      "New Horizons München",
+      "Mentify Learn",
+      "Spiced Academy",
+      "Digital Career Institute",
+      "alfatraining",
+      "Bildung Next Level",
+      "COMCAVE",
+      "GFN GmbH",
+      "WBS TRAINING",
+      "IU Akademie",
+      "OMR Education",
+      "Digitale Leute"
+    ]
   }
 }

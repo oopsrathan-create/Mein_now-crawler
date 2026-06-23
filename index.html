@@ -42,6 +42,41 @@
   tr.brandrow td:first-child, tr.brandrow td:nth-child(2){ font-weight:700; }
   input[type=search]{ background:var(--panel2); border:1px solid var(--line); color:var(--text);
         border-radius:7px; padding:8px 12px; width:280px; max-width:100%; font-size:13px; }
+  input[type=search]:focus{ outline:none; border-color:var(--accent); }
+  .combo{ display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-bottom:6px; }
+  .combo-field{ position:relative; display:flex; flex-wrap:wrap; gap:6px; align-items:center;
+        background:var(--panel2); border:1px solid var(--line); border-radius:8px; padding:5px 8px;
+        min-width:300px; max-width:560px; }
+  .combo-field:focus-within{ border-color:var(--accent); }
+  .combo-field input[type=search]{ border:0; background:transparent; padding:4px 2px; width:160px; flex:1 1 120px; }
+  .combo-field input[type=search]:focus{ outline:none; }
+  .chip-sel{ display:inline-flex; align-items:center; gap:7px; background:rgba(76,201,240,.14);
+        border:1px solid var(--line); border-radius:999px; padding:2px 7px 2px 10px; font-size:12px; white-space:nowrap; }
+  .chip-sel .x{ cursor:pointer; color:var(--muted); font-weight:700; }
+  .chip-sel .x:hover{ color:var(--bad); }
+  .combo-menu{ position:absolute; top:100%; left:0; z-index:30; margin-top:4px; width:360px; max-width:90vw;
+        max-height:320px; overflow:auto; background:var(--panel2); border:1px solid var(--line);
+        border-radius:9px; padding:5px; box-shadow:0 10px 30px rgba(0,0,0,.4); }
+  .combo-opt{ display:flex; align-items:center; gap:10px;
+        padding:7px 10px; border-radius:6px; cursor:pointer; font-size:13px; }
+  .combo-opt:hover, .combo-opt.active{ background:rgba(76,201,240,.13); }
+  .combo-opt .chk{ width:14px; flex-shrink:0; color:var(--accent); font-weight:700; }
+  .combo-opt .nm{ flex:1; }
+  .combo-opt .s{ flex-shrink:0; }
+  .kwprev{ background:var(--panel2); border:1px solid var(--line); border-radius:10px; padding:14px 16px; margin-top:10px; }
+  .kwprev.empty{ color:var(--muted); }
+  .kwprev-table th{ cursor:default; }
+  .libsel{ background:var(--panel2); border:1px solid var(--line); color:var(--text); border-radius:7px; padding:8px 10px; font-size:13px; }
+  .focusrow{ display:flex; align-items:center; gap:6px; font-size:12px; color:var(--muted); cursor:pointer; }
+  #libTable th{ cursor:default; }
+  #libTable td.sel{ text-align:center; }
+  .pager{ display:flex; gap:6px; align-items:center; flex-wrap:wrap; margin-top:12px; }
+  .pager button{ background:var(--panel2); border:1px solid var(--line); color:var(--text); border-radius:7px;
+        padding:6px 11px; font-size:13px; cursor:pointer; font-family:inherit; }
+  .pager button:hover:not(:disabled){ border-color:var(--accent); }
+  .pager button:disabled{ opacity:.4; cursor:default; }
+  .pager button.on{ background:var(--accent); color:var(--bg); border-color:var(--accent); font-weight:700; }
+  .pager .info{ color:var(--muted); font-size:12px; margin-right:6px; }
   .muted{ color:var(--muted); }
   .chips{ display:flex; flex-wrap:wrap; gap:8px; margin-bottom:14px; }
   .chip{ border:1px solid var(--line); background:var(--panel2); color:var(--text); border-radius:20px;
@@ -69,31 +104,43 @@
 <header>
   <h1>ecomex · mein-now Kurs-Tracker</h1>
   <span class="sub" id="updated">lädt…</span>
+  <a href="competitors.html" style="margin-left:auto;color:var(--accent);text-decoration:none;font-size:13px">Wettbewerber-Analyse →</a>
 </header>
 <main>
   <div class="tiles" id="tiles"></div>
 
   <section id="librarySection">
-    <h2>Keyword-Bibliothek <span class="muted">— alle Keywords aus den ecomex-Listings; suchen, um zu sehen, ob ein Keyword getrackt wird und wo es rankt</span></h2>
-    <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px;align-items:center">
-      <input type="search" id="libSearch" placeholder="Keywords suchen… (z. B. KI, Social Media, SEO)" />
-      <select id="libFilter" style="background:var(--panel2);border:1px solid var(--line);color:var(--text);border-radius:7px;padding:8px 10px;font-size:13px">
+    <h2>Keyword-Bibliothek <span class="muted">— suchen, filtern, mehrere auswählen; seitenweise blättern</span></h2>
+    <div class="combo">
+      <input type="search" id="libSearch" placeholder="Keyword suchen…" autocomplete="off" />
+      <select id="libFilter" class="libsel">
         <option value="">Alle Keywords</option>
         <option value="tracked">Vom Crawler getrackt</option>
         <option value="untracked">Noch nicht getrackt</option>
       </select>
+      <select id="libPageSize" class="libsel" title="Einträge pro Seite">
+        <option value="25">25 pro Seite</option>
+        <option value="50">50 pro Seite</option>
+        <option value="100">100 pro Seite</option>
+      </select>
+      <label class="focusrow"><input type="checkbox" id="libSelOnly" /> Nur Auswahl</label>
+      <a id="libClear" style="cursor:pointer;font-size:12px;color:var(--accent);display:none">Auswahl leeren</a>
       <span class="muted" id="libCount"></span>
     </div>
+    <div id="libChips" style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px"></div>
     <table id="libTable">
       <thead><tr>
+        <th style="width:34px" title="auswählen"></th>
         <th data-k="keyword">Keyword</th>
         <th data-k="tracked">Getrackt?</th>
         <th data-k="best">Beste Position</th>
         <th data-k="page1">Auf Seite 1?</th>
+        <th data-k="cat">Kategorie</th>
       </tr></thead>
       <tbody></tbody>
     </table>
-    <small class="note">„Getrackt“ = der Crawler überwacht dieses Keyword (es steht in <code>keywords.txt</code>). Die beste Position zeigt ecomex' Platzierung aus dem letzten Crawl: <b>ausstehend</b> = getrackt, aber der nächste Crawl hat es noch nicht erfasst; <b>nicht gerankt</b> = gecrawlt, aber ecomex ist nicht in den Ergebnissen. Die vollständige Liste bearbeiten Sie in <code>meinnow_crawler/listing_keywords.txt</code> — um ein Keyword zu tracken, kopieren Sie es in <code>meinnow_crawler/keywords.txt</code>.</small>
+    <div id="libPager" class="pager"></div>
+    <small class="note">Häkchen setzen, um Keywords auszuwählen (über Seiten hinweg) — „Nur Auswahl“ zeigt nur die gewählten. „Getrackt“ = der Crawler überwacht das Keyword (<code>keywords.txt</code>); Position aus dem letzten Crawl: <b>ausstehend</b> = noch nicht erfasst, <b>nicht gerankt</b> = gecrawlt, aber ecomex nicht in den Ergebnissen. Vollständige Liste: <code>meinnow_crawler/listing_keywords.txt</code>.</small>
   </section>
 
   <section>
@@ -404,48 +451,92 @@ function latestDate(rows){ return rows.reduce((m,r)=> r.snapshot_date>m?r.snapsh
     total: r=>r.total.toLocaleString(),
   }, "best", false);
 
-  // ---- listing keyword library (searchable) ----
+  // ---- keyword library (paginated, filterable, multi-select table) ----
   {
     const tbody = document.querySelector("#libTable tbody");
+    const chips = document.getElementById("libChips");
+    const clear = document.getElementById("libClear");
+    const pager = document.getElementById("libPager");
     if(!listingKws.length){
-      tbody.innerHTML = `<tr><td colspan="4" class="muted">Noch keine Listing-Keywords — fügen Sie sie in meinnow_crawler/listing_keywords.txt hinzu.</td></tr>`;
+      tbody.innerHTML = `<tr><td colspan="6" class="muted">Noch keine Listing-Keywords — in meinnow_crawler/listing_keywords.txt hinzufügen.</td></tr>`;
     } else {
-      // tracked = keyword is in keywords.txt (what the crawler monitors).
-      // hasRank = the latest crawl has a result for it yet; best may be null
-      // (tracked, crawled, but ecomex isn't in the results).
       const libRows = listingKws.map(kw=>{
-        const lc = kw.toLowerCase();
-        const tracked = trackedSet.has(lc);
-        const rk = krMap[lc];
-        return { keyword:kw, tracked, hasRank: !!rk,
-                 best: rk ? rk.best : null, page1: rk ? rk.page1 : false };
+        const lc = kw.toLowerCase(); const rk = krMap[lc];
+        return { keyword:kw, tracked:trackedSet.has(lc), hasRank:!!rk, best: rk?rk.best:null, page1: rk?rk.page1:false };
       });
-      function renderLib(){
-        const q = document.getElementById("libSearch").value.toLowerCase();
+      const selected = new Set();
+      let pageSize = 25, page = 0;
+      const bestBadge = r => !r.tracked  ? '<span class="badge b-none">—</span>'
+                           : !r.hasRank  ? '<span class="badge b-warn">ausstehend</span>'
+                           : r.best!=null ? rankBadge(r.best) : '<span class="badge b-none">nicht gerankt</span>';
+      const p1Badge = r => (!r.tracked||!r.hasRank||r.best==null) ? '<span class="muted">—</span>'
+                         : (r.page1?'<span class="badge b-good">ja</span>':'<span class="badge b-none">nein</span>');
+
+      function filtered(){
+        const q = document.getElementById("libSearch").value.toLowerCase().trim();
         const f = document.getElementById("libFilter").value;
-        const rows = libRows.filter(r=>
+        const selOnly = document.getElementById("libSelOnly").checked;
+        return libRows.filter(r=>
           (!q || r.keyword.toLowerCase().includes(q)) &&
-          (!f || (f==="tracked" && r.tracked) || (f==="untracked" && !r.tracked))
-        );
+          (!f || (f==="tracked"&&r.tracked) || (f==="untracked"&&!r.tracked)) &&
+          (!selOnly || selected.has(r.keyword)));
+      }
+      function renderChips(){
+        chips.innerHTML = [...selected].map(k=>
+          `<span class="chip-sel"><span class="kw">${k}</span><span class="x" data-k="${encodeURIComponent(k)}">✕</span></span>`).join("");
+        clear.style.display = selected.size ? "" : "none";
+      }
+      function renderPager(total, pages){
+        if(pages<=1){ pager.innerHTML = `<span class="info">${total.toLocaleString("de-DE")} Treffer</span>`; return; }
+        const btn=(label,p,o={})=>`<button ${o.disabled?"disabled":""} class="${o.on?"on":""}" data-p="${p}">${label}</button>`;
+        let html=`<span class="info">${total.toLocaleString("de-DE")} Treffer · Seite ${page+1}/${pages}</span>`;
+        html+=btn("‹","prev",{disabled:page===0});
+        const win=2, from=Math.max(0,page-win), to=Math.min(pages-1,page+win);
+        if(from>0){ html+=btn(1,0,{on:page===0}); if(from>1) html+=`<span class="info">…</span>`; }
+        for(let p=from;p<=to;p++) html+=btn(p+1,p,{on:p===page});
+        if(to<pages-1){ if(to<pages-2) html+=`<span class="info">…</span>`; html+=btn(pages,pages-1,{on:page===pages-1}); }
+        html+=btn("›","next",{disabled:page===pages-1});
+        pager.innerHTML=html;
+      }
+      function render(){
+        const rows = filtered();
+        const pages = Math.max(1, Math.ceil(rows.length/pageSize));
+        if(page>=pages) page=pages-1;
         const t = rows.filter(r=>r.tracked).length;
         document.getElementById("libCount").textContent =
-          `${rows.length} von ${libRows.length} Keywords · ${t} getrackt`;
-        renderTable("libTable", rows, {
-          keyword: r=>`<span class="kw">${r.keyword}</span>`,
-          tracked: r=> r.tracked
-                       ? '<span class="badge b-good">getrackt</span>'
-                       : '<span class="badge b-none">nicht getrackt</span>',
-          best:    r=> !r.tracked  ? '<span class="muted">—</span>'
-                     : !r.hasRank  ? '<span class="badge b-warn">ausstehend</span>'
-                     : r.best!=null ? rankBadge(r.best)
-                     : '<span class="badge b-none">nicht gerankt</span>',
-          page1:   r=> (!r.tracked || !r.hasRank || r.best==null) ? '<span class="muted">—</span>'
-                       : (r.page1?'<span class="badge b-good">ja</span>':'<span class="badge b-none">nein</span>'),
-        }, "keyword", true);
+          `${rows.length} von ${libRows.length} Keywords · ${t} getrackt · ${selected.size} ausgewählt`;
+        const slice = rows.slice(page*pageSize, page*pageSize+pageSize);
+        tbody.innerHTML = slice.length ? slice.map(r=>
+          `<tr><td class="sel"><input type="checkbox" data-kw="${encodeURIComponent(r.keyword)}" ${selected.has(r.keyword)?"checked":""}></td>`+
+          `<td><span class="kw">${r.keyword}</span></td>`+
+          `<td>${r.tracked?'<span class="badge b-good">getrackt</span>':'<span class="badge b-none">nicht getrackt</span>'}</td>`+
+          `<td>${bestBadge(r)}</td><td>${p1Badge(r)}</td><td class="muted">${clusterOf(r.keyword)}</td></tr>`).join("")
+          : `<tr><td colspan="6" class="muted">Keine Treffer.</td></tr>`;
+        renderPager(rows.length, pages);
+        renderChips();
       }
-      document.getElementById("libSearch").addEventListener("input", renderLib);
-      document.getElementById("libFilter").addEventListener("change", renderLib);
-      renderLib();
+      tbody.addEventListener("change", e=>{
+        const cb=e.target.closest("input[type=checkbox]"); if(!cb) return;
+        const kw=decodeURIComponent(cb.dataset.kw);
+        if(cb.checked) selected.add(kw); else selected.delete(kw);
+        render();
+      });
+      chips.addEventListener("click", e=>{
+        const x=e.target.closest(".x"); if(!x) return;
+        selected.delete(decodeURIComponent(x.dataset.k)); render();
+      });
+      clear.addEventListener("click", ()=>{ selected.clear(); render(); });
+      pager.addEventListener("click", e=>{
+        const b=e.target.closest("button[data-p]"); if(!b) return;
+        const pages=Math.max(1,Math.ceil(filtered().length/pageSize)), p=b.dataset.p;
+        page = p==="prev"?Math.max(0,page-1) : p==="next"?Math.min(pages-1,page+1) : +p;
+        render();
+      });
+      document.getElementById("libSearch").addEventListener("input", ()=>{ page=0; render(); });
+      document.getElementById("libFilter").addEventListener("change", ()=>{ page=0; render(); });
+      document.getElementById("libSelOnly").addEventListener("change", ()=>{ page=0; render(); });
+      document.getElementById("libPageSize").addEventListener("change", e=>{ pageSize=+e.target.value; page=0; render(); });
+      render();
     }
   }
 
