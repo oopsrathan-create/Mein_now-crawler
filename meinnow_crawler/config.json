@@ -36,5 +36,13 @@
     "_comment": "Used by competitor_catalog.py to pull each competitor's full mein-now catalogue via provider-name search. Bounds the crawl: max_providers = how many competitors to crawl (most courses first); max_pages_per_provider = pages of each one's catalogue to fetch (page_size per page). Raising these makes the daily crawl longer and the dataset larger.",
     "max_providers": 150,
     "max_pages_per_provider": 15
+  },
+
+  "competitor_analysis": {
+    "_comment": "Used by competitor_analysis.py. Discovers every Anbieter in our field by scanning keywords.txt, then pulls each one's full catalogue (id, title, full description, link) and computes the field's top keywords. discovery_depth = pages per field term when discovering providers; max_providers = how many providers to crawl (most-seen first); max_pages_per_provider = pages of each provider's catalogue; top_keywords = how many field-wide terms to keep.",
+    "discovery_depth": 10,
+    "max_providers": 200,
+    "max_pages_per_provider": 25,
+    "top_keywords": 60
   }
 }
