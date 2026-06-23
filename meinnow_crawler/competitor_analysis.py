@@ -80,11 +80,16 @@ def discover(client: Client, terms: list[str], depth: int, top_courses: int, bra
     keyword, provider, course title and numeric position/page — the market SERP."""
     freq: Counter = Counter()
     kw_rows: list[dict] = []
+    prov_courses: dict[str, dict] = {}    # provider name -> {course_id: course}; what we see in the field
     for t in terms:
         for rank, listing, _total in client.iter_listings(t, depth):
             name = (listing.get("bildungsanbieter") or {}).get("name")
             if name:
                 freq[name] += 1
+                cid = listing.get("id")
+                d = prov_courses.setdefault(name, {})
+                if cid not in d:
+                    d[cid] = course_from_listing(listing)
             if rank < top_courses:
                 kw_rows.append({
                     "keyword": t, "provider": name or "",
@@ -93,7 +98,7 @@ def discover(client: Client, terms: list[str], depth: int, top_courses: int, bra
                     "position": rank + 1, "page": rank // 20 + 1,
                 })
         print(f"[discover] '{t}': {len(freq)} providers so far")
-    return [p for p, _ in freq.most_common()], kw_rows
+    return [p for p, _ in freq.most_common()], kw_rows, prov_courses
 
 
 def course_link(course_id, title: str) -> str:
@@ -103,26 +108,33 @@ def course_link(course_id, title: str) -> str:
     return f"https://mein-now.de/weiterbildungssuche/suche?sw={title.replace(' ', '+')}"
 
 
+def course_from_listing(listing: dict) -> dict:
+    flat = flatten(listing)
+    cid = listing.get("id")
+    return {
+        "id": cid,
+        "title": flat.get("title", ""),
+        "weiterbildungsart": flat.get("weiterbildungsart", ""),
+        "locations": flat.get("locations", ""),
+        "next_start": flat.get("next_start", ""),
+        "link": course_link(cid, flat.get("title", "")),
+        "description": flat.get("description", ""),
+    }
+
+
 def crawl_provider(client: Client, provider: str, max_pages: int) -> list[dict]:
-    """Every course listed under `provider` (deduped by id), with full description."""
+    """Every course listed under `provider` (deduped by id), with full description.
+    Note: the API has no provider filter, so this only finds courses whose text
+    surfaces the provider name — for brands not named in their course text it can
+    return nothing, which is why we also union in what we saw during discovery."""
     out: dict = {}
     for _rank, listing, _total in client.iter_listings(provider, max_pages):
         name = (listing.get("bildungsanbieter") or {}).get("name")
         if not provider_matches(name, [provider]):
             continue
         cid = listing.get("id")
-        if cid in out:
-            continue
-        flat = flatten(listing)          # description = full inhalt, tags stripped, not truncated
-        out[cid] = {
-            "id": cid,
-            "title": flat.get("title", ""),
-            "weiterbildungsart": flat.get("weiterbildungsart", ""),
-            "locations": flat.get("locations", ""),
-            "next_start": flat.get("next_start", ""),
-            "link": course_link(cid, flat.get("title", "")),
-            "description": flat.get("description", ""),
-        }
+        if cid not in out:
+            out[cid] = course_from_listing(listing)
     return list(out.values())
 
 
@@ -153,7 +165,7 @@ def main() -> int:
     client = Client(cfg["settings"])
     COMP.mkdir(parents=True, exist_ok=True)
 
-    discovered, kw_rows = discover(client, field_terms(), depth, top_courses, brand)
+    discovered, kw_rows, prov_courses = discover(client, field_terms(), depth, top_courses, brand)
     # crawl focus competitors first so they're always covered, then the rest by frequency
     providers = [p for p in discovered if is_focus(p)] + [p for p in discovered if not is_focus(p)]
     providers = providers[:max_providers]
@@ -172,7 +184,11 @@ def main() -> int:
     term_providers: defaultdict[str, set] = defaultdict(set)
 
     for i, prov in enumerate(providers, 1):
-        courses = crawl_provider(client, prov, max_pages)
+        # union: courses seen in the field during discovery + the deep provider-name crawl
+        seen = dict(prov_courses.get(prov, {}))
+        for c in crawl_provider(client, prov, max_pages):
+            seen[c["id"]] = c
+        courses = list(seen.values())
         if not courses:
             continue
         titles = [c["title"] for c in courses]
