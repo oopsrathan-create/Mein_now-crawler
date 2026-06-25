@@ -51,6 +51,16 @@
   .dcount .big{ font-size:36px; font-weight:780; line-height:1; color:var(--accent); font-variant-numeric:tabular-nums; }
   .dcount .lbl{ display:block; color:var(--muted); font-size:11px; text-transform:uppercase; letter-spacing:.06em; margin-top:4px; }
   .courses{ display:flex; flex-direction:column; gap:10px; }
+  .cbar{ display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin:12px 0; }
+  .cbar input[type=search]{ background:var(--panel2); border:1px solid var(--line); color:var(--text); border-radius:8px; padding:8px 12px; font-size:13px; min-width:200px; }
+  .cbar input[type=search]:focus{ outline:none; border-color:var(--accent); }
+  .csel{ background:var(--panel2); border:1px solid var(--line); color:var(--text); border-radius:8px; padding:8px 10px; font-size:13px; }
+  .pager{ display:flex; gap:6px; align-items:center; flex-wrap:wrap; margin-top:14px; }
+  .pager button{ background:var(--panel2); border:1px solid var(--line); color:var(--text); border-radius:7px; padding:6px 11px; font-size:13px; cursor:pointer; font-family:inherit; }
+  .pager button:hover:not(:disabled){ border-color:var(--accent); }
+  .pager button:disabled{ opacity:.4; cursor:default; }
+  .pager button.on{ background:var(--accent); color:var(--bg); border-color:var(--accent); font-weight:700; }
+  .pager .info{ color:var(--muted); font-size:12px; margin-right:6px; }
   .course{ background:var(--panel2); border:1px solid var(--line); border-radius:10px; padding:13px 15px; }
   .course h4{ margin:0; font-size:14px; font-weight:600; }
   .course .art{ color:var(--muted); font-size:12px; margin-top:5px; }
@@ -160,12 +170,39 @@ async function loadJson(p){ const r=await fetch(DATA+p,{cache:"no-store"}); if(!
     let data;
     try { data = cache[p.slug] ??= await loadJson("competitors/"+p.slug+".json"); }
     catch(e){ detailEl.innerHTML=`<div class="empty err">Kurse für ${esc(p.provider)} nicht ladbar.</div>`; return; }
-    const courses=(data.courses||[]).slice().sort((a,b)=>(a.title||"").localeCompare(b.title||""));
+    const all=(data.courses||[]).slice().sort((a,b)=>(a.title||"").localeCompare(b.title||""));
+    let cpsize=25, cpage=0, cq="";
     detailEl.innerHTML=
       `<div class="dhead"><div><h3>${p.brand?'<span class="kw">'+esc(p.provider)+'</span>':esc(p.provider)}${p.focus?' <span class="badge">Fokus</span>':''}</h3>`+
       (p.top?`<div class="meta">Schwerpunkte: ${esc(p.top)}</div>`:"")+`</div>`+
-      `<div class="dcount"><span class="big">${courses.length}</span><span class="lbl">Kurse</span></div></div>`+
-      `<div class="courses">${courses.map(courseCard).join("")}</div>`;
+      `<div class="dcount"><span class="big">${all.length}</span><span class="lbl">Kurse</span></div></div>`+
+      `<div class="cbar">`+
+        `<input type="search" id="cCourseSearch" placeholder="Kurs filtern…" />`+
+        `<select id="cSize" class="csel"><option value="25">25 pro Seite</option><option value="50">50 pro Seite</option><option value="100">100 pro Seite</option></select>`+
+        `<span class="muted" id="cMeta"></span>`+
+      `</div>`+
+      `<div class="courses" id="cCourses"></div><div class="pager" id="cPager"></div>`;
+    const coursesEl=document.getElementById("cCourses"), pagerEl=document.getElementById("cPager"), metaEl=document.getElementById("cMeta");
+    function draw(){
+      const rows = cq ? all.filter(c=>((c.title||"")+" "+(c.description||"")).toLowerCase().includes(cq)) : all;
+      const pages=Math.max(1, Math.ceil(rows.length/cpsize));
+      if(cpage>=pages) cpage=pages-1; if(cpage<0) cpage=0;
+      metaEl.textContent = `${rows.length.toLocaleString("de-DE")} Kurse · Seite ${cpage+1}/${pages}`;
+      coursesEl.innerHTML = rows.slice(cpage*cpsize, cpage*cpsize+cpsize).map(courseCard).join("") || `<div class="empty">Keine Treffer.</div>`;
+      if(pages<=1){ pagerEl.innerHTML=""; return; }
+      const btn=(l,pp,o={})=>`<button ${o.disabled?"disabled":""} class="${o.on?"on":""}" data-p="${pp}">${l}</button>`;
+      let h=btn("‹","prev",{disabled:cpage===0}); const win=2, from=Math.max(0,cpage-win), to=Math.min(pages-1,cpage+win);
+      if(from>0){ h+=btn(1,0,{on:cpage===0}); if(from>1) h+=`<span class="info">…</span>`; }
+      for(let i=from;i<=to;i++) h+=btn(i+1,i,{on:i===cpage});
+      if(to<pages-1){ if(to<pages-2) h+=`<span class="info">…</span>`; h+=btn(pages,pages-1,{on:cpage===pages-1}); }
+      h+=btn("›","next",{disabled:cpage===pages-1}); pagerEl.innerHTML=h;
+    }
+    document.getElementById("cCourseSearch").addEventListener("input", e=>{ cq=e.target.value.toLowerCase().trim(); cpage=0; draw(); });
+    document.getElementById("cSize").addEventListener("change", e=>{ cpsize=+e.target.value; cpage=0; draw(); });
+    pagerEl.addEventListener("click", e=>{ const b=e.target.closest("button[data-p]"); if(!b) return;
+      const pages=Math.max(1,Math.ceil((cq?all.filter(c=>((c.title||"")+" "+(c.description||"")).toLowerCase().includes(cq)):all).length/cpsize));
+      cpage = b.dataset.p==="prev"?cpage-1 : b.dataset.p==="next"?cpage+1 : +b.dataset.p; draw(); });
+    draw();
   }
   function renderList(){
     const q=document.getElementById("compSearch").value.toLowerCase().trim();
