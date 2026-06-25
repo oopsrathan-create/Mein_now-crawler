@@ -230,17 +230,30 @@ async function loadJson(p){ const r=await fetch(DATA+p,{cache:"no-store"}); if(!
   try { kwc = await loadCsv("competitor_keyword_courses.csv"); } catch(e){ /* optional */ }
   const kwcRows = kwc.map(r=>({ keyword:r.keyword||"", provider:r.provider||"", brand:r.is_brand==="1",
                                 title:r.title||"", position:+r.position||0, page:+r.page||0 }));
-  let ksort="keyword", kasc=true; const CAP=1500;
+  let ksort="keyword", kasc=true, kUserSorted=false; const CAP=1500;
+  function matchScore(kw, q){
+    kw=(kw||"").toLowerCase();
+    if(kw===q) return 0;          // exact keyword match first
+    if(kw.startsWith(q)) return 1; // then "starts with"
+    if(kw.includes(q)) return 2;   // then keyword contains
+    return 3;                      // matched only via provider/course
+  }
   function renderKwc(){
     const q=document.getElementById("kwSearch").value.toLowerCase().trim();
     const rows=kwcRows.filter(r=>!q || (r.keyword+" "+r.provider+" "+r.title).toLowerCase().includes(q));
-    rows.sort((a,b)=>{
-      let x=a[ksort], y=b[ksort];
-      if(typeof x==="string"&&typeof y==="string"){ const c=x.localeCompare(y); return kasc?c:-c; }
-      return kasc?(x-y):(y-x);
-    });
+    if(q && !kUserSorted){
+      // searching: surface the closest keyword matches (exact > starts-with > contains), best position first
+      rows.sort((a,b)=> matchScore(a.keyword,q)-matchScore(b.keyword,q)
+                     || a.keyword.localeCompare(b.keyword) || a.position-b.position);
+    } else {
+      rows.sort((a,b)=>{
+        let x=a[ksort], y=b[ksort];
+        if(typeof x==="string"&&typeof y==="string"){ const c=x.localeCompare(y); return kasc?c:-c; }
+        return kasc?(x-y):(y-x);
+      });
+    }
     document.getElementById("kwMeta").textContent = kwcRows.length
-      ? `${rows.length.toLocaleString("de-DE")} Einträge${rows.length>CAP?` (zeige erste ${CAP})`:""} · Spalten klicken zum Sortieren`
+      ? `${rows.length.toLocaleString("de-DE")} Einträge${rows.length>CAP?` (zeige erste ${CAP})`:""}${q&&!kUserSorted?" · nach Relevanz":""} · Spalten klicken zum Sortieren`
       : "Noch keine SERP-Daten — beim nächsten Crawl wird befüllt.";
     document.querySelector("#kwTable tbody").innerHTML = rows.slice(0,CAP).map(r=>
       `<tr class="${r.brand?"brand":""}"><td>${esc(r.keyword)}</td>`+
@@ -248,9 +261,9 @@ async function loadJson(p){ const r=await fetch(DATA+p,{cache:"no-store"}); if(!
       `<td>${esc(r.title)}</td><td class="num">${r.position||""}</td><td class="num">${r.page||""}</td></tr>`).join("");
   }
   document.querySelectorAll("#kwTable th").forEach(th=>th.addEventListener("click",()=>{
-    const k=th.dataset.k; kasc = (k===ksort)?!kasc:true; ksort=k; renderKwc();
+    const k=th.dataset.k; kasc = (k===ksort)?!kasc:true; ksort=k; kUserSorted=true; renderKwc();
   }));
-  document.getElementById("kwSearch").addEventListener("input", renderKwc);
+  document.getElementById("kwSearch").addEventListener("input", ()=>{ kUserSorted=false; renderKwc(); });
   renderKwc();
 
   document.querySelectorAll(".tabbtn").forEach(btn=>btn.addEventListener("click",()=>{
