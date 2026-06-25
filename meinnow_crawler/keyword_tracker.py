@@ -72,6 +72,7 @@ class Client:
         self.host = settings["backend_host"].rstrip("/")
         self.size = int(settings.get("page_size", 20))
         self.delay = float(settings.get("request_delay_seconds", 0.4))
+        self.extra = settings.get("search_params") or {}   # mirror the website's default filters
         self.session = requests.Session()
         self.session.headers.update({
             "X-API-Key": settings["api_key"],
@@ -81,7 +82,7 @@ class Client:
 
     def page(self, keyword: str, page: int) -> dict:
         url = f"{self.host}/pc/v1/bildungsangebot"
-        params = {"sw": keyword, "page": page, "size": self.size}
+        params = {"sw": keyword, "page": page, "size": self.size, **self.extra}
         for attempt in range(4):
             try:
                 r = self.session.get(url, params=params, timeout=30)
