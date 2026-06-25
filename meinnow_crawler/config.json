@@ -20,7 +20,9 @@
     "page_size": 20,
     "max_pages_per_query": 50,
     "ranking_max_pages": 25,
-    "request_delay_seconds": 0.4
+    "request_delay_seconds": 0.4,
+    "_search_params_comment": "Extra query params sent with every search so the crawler sees what the public site shows. Mirror of mein-now.de/weiterbildungssuche defaults (ziel=erweitern&erws=true). If results stop matching the site, grab a fresh search request from the site and update these.",
+    "search_params": { "ziel": "erweitern", "erws": "true" }
   },
 
   "keyword_tracker": {
