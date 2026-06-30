@@ -43,5 +43,7 @@ jobs:
             echo "No data changes."
           else
             git commit -m "data: crawl snapshot $(date -u +%Y-%m-%d)"
-            git push
+            for i in 1 2 3 4 5; do
+              git pull --rebase --autostash origin main && git push && { echo "pushed"; break; } || { echo "push attempt $i failed (race), retrying"; sleep 7; }
+            done
           fi
