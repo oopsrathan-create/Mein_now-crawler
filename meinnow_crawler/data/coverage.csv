@@ -1430,3 +1430,42 @@ snapshot_date,type,tracked_title,status,match_title,course_id,locations,next_sta
 2026-06-30,Weiterbildung,WordPress,found,Wordpress Grundlagen,10389167529,Berlin; Düsseldorf; München; Rostock,2026-07-26,UEBER_1000_BIS_5000_EUR,BERUFLICHE_QUALIFIZIERUNG
 2026-06-30,Weiterbildung,KI- und Online Marketing Weiterbildung,missing,,,,,,
 2026-06-30,Weiterbildung,KI- und Online Marketing Manager,found,KI- und Online Marketing Manager,10392169995,Berlin; Düsseldorf; München; Rostock,2026-07-05,UEBER_10000_EUR,BERUFLICHE_QUALIFIZIERUNG
+2026-07-01,Weiterbildung,Content Creator,found,Content Creator Kurs,10338430226,Berlin; Düsseldorf; München; Rostock,2026-07-12,UEBER_1000_BIS_5000_EUR,BERUFLICHE_QUALIFIZIERUNG
+2026-07-01,Weiterbildung,Content Marketing,found,Content Marketing,10342366414,Berlin; Düsseldorf; München; Rostock,2026-07-05,UEBER_5000_BIS_10000_EUR,BERUFLICHE_QUALIFIZIERUNG
+2026-07-01,Weiterbildung,Content Marketing Expert,found,Content Marketing,10342366414,Berlin; Düsseldorf; München; Rostock,2026-07-05,UEBER_5000_BIS_10000_EUR,BERUFLICHE_QUALIFIZIERUNG
+2026-07-01,Weiterbildung,Content Marketing Manager,found,Content Marketing,10342366414,Berlin; Düsseldorf; München; Rostock,2026-07-05,UEBER_5000_BIS_10000_EUR,BERUFLICHE_QUALIFIZIERUNG
+2026-07-01,Weiterbildung,Design Thinking & Agile Methoden mit KI,found,Design Thinking & Agile Methoden mit KI,10338436964,Berlin; Düsseldorf; München; Rostock,2026-07-05,UEBER_1000_BIS_5000_EUR,BERUFLICHE_QUALIFIZIERUNG
+2026-07-01,Weiterbildung,E-Commerce Shops und E-Commerce Plattformen,missing,,,,,,
+2026-07-01,Weiterbildung,E-Commerce Grundlagen,missing,,,,,,
+2026-07-01,Weiterbildung,eCommerce Manager,found,E-Commerce Manager,10338427399,Berlin; Düsseldorf; München; Rostock,2026-07-05,UEBER_5000_BIS_10000_EUR,BERUFLICHE_QUALIFIZIERUNG
+2026-07-01,Weiterbildung,E-Commerce Manager,found,E-Commerce Manager,10338427399,Berlin; Düsseldorf; München; Rostock,2026-07-05,UEBER_5000_BIS_10000_EUR,BERUFLICHE_QUALIFIZIERUNG
+2026-07-01,Weiterbildung,Inbound Marketing Experte,found,Inbound Marketing Experte,10338431282,Berlin; Düsseldorf; München; Rostock,2026-07-26,UEBER_1000_BIS_5000_EUR,BERUFLICHE_QUALIFIZIERUNG
+2026-07-01,Weiterbildung,KI im Büroalltag – ChatGPT & Co.,found,KI im Büroalltag - ChatGPT & Co.,10338433284,Berlin; Dresden; Köln,2026-07-05,UEBER_1000_BIS_5000_EUR,BERUFLICHE_QUALIFIZIERUNG
+2026-07-01,Weiterbildung,KI Manager,found,KI-Manager:in,10338433209,Berlin; Düsseldorf; München; Rostock,2026-07-02,UEBER_1000_BIS_5000_EUR,BERUFLICHE_QUALIFIZIERUNG
+2026-07-01,Weiterbildung,KI-Anwendung & Agile Arbeitsmethoden,found,KI-Anwendung & Agile Arbeitsmethoden,10338435963,Berlin; Düsseldorf; München; Rostock,2026-07-26,UEBER_1000_BIS_5000_EUR,BERUFLICHE_QUALIFIZIERUNG
+2026-07-01,Weiterbildung,KI-Anwendung & KI-Implementierung,missing,,,,,,
+2026-07-01,Weiterbildung,KI-Strategie & KI-Implementierung,missing,,,,,,
+2026-07-01,Weiterbildung,KI-Strategie & KI-Implementierung & Agile Methoden,missing,,,,,,
+2026-07-01,Weiterbildung,Content Creation mit KI,missing,,,,,,
+2026-07-01,Weiterbildung,Social Media Manager,found,Social Media Manager,10340407616,Berlin; Düsseldorf; München; Rostock,2026-07-12,UEBER_5000_BIS_10000_EUR,BERUFLICHE_QUALIFIZIERUNG
+2026-07-01,Weiterbildung,Social Media Advertising Expert:in,found,Social Media Advertising Expert:in,10338895482,Berlin; Düsseldorf; München; Rostock,2026-07-19,UEBER_1000_BIS_5000_EUR,BERUFLICHE_QUALIFIZIERUNG
+2026-07-01,Weiterbildung,Social Media Advertising,found,Social Media Advertising Manager,10400859394,Berlin; Düsseldorf; München; Rostock,2026-07-05,UEBER_5000_BIS_10000_EUR,BERUFLICHE_QUALIFIZIERUNG
+2026-07-01,Weiterbildung,Online Marketing,found,KI- und Online Marketing Manager,10392169995,Berlin; Düsseldorf; München; Rostock,2026-07-05,UEBER_10000_EUR,BERUFLICHE_QUALIFIZIERUNG
+2026-07-01,Weiterbildung,Online Marketing Grundlagen für Marketing Manager,missing,,,,,,
+2026-07-01,Weiterbildung,Online Marketing International,missing,,,,,,
+2026-07-01,Weiterbildung,Online Marketing Manager,found,KI- und Online Marketing Manager,10392169995,Berlin; Düsseldorf; München; Rostock,2026-07-05,UEBER_10000_EUR,BERUFLICHE_QUALIFIZIERUNG
+2026-07-01,Weiterbildung,Online Marketing Manager Weiterbildung,missing,,,,,,
+2026-07-01,Weiterbildung,Performance Marketing Experte,found,Performance Marketing Experte,10338428025,Berlin; Düsseldorf; München; Rostock,2026-07-05,UEBER_1000_BIS_5000_EUR,BERUFLICHE_QUALIFIZIERUNG
+2026-07-01,Weiterbildung,Performance Marketing Manager,found,Performance Marketing Manager,10400859010,Berlin; Düsseldorf; München; Rostock,2026-07-05,UEBER_5000_BIS_10000_EUR,BERUFLICHE_QUALIFIZIERUNG
+2026-07-01,Weiterbildung,Performance Marketing Masterclass,missing,,,,,,
+2026-07-01,Weiterbildung,PPC Marketing - Paid Advertising,missing,,,,,,
+2026-07-01,Weiterbildung,Search Engine Marketing Expert,missing,,,,,,
+2026-07-01,Weiterbildung,Social Media Creation Experte,found,Social Media Creation Experte,10338428751,Berlin; Düsseldorf; München; Rostock,2026-07-12,UEBER_1000_BIS_5000_EUR,BERUFLICHE_QUALIFIZIERUNG
+2026-07-01,Weiterbildung,Social Media Expert,missing,,,,,,
+2026-07-01,Weiterbildung,Social Media Grundlagen,missing,,,,,,
+2026-07-01,Weiterbildung,Social Media Marketing Expert,missing,,,,,,
+2026-07-01,Weiterbildung,NEU: Social Media Weiterbildung,missing,,,,,,
+2026-07-01,Weiterbildung,Social Media Relationship Expert:in,missing,,,,,,
+2026-07-01,Weiterbildung,WordPress,found,Wordpress Grundlagen,10389167529,Berlin; Düsseldorf; München; Rostock,2026-07-26,UEBER_1000_BIS_5000_EUR,BERUFLICHE_QUALIFIZIERUNG
+2026-07-01,Weiterbildung,KI- und Online Marketing Weiterbildung,missing,,,,,,
+2026-07-01,Weiterbildung,KI- und Online Marketing Manager,found,KI- und Online Marketing Manager,10392169995,Berlin; Düsseldorf; München; Rostock,2026-07-05,UEBER_10000_EUR,BERUFLICHE_QUALIFIZIERUNG
