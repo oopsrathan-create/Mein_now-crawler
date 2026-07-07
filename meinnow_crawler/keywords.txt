@@ -1,191 +1,126 @@
 # Keywords tracked by keyword_tracker.py — one per line.
 # Lines starting with # and blank lines are ignored.
 # These are the search terms a prospective student would type on mein-now.de.
-# Edit freely; the tracker records ecomex's rank + the competitive landscape for each.
-#
-# Keywords are grouped into clusters (the "=== ... ===" headers below). The clusters
-# are mirrored in the dashboard (index.html, CLUSTERS) so views can group by category.
-# If you add a keyword here, add it to the matching cluster in index.html too.
-#
-# NOTE: every tracked keyword = one search query per daily run, so this list is
-# intentionally large (it mirrors meinnow_crawler/listing_keywords.txt). Trim it
-# if daily runs get too slow or noisy.
+# Updated keyword set (Hauptkeyword list). Kept in sync with listing_keywords.txt.
 
-# === Online Marketing (core) ===
-Online Marketing
-Online Marketing Manager
-Online Marketing Strategie
-Online Marketing Grundlagen
-Online Marketing Management
-Online Marketing Leadership
-Online Marketing lernen
-Online Marketing Manager Weiterbildung
-Online Marketing Kampagnen
-Online Marketing - Webshop
-Online Marketing und Inbound Marketing
-Online Kampagnen
-Online Werbung
-Digitale Werbung
-Digitale Kommunikation
-Automatisierung im Online Marketing
-Marketing Kampagnen
-Marketing Manager
-Digital Marketing
-Digitales Marketing
-Digital Marketing Analyst
-Digital Marketing Manager
-Weiterbildung Digital Marketing
-Marketing Weiterbildung
-International Marketing
-Projektmanager Marketing
-
-# === SEO & SEA ===
-SEO
-SEA
-Suchmaschinenoptimierung
-Suchmaschinenmarketing
-Suchmaschinenmarketing und Google Ads
-Suchmaschinenwerbung
-Weiterbildung Suchmaschinenmarketing
-Search Engine Marketing
-Google Ads
-Online Advertising
-PPC Marketing
-
-# === Social Media & Content ===
-Social Media
-Social Media Betreuung
-Social Media Canva
-Social Media Content
-Social Media Creation
-Social Media Expert
-Social Media Grundlagen
-Social Media Kampagnen
-Social Media Kurs
-Social Media Manager
-Social Media Marketing
-Social Media Performance
-Social Media Performance Monitoring
-Social Media Relationship Experte
-Social Media Strategien
-Social Media: Marketing und Optimierung
-Onlinemarketing und Social-Media-Marketing
-Webanalyse & Social Media
-Influencer Marketing
-Instagram Marketing
-Content Marketing
-Content Marketing Manager
-Content Creator Kurs
-Contentpflege
-
-# === Inbound & Email ===
-Inbound Marketing
-Inbound Marketing Weiterbildung
-Inbound- und Content Marketing
-Email Marketing
-E-Mail Marketing
-
-# === Performance & Automation ===
-Performance Marketing
-Performance Marketing Experte
-Performance Marketing mit Wordpress
-Performance Marketing, Content Marketing
-Marketing Automation
-Affiliate Marketing
-Conversion Optimierung
-
-# === E-Commerce ===
-E-Commerce
-E-Commerce Grundlagen
-E-Commerce Kampagnen
-E-Commerce Manager
-eCommerce Manager
-E-Commerce Marketing
-Aufbaukurs - E-Commerce
-Weiterbildung im E-Commerce
-Social Ads im E-Commerce
-Social Ads Manager
-Social Commerce
-Online-Handel
-Amazon Marketing
-
-# === KI / AI — Marketing ===
-AI Marketing
-KI Marketing
-KI im Online Marketing
-Online Marketing KI
-Online Marketing Grundlagen KI
-Marketing mit AI
-Marketingkampagnen mit AI
-Marketingstrategie mit KI
-Marktanalyse mit KI
-Content & Online Werbung KI
-Content Creation mit KI
-Contenterstellung mit KI
-Kampagnenerstellung mit KI
-E-Mail Automatisierung mit KI
-KI im datengetriebenen Marketing
-KI im Inbound Marketing
-KI im Vertrieb
-KI für E-Commerce
-Performance Marketing KI
-Performance Marketing mit AI
-SEO Manager KI
-Social Media mit KI
-Texterstellung mit KI
-Videoerstellung mit KI
-Websites mit KI
-
-# === KI / AI — Skills, Tools & Career ===
+Agile Arbeitsmethoden
 AI für Anfänger
+AI Marketing
 AI Weiterbildung
 AI-Kurs
 AI-Manager
+Bilder bearbeiten
+Canva
+Canva Lernen
+Claude
+Content Creation mit KI
+Content Creator Kurs
+Content Creator Weiterbildung
+Content Marketing
+Content Marketing Kurs
+Content Marketing Manager
+Content Marketing Weiterbildung
+Contenterstellung mit KI
+DaVinci Resolve
+Design Thinking
+Design Thinking und Agile Methoden
+Digital Marketing
+Digital Marketing Analyst
+Digital Marketing Kurs
+Digital Marketing Manager
+Digitale Werbung
+Direktmarketing
+E-Commerce
+E-Commerce Manager
+E-Commerce Marketing
+E-Commerce Weiterbildung
+Einführung ins Prompt Engineering
+E-Mail Automatisierung mit KI
+Email Marketing
+Facebook Advertising
+Führungskräftetraining
+Google Ads
 Grundlagen AI
 Grundlagen KI
+Inbound Marketing
+Internet Marketing
+Kampagnenerstellung mit KI
+KI Automatisierung
 KI Anwendung
 KI Coach
+KI für E-Commerce
+KI Grundlagen
 KI im Arbeitsalltag
 KI im Büroalltag
+KI im Inbound Marketing
+KI im Vertrieb
 KI Lernen
 KI Manager
 KI Manager Weiterbildung
+KI Marketing
+KI Prompt Engineering
 KI Strategie
 KI Tools für Marketing
 KI und Agile Methoden
-KI und Automatisierung
-KI-Manager:in
-KI-Manager:in Weiterbildung
-KI-Projektmanager
-KI-Weiterbildung
-Weiterbildung KI
+KI Weiterbildung
+KI-Manager
 Künstliche Intelligenz
 Künstliche Intelligenz Weiterbildung
-Einführung ins Prompt Engineering
-KI Prompt Engineering
-Prompt Enginnering
-Prompt Kurs
-Projektmanagement mit AI
-ChatGPT
-Claude
-
-# === Tools & Skills ===
-Canva
-CRM
+Manager KI
+Marketing Automation
+Marketing Kampagnen
+Marketing Kurs
+Marketing Manager
+Marketing mit AI
+Marketingkampagnen mit AI
+Marketingstrategie mit KI
+Mediendesign Kurs
+Mediengestaltung Kurs
+Online Advertising
+Online Marketing
+Online Marketing Grundlagen
+Online Marketing Kurs
+Online Marketing lernen
+Online Marketing Manager Kurs
+Online Marketing Manager
+Online Marketing Zertifikat
+Online Shop Manager
+Online Werbung
+Online-Shops
+Performance Marketing Manager
+PPC
+Projektmanagement E-Commerce
+SEA
+SEO
+SEO Manager KI
+Sistrix
+Social Media Advertising
+Social Media Experte
+Social Media Marketing Manager
+Social Media Marketing Manager Weiterbildung
+Social Media Plattformen
+Social Media Marketing
+Strategisches Online Marketing
+Social Media Kurs
+Suchmaschinenmarketing
+Suchmaschinenmarketing und Google Ads
+Suchmaschinenoptimierung
+Suchmaschinenwerbung
+Texterstellung mit KI
+Videos bearbeiten
+Webdesign Kurs
+Weiterbildung Digital Marketing
+Weiterbildung im E-Commerce
+Weiterbildung KI
+Weiterbildung Marketing
+Weiterbildung Suchmaschinenmarketing
 WordPress
-Google Analytics 4
-Website Management
-Website Optimierung
-
-# === Methods & Leadership ===
-Design Thinking
-Design Thinking und Agile Methoden
-Führungskräftetraining
-Projektmanagement Kurs
-
-# === Data & Analytics ===
-Webanalyse
-Webanalyse für Online Marketing Manager
-Digital Strategy
-Google Analytics
-Datenanalyse
+Wordpress Kurs
+Wordpress Lernen
+Vibe Coding
+KI-Agenten
+Chat GPT
+Co-Pilot
+Online Marketing mit KI
+KI im Online Marketing
+Content erstellen mit KI
