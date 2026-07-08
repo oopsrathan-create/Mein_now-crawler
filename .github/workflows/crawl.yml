@@ -9,6 +9,13 @@ on:
 permissions:
   contents: write   # needed to commit the new data snapshots back to the repo
 
+# Serialize every workflow that commits to data/ so two crawls never push at
+# once (that caused rebase conflicts and lost data). Shared group across
+# crawl.yml, competitor-analysis.yml and weekly-rankings.yml.
+concurrency:
+  group: mein-now-data-commit
+  cancel-in-progress: false
+
 jobs:
   crawl:
     runs-on: ubuntu-latest
@@ -43,7 +50,11 @@ jobs:
             echo "No data changes."
           else
             git commit -m "data: crawl snapshot $(date -u +%Y-%m-%d)"
+            pushed=false
             for i in 1 2 3 4 5; do
-              git pull --rebase --autostash origin main && git push && { echo "pushed"; break; } || { echo "push attempt $i failed (race), retrying"; sleep 7; }
+              git rebase --abort 2>/dev/null || true
+              if git pull --rebase --autostash origin main && git push; then pushed=true; break; fi
+              echo "push attempt $i failed, retrying"; sleep 7
             done
+            if [ "$pushed" != true ]; then echo "::error::could not push data after retries"; exit 1; fi
           fi
