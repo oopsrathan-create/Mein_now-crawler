@@ -3,6 +3,7 @@
 # These are the search terms a prospective student would type on mein-now.de.
 # Updated keyword set (Hauptkeyword list). Kept in sync with listing_keywords.txt.
 
+Agent Testing
 Agile Arbeitsmethoden
 AI für Anfänger
 AI Marketing
@@ -10,6 +11,8 @@ AI Weiterbildung
 AI-Kurs
 AI-Manager
 Bilder bearbeiten
+Business Manager
+Camera Raw
 Canva
 Canva Lernen
 Claude
@@ -38,20 +41,24 @@ Einführung ins Prompt Engineering
 E-Mail Automatisierung mit KI
 Email Marketing
 Facebook Advertising
+Führungsinstrumente
 Führungskräftetraining
+Führungsstil
+Führungstechniken
 Google Ads
 Grundlagen AI
 Grundlagen KI
 Inbound Marketing
 Internet Marketing
+IT Manager
 Kampagnenerstellung mit KI
-KI Automatisierung
 KI Anwendung
 KI Coach
 KI für E-Commerce
 KI Grundlagen
 KI im Arbeitsalltag
 KI im Büroalltag
+KI im datengetriebenen Marketing
 KI im Inbound Marketing
 KI im Vertrieb
 KI Lernen
@@ -76,37 +83,40 @@ Marketingkampagnen mit AI
 Marketingstrategie mit KI
 Mediendesign Kurs
 Mediengestaltung Kurs
+Multimedia Kurs
 Online Advertising
 Online Marketing
 Online Marketing Grundlagen
 Online Marketing Kurs
 Online Marketing lernen
 Online Marketing Manager Kurs
-Online Marketing Manager
 Online Marketing Zertifikat
 Online Shop Manager
 Online Werbung
 Online-Shops
 Performance Marketing Manager
 PPC
+Produktbewertung
 Projektmanagement E-Commerce
+Projektmanager Kurs
+Projektmarketing
 SEA
 SEO
 SEO Manager KI
+Shop Manager
 Sistrix
 Social Media Advertising
 Social Media Experte
 Social Media Marketing Manager
 Social Media Marketing Manager Weiterbildung
 Social Media Plattformen
-Social Media Marketing
 Strategisches Online Marketing
-Social Media Kurs
 Suchmaschinenmarketing
 Suchmaschinenmarketing und Google Ads
 Suchmaschinenoptimierung
 Suchmaschinenwerbung
 Texterstellung mit KI
+Usability Kurs
 Videos bearbeiten
 Webdesign Kurs
 Weiterbildung Digital Marketing
@@ -117,10 +127,3 @@ Weiterbildung Suchmaschinenmarketing
 WordPress
 Wordpress Kurs
 Wordpress Lernen
-Vibe Coding
-KI-Agenten
-Chat GPT
-Co-Pilot
-Online Marketing mit KI
-KI im Online Marketing
-Content erstellen mit KI
