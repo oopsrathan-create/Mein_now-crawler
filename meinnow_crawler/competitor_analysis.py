@@ -82,6 +82,7 @@ def discover(client: Client, terms: list[str], depth: int, top_courses: int, bra
     kw_rows: list[dict] = []
     prov_courses: dict[str, dict] = {}    # provider name -> {course_id: course}; what we see in the field
     for t in terms:
+      try:
         for rank, listing, _total in client.iter_listings(t, depth):
             name = (listing.get("bildungsanbieter") or {}).get("name")
             if name:
@@ -98,6 +99,9 @@ def discover(client: Client, terms: list[str], depth: int, top_courses: int, bra
                     "position": rank + 1, "page": rank // 20 + 1,
                 })
         print(f"[discover] '{t}': {len(freq)} providers so far")
+      except Exception as exc:
+        print(f"[discover] '{t}': SKIPPED ({type(exc).__name__}: {exc})", file=sys.stderr)
+        continue
     return [p for p, _ in freq.most_common()], kw_rows, prov_courses
 
 
@@ -184,6 +188,7 @@ def main() -> int:
     term_providers: defaultdict[str, set] = defaultdict(set)
 
     for i, prov in enumerate(providers, 1):
+      try:
         # union: courses seen in the field during discovery + the deep provider-name crawl
         seen = dict(prov_courses.get(prov, {}))
         for c in crawl_provider(client, prov, max_pages):
@@ -212,6 +217,10 @@ def main() -> int:
             "top_terms": "; ".join(t for t, _ in tt),
         })
         print(f"[{i}/{len(providers)}] {prov}: {len(courses)} Kurse")
+      except Exception as exc:
+        # one bad provider must never abort the whole crawl
+        print(f"[{i}/{len(providers)}] {prov}: SKIPPED ({type(exc).__name__}: {exc})", file=sys.stderr)
+        continue
 
     prov_rows.sort(key=lambda r: (r["focus"], r["courses"]), reverse=True)
     with (COMP / "providers.csv").open("w", newline="", encoding="utf-8") as f:
