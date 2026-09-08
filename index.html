@@ -167,6 +167,7 @@
   <div class="tabs">
     <nav class="tabnav" id="tabnav">
       <button class="tabbtn active" data-tab="inventory">Kursübersicht <span class="count" id="invCountBadge"></span></button>
+      <button class="tabbtn" data-tab="targets" id="tabTargets" hidden>Kurs-Zielkeywords <span class="count" id="tgtCountBadge"></span></button>
       <button class="tabbtn" data-tab="spotlight" id="tabSpotlight" hidden>Kurs-Spotlight</button>
       <button class="tabbtn" data-tab="coverage" id="tabCoverage" hidden>Hochgeladene Kurse <span class="count" id="covCountBadge"></span></button>
       <button class="tabbtn" data-tab="movers" id="tabMovers" hidden>Ranking-Veränderungen</button>
@@ -192,6 +193,32 @@
         </tr></thead>
         <tbody></tbody>
       </table>
+    </div>
+
+    <div class="tabpanel" data-tab="targets" id="targetsSection">
+      <h2>Kurs-Zielkeywords <span class="muted">— jeder Kurs mit seinen Ziel-Keywords und ecomex' aktueller Position; vergleichbar & sortierbar</span></h2>
+      <div class="combo">
+        <input type="search" id="tgtSearch" placeholder="Kurs oder Keyword filtern…" />
+        <select id="tgtFilter" class="libsel">
+          <option value="">Alle</option>
+          <option value="ranked">Nur gerankt</option>
+          <option value="notranked">Nicht gerankt / ausstehend</option>
+          <option value="mismatch">Anderer Kurs rankt</option>
+        </select>
+        <span class="muted" id="tgtCount"></span>
+      </div>
+      <table id="tgtTable">
+        <thead><tr>
+          <th data-k="kursname">Kurs</th>
+          <th data-k="keyword">Ziel-Keyword</th>
+          <th data-k="best">Position</th>
+          <th data-k="page">Seite</th>
+          <th data-k="course">Ranking-Kurs (ecomex)</th>
+          <th data-k="match">Treffer?</th>
+        </tr></thead>
+        <tbody></tbody>
+      </table>
+      <small class="note">„Position" = ecomex' beste Platzierung für das Keyword (letzter Crawl). „Ranking-Kurs" = welcher ecomex-Kurs diese Position hält. „Treffer" ✓ = der rankende Kurs ist der zugeordnete Zielkurs. <b>ausstehend</b> = Keyword neu, noch nicht gecrawlt. Zuordnung bearbeiten: <code>meinnow_crawler/course_targets.csv</code>.</small>
     </div>
 
     <div class="tabpanel" data-tab="spotlight" id="spotlightSection">
@@ -391,6 +418,9 @@ function latestDate(rows){ return rows.reduce((m,r)=> r.snapshot_date>m?r.snapsh
   try { trackedKws = await loadLines("meinnow_crawler/keywords.txt"); } catch(e) { /* optional */ }
   let kwRanks = [];
   try { kwRanks = await loadCsv("keyword_ranks.csv"); } catch(e) { /* optional */ }
+  let courseTargets = [];
+  try { const r = await fetch("meinnow_crawler/course_targets.csv", {cache:"no-store"});
+        if(r.ok) courseTargets = Papa.parse(await r.text(), {header:true, skipEmptyLines:true}).data; } catch(e) { /* optional */ }
 
   // Coaching is out of scope — drop any coaching courses/rows from every view.
   const isCoaching = s => /coaching/i.test(s||"");
@@ -536,6 +566,68 @@ function latestDate(rows){ return rows.reduce((m,r)=> r.snapshot_date>m?r.snapsh
       document.getElementById("libFilter").addEventListener("change", ()=>{ page=0; render(); });
       document.getElementById("libSelOnly").addEventListener("change", ()=>{ page=0; render(); });
       document.getElementById("libPageSize").addEventListener("change", e=>{ pageSize=+e.target.value; page=0; render(); });
+      render();
+    }
+  }
+
+  // ---- Kurs-Zielkeywords (course_targets.csv × keyword_ranks) ----
+  {
+    const targets = courseTargets
+      .map(r=>({ kursname:(r.kursname||"").trim(), keyword:(r.keyword||"").trim() }))
+      .filter(r=>r.kursname && r.keyword);
+    if(targets.length){
+      document.getElementById("tabTargets").hidden = false;
+      document.getElementById("tgtCountBadge").textContent = new Set(targets.map(r=>r.kursname)).size;
+      // keyword(lc) -> { best, page, course } from the latest keyword_ranks snapshot
+      const ktLatest = latestDate(kwRanks);
+      const ktMap = {};
+      for(const r of kwRanks){
+        if(r.snapshot_date!==ktLatest) continue;
+        const b = (r.brand_best_rank==null || r.brand_best_rank==="") ? null : +r.brand_best_rank;
+        ktMap[(r.keyword||"").toLowerCase()] = { best:b, page: b!=null?Math.ceil(b/20):null, course:r.brand_course||"" };
+      }
+      const norm = s => (s||"").toLowerCase().replace(/[^a-z0-9]+/g,"");
+      const data = targets.map(t=>{
+        const info = ktMap[t.keyword.toLowerCase()];
+        const course = info ? info.course : "";
+        return { kursname:t.kursname, keyword:t.keyword,
+                 tracked: trackedSet.has(t.keyword.toLowerCase()),
+                 hasRank: !!info, best: info?info.best:null, page: info?info.page:null, course,
+                 match: !!course && (norm(course).includes(norm(t.kursname)) || norm(t.kursname).includes(norm(course))) };
+      });
+      const bestCell = r => !r.tracked ? '<span class="badge b-none">nicht getrackt</span>'
+                          : !r.hasRank ? '<span class="badge b-warn">ausstehend</span>'
+                          : r.best==null ? '<span class="badge b-none">nicht gerankt</span>'
+                          : rankBadge(r.best);
+      let sortK="kursname", asc=true;
+      function render(){
+        const q=document.getElementById("tgtSearch").value.toLowerCase().trim();
+        const f=document.getElementById("tgtFilter").value;
+        let rows=data.filter(r=>
+          (!q || (r.kursname+" "+r.keyword+" "+r.course).toLowerCase().includes(q)) &&
+          (!f || (f==="ranked" && r.best!=null) || (f==="notranked" && r.best==null)
+              || (f==="mismatch" && r.best!=null && !r.match)));
+        rows=rows.slice().sort((a,b)=>{
+          let x=a[sortK], y=b[sortK];
+          if(sortK==="best"||sortK==="page"){ x=x==null?1e9:x; y=y==null?1e9:y; return asc?x-y:y-x; }
+          if(sortK==="match"){ x=x?1:0; y=y?1:0; return asc?x-y:y-x; }
+          x=(x||"").toString().toLowerCase(); y=(y||"").toString().toLowerCase();
+          return asc?x.localeCompare(y):y.localeCompare(x);
+        });
+        document.getElementById("tgtCount").textContent = `${rows.length} von ${data.length} Zuordnungen`;
+        document.querySelector("#tgtTable tbody").innerHTML = rows.map(r=>
+          `<tr><td>${r.kursname}</td><td><span class="kw">${r.keyword}</span></td>`+
+          `<td>${bestCell(r)}</td>`+
+          `<td class="muted">${r.best!=null?("S."+r.page):"—"}</td>`+
+          `<td class="muted">${r.course||"—"}</td>`+
+          `<td>${r.best==null?'<span class="muted">—</span>':(r.match?'<span class="badge b-good">✓ dieser Kurs</span>':'<span class="badge b-warn">anderer Kurs</span>')}</td></tr>`).join("")
+          || `<tr><td colspan="6" class="muted">Keine Treffer.</td></tr>`;
+      }
+      document.querySelectorAll("#tgtTable th").forEach(th=>th.addEventListener("click",()=>{
+        const k=th.dataset.k; asc=(k===sortK)?!asc:true; sortK=k; render();
+      }));
+      document.getElementById("tgtSearch").addEventListener("input", render);
+      document.getElementById("tgtFilter").addEventListener("change", render);
       render();
     }
   }

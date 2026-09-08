@@ -127,3 +127,98 @@ Weiterbildung Suchmaschinenmarketing
 WordPress
 Wordpress Kurs
 Wordpress Lernen
+
+# --- Kurs-Zielkeywords (aus course_targets.csv) ---
+amazon
+amazon marketing
+amazon marktplatz
+amazon marketplace
+canva marketing
+bildbearbeitung
+bildgestaltung
+bildverarbeitung
+content creator
+marketing
+CRM
+Kundenbeziehung
+Kundenmanagement
+agile methoden mit ki
+design thinking & agile methoden
+design thinking für content creator
+e-commerce für gründer
+e-commerce aufbauen
+e commerce lernen
+e-commerce shops
+online plattformen
+google advertising
+google werbung
+inbound marketing experte
+inbound marketing weiterbildung
+KI im Projektmanagement
+AI im Projektmanagement
+Projekmanagement
+ki implementierung
+ki anwendung & implementierung
+ki im büroalltag chatgpt
+ki strategie & implementierung
+ki agile methoden
+ki & online marketing
+online marketing manager
+ai manager
+ki- und online marketing
+ki manager advanced
+ki- anwendung & agile arbeitsmethoden
+KI-Assistent
+copilot
+automation mit copilot
+ki assisten mit copilot
+ki-automatisierung mit n8n
+ki-automatisierung
+n8n
+ki content creation
+ki content creation für social media
+social media und web
+ki manager expert
+meta ads
+meta advertising
+meta werbung
+mit ki programmieren
+apps erstellen
+ai lernen
+mit ai programmieren
+online marketing weiterbildung
+online marketing für webs
+online websites
+online shops
+marketing lernen
+online marketing manager advanced
+performance marketing
+performance marketing experte
+ppc marketing
+prompt engineering
+prompt engineering im berufsalltag
+social media ads
+social media werbung
+social media weiterbildung
+social media aufbaukurs
+social media für fortgeschrittene
+social media kurs
+social media creation
+social media manager
+social media marketing
+social media marketing & content management
+social media marketing für redakteure
+seo lernen
+sea lernen
+vibe coding mit ki
+vibe coding
+apps ohne programmierkenntnisse
+web ohne programmierkenntnisse
+vibe coding mit ai
+vibe coding apps
+vibe coding ohne programmierkenntnisse
+video marketing
+videobearbeitung
+e-commerce mit ki
+weiterbildung online marketing
+Website aufbauen
