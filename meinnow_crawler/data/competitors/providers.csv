@@ -1,199 +1,201 @@
 snapshot_date,provider,slug,is_brand,focus,courses,top_terms
-2026-09-07,mycareernow,mycareernow,0,1,690,Marketing; Scrum; Social; Media; Social Media; Seo; Sea; Seo Sea
-2026-09-07,A-Leecon GmbH,a-leecon-gmbh,0,1,623,Projektmanagement; Marketing; Itil; Ki-Gestützte; Agile; Prompt; Intelligenz; Engineering
-2026-09-07,OneCareer,onecareer,0,1,537,Marketing; Social; Media; Manager; Social Media; E-Commerce; Seo; Google
-2026-09-07,Karriere Tutor GmbH,karriere-tutor-gmbh,0,1,497,Marketing; Manager; Storytelling; E-Commerce; Marketing Manager; Inkl; Inkl Storytelling; Content
-2026-09-07,velpTEC GmbH,velptec-gmbh,0,1,408,Marketing; Content; Social; Wordpress; E-Commerce; Media; Content Marketing; Medienrecht
-2026-09-07,Masters of Digital GmbH,masters-of-digital-gmbh,0,1,388,Marketing; Content; Media; Social; Social Media; E-Commerce; Manager; Seo
-2026-09-07,New Horizons München - IT Computer und BusinessTraining Trainings,new-horizons-m-nchen-it-computer-und-businesstraining-trainings,0,1,325,Microsoft; Praxis; Office; Projektmanagement; Python; Anwendungen; Intelligenz; Grundlagen
-2026-09-07,WBS TRAINING SE,wbs-training-se,0,1,311,Sap; Hana; Sap Hana; English; Manager; Business; Data; Finanzbuchhaltung
-2026-09-07,Distart Education GmbH,distart-education-gmbh,0,1,278,Marketing; Schwerpunkt; Marketing Schwerpunkt; Management; Content; Content Marketing; Social; Management Schwerpunkt
-2026-09-07,Learning Digital Academy GmbH,learning-digital-academy-gmbh,0,1,261,Marketing; Content; Google; Social; Media; Social Media; Data; Branding
-2026-09-07,Talentspring Academy Group,talentspring-academy-group,0,1,214,Marketing; E-Commerce; Manager; Seo; Automatisierung; Content; Vertrieb; Social
-2026-09-07,IU Akademie IU Internationale Hochschule,iu-akademie-iu-internationale-hochschule,0,1,163,Management; Marketing; Masterclass; Projektmanagement; Künstliche; Intelligenz; Künstliche Intelligenz; Social
-2026-09-07,DCI Digital Career Institute GmbH,dci-digital-career-institute-gmbh,0,1,141,Marketing; It-Consultant; It-Consultant Marketing; Grundlagen; Growth; Media; Content; Social
-2026-09-07,GrandEdu GmbH,grandedu-gmbh,0,1,112,Marketing; Manager; Social; Media; Social Media; Sem; Content; Schwerpunkt
-2026-09-07,neuefische GmbH,neuefische-gmbh,0,1,111,Marketing; Digital; Digital Marketing; Analytics; Data; Manager; Google; Development
-2026-09-07,COMCAVE.COLLEGE GmbH,comcave-college-gmbh,0,1,95,Marketing; Prompt; Manager; Engineering; Prompt Engineering; Management; Content; Chatgpt
-2026-09-07,GFN GmbH,gfn-gmbh,0,1,92,Marketing; Inkl; Zertifizierung; Manager; E-Commerce; Social; Media; Social Media
-2026-09-07,alfatraining Bildungszentrum GmbH,alfatraining-bildungszentrum-gmbh,0,1,92,Manager; Marketing; Design; Thinking; Design Thinking; Marketing Manager; Content; Webdesign
-2026-09-07,Mentify Learn GmbH,mentify-learn-gmbh,0,1,79,Amazon; E-Commerce; Launch; Advertising; Ppc; Automation; Marketplace; Amazon Advertising
-2026-09-07,Digitale Leute School,digitale-leute-school,0,1,77,Manager; Product; Lernen; Design; Projektmanager; Claude; Grundlagen; Usability
-2026-09-07,SMD Performance Media,smd-performance-media,0,1,66,Marketing; Intensivkurs; Manager; Social; Media; Social Media; E-Commerce; Marketing Manager
-2026-09-07,Bildung Next Level GmbH,bildung-next-level-gmbh,0,1,43,Marketing; Content; Performance; Webdesign; Content Marketing; Performance Marketing; Wordpress; Social
-2026-09-07,New Horizons München - IT Computer und Business Trainings,new-horizons-m-nchen-it-computer-und-business-trainings,0,1,29,Intelligence; Artificial; Artificial Intelligence; Grundlagen; Data; Intelligenz; Künstlicher; Künstlicher Intelligenz
-2026-09-07,OMR Education GmbH,omr-education-gmbh,0,1,27,Marketing; Modulare; Demand; Digital; Digital Marketing; Modulare Digital; Instagram; Sales
-2026-09-07,GrandEdu Media,grandedu-media,0,1,13,Practice; Level; Practice Level; Ki-Manager; Manager; Officer; Junior; B2B-
-2026-09-07,Habmann AufstiegsAkademie,habmann-aufstiegsakademie,0,0,685,Manager; Digitale; Nachhaltige; Business; Digital; Coach; Transformation; Digitaler
-2026-09-07,Akademie Überlingen,akademie-berlingen,0,0,530,Inkl; Toeic-Zertifikat; International; International Toeic-Zertifikat; Icdl; Professional; Icdl Professional; Projektmanagement
-2026-09-07,Lecturio GmbH,lecturio-gmbh,0,0,521,Basics; Geprüfte; Grundlagen; Aufbaukurs; Nach; Microsoft; Adobe; Inkl
-2026-09-07,welcome gGmbH,welcome-ggmbh,0,0,498,Basics; Grundlagen; Geprüfte; Aufbaukurs; Microsoft; Nach; Adobe; Inkl
-2026-09-07,Bildungszentrum des Handels e. V.,bildungszentrum-des-handels-e-v,0,0,478,Basics; Geprüfte; Grundlagen; Aufbaukurs; Nach; Microsoft; Adobe; Inkl
-2026-09-07,Lernen fördern e. V.,lernen-f-rdern-e-v,0,0,477,Basics; Geprüfte; Grundlagen; Aufbaukurs; Nach; Microsoft; Adobe; Inkl
-2026-09-07,QZA UG (haftungsbeschränkt),qza-ug-haftungsbeschr-nkt,0,0,477,Basics; Geprüfte; Grundlagen; Aufbaukurs; Microsoft; Nach; Adobe; Inkl
-2026-09-07,LearnWise GmbH,learnwise-gmbh,0,0,477,Basics; Geprüfte; Grundlagen; Aufbaukurs; Nach; Microsoft; Adobe; Inkl
-2026-09-07,WTA-Bildung,wta-bildung,0,0,477,Basics; Geprüfte; Grundlagen; Nach; Aufbaukurs; Microsoft; Adobe; Inkl
-2026-09-07,Institut für Bildung & Beruf,institut-f-r-bildung-beruf,0,0,401,Basics; Grundlagen; Aufbaukurs; Nach; Microsoft; Adobe; Cgi; Wirtschaftsenglisch
-2026-09-07,Akademie für Bildung & Beruf,akademie-f-r-bildung-beruf,0,0,401,Basics; Grundlagen; Aufbaukurs; Nach; Microsoft; Adobe; Cgi; Inkl
-2026-09-07,Kreisvolkshochschule Uelzen/Lüchow-Dannenberg,kreisvolkshochschule-uelzen-l-chow-dannenberg,0,0,400,Basics; Grundlagen; Aufbaukurs; Nach; Microsoft; Adobe; Cgi; Qualitätsmanagement
-2026-09-07,Kolping Akademie Bamberg,kolping-akademie-bamberg,0,0,399,Basics; Grundlagen; Aufbaukurs; Nach; Microsoft; Adobe; Cgi; Wirtschaftsenglisch
-2026-09-07,Academy NH Süd,academy-nh-s-d,0,0,367,Microsoft; Office; Praxis; Intelligence; Intelligenz; Grundlagen; Projektmanagement; Artificial
-2026-09-07,Learnix GmbH,learnix-gmbh,0,0,292,Praxis; Digitale; Digital; Manager; Marketing; Virtuelle; Beruf; Management
-2026-09-07,NordWest Training UG (haftungsbeschränkt),nordwest-training-ug-haftungsbeschr-nkt,0,0,288,Geprüfte; Nach; Inkl; Grundlagen; Zusatzqualifikation; Wirtschaftsenglisch; Pädagogische; Pädagogische Zusatzqualifikation
-2026-09-07,BIN gGmbH,bin-ggmbh,0,0,222,Basics; Nach; Zusatzqualifikation; Microsoft; Cgi; Grundlagen; Pädagogische; Pädagogische Zusatzqualifikation
-2026-09-07,SGD,sgd,0,0,209,Geprüfte; Fachkurs; Abiturwissen; Fachkurs Abiturwissen; Berater; Fachmann; Fachfrau; Fachfrau Fachmann
-2026-09-07,Leecon TS GmbH,leecon-ts-gmbh,0,0,172,Kmu; Projektmanagement; Methoden; Agile; Agentic; Design; Thinking; Design Thinking
-2026-09-07,Forward Education GmbH,forward-education-gmbh,0,0,130,Manager; Marketing; Business; Design; Thinking; Design Thinking; Agile; Development
-2026-09-07,cimdata Bildungsakademie GmbH,cimdata-bildungsakademie-gmbh,0,0,128,Basics; Advanced; Marketing; Manager; Arbeit; Basics Arbeit; Kompakt; Content
-2026-09-07,CROAS Education GmbH,croas-education-gmbh,0,0,123,Conversion; Optimierung; Rate; Conversion Rate; Rate Optimierung; Meta; Ads; Meta Ads
-2026-09-07,Berger Bildungsinstitut GmbH,berger-bildungsinstitut-gmbh,0,0,101,Marketing; Design; Digital; Adobe; Digital Marketing; Künstliche; Intelligenz; Künstliche Intelligenz
-2026-09-07,Education partners GmbH,education-partners-gmbh,0,0,99,Manager; Marketing; Zertifikat; Digitalisierungsmanager; Ki-Manager; Social; Media; Social Media
-2026-09-07,KeepBlue AG,keepblue-ag,0,0,98,Claude; Manager; Marketing; Marketing Manager; Prompt; Bildgenerierung; Generative; Google
-2026-09-07,Nest Academy GmbH,nest-academy-gmbh,0,0,97,Marketing; Content; Social; Media; Social Media; Manager; Seo; Content Marketing
-2026-09-07,StackFuel GmbH,stackfuel-gmbh,0,0,94,Ki-Manager; Data; Specialist; Data Specialist; Künstliche; Intelligenz; Künstliche Intelligenz; Excel
-2026-09-07,Syntax GmbH für Aus- und Weiterbildung,syntax-gmbh-f-r-aus-und-weiterbildung,0,0,84,Grundlagen; Intelligenz; Künstliche; Künstliche Intelligenz; Webentwicklung; Anwendungen; Design; Zusatzqualifikation
-2026-09-07,future Training & Consulting GmbH,future-training-consulting-gmbh,0,0,84,Adobe; Künstliche; Intelligenz; Künstliche Intelligenz; Creation; Generative; Arbeiten; Professionelle
-2026-09-07,Bildung First GmbH,bildung-first-gmbh,0,0,83,Scrum; Product; Owner; Product Owner; Psm; Pspo; Master; Scrum Master
-2026-09-07,brainymotion,brainymotion,0,0,81,Zusatzqualifikation; Agile; Projektmanager; Cloud; Coach; Agile Coach; Coach Zusatzqualifikation; Data
-2026-09-07,Agile Heroes GmbH,agile-heroes-gmbh,0,0,78,Manager; Ki-Spezialist; Unternehmen; Ki-Anwendungen; Generative; Prompt; Ki-Gestützte; Coach
-2026-09-07,ifmera academy GmbH,ifmera-academy-gmbh,0,0,72,Marketing; Lexware; Führung; Content; Führen; Management; Lohn-; Gehaltsabrechnung
-2026-09-07,Ironhack Germany GmbH,ironhack-germany-gmbh,0,0,71,Marketing; Automation; Marketing Automation; Webdesign; Grundlagen; Content; Product; Content Marketing
-2026-09-07,SALTZ-Training,saltz-training,0,0,70,Scrum; Agile; Devops; Inkl; Projektleitung; Agile Projektleitung; Kanban; Product
-2026-09-07,Smart Future Campus GmbH,smart-future-campus-gmbh,0,0,65,Prompting; Intelligenz; Machine; Learning; Machine Learning; Methoden; Grundlagen; Lernen
-2026-09-07,formful education GmbH,formful-education-gmbh,0,0,65,Design; Webdesign; Engineering; Usability; Conversational; Thinking; Design Thinking; Prompt
-2026-09-07,Itera Campus,itera-campus,0,0,65,Marketing; Manager; Digital; Digital Marketing; Prompt; Engineering; Prompt Engineering; E-Mail-Personalisierung
-2026-09-07,IBB Institut für Berufliche Bildung GmbH,ibb-institut-f-r-berufliche-bildung-gmbh,0,0,55,Adobe; Marketing; Intelligenz; Künstliche; Künstliche Intelligenz; Geprüfte; Creative; Adobe Creative
-2026-09-07,LVQ Weiterbildung und Beratung GmbH,lvq-weiterbildung-und-beratung-gmbh,0,0,54,Ki-Tool-Expert; Manager; Online-Redakteur; Ki-; Marketing; Marketing Manager; Kulturmanager; Projekt-
-2026-09-07,Akademie für KI - Akademie für die Deutsche Wirtschaft GmbH,akademie-f-r-ki-akademie-f-r-die-deutsche-wirtschaft-gmbh,0,0,51,Unternehmen; Zertifikat; Ki-Manager; Chatgpt; Generative; Prompt; Engineering; Prompt Engineering
-2026-09-07,NH Schulungscenter für IT und Business GmbH,nh-schulungscenter-f-r-it-und-business-gmbh,0,0,50,Künstliche; Intelligenz; Künstliche Intelligenz; Marketing; Manager; Adobe; Wordpress; Business
-2026-09-07,ecomex GmbH & Co. KG,ecomex-gmbh-co-kg,1,0,48,Marketing; Manager; Social; Media; Social Media; Marketing Manager; Content; E-Commerce
-2026-09-07,New Horizons Akademie,new-horizons-akademie,0,0,47,Microsoft; Certified; Manager; Plus; Information; Certified Information; Grundlagen; Security
-2026-09-07,New Horizons Nord,new-horizons-nord,0,0,45,Microsoft; Plus; Project; Grundlagen; Certified; Manager; Salesforce; Information
-2026-09-07,TÜV Rheinland Akademie GmbH,t-v-rheinland-akademie-gmbh,0,0,43,Marketing; Künstliche; Intelligenz; Künstliche Intelligenz; Adobe; Einführung; Einführung Künstliche; Grafik
-2026-09-07,ImpaQt Education Group,impaqt-education-group,0,0,42,Manager; Marketing; Automatisierung; Prompt; Engineering; Prompt Engineering; Arbeitsalltag; Ai-Adoption-Manager
-2026-09-07,Bildungswerk der Hessischen Wirtschaft e. V.,bildungswerk-der-hessischen-wirtschaft-e-v,0,0,38,Adobe; Marketing; Creative; Adobe Creative; Design; Wordpress; Suite; Vielseitige
-2026-09-07,New Horizons Mitte,new-horizons-mitte,0,0,38,Microsoft; Manager; Onenote; Isaca; Certified; Information; Security; Cism
-2026-09-07,Business Trends Academy,business-trends-academy,0,0,37,Content; Social; Media; Social Media; Marketing; Creator; Leadership; Content Creator
-2026-09-07,Fortbildungsakademie der Wirtschaft (FAW) gGmbH,fortbildungsakademie-der-wirtschaft-faw-ggmbh,0,0,37,Marketing; Künstliche; Intelligenz; Künstliche Intelligenz; Adobe; Einführung; Einführung Künstliche; Grafik
-2026-09-07,Do IT Digital GmbH,do-it-digital-gmbh,0,0,37,Künstliche; Intelligenz; Künstliche Intelligenz; Marketing; Einführung; Einführung Künstliche; Grafik; Design
-2026-09-07,Berufliche Fortbildungszentren der Bayerischen Wirtschaft (bfz) gGmbH,berufliche-fortbildungszentren-der-bayerischen-wirtschaft-bfz-ggmbh,0,0,36,Marketing; Künstliche; Intelligenz; Künstliche Intelligenz; Adobe; Grafik; Design; Grafik Design
-2026-09-07,Bildungswerk der nordhessischen Wirtschaft gemeinnützige GmbH,bildungswerk-der-nordhessischen-wirtschaft-gemeinn-tzige-gmbh,0,0,36,Adobe; Marketing; Creative; Adobe Creative; Design; Wordpress; Suite; Vielseitige
-2026-09-07,Donner + Partner GmbH Baden-Württemberg,donner-partner-gmbh-baden-w-rttemberg,0,0,33,Marketing; Künstliche; Intelligenz; Künstliche Intelligenz; Adobe; Grafik; Design; Grafik Design
-2026-09-07,TERTIA Berufsförderung GmbH & Co. KG,tertia-berufsf-rderung-gmbh-co-kg,0,0,30,Marketing; Social; Media; Social Media; Adobe; Grafik; Design; Grafik Design
-2026-09-07,Stiftung Lernen-Fördern-Arbeiten (LFA),stiftung-lernen-f-rdern-arbeiten-lfa,0,0,30,Marketing; Inkl; Adobe; Social; Media; Social Media; Geprüfte; Wirtschaftsenglisch
-2026-09-07,Ihr JobCoach. Gesellschaft für Erwachsenenbildung mbH,ihr-jobcoach-gesellschaft-f-r-erwachsenenbildung-mbh,0,0,30,Marketing; Adobe; Künstliche; Intelligenz; Design; Künstliche Intelligenz; Wordpress; Grafik
-2026-09-07,SWA Bildungsakademie GmbH,swa-bildungsakademie-gmbh,0,0,29,Intelligenz; Marketing; Künstliche; Künstliche Intelligenz; Grafik; Design; Grafik Design; Social
-2026-09-07,DAA - Deutsche Angestellten- Akademie gGmbH,daa-deutsche-angestellten-akademie-ggmbh,0,0,29,Marketing; Datev; Wordpress; Lohn; Gehalt; Lohn Gehalt; Grundlagen; Internet
-2026-09-07,GfM GmbH & Co. KG,gfm-gmbh-co-kg,0,0,28,Social; Media; Social Media; Marketing; Wordpress; E-Commerce; Inkl; Wirtschaftsenglisch
-2026-09-07,isb Institut für Schulung und Beruf,isb-institut-f-r-schulung-und-beruf,0,0,26,Wordpress; Design; Adobe; Creative; Adobe Creative; E-Commerce; Marketing; Künstliche
-2026-09-07,New Horizons Hamburg / Bremen,new-horizons-hamburg-bremen,0,0,26,Künstliche; Intelligenz; Künstliche Intelligenz; Generative; Manager; Business; Certified; Inkl
-2026-09-07,Digethic Business School,digethic-business-school,0,0,25,Manager; Digital; Marketing; Agile; Transformation; Digital Transformation; Digital Marketing; Marketing Manager
-2026-09-07,Lernstudio Barbarossa/MegaKids Fortbildungs GmbH,lernstudio-barbarossa-megakids-fortbildungs-gmbh,0,0,25,Marketing; Grafik; Design; Grafik Design; Social; Media; Social Media; Adobe
-2026-09-07,WBK Akademie GmbH,wbk-akademie-gmbh,0,0,25,Claude; Manager; Codex; Code; Claude Code; Project; Project Manager; Projekte
-2026-09-07,BIB Augsburg GmbH,bib-augsburg-gmbh,0,0,25,Künstliche; Intelligenz; Künstliche Intelligenz; Marketing; Einführung; Einführung Künstliche; Wirtschaftsenglisch; Grafik
-2026-09-07,BilSE-Institut für Bildung und Forschung GmbH,bilse-institut-f-r-bildung-und-forschung-gmbh,0,0,25,Künstliche; Intelligenz; Grafik; Design; Künstliche Intelligenz; Grafik Design; Geprüfte; Adobe
-2026-09-07,New Horizons Köln - NH Schulungscenter für IT und Business GmbH,new-horizons-k-ln-nh-schulungscenter-f-r-it-und-business-gmbh,0,0,25,Künstliche; Intelligenz; Künstliche Intelligenz; Manager; Business; Security; Level; Intelligenz Security
-2026-09-07,House of Education,house-of-education,0,0,25,Agile; Systemische; Workshop-Facilitation; Scrum; Change; Gpm; Künstliche; Intelligenz
-2026-09-07,Reha & Beruf gGmbH,reha-beruf-ggmbh,0,0,24,Marketing; Wirtschaftsenglisch; Social; Media; Social Media; Geprüfte; Fachwirt; Geprüfte Fachwirt
-2026-09-07,New Horizons Nord / West,new-horizons-nord-west,0,0,24,Künstliche; Intelligenz; Künstliche Intelligenz; Manager; Leadership; Security; Level; Intelligenz Security
-2026-09-07,HECKER CONSULTING,hecker-consulting,0,0,24,Marketing; Google; Engineering; Digitales; Lernen; Digitales Lernen; Gemini; Claude
-2026-09-07,academy7,academy7,0,0,23,Marketing; Inkl; Grundlagen; Manager; Content; Social; Media; Social Media
-2026-09-07,Bold Academy GmbH,bold-academy-gmbh,0,0,23,Sales; Digital; Digital Sales; Crm; Management; Manager; Sales Manager; Hubspot
-2026-09-07,its digital akademie GmbH,its-digital-akademie-gmbh,0,0,22,Marketing; Grafik; Design; Grafik Design; Social; Media; Social Media; Wordpress
-2026-09-07,Wirtschaftsakademie Küster GmbH,wirtschaftsakademie-k-ster-gmbh,0,0,22,Marketing; Grafik; Design; Grafik Design; Social; Media; Social Media; Wordpress
-2026-09-07,Donner + Partner GmbH Sachsen,donner-partner-gmbh-sachsen,0,0,22,Marketing; Grafik; Design; Grafik Design; Social; Media; Social Media; Wordpress
-2026-09-07,IntelliLearn Akademie GmbH,intellilearn-akademie-gmbh,0,0,22,Agile; Einsatzbewertung; Anwendungen; Umsetzung; Einsatzbewertung Anwendungen; Anwendungen Umsetzung; Coach; Agile Coach
-2026-09-07,IFP Gesellschaft für Fortbildung und Personalentwicklung mbH,ifp-gesellschaft-f-r-fortbildung-und-personalentwicklung-mbh,0,0,21,Künstliche; Intelligenz; Künstliche Intelligenz; Marketing; Geprüfte; Grafik; Design; Grafik Design
-2026-09-07,New Horizons Hannover/Leipzig,new-horizons-hannover-leipzig,0,0,21,Künstliche; Intelligenz; Künstliche Intelligenz; Manager; Security; Level; Intelligenz Security; Security Level
-2026-09-07,Wildner Akademie für Digitale Wirtschaft & Management,wildner-akademie-f-r-digitale-wirtschaft-management,0,0,20,Marketing; Content; Media; Social; Social Media; Digitale; Kommunikation; Design
-2026-09-07,AWT Akademie für Wirtschaft und Technologie GmbH,awt-akademie-f-r-wirtschaft-und-technologie-gmbh,0,0,20,Social; Media; Social Media; Marketing; Wordpress; Geprüfte; Fachwirt; E-Commerce
-2026-09-07,TEMP.Akademie GmbH,temp-akademie-gmbh,0,0,20,Social; Media; Social Media; Wordpress; Inkl; Wirtschaftsenglisch; Künstliche; Intelligenz
-2026-09-07,Minister Fachschule GmbH,minister-fachschule-gmbh,0,0,20,Marketing; Manager; Adobe; Social; Media; Social Media; Digital; Künstliche
-2026-09-07,Developer Akademie GmbH,developer-akademie-gmbh,0,0,20,Python; Backend; Anwendungen; Entwickler; Developer; Fullstack; Quereinsteiger; Programmierer
-2026-09-07,Digiteach GmbH,digiteach-gmbh,0,0,19,Marketing; Manager; Marketing Manager; E-Commerce; Social; Media; Social Media; Media Marketing
-2026-09-07,IEC - International Education Centers GmbH,iec-international-education-centers-gmbh,0,0,18,Wordpress; Adobe; Html; Css; Html Css; Social; Media; Social Media
-2026-09-07,PSB Europe GmbH,psb-europe-gmbh,0,0,18,Marketing; Künstliche; Intelligenz; Künstliche Intelligenz; Social; Media; Social Media; Masterclass
-2026-09-07,Bildungsinstitut Gros,bildungsinstitut-gros,0,0,17,Manager; Marketing; Performance; Performance Marketing; Intelligenz; Social; Content; Marketing Manager
-2026-09-07,Zukunftswerkstatt Mitteldeutschland,zukunftswerkstatt-mitteldeutschland,0,0,17,Marketing; Grafik; Design; Grafik Design; Social; Media; Social Media; Wordpress
-2026-09-07,bam GmbH,bam-gmbh,0,0,17,Grafik; Design; Grafik Design; Social; Media; Social Media; Wordpress; Künstliche
-2026-09-07,PBF Personalberatung und Bildungsakademie Fasulo GmbH,pbf-personalberatung-und-bildungsakademie-fasulo-gmbh,0,0,17,Social; Media; Social Media; Marketing; Grundlagen; Grafik; Design; Grafik Design
-2026-09-07,Prisma Bildungsplattform e. V.,prisma-bildungsplattform-e-v,0,0,17,Social; Media; Social Media; Energieberater; Nichtwohngebäude; Künstliche; Intelligenz; Ki-Basierte
-2026-09-07,GAG Klausdorf gGmbH,gag-klausdorf-ggmbh,0,0,16,Social; Media; Social Media; Geprüfte; Marketing; Kreative; Content-Produktion; Kreative Content-Produktion
-2026-09-07,Pioneer Institut GmbH,pioneer-institut-gmbh,0,0,16,Marketing; Künstliche; Intelligenz; Künstliche Intelligenz; Html; Css; Html Css; Aufbaukurs
-2026-09-07,SBW Aus- und Fortbildungsgesellschaft für Wirtschaft und Verwaltung GmbH,sbw-aus-und-fortbildungsgesellschaft-f-r-wirtschaft-und-verwaltung-gmb,0,0,16,Wordpress; Grafik; Design; Grafik Design; Social; Media; Social Media; Aevo
-2026-09-07,Bildungsinsel GmbH,bildungsinsel-gmbh,0,0,16,Marketing; Wordpress; Künstliche; Intelligenz; Grafik; Design; Künstliche Intelligenz; Grafik Design
-2026-09-07,MSIT Master School Institute of Technology,msit-master-school-institute-of-technology,0,0,16,Manager; It-Operations; It-Operations Manager; Ki-Governance; Bias-Prüfung; Ki-Governance Manager; Manager Bias-Prüfung; Künstliche
-2026-09-07,Konzept Bildung und Services GmbH,konzept-bildung-und-services-gmbh,0,0,16,Marketing; Social; Media; Social Media; Masterclass; Starter; Geprüfte; Künstliche
-2026-09-07,Kolping-Bildungswerk GmbH,kolping-bildungswerk-gmbh,0,0,15,Marketing; Wordpress; Social; Media; Social Media; Masterclass; Starter; Erstellen
-2026-09-07,Horizonia GmbH,horizonia-gmbh,0,0,15,Marketing; Social; Media; Social Media; Künstliche; Intelligenz; Künstliche Intelligenz; Html
-2026-09-07,PersonaPlan GmbH,personaplan-gmbh,0,0,15,Marketing; Social; Media; Social Media; Masterclass; Starter; Wordpress; Data-Science
-2026-09-07,Bochumer Bildungszentrum e. V.,bochumer-bildungszentrum-e-v,0,0,15,Social; Media; Social Media; Geprüfte; Fachwirt; E-Commerce; Geprüfte Fachwirt; Energieberater
-2026-09-07,CBZ Landshut GmbH,cbz-landshut-gmbh,0,0,15,Marketing; Social; Media; Social Media; Künstliche; Intelligenz; Künstliche Intelligenz; Wordpress
-2026-09-07,LUTZ + GRUB ACADEMY GmbH,lutz-grub-academy-gmbh,0,0,14,Projektmanagement; Prozessmanager; Automatisierung; Microsoft; Power; Platform; Prozessmanager Automatisierung; Automatisierung Microsoft
-2026-09-07,Skilldrops GmbH,skilldrops-gmbh,0,0,14,Practitioner; Automatisierung; Scrum; Business; Product; Owner; Scrum Product; Product Owner
-2026-09-07,ABK Akademie für Beruf und Karriere GmbH,abk-akademie-f-r-beruf-und-karriere-gmbh,0,0,14,Marketing; Wordpress; Social; Media; Social Media; Aufbaukurs; Erstellen; Pc-Kenntnisse
-2026-09-07,Technologiezentrum Glehn GmbH,technologiezentrum-glehn-gmbh,0,0,14,Social; Media; Social Media; Marketing; Wordpress; Masterclass; Data-Science; Starter
-2026-09-07,CBW College Berufliche Weiterbildung GmbH,cbw-college-berufliche-weiterbildung-gmbh,0,0,13,Marketing; Manager; E-Commerce; Schwerpunkt; Content; Digitales; Social; Media
-2026-09-07,TEACH GmbH & Co. KG,teach-gmbh-co-kg,0,0,13,Marketing; Social; Media; Social Media; Kreative; Content-Produktion; Kreative Content-Produktion; Content-Produktion Social
-2026-09-07,ProfeS GmbH,profes-gmbh,0,0,13,Marketing; Social; Media; Social Media; Masterclass; Starter; Wordpress; Data-Science
-2026-09-07,Donner + Partner GmbH Bayern,donner-partner-gmbh-bayern,0,0,13,Social; Media; Social Media; Wirtschaftsenglisch; Künstliche; Intelligenz; Künstliche Intelligenz; Masterclass
-2026-09-07,Avicenna Institut e. V.,avicenna-institut-e-v,0,0,13,Social; Media; Social Media; Marketing; Wordpress; Kreative; Content-Produktion; Kreative Content-Produktion
-2026-09-07,brainymotion München,brainymotion-m-nchen,0,0,13,Marketing; Projektmanagement; Projektmanager; Innen; Masterclass; Starter; Social; Media
-2026-09-07,Bildung & Beruf GmbH,bildung-beruf-gmbh,0,0,13,Social; Media; Social Media; Grafik; Design; Wordpress; Grafik Design; Masterclass
-2026-09-07,BVH Gesellschaft für angewandte Bildung und Sozialforschung mbH,bvh-gesellschaft-f-r-angewandte-bildung-und-sozialforschung-mbh,0,0,13,Social; Media; Social Media; Wordpress; E-Commerce; Erstellen; Kreative; Content-Produktion
-2026-09-07,LearnWise Academy,learnwise-academy,0,0,13,Aws; Deepracer; Aws Deepracer; Cloud; Grundlagen; Recruiting; Talent; Manager
-2026-09-07,Bonner Bildungs Center e. V.,bonner-bildungs-center-e-v,0,0,13,Social; Media; Social Media; Marketing; Energieberater; Nichtwohngebäude; Künstliche; Intelligenz
-2026-09-07,Stölzle GmbH,st-lzle-gmbh,0,0,13,Marketing; Künstliche; Intelligenz; Künstliche Intelligenz; Social; Media; Social Media; Masterclass
-2026-09-07,ebam Akademie für Wirtschaft und Management,ebam-akademie-f-r-wirtschaft-und-management,0,0,12,Content; Digital; Marketing; Specialist; Social; Media; Social Media; Manager
-2026-09-07,Fired Up GmbH,fired-up-gmbh,0,0,12,Design; Stakeholder; Management; Raci; Stakeholder Management; Management Raci; Product; Owner
-2026-09-07,IBB Institut für Berufliche Bildung Harz GmbH,ibb-institut-f-r-berufliche-bildung-harz-gmbh,0,0,12,Marketing; Social; Media; Social Media; Geprüfte; Fachwirt; Geprüfte Fachwirt; Einführung
-2026-09-07,Morphos GmbH,morphos-gmbh,0,0,12,Manager; Marketing; Digital; Digital Marketing; E-Commerce; Scrum; Social; Media
-2026-09-07,Berufsbildungszentrum Augsburg der Lehmbaugruppe gGmbH,berufsbildungszentrum-augsburg-der-lehmbaugruppe-ggmbh,0,0,12,Wordpress; Social; Media; Social Media; Marketing; Erstellen; Content; Creator
-2026-09-07,Verein für Integration und Bildung e. V.,verein-f-r-integration-und-bildung-e-v,0,0,12,Social; Media; Social Media; Wirtschaftsenglisch; Marketing; Wordpress; Projektmanagement; Inkl
-2026-09-07,Zweckverband Volkshochschule Oberes Nagoldtal,zweckverband-volkshochschule-oberes-nagoldtal,0,0,12,Social; Media; Social Media; Grafik; Design; Wordpress; Grafik Design; Kreative
-2026-09-07,ABS-IT UG (haftungsbeschränkt),abs-it-ug-haftungsbeschr-nkt,0,0,12,Social; Media; Social Media; Wirtschaftsenglisch; Wordpress; Erstellen; Projektmanagement; Inkl
-2026-09-07,TFA-Akademie GmbH,tfa-akademie-gmbh,0,0,12,Social; Media; Social Media; Grafik; Design; Grafik Design; Marketing; Wordpress
-2026-09-07,Akademie für berufliche Aus- und Weiterbildung Schweiger & Schmitt GmbH,akademie-f-r-berufliche-aus-und-weiterbildung-schweiger-schmitt-gmbh,0,0,12,Grafik; Design; Grafik Design; Wordpress; Social; Media; Social Media; Erstellen
-2026-09-07,Hallmann Personal- und Schulungscenter GmbH,hallmann-personal-und-schulungscenter-gmbh,0,0,12,Marketing; Künstliche; Intelligenz; Künstliche Intelligenz; Social; Media; Social Media; Ki-Basierte
-2026-09-07,"Sprachwerkstatt Privates Institut für Kommunikation, Wirtschaft und Sprache GmbH",sprachwerkstatt-privates-institut-f-r-kommunikation-wirtschaft-und-spr,0,0,11,Social; Media; Social Media; Wordpress; Erstellen; Grafik; Design; Grafik Design
-2026-09-07,Randstad Deutschland GmbH & Co. KG,randstad-deutschland-gmbh-co-kg,0,0,11,Wirtschaftsenglisch; Social; Media; Social Media; Wordpress; Projektmanagement; Inkl; Project
-2026-09-07,TASys GmbH,tasys-gmbh,0,0,11,Künstliche; Intelligenz; Künstliche Intelligenz; Digitales; Anwendung; Unternehmen; Intelligenz Anwendung; Anwendung Unternehmen
-2026-09-07,Code S Academy Ramona Sander,code-s-academy-ramona-sander,0,0,11,Künstliche; Intelligenz; Künstliche Intelligenz; Certified; Intelligenz Certified; E-Commerce; Intelligenz E-Commerce; Expert
-2026-09-07,eSA - europäische Sachverständigen Akademie AG & Co. KG,esa-europ-ische-sachverst-ndigen-akademie-ag-co-kg,0,0,11,Marketing; Künstliche; Intelligenz; Design; Künstliche Intelligenz; E-Commerce; Ki-Basierte; Tools
-2026-09-07,Volkshochschule Reutlingen GmbH,volkshochschule-reutlingen-gmbh,0,0,11,Marketing; Aufbaukurs; Marketing Aufbaukurs; Wordpress; Grafik; Design; Grafik Design; Social
-2026-09-07,Rheinischer Dialog und Bildungsverein e. V.,rheinischer-dialog-und-bildungsverein-e-v,0,0,11,Social; Media; Social Media; Energieberater; Nichtwohngebäude; Energieberater Nichtwohngebäude; Kreative; Content-Produktion
-2026-09-07,VBZ Deutsches Vertriebsbildungszentrum,vbz-deutsches-vertriebsbildungszentrum,0,0,11,Sales; Vertrieb; Akquise-; Verkaufserfolg; Durch; Social; Media; Verkaufserfolg Durch
-2026-09-07,Greenbootcamps GmbH,greenbootcamps-gmbh,0,0,11,Business; Analyse; Business Analyse; Projektmanager; Innovationsmanager; Product-Lifecycle-Manager; Analyse Product-Lifecycle-Manager; Analyse Innovationsmanager
-2026-09-07,Webmasters Akademie Nürnberg GmbH,webmasters-akademie-n-rnberg-gmbh,0,0,10,Experte; Manager; Google; Seo; Zertifizierte; Web; Content; Management
-2026-09-07,TÜV Rheinland Akademie GmbH I,t-v-rheinland-akademie-gmbh-i,0,0,10,Qualitätsmanagement; Modulare; Agile; Transformation; Manager; Agile Transformation; Transformation Manager; Agilität
-2026-09-07,KISA AKADEMIE GmbH,kisa-akademie-gmbh,0,0,10,Marketing; Management; Modul; Marketing Management; Creator; Inkl; Management Modul; E-Commerce
-2026-09-07,FiGD Akademie für Medienentwicklung,figd-akademie-f-r-medienentwicklung,0,0,10,Indesign; Grafikdesign; Internetprogrammierung; Wordpress; Php; Media; Development; Inkl
-2026-09-07,MARTINSFELD GmbH & Co. KG,martinsfeld-gmbh-co-kg,0,0,10,Professionelle; Gestalten; Digital; Marketing; Intensivseminar; Crewai; Multi-Agenten-Systeme; Workflow-Automatisierung
-2026-09-07,DeLSt GmbH Deutsches eLearning Studieninstitut,delst-gmbh-deutsches-elearning-studieninstitut,0,0,9,Manager; Marketing; Marketing Manager; Agiler; Projektmanager; Agiler Projektmanager; E-Commerce; E-Commerce Manager
-2026-09-07,Textakademie GmbH,textakademie-gmbh,0,0,9,Marketing; Google; Ads; Analytics; Google Ads; Digitalisierung; Content-; Social-Media-Manager
-2026-09-07,ILS - Institut für Lernsysteme GmbH,ils-institut-f-r-lernsysteme-gmbh,0,0,9,E-Commerce-Manager; Vorbereitung; Geprüfter; Zertifikatstest; E-Commerce-Manager Vorbereitung; Vorbereitung Zertifikatstest; Marketing; Manager
-2026-09-07,XDi - Experience Design Institut GmbH,xdi-experience-design-institut-gmbh,0,0,9,Content; Certified; Manager; Prompt; Engineering; Prompt Engineering; Creation; Content Creation
-2026-09-07,Akademischer Verein zu Euregio e. V.,akademischer-verein-zu-euregio-e-v,0,0,9,Social; Media; Social Media; Marketing; Applied; Data; Science; Applied Data
-2026-09-07,New Horizons Dortmund Computer Learning Center GmbH & Co.KG,new-horizons-dortmund-computer-learning-center-gmbh-co-kg,0,0,9,Künstliche; Intelligenz; Künstliche Intelligenz; Manager; Certified; Inkl; Examen; Inkl Examen
-2026-09-07,Z&P Schulung GmbH,z-p-schulung-gmbh,0,0,9,Grafik; Design; Grafik Design; Social; Media; Social Media; Künstliche; Intelligenz
-2026-09-07,indisoft GmbH,indisoft-gmbh,0,0,8,Grundlagen; Anwender; Spezialisten; Anwender Spezialisten; Adobe; Illustrator; Adobe Illustrator; Illustrator Grundlagen
-2026-09-07,INI Qualifizierung & Service gGmbH,ini-qualifizierung-service-ggmbh,0,0,8,Social; Media; Social Media; Wordpress; Content; Creator; Media Content; Content Creator
-2026-09-07,Zukunft Fachkräfte Deutschland GmbH,zukunft-fachkr-fte-deutschland-gmbh,0,0,8,Social; Media; Social Media; Kreative; Content-Produktion; Kreative Content-Produktion; Content-Produktion Social; Content
-2026-09-07,Ziola GmbH,ziola-gmbh,0,0,8,Masterclass; Data-Science; Starter; Marketing; Social; Media; Content; Creator
-2026-09-07,GFU Cyrus AG,gfu-cyrus-ag,0,0,8,Claude; Code; Beruf; Alltag; Beruf Alltag; Kofax; Power; Pdf
-2026-09-07,HSB Akademie GmbH,hsb-akademie-gmbh,0,0,7,Manager; Marketing; Marketing Manager; Content; Content Marketing; Advertising; Advertising Manager; Consultant
-2026-09-07,vhs Rhön und Grabfeld gGmbH,vhs-rh-n-und-grabfeld-ggmbh,0,0,7,Social; Media; Social Media; Kreative; Content-Produktion; Kreative Content-Produktion; Content-Produktion Social; Content
-2026-09-07,Dacte,dacte,0,0,7,Coach; Design; Thinking; Design Thinking; Thinking Coach; Agiles; Projektmanagement; Agiles Projektmanagement
-2026-09-07,Pangea Bildungszentrum - Bildung und Vielfalt Ludwigsburg e. V.,pangea-bildungszentrum-bildung-und-vielfalt-ludwigsburg-e-v,0,0,7,Social; Media; Content; Creator; Social Media; Media Content; Content Creator; Wirtschaftsenglisch
-2026-09-07,IHK-Akademie Ostwestfalen GmbH,ihk-akademie-ostwestfalen-gmbh,0,0,6,Ki-Manager; E-Commerce-Manager; Geprüfte; Fachwirt; E-Commerce; Geprüfte Fachwirt; Fachwirt E-Commerce; Ki-Tool-Experte
-2026-09-07,BNW gGmbH - Bildungswerk der Niedersächsischen Wirtschaft gemeinnützige GmbH,bnw-ggmbh-bildungswerk-der-nieders-chsischen-wirtschaft-gemeinn-tzige-,0,0,5,Online-Marketing-Manager; Modul; Online-Marketing-Manager Modul; Organische; Online-Marketing-Strategien; Modul Organische; Organische Online-Marketing-Strategien; Seo
-2026-09-07,AFZ Aus- und Fortbildungszentrum Rostock GmbH,afz-aus-und-fortbildungszentrum-rostock-gmbh,0,0,5,Canva; Kreativ; Nutzen; Design; Social; Media; Print; Canva Kreativ
-2026-09-07,Codeverge GmbH,codeverge-gmbh,0,0,5,Professional; Modulare; Modul; Professional Modulare; Ki-Compliance; Praxis; Modulare Ki-Compliance; Ki-Compliance Praxis
-2026-09-07,inab - Ausbildungs- und Beschäftigungsgesellschaft des bfw mbH,inab-ausbildungs-und-besch-ftigungsgesellschaft-des-bfw-mbh,0,0,4,Big; Data; Big Data; Prompt; Engineering; Prompt Engineering; Grundlagen; New
-2026-09-07,IHK-Bildungszentrum Bonn/Rhein-Sieg gGmbH,ihk-bildungszentrum-bonn-rhein-sieg-ggmbh,0,0,4,Ki-Transformation; Leader; Ki-Transformation Leader; Ki-Manager; Fachwirt; E-Commerce; Fachwirt E-Commerce; Tool
-2026-09-07,DataSmart Point GmbH,datasmart-point-gmbh,0,0,4,Data; Analyst; Data Analyst; Zertifizierte; Ki-Manager; Zertifizierte Ki-Manager; Business; Analytics
-2026-09-07,Talentivo GmbH,talentivo-gmbh,0,0,4,Marketing; Digitales; Digitales Marketing; Conversational; Voice-Agent; Conversational Voice-Agent; Ki-Manager; Managerin
-2026-09-07,Grone Wirtschaftsakademie GmbH - gemeinnützig -,grone-wirtschaftsakademie-gmbh-gemeinn-tzig,0,0,4,Gepr; E-Commerce; Office; Grundlagen; Office Grundlagen; Handelsfachwirt; Zusatzmodul; Gepr Handelsfachwirt
-2026-09-07,ECOZA Education GmbH,ecoza-education-gmbh,0,0,3,It-Ki; Anwendungsberater; Digitalen; Handel; Individuellem; Eintritt; It-Ki Anwendungsberater; Anwendungsberater Digitalen
-2026-09-07,bfw - Unternehmen für Bildung.,bfw-unternehmen-f-r-bildung,0,0,3,Fachwirt; E-Commerce; Fachwirt E-Commerce; Prompt; Engineering; Prompt Engineering; Big; Data
-2026-09-07,ZAW Zentrum für Aus- und Weiterbildung Leipzig GmbH Gesellschaft der IHK Leipzig,zaw-zentrum-f-r-aus-und-weiterbildung-leipzig-gmbh-gesellschaft-der-ih,0,0,3,Ki-Manager; Geprüfter; Fachwirt; E-Commerce; Geprüfter Fachwirt; Fachwirt E-Commerce; Vom; Kollegen
+2026-09-14,mycareernow,mycareernow,0,1,974,Scrum; Marketing; Projektmanagement; Social; Media; Social Media; Psm; Seo
+2026-09-14,A-Leecon GmbH,a-leecon-gmbh,0,1,772,Projektmanagement; Itil; Marketing; Agile; Ki-Gestützte; Prompt; Intelligenz; Engineering
+2026-09-14,Karriere Tutor GmbH,karriere-tutor-gmbh,0,1,665,Marketing; Manager; Storytelling; E-Commerce; Copilot; Media; Marketing Manager; Business
+2026-09-14,OneCareer,onecareer,0,1,608,Marketing; Social; Media; Social Media; Manager; Seo; E-Commerce; Content
+2026-09-14,velpTEC GmbH,velptec-gmbh,0,1,534,Marketing; Social; Adobe; Content; Media; Wordpress; Engineering; E-Commerce
+2026-09-14,Masters of Digital GmbH,masters-of-digital-gmbh,0,1,496,Marketing; Social; Media; Social Media; Content; Manager; E-Commerce; Seo
+2026-09-14,Distart Education GmbH,distart-education-gmbh,0,1,358,Marketing; Schwerpunkt; Management; Marketing Schwerpunkt; Social; Management Schwerpunkt; Media; Social Media
+2026-09-14,New Horizons München - IT Computer und BusinessTraining Trainings,new-horizons-m-nchen-it-computer-und-businesstraining-trainings,0,1,353,Microsoft; Praxis; Projektmanagement; Office; Python; Anwendungen; Scrum; Intelligenz
+2026-09-14,WBS TRAINING SE,wbs-training-se,0,1,338,Sap; Hana; Sap Hana; Manager; English; Business; Marketing; Data
+2026-09-14,Learning Digital Academy GmbH,learning-digital-academy-gmbh,0,1,282,Marketing; Content; Social; Google; Media; Social Media; Data; Branding
+2026-09-14,DCI Digital Career Institute GmbH,dci-digital-career-institute-gmbh,0,1,218,Marketing; Grundlagen; Media; It-Consultant; It-Consultant Marketing; Crm; Social; Social Media
+2026-09-14,Talentspring Academy Group,talentspring-academy-group,0,1,189,Marketing; Projektmanagement; Prompt; Vertrieb; Engineering; Prompt Engineering; Manager; Seo
+2026-09-14,neuefische GmbH,neuefische-gmbh,0,1,177,Marketing; Data; Grundlagen; Digital; Konzepte; Digital Marketing; Manager; Analytics
+2026-09-14,Digitale Leute School,digitale-leute-school,0,1,143,Vibe; Coding; Vibe Coding; Product; Manager; Lernen; Engineering; Design
+2026-09-14,IU Akademie IU Internationale Hochschule,iu-akademie-iu-internationale-hochschule,0,1,142,Management; Marketing; Masterclass; Projektmanagement; Social; Media; Social Media; E-Commerce
+2026-09-14,GrandEdu GmbH,grandedu-gmbh,0,1,126,Marketing; Manager; Social; Media; Social Media; Sem; Digitale; Schwerpunkt
+2026-09-14,COMCAVE.COLLEGE GmbH,comcave-college-gmbh,0,1,120,Marketing; Prompt; Manager; Engineering; Prompt Engineering; Management; Inkl; Social
+2026-09-14,alfatraining Bildungszentrum GmbH,alfatraining-bildungszentrum-gmbh,0,1,117,Manager; Marketing; Design; Thinking; Design Thinking; Marketing Manager; Adobe; Webdesign
+2026-09-14,GFN GmbH,gfn-gmbh,0,1,102,Marketing; Inkl; Zertifizierung; Manager; E-Commerce; Social; Media; Social Media
+2026-09-14,Mentify Learn GmbH,mentify-learn-gmbh,0,1,96,Amazon; Launch; E-Commerce; Marketplace; Advertising; Automation; Ppc; Amazon Marketplace
+2026-09-14,SMD Performance Media,smd-performance-media,0,1,66,Marketing; Intensivkurs; Manager; Social; Media; Social Media; E-Commerce; Marketing Manager
+2026-09-14,Bildung Next Level GmbH,bildung-next-level-gmbh,0,1,53,Marketing; Content; Content Marketing; Performance; Performance Marketing; Social; Media; Social Media
+2026-09-14,New Horizons München - IT Computer und Business Trainings,new-horizons-m-nchen-it-computer-und-business-trainings,0,1,29,Artificial; Intelligence; Artificial Intelligence; Grundlagen; Data; Künstlicher; Intelligenz; Künstlicher Intelligenz
+2026-09-14,OMR Education GmbH,omr-education-gmbh,0,1,26,Marketing; Modulare; Demand; Digital; Digital Marketing; Instagram; Sales; Digital Sales
+2026-09-14,GrandEdu Media,grandedu-media,0,1,16,Junior; Ki-Manager; Manager; Unternehmenskontext; Practice; Level; Practice Level; Vertrieb
+2026-09-14,Habmann AufstiegsAkademie,habmann-aufstiegsakademie,0,0,746,Digitale; Manager; Nachhaltige; Experte; Business; Coach; Management; Transformation
+2026-09-14,Akademie Überlingen,akademie-berlingen,0,0,531,Inkl; Toeic-Zertifikat; International; International Toeic-Zertifikat; Icdl; Professional; Projektmanagement; Icdl Professional
+2026-09-14,Lecturio GmbH,lecturio-gmbh,0,0,519,Basics; Geprüfte; Grundlagen; Aufbaukurs; Nach; Microsoft; Adobe; Inkl
+2026-09-14,Bildungszentrum des Handels e. V.,bildungszentrum-des-handels-e-v,0,0,478,Basics; Geprüfte; Grundlagen; Aufbaukurs; Nach; Microsoft; Adobe; Inkl
+2026-09-14,WTA-Bildung,wta-bildung,0,0,478,Basics; Geprüfte; Grundlagen; Aufbaukurs; Microsoft; Nach; Adobe; Inkl
+2026-09-14,Lernen fördern e. V.,lernen-f-rdern-e-v,0,0,477,Basics; Geprüfte; Grundlagen; Aufbaukurs; Nach; Microsoft; Adobe; Inkl
+2026-09-14,LearnWise GmbH,learnwise-gmbh,0,0,477,Basics; Geprüfte; Grundlagen; Aufbaukurs; Microsoft; Nach; Adobe; Inkl
+2026-09-14,QZA UG (haftungsbeschränkt),qza-ug-haftungsbeschr-nkt,0,0,476,Basics; Geprüfte; Grundlagen; Aufbaukurs; Nach; Microsoft; Adobe; Inkl
+2026-09-14,welcome gGmbH,welcome-ggmbh,0,0,472,Basics; Geprüfte; Grundlagen; Aufbaukurs; Nach; Microsoft; Adobe; Inkl
+2026-09-14,Academy NH Süd,academy-nh-s-d,0,0,410,Microsoft; Praxis; Office; Projektmanagement; Intelligence; Intelligenz; Grundlagen; Artificial
+2026-09-14,Akademie für Bildung & Beruf,akademie-f-r-bildung-beruf,0,0,401,Basics; Grundlagen; Aufbaukurs; Nach; Microsoft; Adobe; Cgi; Inkl
+2026-09-14,Institut für Bildung & Beruf,institut-f-r-bildung-beruf,0,0,400,Basics; Grundlagen; Aufbaukurs; Nach; Microsoft; Adobe; Cgi; Wirtschaftsenglisch
+2026-09-14,Kolping Akademie Bamberg,kolping-akademie-bamberg,0,0,399,Basics; Grundlagen; Aufbaukurs; Nach; Microsoft; Adobe; Cgi; Inkl
+2026-09-14,Kreisvolkshochschule Uelzen/Lüchow-Dannenberg,kreisvolkshochschule-uelzen-l-chow-dannenberg,0,0,399,Basics; Grundlagen; Aufbaukurs; Nach; Microsoft; Adobe; Cgi; Wirtschaftsenglisch
+2026-09-14,Learnix GmbH,learnix-gmbh,0,0,291,Praxis; Digitale; Manager; Digital; Marketing; Virtuelle; Beruf; Management
+2026-09-14,NordWest Training UG (haftungsbeschränkt),nordwest-training-ug-haftungsbeschr-nkt,0,0,288,Geprüfte; Nach; Grundlagen; Zusatzqualifikation; Inkl; Wirtschaftsenglisch; Pädagogische; Pädagogische Zusatzqualifikation
+2026-09-14,Forward Education GmbH,forward-education-gmbh,0,0,260,Manager; Sales; Marketing; Business; E-Commerce-Strategien; Customer; Digital; Kundenmanagement-Systeme
+2026-09-14,BIN gGmbH,bin-ggmbh,0,0,231,Basics; Nach; Aufbaukurs; Grundlagen; Zusatzqualifikation; Microsoft; Adobe; Sgb
+2026-09-14,StackFuel GmbH,stackfuel-gmbh,0,0,218,Data; N8N; Ki-Manager; Business; Learning; Power; Specialist; Copilot
+2026-09-14,SGD,sgd,0,0,209,Geprüfte; Fachkurs; Abiturwissen; Fachkurs Abiturwissen; Berater; Fachmann; Fachfrau; Fachfrau Fachmann
+2026-09-14,Leecon TS GmbH,leecon-ts-gmbh,0,0,189,Kmu; Projektmanagement; Methoden; Agile; Itil; Agentic; Bundle; Design
+2026-09-14,Syntax GmbH für Aus- und Weiterbildung,syntax-gmbh-f-r-aus-und-weiterbildung,0,0,184,Grundlagen; Swift; Apps; Zusatzqualifikation; Webentwicklung; Kotlin; Web; App-Entwicklung
+2026-09-14,cimdata Bildungsakademie GmbH,cimdata-bildungsakademie-gmbh,0,0,177,Advanced; Basics; Marketing; Kompakt; Bildbearbeitung; Manager; Arbeit; Basics Arbeit
+2026-09-14,Bildung First GmbH,bildung-first-gmbh,0,0,161,Scrum; Python; Psm; Master; Product; Owner; Product Owner; Scrum Master
+2026-09-14,CROAS Education GmbH,croas-education-gmbh,0,0,147,Meta; Ads; Meta Ads; Conversion; Optimierung; Digitale; Rate; Conversion Rate
+2026-09-14,brainymotion,brainymotion,0,0,144,Zusatzqualifikation; Copilot; Microsoft; Cloud; Data; Projektmanager; Azure; Agile
+2026-09-14,Nest Academy GmbH,nest-academy-gmbh,0,0,131,Marketing; Social; Media; Social Media; Content; Manager; Automatisierung; Seo
+2026-09-14,Berger Bildungsinstitut GmbH,berger-bildungsinstitut-gmbh,0,0,128,Marketing; Adobe; Design; Digital; Photoshop; Adobe Photoshop; Digital Marketing; Intelligenz
+2026-09-14,Itera Campus,itera-campus,0,0,116,Marketing; Manager; Crm; Ki-Gestützte; Sales; Digital; Digital Marketing; Marketing Manager
+2026-09-14,Education partners GmbH,education-partners-gmbh,0,0,114,Manager; Social; Media; Social Media; Marketing; Media Manager; Inkl; Manager Inkl
+2026-09-14,future Training & Consulting GmbH,future-training-consulting-gmbh,0,0,112,Adobe; Künstliche; Intelligenz; Künstliche Intelligenz; Generative; Creation; Softwareentwicklung; Photoshop
+2026-09-14,Ironhack Germany GmbH,ironhack-germany-gmbh,0,0,110,Marketing; Automation; Marketing Automation; Grundlagen; Content; Responsible; Website; Erstellen
+2026-09-14,ImpaQt Education Group,impaqt-education-group,0,0,102,Manager; Automatisierung; Crm; Arbeitsalltag; N8N; Sales; Marketing; Prompt
+2026-09-14,Smart Future Campus GmbH,smart-future-campus-gmbh,0,0,96,Automatisierung; Intelligenz; Künstliche; Künstliche Intelligenz; Machine; Learning; Machine Learning; Data
+2026-09-14,Bold Academy GmbH,bold-academy-gmbh,0,0,96,Sales; Vertrieb; Digital; Digital Sales; Crm; Management; Marketing; Manager
+2026-09-14,KeepBlue AG,keepblue-ag,0,0,93,Claude; Manager; N8N; Marketing; Marketing Manager; Google; Generative; Design
+2026-09-14,SALTZ-Training,saltz-training,0,0,92,Scrum; Devops; Agile; Kanban; Foundation; Prince2; Inkl; Projektleitung
+2026-09-14,NH Schulungscenter für IT und Business GmbH,nh-schulungscenter-f-r-it-und-business-gmbh,0,0,86,Copilot; Microsoft; Künstliche; Intelligenz; Künstliche Intelligenz; Copilot Microsoft; Marketing; Microsoft Copilot
+2026-09-14,Agile Heroes GmbH,agile-heroes-gmbh,0,0,83,Ki-Spezialist; Manager; Prompt; Ki-Anwendungen; Unternehmen; Coach; Generative; Ki-Gestützte
+2026-09-14,LVQ Weiterbildung und Beratung GmbH,lvq-weiterbildung-und-beratung-gmbh,0,0,81,Ki-Tool-Expert; Online-Redakteur; Manager; Ki-; Kulturmanager; Projekt-; Marketing; Marketing Manager
+2026-09-14,ifmera academy GmbH,ifmera-academy-gmbh,0,0,79,Marketing; Lexware; Content; Strategien; Führung; Führen; Management; Lohn-
+2026-09-14,Developer Akademie GmbH,developer-akademie-gmbh,0,0,73,Python; Automatisierung; Cloud; Backend; Entwickler; Agenten; Developer; Security
+2026-09-14,formful education GmbH,formful-education-gmbh,0,0,71,Design; Webdesign; Engineering; Prompt; Prompt Engineering; Usability; Grafikdesign; Thinking
+2026-09-14,Akademie für KI - Akademie für die Deutsche Wirtschaft GmbH,akademie-f-r-ki-akademie-f-r-die-deutsche-wirtschaft-gmbh,0,0,68,Unternehmen; Zertifikat; Chatgpt; Zertifizierter; Ki-Manager; Copilot; Mittelstand; Generative
+2026-09-14,Alphadi Akademie,alphadi-akademie,0,0,68,Design; Thinking; Design Thinking; Inkl; Lean; Belt; Inkl Design; Six
+2026-09-14,IBB Institut für Berufliche Bildung GmbH,ibb-institut-f-r-berufliche-bildung-gmbh,0,0,68,Adobe; Marketing; Intelligenz; Design; Geprüfte; Künstliche; Künstliche Intelligenz; Aufbaukurs
+2026-09-14,MSIT Master School Institute of Technology,msit-master-school-institute-of-technology,0,0,68,Manager; Power; Grundlagen; Workflows; Engineering; Automation; Engineer; N8N
+2026-09-14,IntelliLearn Akademie GmbH,intellilearn-akademie-gmbh,0,0,58,Copilot; Dokumentation; Assistenz; Tests; Assistenz Tests; Tests Dokumentation; Anwendungen; Umsetzung
+2026-09-14,New Horizons Nord,new-horizons-nord,0,0,55,Plus; Microsoft; Project; Salesforce; Plus Project; Grundlagen; Teams; Plus Teams
+2026-09-14,New Horizons Hamburg / Bremen,new-horizons-hamburg-bremen,0,0,54,Copilot; Microsoft; Microsoft Copilot; Copilot Microsoft; Künstliche; Intelligenz; Künstliche Intelligenz; Examen
+2026-09-14,TÜV Rheinland Akademie GmbH,t-v-rheinland-akademie-gmbh,0,0,52,Intelligenz; Marketing; Künstliche; Design; Künstliche Intelligenz; Einführung; Social; Media
+2026-09-14,New Horizons Nord / West,new-horizons-nord-west,0,0,52,Copilot; Microsoft; Künstliche; Intelligenz; Künstliche Intelligenz; Microsoft Copilot; Copilot Microsoft; Apps
+2026-09-14,Bildungswerk der Hessischen Wirtschaft e. V.,bildungswerk-der-hessischen-wirtschaft-e-v,0,0,51,Adobe; Marketing; Intelligenz; Design; Creative; Adobe Creative; Künstliche; Künstliche Intelligenz
+2026-09-14,New Horizons Akademie,new-horizons-akademie,0,0,51,Plus; Salesforce; Microsoft; Project; Teams; Plus Teams; Grundlagen; Plus Project
+2026-09-14,New Horizons Köln - NH Schulungscenter für IT und Business GmbH,new-horizons-k-ln-nh-schulungscenter-f-r-it-und-business-gmbh,0,0,50,Copilot; Microsoft; Künstliche; Intelligenz; Künstliche Intelligenz; Copilot Microsoft; Microsoft Copilot; Apps
+2026-09-14,ecomex GmbH & Co. KG,ecomex-gmbh-co-kg,1,0,49,Marketing; Manager; Social; Media; Social Media; Marketing Manager; Content; E-Commerce
+2026-09-14,Fired Up GmbH,fired-up-gmbh,0,0,48,Design; Project; Projektmanagement; Designer; Senior; Management; Innen; Senior Project
+2026-09-14,Berufliche Fortbildungszentren der Bayerischen Wirtschaft (bfz) gGmbH,berufliche-fortbildungszentren-der-bayerischen-wirtschaft-bfz-ggmbh,0,0,48,Marketing; Intelligenz; Adobe; Künstliche; Design; Künstliche Intelligenz; Einführung; Social
+2026-09-14,New Horizons Hannover/Leipzig,new-horizons-hannover-leipzig,0,0,48,Copilot; Microsoft; Künstliche; Intelligenz; Künstliche Intelligenz; Microsoft Copilot; Copilot Microsoft; Apps
+2026-09-14,Fortbildungsakademie der Wirtschaft (FAW) gGmbH,fortbildungsakademie-der-wirtschaft-faw-ggmbh,0,0,46,Marketing; Adobe; Künstliche; Intelligenz; Design; Künstliche Intelligenz; Social; Media
+2026-09-14,Do IT Digital GmbH,do-it-digital-gmbh,0,0,46,Intelligenz; Künstliche; Künstliche Intelligenz; Marketing; Design; Adobe; Einführung; Social
+2026-09-14,HECKER CONSULTING,hecker-consulting,0,0,46,Google; Engineering; Chatgpt; E-Commerce; Prompt; Prompt Engineering; Amazon; Seo
+2026-09-14,GfM GmbH & Co. KG,gfm-gmbh-co-kg,0,0,45,Adobe; Marketing; Creative; Adobe Creative; Social; Media; Social Media; Design
+2026-09-14,Bildungswerk der nordhessischen Wirtschaft gemeinnützige GmbH,bildungswerk-der-nordhessischen-wirtschaft-gemeinn-tzige-gmbh,0,0,44,Adobe; Design; Marketing; Social; Media; Social Media; Wordpress; Grafik
+2026-09-14,Business Trends Academy,business-trends-academy,0,0,38,Content; Marketing; Social; Media; Social Media; Leadership; Creator; Management
+2026-09-14,DAA - Deutsche Angestellten- Akademie gGmbH,daa-deutsche-angestellten-akademie-ggmbh,0,0,38,Marketing; Datev; Wordpress; Lohn; Gehalt; Lohn Gehalt; Grundlagen; Aufbaukurs
+2026-09-14,FiGD Akademie für Medienentwicklung,figd-akademie-f-r-medienentwicklung,0,0,37,Php; Grafikdesign; Photoshop; Design; Wordpress; Programmierung; Indesign; Cms
+2026-09-14,LearnWise Academy,learnwise-academy,0,0,37,Aws; Grundlagen; Amazon; Web; Amazon Web; Services; Web Services; Bis
+2026-09-14,TERTIA Berufsförderung GmbH & Co. KG,tertia-berufsf-rderung-gmbh-co-kg,0,0,36,Design; Social; Media; Social Media; Marketing; Adobe; Grafik; Grafik Design
+2026-09-14,Donner + Partner GmbH Baden-Württemberg,donner-partner-gmbh-baden-w-rttemberg,0,0,36,Design; Marketing; Social; Media; Social Media; Adobe; Inkl; Künstliche
+2026-09-14,Ihr JobCoach. Gesellschaft für Erwachsenenbildung mbH,ihr-jobcoach-gesellschaft-f-r-erwachsenenbildung-mbh,0,0,35,Adobe; Marketing; Social; Media; Social Media; E-Commerce; Design; Wordpress
+2026-09-14,New Horizons Mitte,new-horizons-mitte,0,0,35,Microsoft; Onenote; Sharepoint; Microsoft Sharepoint; Microsoft Onenote; Grundlagen; Excel; Powerpoint
+2026-09-14,WBK Akademie GmbH,wbk-akademie-gmbh,0,0,34,Claude; Manager; Project; Project Manager; Codex; Code; Claude Code; Transformation
+2026-09-14,SWA Bildungsakademie GmbH,swa-bildungsakademie-gmbh,0,0,34,Marketing; Intelligenz; Lernen; Künstliche; Grafik; Design; Künstliche Intelligenz; Grafik Design
+2026-09-14,BIB Augsburg GmbH,bib-augsburg-gmbh,0,0,34,Marketing; Adobe; Social; Media; Social Media; Aufbaukurs; Wordpress; Design
+2026-09-14,Stiftung Lernen-Fördern-Arbeiten (LFA),stiftung-lernen-f-rdern-arbeiten-lfa,0,0,34,Marketing; Social; Media; Social Media; Adobe; Design; Wordpress; Inkl
+2026-09-14,Lernstudio Barbarossa/MegaKids Fortbildungs GmbH,lernstudio-barbarossa-megakids-fortbildungs-gmbh,0,0,31,Design; Adobe; Social; Media; Social Media; Marketing; Grafik; Grafik Design
+2026-09-14,Reha & Beruf gGmbH,reha-beruf-ggmbh,0,0,31,Marketing; Design; Künstliche; Intelligenz; Grafik; Künstliche Intelligenz; Grafik Design; Social
+2026-09-14,IEC - International Education Centers GmbH,iec-international-education-centers-gmbh,0,0,31,Marketing; Einführung; Künstliche; Intelligenz; Einführung Künstliche; Künstliche Intelligenz; Inkl; Social
+2026-09-14,TASys GmbH,tasys-gmbh,0,0,31,Sap; Sales; Distribution; Sales Distribution; Business; Associate; Hana; Foundation
+2026-09-14,Next Level Campus GmbH,next-level-campus-gmbh,0,0,30,Coding; Vibe; Vibe Coding; Python; Tools; App; Grundkenntnisse; Computer
+2026-09-14,isb Institut für Schulung und Beruf,isb-institut-f-r-schulung-und-beruf,0,0,30,Adobe; Marketing; Social; Media; Social Media; E-Commerce; Wordpress; Grafikdesigner
+2026-09-14,its digital akademie GmbH,its-digital-akademie-gmbh,0,0,29,Design; Adobe; Social; Media; Social Media; Marketing; Grafik; Grafik Design
+2026-09-14,Wirtschaftsakademie Küster GmbH,wirtschaftsakademie-k-ster-gmbh,0,0,28,Design; Social; Media; Social Media; Marketing; Aufbaukurs; Adobe; Wordpress
+2026-09-14,IFP Gesellschaft für Fortbildung und Personalentwicklung mbH,ifp-gesellschaft-f-r-fortbildung-und-personalentwicklung-mbh,0,0,28,Marketing; Social; Media; Social Media; Adobe; Geprüfte; Fachwirt; Geprüfte Fachwirt
+2026-09-14,BilSE-Institut für Bildung und Forschung GmbH,bilse-institut-f-r-bildung-und-forschung-gmbh,0,0,27,Marketing; Social; Media; Social Media; Inkl; Einführung; Künstliche; Intelligenz
+2026-09-14,Prisma Bildungsplattform e. V.,prisma-bildungsplattform-e-v,0,0,27,Design; Adobe; Grafik; Grafik Design; Social; Media; Social Media; Marketing
+2026-09-14,academy7,academy7,0,0,26,Marketing; Inkl; Grundlagen; Social; Media; Social Media; Content; Manager
+2026-09-14,AWT Akademie für Wirtschaft und Technologie GmbH,awt-akademie-f-r-wirtschaft-und-technologie-gmbh,0,0,26,Adobe; Marketing; Künstliche; Intelligenz; Künstliche Intelligenz; Creative; Adobe Creative; Social
+2026-09-14,bam GmbH,bam-gmbh,0,0,25,Social; Media; Social Media; Marketing; Design; Adobe; Wordpress; Wirtschaftsenglisch
+2026-09-14,eSA - europäische Sachverständigen Akademie AG & Co. KG,esa-europ-ische-sachverst-ndigen-akademie-ag-co-kg,0,0,25,Marketing; Adobe; Social; Media; Social Media; Wordpress; Effiziente; E-Commerce
+2026-09-14,Horizonia GmbH,horizonia-gmbh,0,0,25,Marketing; Social; Media; Social Media; Adobe; Geprüfte; Fachwirt; Geprüfte Fachwirt
+2026-09-14,Digethic Business School,digethic-business-school,0,0,24,Manager; Digital; Transformation; Marketing; Agile; Digital Transformation; Transformation Manager; Digital Marketing
+2026-09-14,Minister Fachschule GmbH,minister-fachschule-gmbh,0,0,24,Marketing; Grundlagen; Social; Media; Social Media; Digital; Manager; Geprüfte
+2026-09-14,NEXIO Online Akademie GmbH,nexio-online-akademie-gmbh,0,0,24,Marketing; Manager; Social; Media; Social Media; Aufbaukurs; Marketing Aufbaukurs; Lernen
+2026-09-14,GAG Klausdorf gGmbH,gag-klausdorf-ggmbh,0,0,23,Marketing; Social; Media; Social Media; Geprüfte; Wordpress; Fachwirt; E-Commerce
+2026-09-14,Bochumer Bildungszentrum e. V.,bochumer-bildungszentrum-e-v,0,0,23,Design; Social; Media; Social Media; Künstliche; Intelligenz; Grafik; Künstliche Intelligenz
+2026-09-14,GFU Cyrus AG,gfu-cyrus-ag,0,0,23,Administration; Apps; Ki-Gestütztes; Microsoft; Power; Entwicklung; Claude; Code
+2026-09-14,Digiteach GmbH,digiteach-gmbh,0,0,22,Marketing; Manager; Marketing Manager; E-Commerce; Fürs; Web; Fürs Web; Social
+2026-09-14,Wildner Akademie für Digitale Wirtschaft & Management,wildner-akademie-f-r-digitale-wirtschaft-management,0,0,22,Marketing; Content; Media; Social; Social Media; Digitale; Kommunikation; Design
+2026-09-14,DFW Akademie,dfw-akademie,0,0,22,Manager; Marketing; Geprüfter; Digital; Content; Social; Media; Management
+2026-09-14,Donner + Partner GmbH Sachsen,donner-partner-gmbh-sachsen,0,0,22,Social; Media; Social Media; Marketing; Aufbaukurs; Adobe; Grundlagen; Masterclass
+2026-09-14,Pioneer Institut GmbH,pioneer-institut-gmbh,0,0,22,Marketing; Social; Media; Social Media; Masterclass; Starter; Geprüfte; E-Commerce
+2026-09-14,TEMP.Akademie GmbH,temp-akademie-gmbh,0,0,22,Marketing; Design; Social; Media; Social Media; Adobe; Wordpress; Künstliche
+2026-09-14,New Horizons Dortmund Computer Learning Center GmbH & Co.KG,new-horizons-dortmund-computer-learning-center-gmbh-co-kg,0,0,22,Copilot; Apps; Künstliche; Intelligenz; Künstliche Intelligenz; Microsoft; Copilot Microsoft; Security
+2026-09-14,MARTINSFELD GmbH & Co. KG,martinsfeld-gmbh-co-kg,0,0,22,Professionelle; Intensivseminar; Digitale; Workflow-Automatisierung; Professionelle Workflow-Automatisierung; Business; Woocommerce; Digitalen
+2026-09-14,brainymotion München,brainymotion-m-nchen,0,0,21,Marketing; Azure; Microsoft; Engineer; Projektmanagement; Berufliche; Anwender; Berufliche Anwender
+2026-09-14,PSB Europe GmbH,psb-europe-gmbh,0,0,21,Marketing; Social; Media; Social Media; Inkl; Wirtschaftsenglisch; Künstliche; Intelligenz
+2026-09-14,Greenbootcamps GmbH,greenbootcamps-gmbh,0,0,21,Aws; Amazon; Web; Services; Amazon Web; Web Services; Services Aws; Business
+2026-09-14,Randstad Deutschland GmbH & Co. KG,randstad-deutschland-gmbh-co-kg,0,0,20,Social; Media; Social Media; Marketing; Aufbaukurs; Adobe; Wordpress; Erstellen
+2026-09-14,PersonaPlan GmbH,personaplan-gmbh,0,0,20,Marketing; Aufbaukurs; Adobe; Design; Social; Media; Social Media; Masterclass
+2026-09-14,ILS - Institut für Lernsysteme GmbH,ils-institut-f-r-lernsysteme-gmbh,0,0,20,Vorbereitung; Zertifikatstest; Vorbereitung Zertifikatstest; Geprüfter; E-Commerce-Manager; Marketing; Manager; Produktmanager
+2026-09-14,Konzept Bildung und Services GmbH,konzept-bildung-und-services-gmbh,0,0,20,Marketing; Social; Media; Social Media; Masterclass; Starter; Geprüfte; Fachwirt
+2026-09-14,Hallmann Personal- und Schulungscenter GmbH,hallmann-personal-und-schulungscenter-gmbh,0,0,20,Marketing; Social; Media; Social Media; Content; Creator; Media Content; Content Creator
+2026-09-14,CBZ Landshut GmbH,cbz-landshut-gmbh,0,0,20,Marketing; Social; Media; Social Media; Künstliche; Intelligenz; Künstliche Intelligenz; Adobe
+2026-09-14,TEACH GmbH & Co. KG,teach-gmbh-co-kg,0,0,20,Social; Media; Social Media; Marketing; Adobe; Geprüfte; Fachwirt; Geprüfte Fachwirt
+2026-09-14,Bildungsinstitut Gros,bildungsinstitut-gros,0,0,19,Manager; Marketing; Intelligenz; Performance; Performance Marketing; Social; Künstliche; Künstliche Intelligenz
+2026-09-14,LUTZ + GRUB ACADEMY GmbH,lutz-grub-academy-gmbh,0,0,19,Automatisierung; Microsoft; Intelligenz; Sharepoint; Prozessmanager; Power; Platform; Prozessmanager Automatisierung
+2026-09-14,Zukunftswerkstatt Mitteldeutschland,zukunftswerkstatt-mitteldeutschland,0,0,19,Social; Media; Social Media; Marketing; Adobe; Wordpress; Erstellen; Design
+2026-09-14,Bildungsinsel GmbH,bildungsinsel-gmbh,0,0,19,Marketing; Social; Media; Social Media; Künstliche; Intelligenz; Design; Künstliche Intelligenz
+2026-09-14,TFA-Akademie GmbH,tfa-akademie-gmbh,0,0,19,Marketing; Design; Social; Media; Social Media; Wordpress; Grafik; Grafik Design
+2026-09-14,Technologiezentrum Glehn GmbH,technologiezentrum-glehn-gmbh,0,0,19,Marketing; Social; Media; Social Media; Wirtschaftsenglisch; Masterclass; Starter; Wordpress
+2026-09-14,Rheinischer Dialog und Bildungsverein e. V.,rheinischer-dialog-und-bildungsverein-e-v,0,0,19,Social; Media; Social Media; Marketing; Wordpress; Design; Adobe; Photoshop
+2026-09-14,Akademie für berufliche Aus- und Weiterbildung Schweiger & Schmitt GmbH,akademie-f-r-berufliche-aus-und-weiterbildung-schweiger-schmitt-gmbh,0,0,18,Adobe; Social; Media; Social Media; Marketing; Aufbaukurs; Wordpress; Erstellen
+2026-09-14,Kolping-Bildungswerk GmbH,kolping-bildungswerk-gmbh,0,0,18,Marketing; Social; Media; Social Media; Masterclass; Starter; Wordpress; Data-Science
+2026-09-14,Donner + Partner GmbH Bayern,donner-partner-gmbh-bayern,0,0,18,Design; Social; Media; Social Media; Wordpress; Marketing; Künstliche; Intelligenz
+2026-09-14,SBW Aus- und Fortbildungsgesellschaft für Wirtschaft und Verwaltung GmbH,sbw-aus-und-fortbildungsgesellschaft-f-r-wirtschaft-und-verwaltung-gmb,0,0,18,Social; Media; Social Media; Design; Marketing; Adobe; Wordpress; Aufbaukurs
+2026-09-14,ABK Akademie für Beruf und Karriere GmbH,abk-akademie-f-r-beruf-und-karriere-gmbh,0,0,17,Social; Media; Social Media; Marketing; Adobe; Design; Wordpress; Erstellen
+2026-09-14,Verein für Integration und Bildung e. V.,verein-f-r-integration-und-bildung-e-v,0,0,17,Social; Media; Social Media; Marketing; Grafik; Design; Grafik Design; Adobe
+2026-09-14,Avicenna Institut e. V.,avicenna-institut-e-v,0,0,17,Wordpress; Social; Media; Social Media; Marketing; Online-Marketing; Social-Media-Marketing; Seo
+2026-09-14,ProfeS GmbH,profes-gmbh,0,0,17,Social; Media; Social Media; Marketing; Wordpress; Erstellen; Design; Masterclass
+2026-09-14,JOBINKUBATOR Beratung / Bildung / Beruf,jobinkubator-beratung-bildung-beruf,0,0,16,Grafik; Design; Grafik Design; Social; Media; Social Media; Marketing; Wordpress
+2026-09-14,Alsterbildungsring e. V.,alsterbildungsring-e-v,0,0,16,Social; Media; Social Media; Marketing; Energieberater; Nichtwohngebäude; Energieberater Nichtwohngebäude; Kreative
+2026-09-14,Code S Academy Ramona Sander,code-s-academy-ramona-sander,0,0,16,Künstliche; Intelligenz; Künstliche Intelligenz; Certified; Intelligenz Certified; Specialist; E-Commerce; Intelligenz E-Commerce
+2026-09-14,Volkshochschule Reutlingen GmbH,volkshochschule-reutlingen-gmbh,0,0,16,Marketing; Aufbaukurs; Marketing Aufbaukurs; Social; Media; Social Media; Kreative; Content-Produktion
+2026-09-14,Volkshochschule Coburg Stadt und Land gGmbH,volkshochschule-coburg-stadt-und-land-ggmbh,0,0,16,Social; Media; Social Media; Design; Adobe; Dreamweaver; Webdesign; Adobe Dreamweaver
+2026-09-14,Stölzle GmbH,st-lzle-gmbh,0,0,16,Social; Media; Social Media; Design; Marketing; Wordpress; Grafik; Grafik Design
+2026-09-14,VBZ Deutsches Vertriebsbildungszentrum,vbz-deutsches-vertriebsbildungszentrum,0,0,16,Sales; Vertrieb; Verkaufserfolg; Durch; Social; Media; Verkaufserfolg Durch; Durch Social
+2026-09-14,Skilldrops GmbH,skilldrops-gmbh,0,0,15,Scrum; Practitioner; Automatisierung; Product; Owner; Product Owner; Business; Scrum Product
+2026-09-14,Berufsbildungszentrum Augsburg der Lehmbaugruppe gGmbH,berufsbildungszentrum-augsburg-der-lehmbaugruppe-ggmbh,0,0,15,Social; Media; Social Media; Marketing; Grafik; Design; Wordpress; Grafik Design
+2026-09-14,IBB Institut für Berufliche Bildung Harz GmbH,ibb-institut-f-r-berufliche-bildung-harz-gmbh,0,0,15,Social; Media; Social Media; Marketing; Einführung; Künstliche; Intelligenz; Einführung Künstliche
+2026-09-14,MAS Sprachschule München,mas-sprachschule-m-nchen,0,0,15,Design; Social; Media; Social Media; Marketing; Grafik; Wordpress; Grafik Design
+2026-09-14,CBW College Berufliche Weiterbildung GmbH,cbw-college-berufliche-weiterbildung-gmbh,0,0,14,Marketing; Manager; E-Commerce; Social; Media; Social Media; Schwerpunkt; Content
+2026-09-14,BVH Gesellschaft für angewandte Bildung und Sozialforschung mbH,bvh-gesellschaft-f-r-angewandte-bildung-und-sozialforschung-mbh,0,0,14,Social; Media; Social Media; Marketing; Sem; Seo; Aufbaukurs; Online-Marketing
+2026-09-14,Zweckverband Volkshochschule Oberes Nagoldtal,zweckverband-volkshochschule-oberes-nagoldtal,0,0,14,Social; Media; Social Media; Adobe; Wordpress; Design; Aufbaukurs; Kreative
+2026-09-14,ÜAG gGmbH,ag-ggmbh,0,0,14,Adobe; Marketing; Social; Media; Social Media; Grafik; Design; Wordpress
+2026-09-14,"Sprachwerkstatt Privates Institut für Kommunikation, Wirtschaft und Sprache GmbH",sprachwerkstatt-privates-institut-f-r-kommunikation-wirtschaft-und-spr,0,0,14,Social; Media; Social Media; Adobe; Marketing; Photoshop; Aufbaukurs; Adobe Photoshop
+2026-09-14,Bildung & Beruf GmbH,bildung-beruf-gmbh,0,0,14,Social; Media; Social Media; Marketing; Grundlagen; Wordpress; Masterclass; Starter
+2026-09-14,Ziola GmbH,ziola-gmbh,0,0,14,Social; Media; Social Media; Marketing; Adobe; Aufbaukurs; Masterclass; Data-Science
+2026-09-14,ebam Akademie für Wirtschaft und Management,ebam-akademie-f-r-wirtschaft-und-management,0,0,13,Content; Digital; Marketing; Specialist; Manager; Social; Media; Social Media
+2026-09-14,Webmasters Akademie Nürnberg GmbH,webmasters-akademie-n-rnberg-gmbh,0,0,12,Experte; Manager; Zertifizierte; Google; Web; Seo; Content; Management
+2026-09-14,Morphos GmbH,morphos-gmbh,0,0,12,Manager; Marketing; Digital; E-Commerce; Digital Marketing; Social; Media; Marketing Social
+2026-09-14,Akademischer Verein zu Euregio e. V.,akademischer-verein-zu-euregio-e-v,0,0,12,Social; Media; Social Media; Marketing; Applied; Data; Science; Applied Data
+2026-09-14,ABS-IT UG (haftungsbeschränkt),abs-it-ug-haftungsbeschr-nkt,0,0,12,Social; Media; Social Media; Kreative; Content-Produktion; Kreative Content-Produktion; Content-Produktion Social; Content
+2026-09-14,Zukunft Fachkräfte Deutschland GmbH,zukunft-fachkr-fte-deutschland-gmbh,0,0,12,Social; Media; Social Media; Marketing; Pc-Kenntnisse; Büro-Anwender; Fundament; Office
+2026-09-14,Volkshochschule Offenburg e. V.,volkshochschule-offenburg-e-v,0,0,12,Design; Social; Media; Social Media; Marketing; Grafik; Grafik Design; Aufbaukurs
+2026-09-14,Erfolgspfad GmbH,erfolgspfad-gmbh,0,0,12,Social; Media; Social Media; Kmu; Kundenmanagement; Vertrieb; Content; Creator
+2026-09-14,Bonner Bildungs Center e. V.,bonner-bildungs-center-e-v,0,0,12,Social; Media; Social Media; Marketing; Energieberater; Nichtwohngebäude; Kreative; Content-Produktion
+2026-09-14,KISA AKADEMIE GmbH,kisa-akademie-gmbh,0,0,11,Marketing; Management; Modul; Inkl; Marketing Management; E-Commerce; Creator; Management Modul
+2026-09-14,Textakademie GmbH,textakademie-gmbh,0,0,11,Marketing; Digitalisierung; Google; Gestalter; Online-Kommunikation; Ads; Analytics; Gestalter Digitalisierung
+2026-09-14,XDi - Experience Design Institut GmbH,xdi-experience-design-institut-gmbh,0,0,11,Certified; Manager; Prompt; Engineering; Prompt Engineering; Content; Creation; Content Creation
+2026-09-14,TÜV Rheinland Akademie GmbH I,t-v-rheinland-akademie-gmbh-i,0,0,10,Experte; Qualitätsmanagement; Agile; Transformation; Manager; Agile Transformation; Transformation Manager; Agilität
+2026-09-14,INI Qualifizierung & Service gGmbH,ini-qualifizierung-service-ggmbh,0,0,10,Social; Media; Social Media; Marketing; Design; Gestaltung; Content; Creator
+2026-09-14,indisoft GmbH,indisoft-gmbh,0,0,10,Design; Anwender; Spezialisten; Anwender Spezialisten; Adobe; Photoshop; Adobe Photoshop; Content
+2026-09-14,Z&P Schulung GmbH,z-p-schulung-gmbh,0,0,10,Social; Media; Social Media; Marketing; Design; Content; Creator; Media Content
+2026-09-14,ZAL Berlin-Brandenburg GmbH,zal-berlin-brandenburg-gmbh,0,0,10,Social; Media; Social Media; Adobe; Wordpress; Kreative; Content-Produktion; Kreative Content-Produktion
+2026-09-14,DeLSt GmbH Deutsches eLearning Studieninstitut,delst-gmbh-deutsches-elearning-studieninstitut,0,0,9,Manager; Marketing; Marketing Manager; Agiler; Projektmanager; Agiler Projektmanager; E-Commerce; E-Commerce Manager
+2026-09-14,Delphin Nachhilfe und Sprachkurse e. V.,delphin-nachhilfe-und-sprachkurse-e-v,0,0,8,Marketing; Social; Media; Social Media; Kreative; Content-Produktion; Kreative Content-Produktion; Content-Produktion Social
+2026-09-14,vhs Rhön und Grabfeld gGmbH,vhs-rh-n-und-grabfeld-ggmbh,0,0,8,Social; Media; Social Media; Kreative; Content-Produktion; Kreative Content-Produktion; Content-Produktion Social; Content
+2026-09-14,HSB Akademie GmbH,hsb-akademie-gmbh,0,0,7,Manager; Marketing; Marketing Manager; Content; Content Marketing; Advertising; Advertising Manager; Consultant
+2026-09-14,Dacte,dacte,0,0,7,Coach; Design; Thinking; Design Thinking; Thinking Coach; Agiles; Projektmanagement; Agiles Projektmanagement
+2026-09-14,IHK-Akademie Ostwestfalen GmbH,ihk-akademie-ostwestfalen-gmbh,0,0,7,Geprüfte; Fachwirt; Geprüfte Fachwirt; Ki-Manager; E-Commerce; Fachwirt E-Commerce; E-Commerce-Manager; Ki-Tool-Experte
+2026-09-14,BNW gGmbH - Bildungswerk der Niedersächsischen Wirtschaft gemeinnützige GmbH,bnw-ggmbh-bildungswerk-der-nieders-chsischen-wirtschaft-gemeinn-tzige-,0,0,5,Online-Marketing-Manager; Modul; Online-Marketing-Manager Modul; Targeting; Modul Targeting; Targeting Online-Marketing-Manager; Paid-Online-Marketing-Maßnahmen; Modul Paid-Online-Marketing-Maßnahmen
+2026-09-14,Talentivo GmbH,talentivo-gmbh,0,0,5,Marketing; Digitales; Digitales Marketing; Conversational; Voice-Agent; Conversational Voice-Agent; Digital; Digital Marketing
+2026-09-14,Akademie des deutschen Mittelstandes,akademie-des-deutschen-mittelstandes,0,0,4,Manager; Media; Developer; Media Developer; Revenue; Operations; Revenue Operations; Operations Manager
