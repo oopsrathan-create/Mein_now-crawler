@@ -1,0 +1,43 @@
+name: crawl failure alert
+
+# Opens (or comments on) a GitHub issue whenever a data job fails or is
+# cancelled, so problems don't go unnoticed. Runs as a separate workflow because
+# a run cancelled while still queued never executes any of its own steps.
+# GitHub emails the repo owner about new issues and comments.
+
+on:
+  workflow_run:
+    workflows:
+      - mein-now course crawl
+      - weekly course ranking report
+      - competitor analysis crawl
+    types: [completed]
+
+permissions:
+  issues: write
+
+jobs:
+  alert:
+    if: github.event.workflow_run.conclusion != 'success' && github.event.workflow_run.conclusion != 'skipped'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Open or update the alert issue
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          WF: ${{ github.event.workflow_run.name }}
+          RESULT: ${{ github.event.workflow_run.conclusion }}
+          URL: ${{ github.event.workflow_run.html_url }}
+        run: |
+          title="Crawl alert: $WF"
+          body="**$WF** finished with **$RESULT** on $(date -u +%Y-%m-%d).
+
+          Run: $URL"
+          num=$(gh issue list --state open --search "\"$title\" in:title" --json number --jq '.[0].number')
+          if [ -n "$num" ]; then
+            gh issue comment "$num" --body "$body"
+          else
+            gh issue create --title "$title" --body "$body
+
+          Close this issue once it's fixed; the next failure opens a new one."
+          fi

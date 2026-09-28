@@ -36,6 +36,17 @@ TODAY = date.today().isoformat()
 
 _TAG_RE = re.compile(r"<[^>]+>")
 
+# Backoff between retries (~4 min total) so a short network or API outage
+# doesn't kill a multi-hour run.
+RETRY_WAITS = (5, 15, 30, 60, 120)
+
+
+def is_retryable(exc: requests.RequestException) -> bool:
+    """Connection errors, timeouts, 5xx and 429 are worth retrying; any other
+    4xx means the query itself was rejected, so retrying won't help."""
+    status = getattr(exc.response, "status_code", None)
+    return status is None or status >= 500 or status == 429
+
 
 def load_config() -> dict:
     cfg = json.loads((ROOT / "config.json").read_text(encoding="utf-8"))
@@ -67,16 +78,16 @@ class Client:
     def page(self, keyword: str, page: int) -> dict:
         url = f"{self.host}/pc/v1/bildungsangebot"
         params = {"sw": keyword, "page": page, "size": self.size, **self.extra}
-        for attempt in range(4):
+        for attempt in range(len(RETRY_WAITS) + 1):
             try:
                 r = self.session.get(url, params=params, timeout=30)
                 r.raise_for_status()
                 time.sleep(self.delay)
                 return r.json()
             except requests.RequestException as exc:
-                if attempt == 3:
+                if attempt == len(RETRY_WAITS) or not is_retryable(exc):
                     raise
-                wait = 2 ** attempt
+                wait = RETRY_WAITS[attempt]
                 print(f"  request failed ({exc}); retrying in {wait}s", file=sys.stderr)
                 time.sleep(wait)
         return {}
@@ -197,20 +208,26 @@ def run_ranking(client: Client, cfg: dict) -> list[dict]:
     max_pages = int(cfg["settings"].get("ranking_max_pages", 25))
     for keyword in cfg.get("ranking_keywords", []):
         print(f"[ranking] keyword: {keyword}")
+        start = len(rows)
         hits = 0
-        for rank, listing, total in client.iter_listings(keyword, max_pages):
-            name = (listing.get("bildungsanbieter") or {}).get("name")
-            if provider_matches(name, cfg["providers"]):
-                rows.append({
-                    "snapshot_date": TODAY,
-                    "keyword": keyword,
-                    "provider": name,
-                    "course_id": listing.get("id"),
-                    "title": listing.get("titel", ""),
-                    "rank": rank + 1,  # 1-based position in results
-                    "total_results": total,
-                })
-                hits += 1
+        try:
+            for rank, listing, total in client.iter_listings(keyword, max_pages):
+                name = (listing.get("bildungsanbieter") or {}).get("name")
+                if provider_matches(name, cfg["providers"]):
+                    rows.append({
+                        "snapshot_date": TODAY,
+                        "keyword": keyword,
+                        "provider": name,
+                        "course_id": listing.get("id"),
+                        "title": listing.get("titel", ""),
+                        "rank": rank + 1,  # 1-based position in results
+                        "total_results": total,
+                    })
+                    hits += 1
+        except requests.RequestException as exc:
+            del rows[start:]   # drop a half-scanned keyword rather than record wrong ranks
+            print(f"  -> SKIPPED ({exc})", file=sys.stderr)
+            continue
         print(f"  -> {hits} of our courses found in top {max_pages * client.size} results")
     return rows
 

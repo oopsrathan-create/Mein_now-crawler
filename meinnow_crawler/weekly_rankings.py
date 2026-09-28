@@ -22,6 +22,8 @@ from pathlib import Path
 
 import requests
 
+from crawl import RETRY_WAITS, is_retryable
+
 ROOT = Path(__file__).resolve().parent
 DATA = ROOT / "data"
 WEEKLY = DATA / "weekly_rankings"
@@ -65,17 +67,17 @@ class Client:
     def page(self, keyword: str, page: int) -> dict:
         url = f"{self.host}/pc/v1/bildungsangebot"
         params = {"sw": keyword, "page": page, "size": self.size}
-        for attempt in range(4):
+        for attempt in range(len(RETRY_WAITS) + 1):
             try:
                 r = self.session.get(url, params=params, timeout=30)
                 r.raise_for_status()
                 time.sleep(self.delay)
                 return r.json()
             except requests.RequestException as exc:
-                if attempt == 3:
+                if attempt == len(RETRY_WAITS) or not is_retryable(exc):
                     raise
-                time.sleep(2 ** attempt)
-                print(f"  retry ({exc})", file=sys.stderr)
+                print(f"  retry in {RETRY_WAITS[attempt]}s ({exc})", file=sys.stderr)
+                time.sleep(RETRY_WAITS[attempt])
         return {}
 
 
@@ -94,29 +96,43 @@ def main() -> int:
     client = Client(settings)
 
     rows: list[dict] = []
+    skipped = []
     for kw in keywords:
-        first = client.page(kw, 0)
-        total = first.get("page", {}).get("totalElements", 0)
-        total_pages = first.get("page", {}).get("totalPages", 1)
-        rank = 0
-        hits = 0
-        def consume(data):
-            nonlocal rank, hits
-            for c in (data.get("_embedded") or {}).get("bildungsangebotDTOList") or []:
-                name = (c.get("bildungsanbieter") or {}).get("name", "")
-                if matches(name, providers):
-                    rows.append({
-                        "week": WEEK_LABEL, "snapshot_date": TODAY,
-                        "course_id": c.get("id"), "title": c.get("titel", ""),
-                        "keyword": kw, "rank": rank + 1, "total_results": total,
-                    })
-                    hits += 1
-                rank += 1
-        consume(first)
-        max_pages = min(total_pages, (scan_depth + client.size - 1) // client.size)
-        for p in range(1, max_pages):
-            consume(client.page(kw, p))
+        start = len(rows)
+        try:
+            first = client.page(kw, 0)
+            total = first.get("page", {}).get("totalElements", 0)
+            total_pages = first.get("page", {}).get("totalPages", 1)
+            rank = 0
+            hits = 0
+            def consume(data):
+                nonlocal rank, hits
+                for c in (data.get("_embedded") or {}).get("bildungsangebotDTOList") or []:
+                    name = (c.get("bildungsanbieter") or {}).get("name", "")
+                    if matches(name, providers):
+                        rows.append({
+                            "week": WEEK_LABEL, "snapshot_date": TODAY,
+                            "course_id": c.get("id"), "title": c.get("titel", ""),
+                            "keyword": kw, "rank": rank + 1, "total_results": total,
+                        })
+                        hits += 1
+                    rank += 1
+            consume(first)
+            max_pages = min(total_pages, (scan_depth + client.size - 1) // client.size)
+            for p in range(1, max_pages):
+                consume(client.page(kw, p))
+        except requests.RequestException as exc:
+            del rows[start:]   # drop a half-scanned keyword rather than record wrong ranks
+            skipped.append(kw)
+            print(f"[weekly] {kw}: SKIPPED ({exc})", file=sys.stderr)
+            continue
         print(f"[weekly] {kw}: {hits} appearances (of {total} results scanned to depth {rank})")
+
+    if keywords and len(skipped) == len(keywords):
+        print("every keyword failed - API unreachable; keeping last week's files", file=sys.stderr)
+        return 1
+    if skipped:
+        print(f"WARNING: {len(skipped)} keyword(s) skipped: {', '.join(skipped)}", file=sys.stderr)
 
     DATA.mkdir(parents=True, exist_ok=True)
     WEEKLY.mkdir(parents=True, exist_ok=True)
