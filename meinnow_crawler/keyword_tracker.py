@@ -31,6 +31,7 @@ from pathlib import Path
 
 import requests
 
+import course_performance
 from crawl import RETRY_WAITS, is_retryable
 
 ROOT = Path(__file__).resolve().parent
@@ -138,6 +139,7 @@ def analyse_keyword(client: Client, keyword: str, providers: list[str], top_n: i
                 "provider": name,
                 "weiterbildungsart": c.get("weiterbildungsart", ""),
                 "description": c.get("inhalt") or "",
+                "anzahl_termine": c.get("anzahlTermine", 0),
                 "pos": pos,
             })
             if rank < top_n:
@@ -255,6 +257,7 @@ def main() -> int:
                     "title": obs["title"],
                     "weiterbildungsart": obs["weiterbildungsart"],
                     "description": obs.get("description", ""),
+                    "anzahl_termine": obs.get("anzahl_termine", 0),
                     "best_rank": obs["pos"],
                     "kw_pos": {kw: obs["pos"]},   # keyword -> best position
                 }
@@ -313,6 +316,9 @@ def main() -> int:
         })
     cat_rows.sort(key=lambda r: (r["provider"].casefold(), r["best_rank"]))
     write_csv(DATA / "latest_competitor_catalog.csv", CATALOG_FIELDS, cat_rows)
+    for a in catalog.values():
+        a["description_words"] = len(clean_text(a["description"], cap=10**9).split())
+    course_performance.write(catalog, TODAY)
     print(f"wrote {len(cat_rows)} catalogue courses across {len(prov_counts)} providers "
           f"({len(major_providers)} major w/ descriptions) -> latest_competitor_catalog.csv")
 
