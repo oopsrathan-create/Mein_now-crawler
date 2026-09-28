@@ -31,6 +31,9 @@ from pathlib import Path
 
 import requests
 
+import course_performance
+from crawl import RETRY_WAITS, is_retryable
+
 ROOT = Path(__file__).resolve().parent
 DATA = ROOT / "data"
 TODAY = date.today().isoformat()
@@ -83,17 +86,17 @@ class Client:
     def page(self, keyword: str, page: int) -> dict:
         url = f"{self.host}/pc/v1/bildungsangebot"
         params = {"sw": keyword, "page": page, "size": self.size, **self.extra}
-        for attempt in range(4):
+        for attempt in range(len(RETRY_WAITS) + 1):
             try:
                 r = self.session.get(url, params=params, timeout=30)
                 r.raise_for_status()
                 time.sleep(self.delay)
                 return r.json()
             except requests.RequestException as exc:
-                if attempt == 3:
+                if attempt == len(RETRY_WAITS) or not is_retryable(exc):
                     raise
-                time.sleep(2 ** attempt)
-                print(f"  retry ({exc})", file=sys.stderr)
+                print(f"  retry in {RETRY_WAITS[attempt]}s ({exc})", file=sys.stderr)
+                time.sleep(RETRY_WAITS[attempt])
         return {}
 
 
@@ -136,6 +139,7 @@ def analyse_keyword(client: Client, keyword: str, providers: list[str], top_n: i
                 "provider": name,
                 "weiterbildungsart": c.get("weiterbildungsart", ""),
                 "description": c.get("inhalt") or "",
+                "anzahl_termine": c.get("anzahlTermine", 0),
                 "pos": pos,
             })
             if rank < top_n:
@@ -231,8 +235,14 @@ def main() -> int:
 
     rank_rows, comp_rows = [], []
     catalog: dict = {}   # course_id -> aggregated course record across all keywords
+    skipped = []
     for kw in keywords:
-        rr, cr, cat = analyse_keyword(client, kw, providers, top_n, scan_depth)
+        try:
+            rr, cr, cat = analyse_keyword(client, kw, providers, top_n, scan_depth)
+        except requests.RequestException as exc:
+            skipped.append(kw)
+            print(f"[rank] {kw}: SKIPPED ({exc})", file=sys.stderr)
+            continue
         rank_rows.append(rr)
         comp_rows.extend(cr[:top_competitors])
         for obs in cat:
@@ -247,6 +257,7 @@ def main() -> int:
                     "title": obs["title"],
                     "weiterbildungsart": obs["weiterbildungsart"],
                     "description": obs.get("description", ""),
+                    "anzahl_termine": obs.get("anzahl_termine", 0),
                     "best_rank": obs["pos"],
                     "kw_pos": {kw: obs["pos"]},   # keyword -> best position
                 }
@@ -258,6 +269,12 @@ def main() -> int:
                 if not a["description"] and obs.get("description"):
                     a["description"] = obs["description"]
         print(f"[rank] {kw}: brand best={rr['brand_best_rank'] or '—'} of {rr['total_results']}")
+
+    if keywords and len(skipped) == len(keywords):
+        print("every keyword failed - API unreachable; not writing any files", file=sys.stderr)
+        return 1
+    if skipped:
+        print(f"WARNING: {len(skipped)} keyword(s) skipped: {', '.join(skipped)}", file=sys.stderr)
 
     append_csv(DATA / "keyword_ranks.csv", RANK_FIELDS, rank_rows)
     append_csv(DATA / "keyword_competitors.csv", COMP_FIELDS, comp_rows)
@@ -299,6 +316,9 @@ def main() -> int:
         })
     cat_rows.sort(key=lambda r: (r["provider"].casefold(), r["best_rank"]))
     write_csv(DATA / "latest_competitor_catalog.csv", CATALOG_FIELDS, cat_rows)
+    for a in catalog.values():
+        a["description_words"] = len(clean_text(a["description"], cap=10**9).split())
+    course_performance.write(catalog, TODAY)
     print(f"wrote {len(cat_rows)} catalogue courses across {len(prov_counts)} providers "
           f"({len(major_providers)} major w/ descriptions) -> latest_competitor_catalog.csv")
 
@@ -307,7 +327,11 @@ def main() -> int:
     candidates = [c for c in discover_candidates(client, providers, discovery_max) if c.casefold() not in tracked]
     disc_rows = []
     for kw in candidates:
-        rr, _, _ = analyse_keyword(client, kw, providers, top_n, scan_depth)
+        try:
+            rr, _, _ = analyse_keyword(client, kw, providers, top_n, scan_depth)
+        except requests.RequestException as exc:
+            print(f"[discovery] {kw}: SKIPPED ({exc})", file=sys.stderr)
+            continue
         if rr["brand_best_rank"] != "":
             disc_rows.append({
                 "keyword": kw,

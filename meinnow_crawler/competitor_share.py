@@ -23,6 +23,8 @@ from pathlib import Path
 
 import requests
 
+from crawl import RETRY_WAITS, is_retryable
+
 ROOT = Path(__file__).resolve().parent
 DATA = ROOT / "data"
 TODAY = date.today().isoformat()
@@ -52,16 +54,16 @@ def is_brand(name: str, providers: list[str]) -> bool:
 def fetch(session, host, key, page=0, size=20):
     url = f"{host}/pc/v1/bildungsangebot"
     params = {"sw": key, "page": page, "size": size}
-    for attempt in range(4):
+    for attempt in range(len(RETRY_WAITS) + 1):
         try:
             r = session.get(url, params=params, timeout=30)
             r.raise_for_status()
             return r.json()
         except requests.RequestException as exc:
-            if attempt == 3:
+            if attempt == len(RETRY_WAITS) or not is_retryable(exc):
                 raise
-            time.sleep(2 ** attempt)
-            print(f"  retry ({exc})", file=sys.stderr)
+            print(f"  retry in {RETRY_WAITS[attempt]}s ({exc})", file=sys.stderr)
+            time.sleep(RETRY_WAITS[attempt])
     return {}
 
 
@@ -81,8 +83,15 @@ def main() -> int:
     })
 
     rows: list[dict] = []
-    for kw in load_keywords():
-        data = fetch(session, host, kw, page=0, size=min(top_n, 20))
+    keywords = load_keywords()
+    skipped = []
+    for kw in keywords:
+        try:
+            data = fetch(session, host, kw, page=0, size=min(top_n, 20))
+        except requests.RequestException as exc:
+            skipped.append(kw)
+            print(f"[share] {kw}: SKIPPED ({exc})", file=sys.stderr)
+            continue
         listings = (data.get("_embedded") or {}).get("bildungsangebotDTOList") or []
         total = data.get("page", {}).get("totalElements", 0)
         counts: Counter = Counter()
@@ -105,6 +114,12 @@ def main() -> int:
         brand_hit = next((r for r in rows[-len(counts):] if r["is_brand"]), None)
         share_str = f"share {brand_hit['share_pct']}% @ #{brand_hit['best_rank']}" if brand_hit else "not in top"
         print(f"[share] {kw}: {len(counts)} providers in top {scanned}, ecomex {share_str}")
+
+    if keywords and len(skipped) == len(keywords):
+        print("every keyword failed - API unreachable; keeping the previous files", file=sys.stderr)
+        return 1
+    if skipped:
+        print(f"WARNING: {len(skipped)} keyword(s) skipped: {', '.join(skipped)}", file=sys.stderr)
 
     DATA.mkdir(parents=True, exist_ok=True)
     latest = DATA / "latest_competitor_share.csv"

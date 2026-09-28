@@ -167,6 +167,7 @@
   <div class="tabs">
     <nav class="tabnav" id="tabnav">
       <button class="tabbtn active" data-tab="inventory">Kursübersicht <span class="count" id="invCountBadge"></span></button>
+      <button class="tabbtn" data-tab="perf" id="tabPerf" hidden>Kurstitel-Performance <span class="count" id="perfCountBadge"></span></button>
       <button class="tabbtn" data-tab="targets" id="tabTargets" hidden>Kurs-Zielkeywords <span class="count" id="tgtCountBadge"></span></button>
       <button class="tabbtn" data-tab="spotlight" id="tabSpotlight" hidden>Kurs-Spotlight</button>
       <button class="tabbtn" data-tab="coverage" id="tabCoverage" hidden>Hochgeladene Kurse <span class="count" id="covCountBadge"></span></button>
@@ -193,6 +194,35 @@
         </tr></thead>
         <tbody></tbody>
       </table>
+    </div>
+
+    <div class="tabpanel" data-tab="perf" id="perfSection">
+      <h2>Kurstitel-Performance <span class="muted">— wie sichtbar ist ein Anbieter für bestimmte Kurstitel, und auf welchen Suchanfragen basiert diese Sichtbarkeit?</span></h2>
+      <div class="combo">
+        <input type="search" id="perfProvider" list="perfProviders" placeholder="Bildungsträger (leer = alle)" value="ecomex" autocomplete="off" />
+        <datalist id="perfProviders"></datalist>
+        <input type="search" id="perfTitle" placeholder="Kurstitel (enthält)" autocomplete="off" />
+        <input type="search" id="perfExact" placeholder="Exakter Kurstitel" autocomplete="off" />
+        <input type="search" id="perfExclude" placeholder="Suchanfrage (enthält nicht), z. B. %weiterbildung%" autocomplete="off" />
+        <span class="muted" id="perfCount"></span>
+      </div>
+      <table id="perfTable">
+        <thead><tr>
+          <th data-k="i">#</th>
+          <th data-k="provider">Bildungsträger</th>
+          <th data-k="title">Kurstitel</th>
+          <th data-k="kwText">Suchanfragen mit Ranking</th>
+          <th data-k="kwCount"># Suchanfragen</th>
+          <th data-k="words">Länge Beschreibung</th>
+          <th data-k="link">mein-NOW</th>
+          <th data-k="termine"># Termine</th>
+          <th data-k="vis" title="Summe der typischen Klickanteile je Position auf Seite 1 (Platz 1 = 30, Platz 2 = 16 … Platz 11–20 = 1) über alle Suchanfragen">Sichtbarkeit aktuell</th>
+          <th data-k="avg" title="Durchschnitt der täglichen Sichtbarkeit der letzten 30 Tage (ab erstem Auftreten des Kurses)">Ø Sichtbarkeit 30 Tage</th>
+        </tr></thead>
+        <tbody></tbody>
+      </table>
+      <div class="pager" id="perfPager"></div>
+      <small class="note"><b>Suchanfragen mit Ranking</b> = getrackte Keywords, für die der Kurs auf Seite 1 (Top 20) steht, mit Position. <b>Länge Beschreibung</b> = Wörter. <b>Sichtbarkeit</b> = für jede Suchanfrage der typische Klickanteil der Position (Platz 1 = 30, 2 = 16, 3 = 11, 4 = 8, 5 = 7, 6 = 5, 7 = 4, 8–9 = 3, 10 = 2,5, 11–20 = 1), summiert. Ohne Suchvolumen-Gewichtung, da mein-NOW keine Suchzahlen veröffentlicht — daher nicht 1:1 mit Edtelligent vergleichbar. <b>Suchanfrage (enthält nicht)</b>: mehrere Begriffe mit Komma trennen; ohne <code>%</code> wird genau dieser Suchbegriff ausgeschlossen, <code>%</code> ist Platzhalter (<code>%weiterbildung%</code> schließt alle Suchanfragen aus, die „weiterbildung" enthalten). Anzahl und aktuelle Sichtbarkeit werden dann neu berechnet; der 30-Tage-Durchschnitt nicht. Keine Systematik-Filterung: mein-NOW liefert die Systematik-Codes nicht in den Suchergebnissen.</small>
     </div>
 
     <div class="tabpanel" data-tab="targets" id="targetsSection">
@@ -630,6 +660,84 @@ function latestDate(rows){ return rows.reduce((m,r)=> r.snapshot_date>m?r.snapsh
       document.getElementById("tgtFilter").addEventListener("change", render);
       render();
     }
+  }
+
+  // ---- Kurstitel-Performance (Edtelligent-style per-course visibility) ----
+  let perf = [];
+  try { perf = await loadCsv("latest_course_performance.csv"); } catch(e) { /* optional */ }
+  if(perf.length){
+    document.getElementById("tabPerf").hidden = false;
+    // Same click-share curve as course_performance.py
+    const CTR = [30,16,11,8,7,5,4,3,3,2.5];
+    const ctr = p => p<=10 ? CTR[p-1] : (p<=20 ? 1 : 0);
+    const esc = s => (s||"").replace(/[&<>"]/g, c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+    const num = v => (v===""||v==null) ? null : +v;
+    const data = perf.map(r=>({
+      provider:r.provider, isBrand:r.is_brand==="1", title:r.title, link:r.link,
+      kws:(r.ranking_keywords||"").split("; ").filter(Boolean).map(s=>{
+        const m=s.match(/^(.*) \(#(\d+)\)$/); return m ? {kw:m[1], pos:+m[2]} : null; }).filter(Boolean),
+      words:num(r.description_words), termine:num(r.anzahl_termine),
+      vis:+r.visibility, avg:+r.visibility_avg_30d,
+    }));
+    document.getElementById("perfProviders").innerHTML =
+      [...new Set(data.map(r=>r.provider))].sort((a,b)=>a.localeCompare(b)).map(p=>`<option value="${esc(p)}">`).join("");
+    // "Suchanfrage (enthält nicht)": comma-separated; plain term = exact query, % = wildcard
+    function excluders(){
+      return document.getElementById("perfExclude").value.split(",").map(s=>s.trim().toLowerCase()).filter(Boolean).map(t=>{
+        if(!t.includes("%")) return kw=>kw===t;
+        const re = new RegExp("^"+t.split("%").map(p=>p.replace(/[.*+?^${}()|[\]\\]/g,"\\$&")).join(".*")+"$");
+        return kw=>re.test(kw);
+      });
+    }
+    let sortK="vis", asc=false, page=0;
+    const PAGE=50;
+    function render(){
+      const prov=document.getElementById("perfProvider").value.toLowerCase().trim();
+      const q=document.getElementById("perfTitle").value.toLowerCase().trim();
+      const exact=document.getElementById("perfExact").value.toLowerCase().trim();
+      const ex=excluders();
+      let rows=data.filter(r=>
+        (!prov || r.provider.toLowerCase().includes(prov)) &&
+        (!q || r.title.toLowerCase().includes(q)) &&
+        (!exact || r.title.toLowerCase()===exact)
+      ).map(r=>{
+        const kws = ex.length ? r.kws.filter(k=>!ex.some(f=>f(k.kw.toLowerCase()))) : r.kws;
+        const vis = ex.length ? Math.round(kws.reduce((s,k)=>s+ctr(k.pos),0)*100)/100 : r.vis;
+        return {...r, kws, vis, kwCount:kws.length, kwText:kws.map(k=>k.kw).join(", ").toLowerCase()};
+      });
+      rows.sort((a,b)=>{
+        let x=a[sortK], y=b[sortK];
+        if(typeof x==="string"||typeof y==="string"){ x=(x||"").toLowerCase(); y=(y||"").toLowerCase(); return asc?x.localeCompare(y):y.localeCompare(x); }
+        x=x==null?-1:x; y=y==null?-1:y; return asc?x-y:y-x;
+      });
+      const pages=Math.max(1,Math.ceil(rows.length/PAGE)); page=Math.min(page,pages-1);
+      document.getElementById("perfCount").textContent = `${rows.length} Kurse`;
+      document.getElementById("perfCountBadge").textContent = rows.length;
+      const fmt = v => v==null ? '<span class="muted">—</span>' : v.toLocaleString("de-DE");
+      document.querySelector("#perfTable tbody").innerHTML = rows.slice(page*PAGE,(page+1)*PAGE).map((r,i)=>
+        `<tr${r.isBrand?' class="brandrow"':''}><td class="muted">${page*PAGE+i+1}.</td>`+
+        `<td>${esc(r.provider)}</td><td>${esc(r.title)}</td>`+
+        `<td>${r.kws.map(k=>`<span class="kw">${esc(k.kw)}</span> <span class="muted">#${k.pos}</span>`).join(", ")||'<span class="muted">—</span>'}</td>`+
+        `<td>${r.kwCount}</td><td>${fmt(r.words)}</td>`+
+        `<td><a href="${esc(r.link)}" target="_blank" rel="noopener">zu mein-NOW</a></td>`+
+        `<td>${fmt(r.termine)}</td>`+
+        `<td class="rank">${r.vis.toLocaleString("de-DE",{maximumFractionDigits:2})}</td>`+
+        `<td>${r.avg.toLocaleString("de-DE",{maximumFractionDigits:2})}</td></tr>`).join("")
+        || `<tr><td colspan="10" class="muted">Keine Treffer.</td></tr>`;
+      const pager=document.getElementById("perfPager");
+      pager.innerHTML = pages<2 ? "" :
+        `<span class="info">Seite ${page+1} von ${pages}</span>`+
+        `<button data-p="${page-1}" ${page===0?"disabled":""}>‹ Zurück</button>`+
+        `<button data-p="${page+1}" ${page>=pages-1?"disabled":""}>Weiter ›</button>`;
+      pager.querySelectorAll("button").forEach(b=>b.onclick=()=>{ page=+b.dataset.p; render(); });
+    }
+    document.querySelectorAll("#perfTable th").forEach(th=>th.addEventListener("click",()=>{
+      const k=th.dataset.k; if(k==="i"||k==="link") return;
+      asc=(k===sortK)?!asc:(k==="provider"||k==="title"); sortK=k; page=0; render();
+    }));
+    ["perfProvider","perfTitle","perfExact","perfExclude"].forEach(id=>
+      document.getElementById(id).addEventListener("input", ()=>{ page=0; render(); }));
+    render();
   }
 
   // ---- coverage section ----

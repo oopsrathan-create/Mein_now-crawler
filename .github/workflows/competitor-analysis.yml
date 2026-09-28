@@ -7,7 +7,7 @@ name: competitor analysis crawl
 on:
   workflow_dispatch: {}
   schedule:
-    # 06:30 UTC every Monday (after the weekly report).
+    # 06:30 UTC every Monday (the weekly report runs on Sunday, so the two don't queue together).
     - cron: "30 6 * * 1"
 
 permissions:
