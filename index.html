@@ -159,9 +159,16 @@
   </section>
 
   <section>
-    <h2>Ranking-Verlauf <span class="muted">— niedriger ist besser; baut sich mit den täglichen Crawls auf</span></h2>
-    <div class="chips" id="chips"></div>
+    <h2>Ranking-Verlauf <span class="muted">— auf wie vielen getrackten Keywords steht ecomex vorne?</span></h2>
     <canvas id="trend"></canvas>
+    <small class="note" id="trendNote"></small>
+    <h2 style="margin-top:26px">Keyword-Verlauf <span class="muted">— ecomex' beste Position je Keyword (oben = besser)</span></h2>
+    <div class="combo">
+      <input type="search" id="trendKwInput" list="trendKwList" placeholder="Keyword hinzufügen…" autocomplete="off" />
+      <datalist id="trendKwList"></datalist>
+      <div class="chips" id="trendChips" style="margin:0"></div>
+    </div>
+    <canvas id="trendKw"></canvas>
   </section>
 
   <div class="tabs">
@@ -1085,40 +1092,81 @@ function latestDate(rows){ return rows.reduce((m,r)=> r.snapshot_date>m?r.snapsh
   }
 
   // ---- trend chart ----
-  const dates = [...new Set(rankings.map(r=>r.snapshot_date))].sort();
-  function bestPerDate(kw){
-    return dates.map(d=>{
-      const rs = rankings.filter(r=>r.keyword===kw && r.snapshot_date===d).map(r=>+r.rank);
-      return rs.length?Math.min(...rs):null;
-    });
+  // Built from keyword_ranks.csv: ecomex' best rank for every tracked keyword, daily.
+  const krDates = [...new Set(kwRanks.map(r=>r.snapshot_date))].sort();
+  const krByDate = {};            // date -> [{kw, rank|null}]
+  const krByKw = {};              // keyword -> {date: rank|null}
+  for(const r of kwRanks){
+    const rank = (r.brand_best_rank==null||r.brand_best_rank==="") ? null : +r.brand_best_rank;
+    (krByDate[r.snapshot_date] ||= []).push(rank);
+    (krByKw[r.keyword] ||= {})[r.snapshot_date] = rank;
   }
-  const datasets = keywords.map((kw,i)=>({
-    label:kw, data:bestPerDate(kw), borderColor:PALETTE[i%PALETTE.length],
-    backgroundColor:PALETTE[i%PALETTE.length], tension:.25, spanGaps:true, pointRadius:3,
-  }));
-  const chart = new Chart(document.getElementById("trend"), {
+  const gridOpts = { grid:{color:"#2c3744"}, ticks:{color:"#8b98a5"} };
+
+  // 1) Share of tracked keywords where ecomex is in the top 3 / top 10 / page 1.
+  //    Shares, not counts: the tracked keyword set has grown over time.
+  const tiers = [{n:3,label:"Top 3",c:"#3fb950"},{n:10,label:"Top 10",c:"#4cc9f0"},{n:20,label:"Seite 1 (Top 20)",c:"#a371f7"}];
+  const counts = krDates.map(d=>{ const rs=krByDate[d]; return {total:rs.length, tiers:tiers.map(t=>rs.filter(v=>v!=null&&v<=t.n).length)}; });
+  new Chart(document.getElementById("trend"), {
     type:"line",
-    data:{ labels:dates, datasets },
+    data:{ labels:krDates, datasets: tiers.map((t,i)=>({
+      label:t.label, data:counts.map(c=>Math.round(1000*c.tiers[i]/c.total)/10),
+      borderColor:t.c, backgroundColor:t.c, tension:.25, pointRadius:0, pointHoverRadius:4 })) },
     options:{
-      plugins:{ legend:{display:false} },
-      scales:{
-        y:{ reverse:true, title:{display:true,text:"Beste Position (1 = oben)"},
-            grid:{color:"#2c3744"}, ticks:{color:"#8b98a5"} },
-        x:{ grid:{color:"#2c3744"}, ticks:{color:"#8b98a5"} },
+      interaction:{mode:"index", intersect:false},
+      plugins:{
+        legend:{labels:{color:"#e6edf3"}},
+        tooltip:{callbacks:{ label:ctx=>{ const c=counts[ctx.dataIndex];
+          return ` ${ctx.dataset.label}: ${ctx.parsed.y.toLocaleString("de-DE")} % (${c.tiers[ctx.datasetIndex]} von ${c.total} Keywords)`; }}},
       },
+      scales:{ y:{...gridOpts, min:0, suggestedMax:70, title:{display:true,text:"Anteil der getrackten Keywords (%)",color:"#8b98a5"},
+                  ticks:{...gridOpts.ticks, callback:v=>v+" %"}},
+               x:gridOpts },
     },
   });
-  // toggle chips
-  document.getElementById("chips").innerHTML = keywords.map((kw,i)=>
-    `<span class="chip on" data-i="${i}" style="border-color:${PALETTE[i%PALETTE.length]}">${kw}</span>`).join("");
-  document.querySelectorAll(".chip").forEach(chip=>chip.addEventListener("click",()=>{
-    const i=+chip.dataset.i; const meta=chart.getDatasetMeta(i);
-    meta.hidden = !meta.hidden; chip.classList.toggle("on", !meta.hidden); chart.update();
-  }));
-  if(dates.length<2){
-    document.querySelector("#chips").insertAdjacentHTML("afterend",
-      `<p class="muted">Bisher nur ein Tag an Daten — die Verlaufslinien füllen sich, sobald der tägliche Crawl läuft.</p>`);
+  // Mark days when the tracked keyword set changed, since jumps there aren't real movement.
+  const setChanges = counts.map((c,i)=>i && c.total!==counts[i-1].total ? `${krDates[i]} (${counts[i-1].total} → ${c.total})` : null).filter(Boolean);
+  document.getElementById("trendNote").innerHTML =
+    `Pro Tag: Anteil aller getrackten Keywords, bei denen ein ecomex-Kurs unter den Top 3 / Top 10 / Top 20 steht. Steigend = besser.`+
+    (setChanges.length ? ` Die Keyword-Liste wurde geändert am ${setChanges.join(", ")} — Sprünge an diesen Tagen sind keine echte Bewegung.` : "");
+
+  // 2) Rank over time for chosen keywords (y capped at 50 so lines stay readable).
+  const CAP = 50;
+  const allKws = Object.keys(krByKw).sort((a,b)=>a.localeCompare(b));
+  document.getElementById("trendKwList").innerHTML = allKws.map(k=>`<option value="${k.replace(/"/g,"&quot;")}">`).join("");
+  const DEFAULT_KWS = ["KI Weiterbildung","Online Marketing","Marketing Kurs","KI Manager","Content Marketing"];
+  let chosen = DEFAULT_KWS.filter(k=>krByKw[k]);
+  const kwChart = new Chart(document.getElementById("trendKw"), {
+    type:"line", data:{ labels:krDates, datasets:[] },
+    options:{
+      interaction:{mode:"index", intersect:false},
+      plugins:{ legend:{display:false},
+        tooltip:{callbacks:{ label:ctx=>{ const raw=krByKw[ctx.dataset.label][krDates[ctx.dataIndex]];
+          return ` ${ctx.dataset.label}: ${raw==null?"nicht in den Top 500":raw>CAP?`#${raw} (außerhalb Top ${CAP})`:"#"+raw}`; }}}},
+      scales:{ y:{...gridOpts, reverse:true, min:1, max:CAP+1, title:{display:true,text:"Beste Position",color:"#8b98a5"},
+                  ticks:{...gridOpts.ticks, callback:v=>v>CAP?`>${CAP}`:"#"+v}},
+               x:gridOpts },
+    },
+  });
+  function renderKwTrend(){
+    kwChart.data.datasets = chosen.map((kw,i)=>({
+      label:kw, borderColor:PALETTE[i%PALETTE.length], backgroundColor:PALETTE[i%PALETTE.length],
+      tension:.2, pointRadius:0, pointHoverRadius:4, spanGaps:false,
+      // not tracked that day -> gap; tracked but not ranked / beyond cap -> pinned to the bottom line
+      data:krDates.map(d=>{ const m=krByKw[kw]; if(!(d in m)) return null; const v=m[d]; return v==null||v>CAP ? CAP+1 : v; }),
+    }));
+    kwChart.update();
+    document.getElementById("trendChips").innerHTML = chosen.map((kw,i)=>
+      `<span class="chip-sel" style="border-color:${PALETTE[i%PALETTE.length]}">${kw} <span class="x" data-kw="${encodeURIComponent(kw)}">×</span></span>`).join("");
+    document.querySelectorAll("#trendChips .x").forEach(x=>x.onclick=()=>{
+      chosen = chosen.filter(k=>k!==decodeURIComponent(x.dataset.kw)); renderKwTrend(); });
   }
+  document.getElementById("trendKwInput").addEventListener("change", e=>{
+    const v=e.target.value.trim(); const kw=allKws.find(k=>k.toLowerCase()===v.toLowerCase());
+    if(kw && !chosen.includes(kw)){ chosen=[...chosen, kw].slice(-PALETTE.length); renderKwTrend(); }
+    e.target.value="";
+  });
+  renderKwTrend();
 
   // ---- inventory count badge + tab switching ----
   document.getElementById("invCountBadge").textContent = inventory.length;
