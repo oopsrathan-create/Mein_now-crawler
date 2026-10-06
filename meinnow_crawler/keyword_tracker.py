@@ -71,11 +71,12 @@ def load_keywords() -> list[str]:
 
 
 class Client:
-    def __init__(self, settings: dict):
+    def __init__(self, settings: dict, filters: dict | None = None):
         self.host = settings["backend_host"].rstrip("/")
         self.size = int(settings.get("page_size", 20))
         self.delay = float(settings.get("request_delay_seconds", 0.4))
-        self.extra = settings.get("search_params") or {}   # mirror the website's default filters
+        # mirror the website's default filters, plus any extra ones (e.g. Förderart)
+        self.extra = {**(settings.get("search_params") or {}), **(filters or {})}
         self.session = requests.Session()
         self.session.headers.update({
             "X-API-Key": settings["api_key"],
@@ -221,18 +222,10 @@ def write_csv(path: Path, fields: list[str], rows: list[dict]):
         w.writerows(rows)
 
 
-def main() -> int:
-    cfg = load_config()
-    kt = cfg.get("keyword_tracker", {})
-    top_n = int(kt.get("top_n", 20))
-    scan_depth = int(kt.get("rank_scan_depth", 500))
-    top_competitors = int(kt.get("top_competitors", 15))
-    discovery_max = int(kt.get("discovery_max", 40))
-
-    client = Client(cfg["settings"])
-    providers = cfg["providers"]
-    keywords = load_keywords()
-
+def scan_keywords(client: Client, keywords: list[str], providers: list[str], top_n: int,
+                  scan_depth: int, top_competitors: int, tag: str = "rank"):
+    """Scan every keyword. Returns (rank_rows, comp_rows, catalog, skipped), where
+    catalog is course_id -> aggregated record (provider, title, keyword positions, ...)."""
     rank_rows, comp_rows = [], []
     catalog: dict = {}   # course_id -> aggregated course record across all keywords
     skipped = []
@@ -241,7 +234,7 @@ def main() -> int:
             rr, cr, cat = analyse_keyword(client, kw, providers, top_n, scan_depth)
         except requests.RequestException as exc:
             skipped.append(kw)
-            print(f"[rank] {kw}: SKIPPED ({exc})", file=sys.stderr)
+            print(f"[{tag}] {kw}: SKIPPED ({exc})", file=sys.stderr)
             continue
         rank_rows.append(rr)
         comp_rows.extend(cr[:top_competitors])
@@ -268,7 +261,23 @@ def main() -> int:
                     a["best_rank"] = obs["pos"]
                 if not a["description"] and obs.get("description"):
                     a["description"] = obs["description"]
-        print(f"[rank] {kw}: brand best={rr['brand_best_rank'] or '—'} of {rr['total_results']}")
+        print(f"[{tag}] {kw}: brand best={rr['brand_best_rank'] or '—'} of {rr['total_results']}")
+    return rank_rows, comp_rows, catalog, skipped
+
+
+def main() -> int:
+    cfg = load_config()
+    kt = cfg.get("keyword_tracker", {})
+    top_n = int(kt.get("top_n", 20))
+    scan_depth = int(kt.get("rank_scan_depth", 500))
+    top_competitors = int(kt.get("top_competitors", 15))
+    discovery_max = int(kt.get("discovery_max", 40))
+
+    client = Client(cfg["settings"])
+    providers = cfg["providers"]
+    keywords = load_keywords()
+
+    rank_rows, comp_rows, catalog, skipped = scan_keywords(client, keywords, providers, top_n, scan_depth, top_competitors)
 
     if keywords and len(skipped) == len(keywords):
         print("every keyword failed - API unreachable; not writing any files", file=sys.stderr)
@@ -342,9 +351,42 @@ def main() -> int:
     disc_rows.sort(key=lambda r: r["brand_best_rank"])
     write_csv(DATA / "keyword_discovery.csv", DISC_FIELDS, disc_rows)
     print(f"discovery: {len(disc_rows)} candidate keywords where brand ranks")
+
+    run_bildungsgutschein(cfg, keywords)
     print("done.")
     return 0
 
 
+# Förderart filter id for "Bildungsgutschein", as used by the mein-now website
+# (?foerderarten=BW_2). Ids come from /pc/v1/facettenaggregations.
+BILDUNGSGUTSCHEIN = {"foerderarten": "BW_2"}
+
+
+def run_bildungsgutschein(cfg: dict, keywords: list[str]) -> int:
+    """Second pass with the Bildungsgutschein filter on, as when a user ticks
+    Förderart > Bildungsgutschein. Scans less deep than the main pass (default
+    top 100) since page-1 visibility is what matters, keeping it to ~20 min.
+    Writes keyword_ranks_bg.csv and the *_bg course performance files."""
+    kt = cfg.get("keyword_tracker", {})
+    top_n = int(kt.get("top_n", 20))
+    depth = int(kt.get("bildungsgutschein_scan_depth", 100))
+    client = Client(cfg["settings"], BILDUNGSGUTSCHEIN)
+    rank_rows, _, catalog, skipped = scan_keywords(
+        client, keywords, cfg["providers"], top_n, depth, 0, tag="bg")
+    if keywords and len(skipped) == len(keywords):
+        print("[bg] every keyword failed - not writing Bildungsgutschein files", file=sys.stderr)
+        return 1
+    if skipped:
+        print(f"[bg] WARNING: {len(skipped)} keyword(s) skipped: {', '.join(skipped)}", file=sys.stderr)
+    append_csv(DATA / "keyword_ranks_bg.csv", RANK_FIELDS, rank_rows)
+    for a in catalog.values():
+        a["description_words"] = len(clean_text(a["description"], cap=10**9).split())
+    course_performance.write(catalog, TODAY, variant="bg")
+    print(f"[bg] wrote {len(rank_rows)} rank rows -> keyword_ranks_bg.csv")
+    return 0
+
+
 if __name__ == "__main__":
+    if "--bildungsgutschein-only" in sys.argv:
+        raise SystemExit(run_bildungsgutschein(load_config(), load_keywords()))
     raise SystemExit(main())
