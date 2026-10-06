@@ -98,6 +98,11 @@
   .err{ color:var(--bad); }
   small.note{ color:var(--muted); display:block; margin-top:10px; }
   a{ color:var(--accent); }
+  .bgbar{ display:flex; align-items:center; gap:12px; flex-wrap:wrap; background:var(--panel); border:1px solid var(--line);
+          border-radius:10px; padding:12px 16px; margin-bottom:20px; }
+  .bgbar.on{ border-color:var(--warn); background:rgba(210,153,34,.08); }
+  .bgbar label{ display:flex; align-items:center; gap:8px; font-weight:600; cursor:pointer; }
+  .bgbar input{ width:16px; height:16px; accent-color:var(--warn); }
 </style>
 </head>
 <body>
@@ -107,6 +112,10 @@
   <a href="competitors.html" style="margin-left:auto;color:var(--accent);text-decoration:none;font-size:13px">Wettbewerber-Analyse →</a>
 </header>
 <main>
+  <div class="bgbar" id="bgBar" hidden>
+    <label><input type="checkbox" id="bgToggle" /> Nur Förderart „Bildungsgutschein"</label>
+    <span class="muted" id="bgNote">Zeigt Ranking-Verlauf und Kurstitel-Performance so, wie Nutzer sie mit dem Filter Förderart › Bildungsgutschein auf mein-NOW sehen.</span>
+  </div>
   <div class="tiles" id="tiles"></div>
 
   <section id="librarySection">
@@ -672,6 +681,7 @@ function latestDate(rows){ return rows.reduce((m,r)=> r.snapshot_date>m?r.snapsh
   // ---- Kurstitel-Performance (Edtelligent-style per-course visibility) ----
   let perf = [];
   try { perf = await loadCsv("latest_course_performance.csv"); } catch(e) { /* optional */ }
+  let setPerfData = null;         // swaps in the Bildungsgutschein rows (see the switch below)
   if(perf.length){
     document.getElementById("tabPerf").hidden = false;
     // Same click-share curve as course_performance.py
@@ -679,15 +689,17 @@ function latestDate(rows){ return rows.reduce((m,r)=> r.snapshot_date>m?r.snapsh
     const ctr = p => p<=10 ? CTR[p-1] : (p<=20 ? 1 : 0);
     const esc = s => (s||"").replace(/[&<>"]/g, c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
     const num = v => (v===""||v==null) ? null : +v;
-    const data = perf.map(r=>({
+    const toData = rows => rows.map(r=>({
       provider:r.provider, isBrand:r.is_brand==="1", title:r.title, link:r.link,
       kws:(r.ranking_keywords||"").split("; ").filter(Boolean).map(s=>{
         const m=s.match(/^(.*) \(#(\d+)\)$/); return m ? {kw:m[1], pos:+m[2]} : null; }).filter(Boolean),
       words:num(r.description_words), termine:num(r.anzahl_termine),
       vis:+r.visibility, avg:+r.visibility_avg_30d,
     }));
-    document.getElementById("perfProviders").innerHTML =
+    let data = toData(perf);
+    const fillProviders = () => document.getElementById("perfProviders").innerHTML =
       [...new Set(data.map(r=>r.provider))].sort((a,b)=>a.localeCompare(b)).map(p=>`<option value="${esc(p)}">`).join("");
+    fillProviders();
     // "Suchanfrage (enthält nicht)": comma-separated; plain term = exact query, % = wildcard
     function excluders(){
       return document.getElementById("perfExclude").value.split(",").map(s=>s.trim().toLowerCase()).filter(Boolean).map(t=>{
@@ -745,6 +757,7 @@ function latestDate(rows){ return rows.reduce((m,r)=> r.snapshot_date>m?r.snapsh
     ["perfProvider","perfTitle","perfExact","perfExclude"].forEach(id=>
       document.getElementById(id).addEventListener("input", ()=>{ page=0; render(); }));
     render();
+    setPerfData = rows => { data = toData(rows); fillProviders(); page = 0; render(); };
   }
 
   // ---- coverage section ----
@@ -1092,7 +1105,12 @@ function latestDate(rows){ return rows.reduce((m,r)=> r.snapshot_date>m?r.snapsh
   }
 
   // ---- trend chart ----
-  // Built from keyword_ranks.csv: ecomex' best rank for every tracked keyword, daily.
+  // Built from keyword_ranks.csv (or keyword_ranks_bg.csv with the Bildungsgutschein
+  // switch on): ecomex' best rank for every tracked keyword, daily.
+  const DEFAULT_KWS = ["KI Weiterbildung","Online Marketing","Marketing Kurs","KI Manager","Content Marketing"];
+  let chosen = null;              // keeps the picked keywords when the data set is switched
+  function buildTrend(kwRanks, scanDepth){
+  Chart.getChart("trend")?.destroy(); Chart.getChart("trendKw")?.destroy();
   const krDates = [...new Set(kwRanks.map(r=>r.snapshot_date))].sort();
   const krByDate = {};            // date -> [{kw, rank|null}]
   const krByKw = {};              // keyword -> {date: rank|null}
@@ -1102,6 +1120,7 @@ function latestDate(rows){ return rows.reduce((m,r)=> r.snapshot_date>m?r.snapsh
     (krByKw[r.keyword] ||= {})[r.snapshot_date] = rank;
   }
   const gridOpts = { grid:{color:"#2c3744"}, ticks:{color:"#8b98a5"} };
+  const dot = krDates.length < 10 ? 4 : 0;   // show points while there are only a few days
 
   // 1) Share of tracked keywords where ecomex is in the top 3 / top 10 / page 1.
   //    Shares, not counts: the tracked keyword set has grown over time.
@@ -1111,7 +1130,7 @@ function latestDate(rows){ return rows.reduce((m,r)=> r.snapshot_date>m?r.snapsh
     type:"line",
     data:{ labels:krDates, datasets: tiers.map((t,i)=>({
       label:t.label, data:counts.map(c=>Math.round(1000*c.tiers[i]/c.total)/10),
-      borderColor:t.c, backgroundColor:t.c, tension:.25, pointRadius:0, pointHoverRadius:4 })) },
+      borderColor:t.c, backgroundColor:t.c, tension:.25, pointRadius:dot, pointHoverRadius:5 })) },
     options:{
       interaction:{mode:"index", intersect:false},
       plugins:{
@@ -1134,15 +1153,14 @@ function latestDate(rows){ return rows.reduce((m,r)=> r.snapshot_date>m?r.snapsh
   const CAP = 50;
   const allKws = Object.keys(krByKw).sort((a,b)=>a.localeCompare(b));
   document.getElementById("trendKwList").innerHTML = allKws.map(k=>`<option value="${k.replace(/"/g,"&quot;")}">`).join("");
-  const DEFAULT_KWS = ["KI Weiterbildung","Online Marketing","Marketing Kurs","KI Manager","Content Marketing"];
-  let chosen = DEFAULT_KWS.filter(k=>krByKw[k]);
+  chosen = (chosen || DEFAULT_KWS).filter(k=>krByKw[k]);
   const kwChart = new Chart(document.getElementById("trendKw"), {
     type:"line", data:{ labels:krDates, datasets:[] },
     options:{
       interaction:{mode:"index", intersect:false},
       plugins:{ legend:{display:false},
         tooltip:{callbacks:{ label:ctx=>{ const raw=krByKw[ctx.dataset.label][krDates[ctx.dataIndex]];
-          return ` ${ctx.dataset.label}: ${raw==null?"nicht in den Top 500":raw>CAP?`#${raw} (außerhalb Top ${CAP})`:"#"+raw}`; }}}},
+          return ` ${ctx.dataset.label}: ${raw==null?`nicht in den Top ${scanDepth}`:raw>CAP?`#${raw} (außerhalb Top ${CAP})`:"#"+raw}`; }}}},
       scales:{ y:{...gridOpts, reverse:true, min:1, max:CAP+1, title:{display:true,text:"Beste Position",color:"#8b98a5"},
                   ticks:{...gridOpts.ticks, callback:v=>v>CAP?`>${CAP}`:"#"+v}},
                x:gridOpts },
@@ -1151,7 +1169,7 @@ function latestDate(rows){ return rows.reduce((m,r)=> r.snapshot_date>m?r.snapsh
   function renderKwTrend(){
     kwChart.data.datasets = chosen.map((kw,i)=>({
       label:kw, borderColor:PALETTE[i%PALETTE.length], backgroundColor:PALETTE[i%PALETTE.length],
-      tension:.2, pointRadius:0, pointHoverRadius:4, spanGaps:false,
+      tension:.2, pointRadius:dot, pointHoverRadius:5, spanGaps:false,
       // not tracked that day -> gap; tracked but not ranked / beyond cap -> pinned to the bottom line
       data:krDates.map(d=>{ const m=krByKw[kw]; if(!(d in m)) return null; const v=m[d]; return v==null||v>CAP ? CAP+1 : v; }),
     }));
@@ -1161,12 +1179,37 @@ function latestDate(rows){ return rows.reduce((m,r)=> r.snapshot_date>m?r.snapsh
     document.querySelectorAll("#trendChips .x").forEach(x=>x.onclick=()=>{
       chosen = chosen.filter(k=>k!==decodeURIComponent(x.dataset.kw)); renderKwTrend(); });
   }
-  document.getElementById("trendKwInput").addEventListener("change", e=>{
+  document.getElementById("trendKwInput").onchange = e=>{
     const v=e.target.value.trim(); const kw=allKws.find(k=>k.toLowerCase()===v.toLowerCase());
     if(kw && !chosen.includes(kw)){ chosen=[...chosen, kw].slice(-PALETTE.length); renderKwTrend(); }
     e.target.value="";
-  });
+  };
   renderKwTrend();
+  }
+  buildTrend(kwRanks, 500);
+
+  // ---- "Nur Bildungsgutschein" switch ----
+  // Swaps Ranking-Verlauf and Kurstitel-Performance to the daily scan run with
+  // mein-NOW's Förderart = Bildungsgutschein filter (keyword_ranks_bg.csv etc.).
+  let kwRanksBg = [], perfBg = [];
+  try { kwRanksBg = await loadCsv("keyword_ranks_bg.csv"); } catch(e) { /* optional */ }
+  try { perfBg = await loadCsv("latest_course_performance_bg.csv"); } catch(e) { /* optional */ }
+  if(kwRanksBg.length){
+    const bar = document.getElementById("bgBar"), tog = document.getElementById("bgToggle");
+    const since = [...new Set(kwRanksBg.map(r=>r.snapshot_date))].sort()[0];
+    bar.hidden = false;
+    function applyBg(on){
+      bar.classList.toggle("on", on);
+      buildTrend(on ? kwRanksBg : kwRanks, on ? 100 : 500);
+      if(setPerfData) setPerfData(on && perfBg.length ? perfBg : perf);
+      document.getElementById("bgNote").textContent = on
+        ? `Filter aktiv: nur Angebote mit Bildungsgutschein. Daten seit ${since}; Positionen bis Top 100 erfasst. Gilt für Ranking-Verlauf und Kurstitel-Performance.`
+        : `Zeigt Ranking-Verlauf und Kurstitel-Performance so, wie Nutzer sie mit dem Filter Förderart › Bildungsgutschein auf mein-NOW sehen.`;
+      history.replaceState(null, "", on ? "#bildungsgutschein" : location.pathname + location.search);
+    }
+    tog.addEventListener("change", ()=>applyBg(tog.checked));
+    if(location.hash === "#bildungsgutschein"){ tog.checked = true; applyBg(true); }
+  }
 
   // ---- inventory count badge + tab switching ----
   document.getElementById("invCountBadge").textContent = inventory.length;

@@ -35,6 +35,14 @@ DATA = ROOT / "data"
 LATEST = DATA / "latest_course_performance.csv"
 HISTORY = DATA / "course_visibility_history.csv"
 
+
+def _paths(variant: str = "") -> tuple[Path, Path]:
+    """variant "bg" = the Bildungsgutschein-filtered scan, kept in *_bg files."""
+    if not variant:
+        return LATEST, HISTORY
+    return (DATA / f"latest_course_performance_{variant}.csv",
+            DATA / f"course_visibility_history_{variant}.csv")
+
 PAGE_ONE = 20        # a keyword "counts" when the course ranks in the top 20
 AVG_DAYS = 30
 HISTORY_DAYS = 35    # a little slack beyond the 30-day window
@@ -58,18 +66,18 @@ FIELDS = ["snapshot_date", "provider", "is_brand", "course_id", "title",
 HIST_FIELDS = ["snapshot_date", "course_id", "visibility"]
 
 
-def _read_history() -> list[dict]:
-    if not HISTORY.exists():
+def _read_history(history_path: Path = HISTORY) -> list[dict]:
+    if not history_path.exists():
         return []
-    with HISTORY.open(encoding="utf-8", newline="") as f:
+    with history_path.open(encoding="utf-8", newline="") as f:
         return list(csv.DictReader(f))
 
 
-def _write_history(rows: list[dict], today: str) -> None:
+def _write_history(rows: list[dict], today: str, history_path: Path = HISTORY) -> None:
     cutoff = (date.fromisoformat(today) - timedelta(days=HISTORY_DAYS)).isoformat()
     rows = sorted((r for r in rows if r["snapshot_date"] > cutoff),
                   key=lambda r: (r["snapshot_date"], r["course_id"]))
-    with HISTORY.open("w", encoding="utf-8", newline="") as f:
+    with history_path.open("w", encoding="utf-8", newline="") as f:
         w = csv.DictWriter(f, fieldnames=HIST_FIELDS)
         w.writeheader()
         w.writerows(rows)
@@ -90,8 +98,9 @@ def _avg_30d(history: list[dict], today: str) -> dict[str, float]:
     return {cid: round(s / sum(d >= first[cid] for d in days), 2) for cid, s in total.items()}
 
 
-def write(catalog: dict, today: str) -> None:
-    """catalog: course_id -> aggregated record from keyword_tracker.main()."""
+def write(catalog: dict, today: str, variant: str = "") -> None:
+    """catalog: course_id -> aggregated record from keyword_tracker.scan_keywords()."""
+    latest_path, history_path = _paths(variant)
     today_rows, perf = [], []
     for cid, a in catalog.items():
         page_one = {k: p for k, p in a["kw_pos"].items() if p <= PAGE_ONE}
@@ -102,8 +111,8 @@ def write(catalog: dict, today: str) -> None:
             today_rows.append({"snapshot_date": today, "course_id": str(cid), "visibility": score})
         perf.append((cid, a, page_one, score))
 
-    history = [r for r in _read_history() if r["snapshot_date"] != today] + today_rows
-    _write_history(history, today)
+    history = [r for r in _read_history(history_path) if r["snapshot_date"] != today] + today_rows
+    _write_history(history, today, history_path)
     avg = _avg_30d(history, today)
 
     rows = []
@@ -124,11 +133,11 @@ def write(catalog: dict, today: str) -> None:
             "link": f"https://mein-now.de/weiterbildungssuche/suche/{cid}",
         })
     rows.sort(key=lambda r: -r["visibility"])
-    with LATEST.open("w", encoding="utf-8", newline="") as f:
+    with latest_path.open("w", encoding="utf-8", newline="") as f:
         w = csv.DictWriter(f, fieldnames=FIELDS)
         w.writeheader()
         w.writerows(rows)
-    print(f"wrote {len(rows)} courses -> latest_course_performance.csv "
+    print(f"wrote {len(rows)} courses -> {latest_path.name} "
           f"({len(today_rows)} with page-1 visibility)")
 
 
