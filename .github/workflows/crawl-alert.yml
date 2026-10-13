@@ -15,6 +15,7 @@ on:
 
 permissions:
   issues: write
+  actions: read     # to quote the failed step's log in the issue
 
 jobs:
   alert:
@@ -28,12 +29,24 @@ jobs:
           WF: ${{ github.event.workflow_run.name }}
           RESULT: ${{ github.event.workflow_run.conclusion }}
           URL: ${{ github.event.workflow_run.html_url }}
+          RUN_ID: ${{ github.event.workflow_run.id }}
         run: |
           title="Crawl alert: $WF"
+          # Last lines of the failed step's log, so the cause is readable without signing in.
+          log=$(gh run view "$RUN_ID" --log-failed 2>/dev/null | cut -f3- | tail -n 40 || true)
+          [ -n "$log" ] || log="(no log available - the run was probably cancelled before it started)"
           body="**$WF** finished with **$RESULT** on $(date -u +%Y-%m-%d).
 
-          Run: $URL"
-          num=$(gh issue list --state open --search "\"$title\" in:title" --json number --jq '.[0].number')
+          Run: $URL
+
+          <details><summary>Last log lines</summary>
+
+          \`\`\`
+          $log
+          \`\`\`
+          </details>"
+          # Exact title match (GitHub's issue search can lag or match loosely).
+          num=$(gh issue list --state open --limit 100 --json number,title --jq "[.[] | select(.title == \"$title\")][0].number // empty")
           if [ -n "$num" ]; then
             gh issue comment "$num" --body "$body"
           else

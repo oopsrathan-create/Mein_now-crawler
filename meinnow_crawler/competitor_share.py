@@ -23,7 +23,7 @@ from pathlib import Path
 
 import requests
 
-from crawl import RETRY_WAITS, is_retryable
+from crawl import RETRY_WAITS, append_history, is_retryable
 
 ROOT = Path(__file__).resolve().parent
 DATA = ROOT / "data"
@@ -127,13 +127,7 @@ def main() -> int:
         w = csv.DictWriter(f, fieldnames=FIELDS)
         w.writeheader()
         w.writerows(rows)
-    history = DATA / "competitor_share_history.csv"
-    new = not history.exists()
-    with history.open("a", newline="", encoding="utf-8") as f:
-        w = csv.DictWriter(f, fieldnames=FIELDS)
-        if new:
-            w.writeheader()
-        w.writerows(rows)
+    append_history(DATA / "competitor_share_history.csv", FIELDS, rows)
     print(f"wrote {len(rows)} provider×keyword rows -> latest_competitor_share.csv (+history)")
     return 0
 

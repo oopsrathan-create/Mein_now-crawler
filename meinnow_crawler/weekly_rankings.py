@@ -22,7 +22,7 @@ from pathlib import Path
 
 import requests
 
-from crawl import RETRY_WAITS, is_retryable
+from crawl import RETRY_WAITS, append_history, is_retryable
 
 ROOT = Path(__file__).resolve().parent
 DATA = ROOT / "data"
@@ -144,13 +144,7 @@ def main() -> int:
             w.writeheader()
             w.writerows(rows)
     # Long-running history file: append week's rows for cross-week trends.
-    history = DATA / "course_rankings_history.csv"
-    new = not history.exists()
-    with history.open("a", newline="", encoding="utf-8") as f:
-        w = csv.DictWriter(f, fieldnames=FIELDS)
-        if new:
-            w.writeheader()
-        w.writerows(rows)
+    append_history(DATA / "course_rankings_history.csv", FIELDS, rows, key="week")
     print(f"wrote {len(rows)} appearances -> {weekly_path.name} (+ latest_course_rankings.csv, +history)")
     print("done.")
     return 0

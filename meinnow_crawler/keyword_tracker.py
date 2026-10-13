@@ -32,7 +32,7 @@ from pathlib import Path
 import requests
 
 import course_performance
-from crawl import RETRY_WAITS, is_retryable
+from crawl import RETRY_WAITS, append_history, is_retryable
 
 ROOT = Path(__file__).resolve().parent
 DATA = ROOT / "data"
@@ -205,13 +205,7 @@ CATALOG_FIELDS = ["snapshot_date", "provider", "is_brand", "major", "course_id",
 
 
 def append_csv(path: Path, fields: list[str], rows: list[dict]):
-    DATA.mkdir(parents=True, exist_ok=True)
-    new = not path.exists()
-    with path.open("a", newline="", encoding="utf-8") as f:
-        w = csv.DictWriter(f, fieldnames=fields)
-        if new:
-            w.writeheader()
-        w.writerows(rows)
+    append_history(path, fields, rows)   # replaces today's rows on a re-run
 
 
 def write_csv(path: Path, fields: list[str], rows: list[dict]):

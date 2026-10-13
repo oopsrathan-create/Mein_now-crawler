@@ -1115,25 +1115,30 @@ function latestDate(rows){ return rows.reduce((m,r)=> r.snapshot_date>m?r.snapsh
   let chosen = null;              // keeps the picked keywords when the data set is switched
   function buildTrend(kwRanks, scanDepth){
   Chart.getChart("trend")?.destroy(); Chart.getChart("trendKw")?.destroy();
-  const krDates = [...new Set(kwRanks.map(r=>r.snapshot_date))].sort();
-  const krByDate = {};            // date -> [{kw, rank|null}]
-  const krByKw = {};              // keyword -> {date: rank|null}
-  for(const r of kwRanks){
+  // Every calendar day from first to last crawl, so days without data show as gaps.
+  const crawled = [...new Set(kwRanks.map(r=>r.snapshot_date))].sort();
+  const krDates = [];
+  if(crawled.length) for(let d=new Date(crawled[0]+"T00:00Z"); d<=new Date(crawled.at(-1)+"T00:00Z"); d.setUTCDate(d.getUTCDate()+1))
+    krDates.push(d.toISOString().slice(0,10));
+  const missingDays = krDates.filter(d=>!crawled.includes(d));
+  const krByKw = {};              // keyword -> {date: rank|null}; one value per keyword and day,
+  for(const r of kwRanks){        // so a day that was crawled twice isn't counted twice
     const rank = (r.brand_best_rank==null||r.brand_best_rank==="") ? null : +r.brand_best_rank;
-    (krByDate[r.snapshot_date] ||= []).push(rank);
     (krByKw[r.keyword] ||= {})[r.snapshot_date] = rank;
   }
+  const krByDate = {};            // date -> [rank|null], one per tracked keyword
+  for(const m of Object.values(krByKw)) for(const [d, rank] of Object.entries(m)) (krByDate[d] ||= []).push(rank);
   const gridOpts = { grid:{color:"#2c3744"}, ticks:{color:"#8b98a5"} };
   const dot = krDates.length < 10 ? 4 : 0;   // show points while there are only a few days
 
   // 1) Share of tracked keywords where ecomex is in the top 3 / top 10 / page 1.
   //    Shares, not counts: the tracked keyword set has grown over time.
   const tiers = [{n:3,label:"Top 3",c:"#3fb950"},{n:10,label:"Top 10",c:"#4cc9f0"},{n:20,label:"Seite 1 (Top 20)",c:"#a371f7"}];
-  const counts = krDates.map(d=>{ const rs=krByDate[d]; return {total:rs.length, tiers:tiers.map(t=>rs.filter(v=>v!=null&&v<=t.n).length)}; });
+  const counts = krDates.map(d=>{ const rs=krByDate[d]||[]; return {total:rs.length, tiers:tiers.map(t=>rs.filter(v=>v!=null&&v<=t.n).length)}; });
   new Chart(document.getElementById("trend"), {
     type:"line",
     data:{ labels:krDates, datasets: tiers.map((t,i)=>({
-      label:t.label, data:counts.map(c=>Math.round(1000*c.tiers[i]/c.total)/10),
+      label:t.label, data:counts.map(c=>c.total ? Math.round(1000*c.tiers[i]/c.total)/10 : null),
       borderColor:t.c, backgroundColor:t.c, tension:.25, pointRadius:dot, pointHoverRadius:5 })) },
     options:{
       interaction:{mode:"index", intersect:false},
@@ -1148,10 +1153,12 @@ function latestDate(rows){ return rows.reduce((m,r)=> r.snapshot_date>m?r.snapsh
     },
   });
   // Mark days when the tracked keyword set changed, since jumps there aren't real movement.
-  const setChanges = counts.map((c,i)=>i && c.total!==counts[i-1].total ? `${krDates[i]} (${counts[i-1].total} → ${c.total})` : null).filter(Boolean);
+  const setChanges = [];
+  { let prev=null; counts.forEach((c,i)=>{ if(!c.total) return; if(prev && c.total!==prev.total) setChanges.push(`${krDates[i]} (${prev.total} → ${c.total})`); prev=c; }); }
   document.getElementById("trendNote").innerHTML =
     `Pro Tag: Anteil aller getrackten Keywords, bei denen ein ecomex-Kurs unter den Top 3 / Top 10 / Top 20 steht. Steigend = besser.`+
-    (setChanges.length ? ` Die Keyword-Liste wurde geändert am ${setChanges.join(", ")} — Sprünge an diesen Tagen sind keine echte Bewegung.` : "");
+    (setChanges.length ? ` Die Keyword-Liste wurde geändert am ${setChanges.join(", ")} — Sprünge an diesen Tagen sind keine echte Bewegung.` : "")+
+    (missingDays.length ? ` <b>Keine Daten</b> (Crawl fehlgeschlagen) an ${missingDays.length} Tag(en): ${missingDays.slice(-10).join(", ")}${missingDays.length>10?" …":""} — Lücken in den Linien.` : "");
 
   // 2) Rank over time for chosen keywords (y capped at 50 so lines stay readable).
   const CAP = 50;
