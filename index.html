@@ -790,8 +790,12 @@ function latestDate(rows){ return rows.reduce((m,r)=> r.snapshot_date>m?r.snapsh
   }
 
   // ---- per-course join ----
+  // Every tracked keyword (keywords.txt) each course ranks for, from the daily keyword
+  // tracker. Falls back to the 6 config.json ranking keywords if that file is missing.
+  let brandKws = [];
+  try { brandKws = await loadCsv("latest_brand_keywords.csv"); } catch(e) { /* optional */ }
   const byCourse = {};
-  for(const r of latest){
+  for(const r of (brandKws.length ? brandKws : latest)){
     (byCourse[r.course_id] ??= []).push({kw:r.keyword, rank:+r.rank});
   }
   const courses = inventory.map(c=>{
