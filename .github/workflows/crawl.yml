@@ -4,27 +4,40 @@ on:
   schedule:
     # 05:15 UTC daily (~06:15/07:15 Germany). Cron uses UTC.
     - cron: "15 5 * * *"
-  workflow_dispatch: {}   # allows manual "Run workflow" from the Actions tab
+  workflow_dispatch:      # manual "Run workflow" from the Actions tab; also used for the automatic retry
+    inputs:
+      delay_minutes:
+        description: "Wait this long before crawling (the automatic retry waits for an outage to clear)"
+        required: false
+        default: "0"
 
 permissions:
   contents: write   # needed to commit the new data snapshots back to the repo
+  actions: write    # lets a failed scheduled run start its own retry
 
 # Serialize every workflow that commits to data/ so two crawls never push at
 # once (that caused rebase conflicts and lost data). Shared group across
 # crawl.yml, competitor-analysis.yml and weekly-rankings.yml.
+# Retry runs (delay_minutes > 0) use their own group: the shared group holds only one
+# pending run, so a queued retry would make GitHub cancel a queued competitor/weekly
+# run. Concurrent pushes are handled by the rebase loop in "Commit data".
 concurrency:
-  group: mein-now-data-commit
+  group: mein-now-data-commit${{ inputs.delay_minutes && inputs.delay_minutes != '0' && '-retry' || '' }}
   cancel-in-progress: false
 
 jobs:
   crawl:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04   # pinned: ubuntu-latest moves to 26 on 2026-10-19
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: "3.12"
+
+      - name: Wait before retry
+        if: ${{ inputs.delay_minutes && inputs.delay_minutes != '0' }}
+        run: sleep $(( ${{ inputs.delay_minutes }} * 60 ))
 
       - name: Install dependencies
         run: pip install -r meinnow_crawler/requirements.txt
@@ -32,16 +45,25 @@ jobs:
       - name: Run inventory crawler
         run: python meinnow_crawler/crawl.py
 
+      # The parts below don't depend on each other: each still runs, and whatever
+      # finished is still committed, if an earlier part failed (!cancelled()).
       - name: Run keyword tracker
+        if: ${{ !cancelled() }}
         run: python meinnow_crawler/keyword_tracker.py
 
       - name: Run competitor share snapshot
+        if: ${{ !cancelled() }}
         run: python meinnow_crawler/competitor_share.py
+
+      - name: Health check (writes data/health.json for the dashboard)
+        if: ${{ !cancelled() }}
+        run: python meinnow_crawler/health_check.py
 
       # Competitor analysis runs in its own workflow (competitor-analysis.yml),
       # not here — keeps the daily crawl fast and avoids doing it twice.
 
       - name: Commit data
+        if: ${{ !cancelled() }}
         run: |
           git config user.name "course-crawler[bot]"
           git config user.email "actions@github.com"
@@ -60,3 +82,23 @@ jobs:
             done
             if [ "$pushed" != true ]; then echo "::error::could not push data after retries"; exit 1; fi
           fi
+
+      # Fail the run (-> alert issue with these messages) if today's data looks wrong,
+      # even though every step above succeeded.
+      - name: Fail if data is unhealthy
+        if: ${{ !cancelled() }}
+        run: python meinnow_crawler/health_check.py --enforce
+
+  # A failed *scheduled* run starts one retry an hour later, so a short mein-NOW
+  # outage doesn't cost the day. The retry is a manual-type run, so it never
+  # retries itself.
+  retry:
+    needs: crawl
+    if: ${{ failure() && github.event_name == 'schedule' }}
+    runs-on: ubuntu-24.04   # pinned: ubuntu-latest moves to 26 on 2026-10-19
+    steps:
+      - name: Start retry run
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: gh workflow run crawl.yml --ref main -f delay_minutes=60

@@ -20,7 +20,7 @@ permissions:
 jobs:
   alert:
     if: github.event.workflow_run.conclusion != 'success' && github.event.workflow_run.conclusion != 'skipped'
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04   # pinned: ubuntu-latest moves to 26 on 2026-10-19
     steps:
       - name: Open or update the alert issue
         env:
@@ -30,12 +30,17 @@ jobs:
           RESULT: ${{ github.event.workflow_run.conclusion }}
           URL: ${{ github.event.workflow_run.html_url }}
           RUN_ID: ${{ github.event.workflow_run.id }}
+          EVENT: ${{ github.event.workflow_run.event }}
         run: |
           title="Crawl alert: $WF"
           # Last lines of the failed step's log, so the cause is readable without signing in.
           log=$(gh run view "$RUN_ID" --log-failed 2>/dev/null | cut -f3- | tail -n 40 || true)
           [ -n "$log" ] || log="(no log available - the run was probably cancelled before it started)"
-          body="**$WF** finished with **$RESULT** on $(date -u +%Y-%m-%d).
+          retry=""
+          if [ "$WF" = "mein-now course crawl" ] && [ "$EVENT" = "schedule" ]; then
+            retry="An automatic retry starts in about 60 minutes."
+          fi
+          body="**$WF** finished with **$RESULT** on $(date -u +%Y-%m-%d). $retry
 
           Run: $URL
 

@@ -36,12 +36,12 @@ jobs:
     # On a workflow_run trigger, only publish if the crawl actually succeeded;
     # push / manual dispatch always publish.
     if: ${{ github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success' }}
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04   # pinned: ubuntu-latest moves to 26 on 2026-10-19
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: Configure Pages
         uses: actions/configure-pages@v5
