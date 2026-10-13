@@ -48,6 +48,25 @@ def is_retryable(exc: requests.RequestException) -> bool:
     return status is None or status >= 500 or status == 429
 
 
+def append_history(path: Path, fields: list[str], rows: list[dict], key: str = "snapshot_date") -> None:
+    """Append rows to a history CSV, first dropping any existing rows for the same
+    day (or week, via `key`) so a re-run on the same day replaces instead of
+    duplicating."""
+    if not rows:
+        return
+    path.parent.mkdir(parents=True, exist_ok=True)
+    replace = {str(r[key]) for r in rows}
+    kept = []
+    if path.exists():
+        with path.open(encoding="utf-8", newline="") as f:
+            kept = [r for r in csv.DictReader(f) if r.get(key) not in replace]
+    with path.open("w", newline="", encoding="utf-8") as f:
+        w = csv.DictWriter(f, fieldnames=fields, extrasaction="ignore")
+        w.writeheader()
+        w.writerows(kept)
+        w.writerows(rows)
+
+
 def load_config() -> dict:
     cfg = json.loads((ROOT / "config.json").read_text(encoding="utf-8"))
     providers = [p for p in cfg.get("providers", []) if p and "REPLACE" not in p]
@@ -258,14 +277,7 @@ def write_snapshot(inventory: dict[int, dict]) -> Path:
 
 def append_rankings(rows: list[dict]) -> None:
     DATA.mkdir(parents=True, exist_ok=True)
-    path = DATA / "rankings.csv"
-    new_file = not path.exists()
-    with path.open("a", newline="", encoding="utf-8") as f:
-        w = csv.DictWriter(f, fieldnames=RANKING_FIELDS)
-        if new_file:
-            w.writeheader()
-        for r in rows:
-            w.writerow(r)
+    append_history(DATA / "rankings.csv", RANKING_FIELDS, rows)
     print(f"appended {len(rows)} ranking rows -> rankings.csv")
 
 
@@ -402,13 +414,7 @@ def write_coverage(rows: list[dict]):
     if not rows:
         return
     DATA.mkdir(parents=True, exist_ok=True)
-    hist = DATA / "coverage.csv"
-    new = not hist.exists()
-    with hist.open("a", newline="", encoding="utf-8") as f:
-        w = csv.DictWriter(f, fieldnames=COVERAGE_FIELDS)
-        if new:
-            w.writeheader()
-        w.writerows(rows)
+    append_history(DATA / "coverage.csv", COVERAGE_FIELDS, rows)
     latest = DATA / "latest_coverage.csv"
     with latest.open("w", newline="", encoding="utf-8") as f:
         w = csv.DictWriter(f, fieldnames=COVERAGE_FIELDS)

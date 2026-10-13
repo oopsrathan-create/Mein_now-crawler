@@ -42,10 +42,12 @@ jobs:
             echo "No data changes."
           else
             git commit -m "data: competitor analysis $(date -u +%Y-%m-%d)"
+            # -X theirs: if main changed the same data file meanwhile (e.g. a merged PR),
+            # keep this run's fresh data instead of failing the rebase and losing the day.
             pushed=false
             for i in 1 2 3 4 5; do
               git rebase --abort 2>/dev/null || true
-              if git pull --rebase --autostash origin main && git push; then pushed=true; break; fi
+              if git pull --rebase -X theirs --autostash origin main && git push; then pushed=true; break; fi
               echo "push attempt $i failed, retrying"; sleep 7
             done
             if [ "$pushed" != true ]; then echo "::error::could not push data after retries"; exit 1; fi

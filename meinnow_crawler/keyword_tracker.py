@@ -32,7 +32,7 @@ from pathlib import Path
 import requests
 
 import course_performance
-from crawl import RETRY_WAITS, is_retryable
+from crawl import RETRY_WAITS, append_history, is_retryable
 
 ROOT = Path(__file__).resolve().parent
 DATA = ROOT / "data"
@@ -205,13 +205,7 @@ CATALOG_FIELDS = ["snapshot_date", "provider", "is_brand", "major", "course_id",
 
 
 def append_csv(path: Path, fields: list[str], rows: list[dict]):
-    DATA.mkdir(parents=True, exist_ok=True)
-    new = not path.exists()
-    with path.open("a", newline="", encoding="utf-8") as f:
-        w = csv.DictWriter(f, fieldnames=fields)
-        if new:
-            w.writeheader()
-        w.writerows(rows)
+    append_history(path, fields, rows)   # replaces today's rows on a re-run
 
 
 def write_csv(path: Path, fields: list[str], rows: list[dict]):
@@ -220,6 +214,19 @@ def write_csv(path: Path, fields: list[str], rows: list[dict]):
         w = csv.DictWriter(f, fieldnames=fields)
         w.writeheader()
         w.writerows(rows)
+
+
+BRAND_KW_FIELDS = ["snapshot_date", "course_id", "title", "keyword", "rank"]
+
+
+def write_brand_keywords(catalog: dict) -> None:
+    """Every tracked keyword each ecomex course ranks for (best position, full scan
+    depth). Small file that feeds the dashboard's Kursübersicht tab."""
+    rows = [{"snapshot_date": TODAY, "course_id": cid, "title": a["title"], "keyword": kw, "rank": pos}
+            for cid, a in catalog.items() if a["is_brand"]
+            for kw, pos in sorted(a["kw_pos"].items(), key=lambda kv: kv[1])]
+    write_csv(DATA / "latest_brand_keywords.csv", BRAND_KW_FIELDS, rows)
+    print(f"wrote {len(rows)} ecomex course x keyword rows -> latest_brand_keywords.csv")
 
 
 def scan_keywords(client: Client, keywords: list[str], providers: list[str], top_n: int,
@@ -328,6 +335,7 @@ def main() -> int:
     for a in catalog.values():
         a["description_words"] = len(clean_text(a["description"], cap=10**9).split())
     course_performance.write(catalog, TODAY)
+    write_brand_keywords(catalog)
     print(f"wrote {len(cat_rows)} catalogue courses across {len(prov_counts)} providers "
           f"({len(major_providers)} major w/ descriptions) -> latest_competitor_catalog.csv")
 
