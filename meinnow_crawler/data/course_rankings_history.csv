@@ -7721,3 +7721,877 @@ week,snapshot_date,course_id,title,keyword,rank,total_results
 2026-W41,2026-10-11,10338427958,E-Commerce Manager,Website aufbauen,347,638
 2026-W41,2026-10-11,10400859331,Performance Marketing Manager,Website aufbauen,389,638
 2026-W41,2026-10-11,10396775639,Bild- und Videoerstellung mit Canva & KI,Website aufbauen,391,638
+2026-W42,2026-10-18,10338433889,KI Strategie & Implementierung & Agile Methoden,Agent Testing,20,100
+2026-W42,2026-10-18,10338433139,KI-Manager:in,Agent Testing,26,100
+2026-W42,2026-10-18,10404251965,KI Coach,Agent Testing,42,100
+2026-W42,2026-10-18,10338435794,KI-Anwendung & Agile Arbeitsmethoden,Agile Arbeitsmethoden,2,304
+2026-W42,2026-10-18,10338436797,Design Thinking & Agile Methoden mit KI,Agile Arbeitsmethoden,70,304
+2026-W42,2026-10-18,10392169985,KI- und Online Marketing Manager,Agile Arbeitsmethoden,169,304
+2026-W42,2026-10-18,10392170073,KI- und Online Marketing Manager Advanced,Agile Arbeitsmethoden,171,304
+2026-W42,2026-10-18,10392169985,KI- und Online Marketing Manager,AI Marketing,71,1596
+2026-W42,2026-10-18,10392170073,KI- und Online Marketing Manager Advanced,AI Marketing,108,1596
+2026-W42,2026-10-18,10396773986,Weiterbildung im E-Commerce mit KI,AI Marketing,242,1596
+2026-W42,2026-10-18,10396773986,Weiterbildung im E-Commerce mit KI,AI Weiterbildung,6,6269
+2026-W42,2026-10-18,10338433139,KI-Manager:in,AI-Manager,10,2469
+2026-W42,2026-10-18,10392169985,KI- und Online Marketing Manager,AI-Manager,64,2469
+2026-W42,2026-10-18,10392170073,KI- und Online Marketing Manager Advanced,AI-Manager,103,2469
+2026-W42,2026-10-18,10384706783,KI-Manager:in mit Vibe Coding und KI-Agenten,AI-Manager,108,2469
+2026-W42,2026-10-18,10406116402,KI (Künstliche Intelligenz) im Projektmangement,AI-Manager,344,2469
+2026-W42,2026-10-18,10396775639,Bild- und Videoerstellung mit Canva & KI,Bilder bearbeiten,3,831
+2026-W42,2026-10-18,10338427958,E-Commerce Manager,Business Manager,15,4122
+2026-W42,2026-10-18,10338433139,KI-Manager:in,Business Manager,382,4122
+2026-W42,2026-10-18,10408927165,Social Media Creation Experte,Camera Raw,5,17
+2026-W42,2026-10-18,10396775639,Bild- und Videoerstellung mit Canva & KI,Canva,6,783
+2026-W42,2026-10-18,10404755106,KI im Büroalltag - ChatGPT & Co.,Canva,68,783
+2026-W42,2026-10-18,10342367598,Content Marketing,Canva,101,783
+2026-W42,2026-10-18,10400963945,Social Media Marketing & Content Management,Canva,118,783
+2026-W42,2026-10-18,10408510192,Social Media Marketing für Redakteure,Canva,127,783
+2026-W42,2026-10-18,10338435794,KI-Anwendung & Agile Arbeitsmethoden,Canva,267,783
+2026-W42,2026-10-18,10414983676,KI Anwendung & Implementierung,Canva,317,783
+2026-W42,2026-10-18,10338433139,KI-Manager:in,Canva,421,783
+2026-W42,2026-10-18,10389168845,Social Media Aufbaukurs für Fortgeschrittene,Canva,430,783
+2026-W42,2026-10-18,10338427958,E-Commerce Manager,Canva,434,783
+2026-W42,2026-10-18,10396775639,Bild- und Videoerstellung mit Canva & KI,Canva Lernen,4,445
+2026-W42,2026-10-18,10404755106,KI im Büroalltag - ChatGPT & Co.,Canva Lernen,7,445
+2026-W42,2026-10-18,10414983676,KI Anwendung & Implementierung,Canva Lernen,12,445
+2026-W42,2026-10-18,10338435794,KI-Anwendung & Agile Arbeitsmethoden,Canva Lernen,15,445
+2026-W42,2026-10-18,10338433139,KI-Manager:in,Canva Lernen,18,445
+2026-W42,2026-10-18,10342367598,Content Marketing,Canva Lernen,90,445
+2026-W42,2026-10-18,10408510192,Social Media Marketing für Redakteure,Canva Lernen,91,445
+2026-W42,2026-10-18,10400963945,Social Media Marketing & Content Management,Canva Lernen,96,445
+2026-W42,2026-10-18,10411633110,Mit Künstlicher Intelligenz programmieren,Claude,91,1616
+2026-W42,2026-10-18,10392169985,KI- und Online Marketing Manager,Claude,120,1616
+2026-W42,2026-10-18,10384706783,KI-Manager:in mit Vibe Coding und KI-Agenten,Claude,162,1616
+2026-W42,2026-10-18,10406700278,KI-Automatisierung mit n8n,Claude,212,1616
+2026-W42,2026-10-18,10404755106,KI im Büroalltag - ChatGPT & Co.,Claude,225,1616
+2026-W42,2026-10-18,10406117728,KI-Assistenten mit Microsoft Copilot Studio,Claude,236,1616
+2026-W42,2026-10-18,10406117703,Vibe Coding,Claude,264,1616
+2026-W42,2026-10-18,10338435794,KI-Anwendung & Agile Arbeitsmethoden,Claude,283,1616
+2026-W42,2026-10-18,10338436797,Design Thinking & Agile Methoden mit KI,Claude,287,1616
+2026-W42,2026-10-18,10406613460,Design Thinking für Content Creator,Claude,312,1616
+2026-W42,2026-10-18,10411631827,Prompt Engineering im Berufsalltag,Claude,325,1616
+2026-W42,2026-10-18,10406116402,KI (Künstliche Intelligenz) im Projektmangement,Claude,376,1616
+2026-W42,2026-10-18,10404251965,KI Coach,Claude,424,1616
+2026-W42,2026-10-18,10408927165,Social Media Creation Experte,Content Creation mit KI,52,467
+2026-W42,2026-10-18,10396797754,Content Creator Kurs,Content Creator Kurs,1,324
+2026-W42,2026-10-18,10406613460,Design Thinking für Content Creator,Content Creator Kurs,106,324
+2026-W42,2026-10-18,10408511262,Video Marketing Spezialist,Content Creator Kurs,270,324
+2026-W42,2026-10-18,10396797754,Content Creator Kurs,Content Creator Weiterbildung,19,192
+2026-W42,2026-10-18,10406613460,Design Thinking für Content Creator,Content Creator Weiterbildung,22,192
+2026-W42,2026-10-18,10408511262,Video Marketing Spezialist,Content Creator Weiterbildung,148,192
+2026-W42,2026-10-18,10342367598,Content Marketing,Content Marketing,11,4703
+2026-W42,2026-10-18,10400963945,Social Media Marketing & Content Management,Content Marketing,147,4703
+2026-W42,2026-10-18,10389167442,Wordpress,Content Marketing,376,4703
+2026-W42,2026-10-18,10396797754,Content Creator Kurs,Content Marketing,446,4703
+2026-W42,2026-10-18,10396797754,Content Creator Kurs,Content Marketing Kurs,1,2878
+2026-W42,2026-10-18,10342367598,Content Marketing,Content Marketing Kurs,9,2878
+2026-W42,2026-10-18,10400963945,Social Media Marketing & Content Management,Content Marketing Kurs,82,2878
+2026-W42,2026-10-18,10389167442,Wordpress,Content Marketing Kurs,224,2878
+2026-W42,2026-10-18,10406613460,Design Thinking für Content Creator,Content Marketing Kurs,392,2878
+2026-W42,2026-10-18,10342367598,Content Marketing,Content Marketing Manager,64,1547
+2026-W42,2026-10-18,10406116564,Online Marketing Manager,Content Marketing Manager,139,1547
+2026-W42,2026-10-18,10389167442,Wordpress,Content Marketing Manager,150,1547
+2026-W42,2026-10-18,10412039578,Social Media Manager,Content Marketing Manager,188,1547
+2026-W42,2026-10-18,10342368840,Online Marketing Manager Advanced,Content Marketing Manager,189,1547
+2026-W42,2026-10-18,10396797754,Content Creator Kurs,Content Marketing Manager,212,1547
+2026-W42,2026-10-18,10338427958,E-Commerce Manager,Content Marketing Manager,241,1547
+2026-W42,2026-10-18,10406612551,Social Media Advertising Manager,Content Marketing Manager,256,1547
+2026-W42,2026-10-18,10392169985,KI- und Online Marketing Manager,Content Marketing Manager,267,1547
+2026-W42,2026-10-18,10392170073,KI- und Online Marketing Manager Advanced,Content Marketing Manager,356,1547
+2026-W42,2026-10-18,10342367598,Content Marketing,Content Marketing Weiterbildung,22,3204
+2026-W42,2026-10-18,10400963945,Social Media Marketing & Content Management,Content Marketing Weiterbildung,134,3204
+2026-W42,2026-10-18,10389167442,Wordpress,Content Marketing Weiterbildung,272,3204
+2026-W42,2026-10-18,10396797754,Content Creator Kurs,Content Marketing Weiterbildung,355,3204
+2026-W42,2026-10-18,10408511262,Video Marketing Spezialist,DaVinci Resolve,21,44
+2026-W42,2026-10-18,10396775639,Bild- und Videoerstellung mit Canva & KI,DaVinci Resolve,24,44
+2026-W42,2026-10-18,10406613460,Design Thinking für Content Creator,DaVinci Resolve,25,44
+2026-W42,2026-10-18,10338436797,Design Thinking & Agile Methoden mit KI,Design Thinking,219,2199
+2026-W42,2026-10-18,10406613460,Design Thinking für Content Creator,Design Thinking,291,2199
+2026-W42,2026-10-18,10338436797,Design Thinking & Agile Methoden mit KI,Design Thinking und Agile Methoden,3,1042
+2026-W42,2026-10-18,10338433889,KI Strategie & Implementierung & Agile Methoden,Design Thinking und Agile Methoden,195,1042
+2026-W42,2026-10-18,10338435794,KI-Anwendung & Agile Arbeitsmethoden,Design Thinking und Agile Methoden,326,1042
+2026-W42,2026-10-18,10396797754,Content Creator Kurs,Digital Marketing Kurs,4,4016
+2026-W42,2026-10-18,10406116564,Online Marketing Manager,Digital Marketing Manager,138,1980
+2026-W42,2026-10-18,10400859331,Performance Marketing Manager,Digital Marketing Manager,145,1980
+2026-W42,2026-10-18,10342368840,Online Marketing Manager Advanced,Digital Marketing Manager,180,1980
+2026-W42,2026-10-18,10412039578,Social Media Manager,Digital Marketing Manager,183,1980
+2026-W42,2026-10-18,10392169985,KI- und Online Marketing Manager,Digital Marketing Manager,250,1980
+2026-W42,2026-10-18,10406612551,Social Media Advertising Manager,Digital Marketing Manager,272,1980
+2026-W42,2026-10-18,10338427958,E-Commerce Manager,Digital Marketing Manager,321,1980
+2026-W42,2026-10-18,10392170073,KI- und Online Marketing Manager Advanced,Digital Marketing Manager,341,1980
+2026-W42,2026-10-18,10338427958,E-Commerce Manager,Digitale Werbung,391,1655
+2026-W42,2026-10-18,10338431266,Inbound Marketing Experte,Direktmarketing,10,73
+2026-W42,2026-10-18,10338427958,E-Commerce Manager,E-Commerce,55,2404
+2026-W42,2026-10-18,10408511090,E-Commerce für Gründer:innen,E-Commerce,144,2404
+2026-W42,2026-10-18,10338426390,E-Commerce Shops und Online Plattformen,E-Commerce,217,2404
+2026-W42,2026-10-18,10396773986,Weiterbildung im E-Commerce mit KI,E-Commerce,238,2404
+2026-W42,2026-10-18,10338427958,E-Commerce Manager,E-Commerce Manager,5,796
+2026-W42,2026-10-18,10338426390,E-Commerce Shops und Online Plattformen,E-Commerce Manager,171,796
+2026-W42,2026-10-18,10342368840,Online Marketing Manager Advanced,E-Commerce Manager,410,796
+2026-W42,2026-10-18,10406612551,Social Media Advertising Manager,E-Commerce Manager,414,796
+2026-W42,2026-10-18,10412039578,Social Media Manager,E-Commerce Manager,418,796
+2026-W42,2026-10-18,10400859331,Performance Marketing Manager,E-Commerce Manager,422,796
+2026-W42,2026-10-18,10392169985,KI- und Online Marketing Manager,E-Commerce Manager,461,796
+2026-W42,2026-10-18,10392170073,KI- und Online Marketing Manager Advanced,E-Commerce Manager,474,796
+2026-W42,2026-10-18,10338427958,E-Commerce Manager,E-Commerce Marketing,31,1681
+2026-W42,2026-10-18,10408511090,E-Commerce für Gründer:innen,E-Commerce Marketing,90,1681
+2026-W42,2026-10-18,10338426390,E-Commerce Shops und Online Plattformen,E-Commerce Marketing,155,1681
+2026-W42,2026-10-18,10408511196,Amazon & Marktplatz Marketing,E-Commerce Marketing,216,1681
+2026-W42,2026-10-18,10411632441,Online Marketing für Websites und Shops,E-Commerce Marketing,218,1681
+2026-W42,2026-10-18,10396773986,Weiterbildung im E-Commerce mit KI,E-Commerce Marketing,253,1681
+2026-W42,2026-10-18,10396773986,Weiterbildung im E-Commerce mit KI,E-Commerce Weiterbildung,25,1522
+2026-W42,2026-10-18,10338427958,E-Commerce Manager,E-Commerce Weiterbildung,119,1522
+2026-W42,2026-10-18,10408511090,E-Commerce für Gründer:innen,E-Commerce Weiterbildung,156,1522
+2026-W42,2026-10-18,10338426390,E-Commerce Shops und Online Plattformen,E-Commerce Weiterbildung,239,1522
+2026-W42,2026-10-18,10408511196,Amazon & Marktplatz Marketing,E-Commerce Weiterbildung,445,1522
+2026-W42,2026-10-18,10411631827,Prompt Engineering im Berufsalltag,Einführung ins Prompt Engineering,15,2104
+2026-W42,2026-10-18,10406117728,KI-Assistenten mit Microsoft Copilot Studio,Einführung ins Prompt Engineering,300,2104
+2026-W42,2026-10-18,10338433139,KI-Manager:in,Einführung ins Prompt Engineering,485,2104
+2026-W42,2026-10-18,10342368840,Online Marketing Manager Advanced,E-Mail Automatisierung mit KI,335,793
+2026-W42,2026-10-18,10406612551,Social Media Advertising Manager,Facebook Advertising,23,232
+2026-W42,2026-10-18,10395150822,PPC Marketing Expert,Facebook Advertising,56,232
+2026-W42,2026-10-18,10338428017,Performance Marketing Experte,Facebook Advertising,97,232
+2026-W42,2026-10-18,10338427958,E-Commerce Manager,Facebook Advertising,160,232
+2026-W42,2026-10-18,10408510489,Google Ads Spezialist,Google Ads,55,1295
+2026-W42,2026-10-18,10395150822,PPC Marketing Expert,Google Ads,232,1295
+2026-W42,2026-10-18,10406613931,Suchmaschinenmarketing,Google Ads,246,1295
+2026-W42,2026-10-18,10338428017,Performance Marketing Experte,Google Ads,248,1295
+2026-W42,2026-10-18,10361929245,Online Advertising im Online Marketing,Google Ads,262,1295
+2026-W42,2026-10-18,10411631827,Prompt Engineering im Berufsalltag,Grundlagen AI,150,6519
+2026-W42,2026-10-18,10411631827,Prompt Engineering im Berufsalltag,Grundlagen KI,206,10000
+2026-W42,2026-10-18,10406117728,KI-Assistenten mit Microsoft Copilot Studio,Grundlagen KI,237,10000
+2026-W42,2026-10-18,10338431266,Inbound Marketing Experte,Inbound Marketing,3,284
+2026-W42,2026-10-18,10338428017,Performance Marketing Experte,Inbound Marketing,24,284
+2026-W42,2026-10-18,10411632037,CRM Spezialist,Inbound Marketing,36,284
+2026-W42,2026-10-18,10338427958,E-Commerce Manager,Inbound Marketing,186,284
+2026-W42,2026-10-18,10338433139,KI-Manager:in,IT Manager,312,8445
+2026-W42,2026-10-18,10338428017,Performance Marketing Experte,Kampagnenerstellung mit KI,85,100
+2026-W42,2026-10-18,10338427958,E-Commerce Manager,Kampagnenerstellung mit KI,92,100
+2026-W42,2026-10-18,10414983676,KI Anwendung & Implementierung,KI Anwendung,5,10000
+2026-W42,2026-10-18,10338435794,KI-Anwendung & Agile Arbeitsmethoden,KI Anwendung,16,10000
+2026-W42,2026-10-18,10338433139,KI-Manager:in,KI Anwendung,369,10000
+2026-W42,2026-10-18,10406613460,Design Thinking für Content Creator,KI Anwendung,454,10000
+2026-W42,2026-10-18,10404251965,KI Coach,KI Coach,1,2334
+2026-W42,2026-10-18,10396773986,Weiterbildung im E-Commerce mit KI,KI für E-Commerce,6,799
+2026-W42,2026-10-18,10338427958,E-Commerce Manager,KI für E-Commerce,79,799
+2026-W42,2026-10-18,10392169985,KI- und Online Marketing Manager,KI für E-Commerce,391,799
+2026-W42,2026-10-18,10392170073,KI- und Online Marketing Manager Advanced,KI für E-Commerce,399,799
+2026-W42,2026-10-18,10396775639,Bild- und Videoerstellung mit Canva & KI,KI für E-Commerce,408,799
+2026-W42,2026-10-18,10412038324,Social Media Advertising Expert:in,KI für E-Commerce,440,799
+2026-W42,2026-10-18,10411631827,Prompt Engineering im Berufsalltag,KI Grundlagen,206,10000
+2026-W42,2026-10-18,10406117728,KI-Assistenten mit Microsoft Copilot Studio,KI Grundlagen,237,10000
+2026-W42,2026-10-18,10384706783,KI-Manager:in mit Vibe Coding und KI-Agenten,KI im Arbeitsalltag,167,3155
+2026-W42,2026-10-18,10338433139,KI-Manager:in,KI im Arbeitsalltag,354,3155
+2026-W42,2026-10-18,10404755106,KI im Büroalltag - ChatGPT & Co.,KI im Büroalltag,31,427
+2026-W42,2026-10-18,10406116564,Online Marketing Manager,KI im datengetriebenen Marketing,152,563
+2026-W42,2026-10-18,10412038324,Social Media Advertising Expert:in,KI im datengetriebenen Marketing,175,563
+2026-W42,2026-10-18,10406612551,Social Media Advertising Manager,KI im datengetriebenen Marketing,194,563
+2026-W42,2026-10-18,10338431266,Inbound Marketing Experte,KI im Inbound Marketing,4,69
+2026-W42,2026-10-18,10338428017,Performance Marketing Experte,KI im Inbound Marketing,18,69
+2026-W42,2026-10-18,10411632037,CRM Spezialist,KI im Inbound Marketing,19,69
+2026-W42,2026-10-18,10338427958,E-Commerce Manager,KI im Inbound Marketing,45,69
+2026-W42,2026-10-18,10338433139,KI-Manager:in,KI Lernen,80,10000
+2026-W42,2026-10-18,10414983676,KI Anwendung & Implementierung,KI Lernen,125,10000
+2026-W42,2026-10-18,10404755106,KI im Büroalltag - ChatGPT & Co.,KI Lernen,222,10000
+2026-W42,2026-10-18,10404251965,KI Coach,KI Lernen,265,10000
+2026-W42,2026-10-18,10384706783,KI-Manager:in mit Vibe Coding und KI-Agenten,KI Lernen,293,10000
+2026-W42,2026-10-18,10406700278,KI-Automatisierung mit n8n,KI Lernen,369,10000
+2026-W42,2026-10-18,10338433139,KI-Manager:in,KI Manager,2,7511
+2026-W42,2026-10-18,10392169985,KI- und Online Marketing Manager,KI Manager,112,7511
+2026-W42,2026-10-18,10392170073,KI- und Online Marketing Manager Advanced,KI Manager,165,7511
+2026-W42,2026-10-18,10384706783,KI-Manager:in mit Vibe Coding und KI-Agenten,KI Manager,189,7511
+2026-W42,2026-10-18,10338433139,KI-Manager:in,KI Manager Weiterbildung,53,4515
+2026-W42,2026-10-18,10392169985,KI- und Online Marketing Manager,KI Manager Weiterbildung,106,4515
+2026-W42,2026-10-18,10392170073,KI- und Online Marketing Manager Advanced,KI Manager Weiterbildung,146,4515
+2026-W42,2026-10-18,10384706783,KI-Manager:in mit Vibe Coding und KI-Agenten,KI Manager Weiterbildung,161,4515
+2026-W42,2026-10-18,10392169985,KI- und Online Marketing Manager,KI Marketing,84,5057
+2026-W42,2026-10-18,10392170073,KI- und Online Marketing Manager Advanced,KI Marketing,159,5057
+2026-W42,2026-10-18,10396775639,Bild- und Videoerstellung mit Canva & KI,KI Marketing,325,5057
+2026-W42,2026-10-18,10411631827,Prompt Engineering im Berufsalltag,KI Prompt Engineering,10,6267
+2026-W42,2026-10-18,10408927215,KI Strategie & Implementierung,KI Strategie,9,7792
+2026-W42,2026-10-18,10338433889,KI Strategie & Implementierung & Agile Methoden,KI Strategie,75,7792
+2026-W42,2026-10-18,10392169985,KI- und Online Marketing Manager,KI Tools für Marketing,41,3065
+2026-W42,2026-10-18,10392170073,KI- und Online Marketing Manager Advanced,KI Tools für Marketing,82,3065
+2026-W42,2026-10-18,10396773986,Weiterbildung im E-Commerce mit KI,KI Tools für Marketing,204,3065
+2026-W42,2026-10-18,10338433889,KI Strategie & Implementierung & Agile Methoden,KI und Agile Methoden,6,4970
+2026-W42,2026-10-18,10338436797,Design Thinking & Agile Methoden mit KI,KI und Agile Methoden,14,4970
+2026-W42,2026-10-18,10338435794,KI-Anwendung & Agile Arbeitsmethoden,KI und Agile Methoden,253,4970
+2026-W42,2026-10-18,10396773986,Weiterbildung im E-Commerce mit KI,KI Weiterbildung,6,10000
+2026-W42,2026-10-18,10384706783,KI-Manager:in mit Vibe Coding und KI-Agenten,KI Weiterbildung,410,10000
+2026-W42,2026-10-18,10406700278,KI-Automatisierung mit n8n,KI Weiterbildung,419,10000
+2026-W42,2026-10-18,10338433139,KI-Manager:in,KI-Manager,2,7511
+2026-W42,2026-10-18,10392169985,KI- und Online Marketing Manager,KI-Manager,112,7511
+2026-W42,2026-10-18,10392170073,KI- und Online Marketing Manager Advanced,KI-Manager,165,7511
+2026-W42,2026-10-18,10384706783,KI-Manager:in mit Vibe Coding und KI-Agenten,KI-Manager,189,7511
+2026-W42,2026-10-18,10411633110,Mit Künstlicher Intelligenz programmieren,Künstliche Intelligenz,30,10000
+2026-W42,2026-10-18,10406116402,KI (Künstliche Intelligenz) im Projektmangement,Künstliche Intelligenz,90,10000
+2026-W42,2026-10-18,10396773986,Weiterbildung im E-Commerce mit KI,Künstliche Intelligenz Weiterbildung,8,9450
+2026-W42,2026-10-18,10411633110,Mit Künstlicher Intelligenz programmieren,Künstliche Intelligenz Weiterbildung,69,9450
+2026-W42,2026-10-18,10406116402,KI (Künstliche Intelligenz) im Projektmangement,Künstliche Intelligenz Weiterbildung,130,9450
+2026-W42,2026-10-18,10338433139,KI-Manager:in,Manager KI,2,7511
+2026-W42,2026-10-18,10392169985,KI- und Online Marketing Manager,Manager KI,112,7511
+2026-W42,2026-10-18,10392170073,KI- und Online Marketing Manager Advanced,Manager KI,165,7511
+2026-W42,2026-10-18,10384706783,KI-Manager:in mit Vibe Coding und KI-Agenten,Manager KI,189,7511
+2026-W42,2026-10-18,10338431266,Inbound Marketing Experte,Marketing Automation,111,688
+2026-W42,2026-10-18,10338428017,Performance Marketing Experte,Marketing Automation,118,688
+2026-W42,2026-10-18,10400859331,Performance Marketing Manager,Marketing Automation,126,688
+2026-W42,2026-10-18,10411632037,CRM Spezialist,Marketing Automation,140,688
+2026-W42,2026-10-18,10406116564,Online Marketing Manager,Marketing Automation,143,688
+2026-W42,2026-10-18,10342367598,Content Marketing,Marketing Automation,153,688
+2026-W42,2026-10-18,10342368840,Online Marketing Manager Advanced,Marketing Automation,186,688
+2026-W42,2026-10-18,10338427958,E-Commerce Manager,Marketing Automation,241,688
+2026-W42,2026-10-18,10395150822,PPC Marketing Expert,Marketing Kampagnen,196,3569
+2026-W42,2026-10-18,10338428017,Performance Marketing Experte,Marketing Kampagnen,247,3569
+2026-W42,2026-10-18,10396797754,Content Creator Kurs,Marketing Kurs,10,7454
+2026-W42,2026-10-18,10342367598,Content Marketing,Marketing Kurs,106,7454
+2026-W42,2026-10-18,10400963945,Social Media Marketing & Content Management,Marketing Kurs,361,7454
+2026-W42,2026-10-18,10395150822,PPC Marketing Expert,Marketing Kurs,376,7454
+2026-W42,2026-10-18,10406116564,Online Marketing Manager,Marketing Manager,28,3641
+2026-W42,2026-10-18,10400859331,Performance Marketing Manager,Marketing Manager,30,3641
+2026-W42,2026-10-18,10342368840,Online Marketing Manager Advanced,Marketing Manager,84,3641
+2026-W42,2026-10-18,10412039578,Social Media Manager,Marketing Manager,101,3641
+2026-W42,2026-10-18,10392169985,KI- und Online Marketing Manager,Marketing Manager,156,3641
+2026-W42,2026-10-18,10406612551,Social Media Advertising Manager,Marketing Manager,168,3641
+2026-W42,2026-10-18,10338427958,E-Commerce Manager,Marketing Manager,183,3641
+2026-W42,2026-10-18,10392170073,KI- und Online Marketing Manager Advanced,Marketing Manager,309,3641
+2026-W42,2026-10-18,10406613931,Suchmaschinenmarketing,Marketing Manager,470,3641
+2026-W42,2026-10-18,10392169985,KI- und Online Marketing Manager,Marketing mit AI,74,1598
+2026-W42,2026-10-18,10392170073,KI- und Online Marketing Manager Advanced,Marketing mit AI,112,1598
+2026-W42,2026-10-18,10396773986,Weiterbildung im E-Commerce mit KI,Marketing mit AI,244,1598
+2026-W42,2026-10-18,10396797754,Content Creator Kurs,Mediendesign Kurs,6,1630
+2026-W42,2026-10-18,10396797754,Content Creator Kurs,Mediengestaltung Kurs,2,2060
+2026-W42,2026-10-18,10396797754,Content Creator Kurs,Multimedia Kurs,3,1769
+2026-W42,2026-10-18,10361929245,Online Advertising im Online Marketing,Online Advertising,2,678
+2026-W42,2026-10-18,10412038324,Social Media Advertising Expert:in,Online Advertising,53,678
+2026-W42,2026-10-18,10406612551,Social Media Advertising Manager,Online Advertising,54,678
+2026-W42,2026-10-18,10406116564,Online Marketing Manager,Online Advertising,116,678
+2026-W42,2026-10-18,10395150822,PPC Marketing Expert,Online Advertising,245,678
+2026-W42,2026-10-18,10338427958,E-Commerce Manager,Online Advertising,327,678
+2026-W42,2026-10-18,10338428017,Performance Marketing Experte,Online Advertising,460,678
+2026-W42,2026-10-18,10400859331,Performance Marketing Manager,Online Advertising,474,678
+2026-W42,2026-10-18,10361929245,Online Advertising im Online Marketing,Online Marketing,1,5806
+2026-W42,2026-10-18,10406116564,Online Marketing Manager,Online Marketing,35,5806
+2026-W42,2026-10-18,10342368840,Online Marketing Manager Advanced,Online Marketing,92,5806
+2026-W42,2026-10-18,10392169985,KI- und Online Marketing Manager,Online Marketing,222,5806
+2026-W42,2026-10-18,10411632441,Online Marketing für Websites und Shops,Online Marketing,235,5806
+2026-W42,2026-10-18,10392170073,KI- und Online Marketing Manager Advanced,Online Marketing,441,5806
+2026-W42,2026-10-18,10361929245,Online Advertising im Online Marketing,Online Marketing Grundlagen,36,3813
+2026-W42,2026-10-18,10406116564,Online Marketing Manager,Online Marketing Grundlagen,91,3813
+2026-W42,2026-10-18,10342368840,Online Marketing Manager Advanced,Online Marketing Grundlagen,135,3813
+2026-W42,2026-10-18,10392169985,KI- und Online Marketing Manager,Online Marketing Grundlagen,210,3813
+2026-W42,2026-10-18,10392170073,KI- und Online Marketing Manager Advanced,Online Marketing Grundlagen,356,3813
+2026-W42,2026-10-18,10396797754,Content Creator Kurs,Online Marketing Kurs,2,3552
+2026-W42,2026-10-18,10361929245,Online Advertising im Online Marketing,Online Marketing Kurs,6,3552
+2026-W42,2026-10-18,10342368840,Online Marketing Manager Advanced,Online Marketing Kurs,86,3552
+2026-W42,2026-10-18,10392170073,KI- und Online Marketing Manager Advanced,Online Marketing Kurs,268,3552
+2026-W42,2026-10-18,10338426390,E-Commerce Shops und Online Plattformen,Online Marketing Kurs,344,3552
+2026-W42,2026-10-18,10342367598,Content Marketing,Online Marketing Kurs,421,3552
+2026-W42,2026-10-18,10392169985,KI- und Online Marketing Manager,Online Marketing lernen,7,2409
+2026-W42,2026-10-18,10361929245,Online Advertising im Online Marketing,Online Marketing lernen,10,2409
+2026-W42,2026-10-18,10392170073,KI- und Online Marketing Manager Advanced,Online Marketing lernen,22,2409
+2026-W42,2026-10-18,10406116564,Online Marketing Manager,Online Marketing lernen,35,2409
+2026-W42,2026-10-18,10338426390,E-Commerce Shops und Online Plattformen,Online Marketing lernen,237,2409
+2026-W42,2026-10-18,10396773986,Weiterbildung im E-Commerce mit KI,Online Marketing lernen,361,2409
+2026-W42,2026-10-18,10342367598,Content Marketing,Online Marketing lernen,394,2409
+2026-W42,2026-10-18,10342368840,Online Marketing Manager Advanced,Online Marketing Manager Kurs,11,1088
+2026-W42,2026-10-18,10396797754,Content Creator Kurs,Online Marketing Manager Kurs,28,1088
+2026-W42,2026-10-18,10392170073,KI- und Online Marketing Manager Advanced,Online Marketing Manager Kurs,45,1088
+2026-W42,2026-10-18,10361929245,Online Advertising im Online Marketing,Online Marketing Manager Kurs,80,1088
+2026-W42,2026-10-18,10400859331,Performance Marketing Manager,Online Marketing Manager Kurs,91,1088
+2026-W42,2026-10-18,10412039578,Social Media Manager,Online Marketing Manager Kurs,126,1088
+2026-W42,2026-10-18,10342367598,Content Marketing,Online Marketing Manager Kurs,314,1088
+2026-W42,2026-10-18,10338426390,E-Commerce Shops und Online Plattformen,Online Marketing Manager Kurs,401,1088
+2026-W42,2026-10-18,10361929245,Online Advertising im Online Marketing,Online Marketing Zertifikat,5,3863
+2026-W42,2026-10-18,10406116564,Online Marketing Manager,Online Marketing Zertifikat,37,3863
+2026-W42,2026-10-18,10392169985,KI- und Online Marketing Manager,Online Marketing Zertifikat,56,3863
+2026-W42,2026-10-18,10342368840,Online Marketing Manager Advanced,Online Marketing Zertifikat,60,3863
+2026-W42,2026-10-18,10392170073,KI- und Online Marketing Manager Advanced,Online Marketing Zertifikat,179,3863
+2026-W42,2026-10-18,10411632441,Online Marketing für Websites und Shops,Online Marketing Zertifikat,193,3863
+2026-W42,2026-10-18,10408511196,Amazon & Marktplatz Marketing,Online Marketing Zertifikat,434,3863
+2026-W42,2026-10-18,10338427958,E-Commerce Manager,Online Shop Manager,10,404
+2026-W42,2026-10-18,10338426390,E-Commerce Shops und Online Plattformen,Online Shop Manager,107,404
+2026-W42,2026-10-18,10361929245,Online Advertising im Online Marketing,Online Werbung,17,1744
+2026-W42,2026-10-18,10406116564,Online Marketing Manager,Online Werbung,38,1744
+2026-W42,2026-10-18,10342368840,Online Marketing Manager Advanced,Online Werbung,54,1744
+2026-W42,2026-10-18,10338427958,E-Commerce Manager,Online Werbung,68,1744
+2026-W42,2026-10-18,10411632441,Online Marketing für Websites und Shops,Online Werbung,79,1744
+2026-W42,2026-10-18,10392169985,KI- und Online Marketing Manager,Online Werbung,142,1744
+2026-W42,2026-10-18,10408510295,Meta Ads Spezialist,Online Werbung,144,1744
+2026-W42,2026-10-18,10411632037,CRM Spezialist,Online Werbung,215,1744
+2026-W42,2026-10-18,10338431266,Inbound Marketing Experte,Online Werbung,232,1744
+2026-W42,2026-10-18,10342367598,Content Marketing,Online Werbung,237,1744
+2026-W42,2026-10-18,10412039578,Social Media Manager,Online Werbung,277,1744
+2026-W42,2026-10-18,10406613931,Suchmaschinenmarketing,Online Werbung,285,1744
+2026-W42,2026-10-18,10338428017,Performance Marketing Experte,Online Werbung,292,1744
+2026-W42,2026-10-18,10400859331,Performance Marketing Manager,Online Werbung,293,1744
+2026-W42,2026-10-18,10395150822,PPC Marketing Expert,Online Werbung,300,1744
+2026-W42,2026-10-18,10408510489,Google Ads Spezialist,Online Werbung,308,1744
+2026-W42,2026-10-18,10406612551,Social Media Advertising Manager,Online Werbung,324,1744
+2026-W42,2026-10-18,10412038324,Social Media Advertising Expert:in,Online Werbung,329,1744
+2026-W42,2026-10-18,10389168845,Social Media Aufbaukurs für Fortgeschrittene,Online Werbung,330,1744
+2026-W42,2026-10-18,10408927165,Social Media Creation Experte,Online Werbung,335,1744
+2026-W42,2026-10-18,10408510192,Social Media Marketing für Redakteure,Online Werbung,338,1744
+2026-W42,2026-10-18,10400963945,Social Media Marketing & Content Management,Online Werbung,371,1744
+2026-W42,2026-10-18,10396775639,Bild- und Videoerstellung mit Canva & KI,Online Werbung,423,1744
+2026-W42,2026-10-18,10338426390,E-Commerce Shops und Online Plattformen,Online-Shops,4,1031
+2026-W42,2026-10-18,10411632441,Online Marketing für Websites und Shops,Online-Shops,6,1031
+2026-W42,2026-10-18,10338427958,E-Commerce Manager,Online-Shops,164,1031
+2026-W42,2026-10-18,10408511090,E-Commerce für Gründer:innen,Online-Shops,235,1031
+2026-W42,2026-10-18,10408511196,Amazon & Marktplatz Marketing,Online-Shops,252,1031
+2026-W42,2026-10-18,10400859331,Performance Marketing Manager,Performance Marketing Manager,3,1149
+2026-W42,2026-10-18,10338428017,Performance Marketing Experte,Performance Marketing Manager,111,1149
+2026-W42,2026-10-18,10406116564,Online Marketing Manager,Performance Marketing Manager,153,1149
+2026-W42,2026-10-18,10406612551,Social Media Advertising Manager,Performance Marketing Manager,183,1149
+2026-W42,2026-10-18,10338427958,E-Commerce Manager,Performance Marketing Manager,215,1149
+2026-W42,2026-10-18,10395150822,PPC Marketing Expert,PPC,3,61
+2026-W42,2026-10-18,10338428017,Performance Marketing Experte,PPC,44,61
+2026-W42,2026-10-18,10400859331,Performance Marketing Manager,PPC,47,61
+2026-W42,2026-10-18,10338427958,E-Commerce Manager,PPC,56,61
+2026-W42,2026-10-18,10338426390,E-Commerce Shops und Online Plattformen,Produktbewertung,5,26
+2026-W42,2026-10-18,10338427958,E-Commerce Manager,Produktbewertung,23,26
+2026-W42,2026-10-18,10338427958,E-Commerce Manager,Projektmanagement E-Commerce,25,242
+2026-W42,2026-10-18,10406612551,Social Media Advertising Manager,Projektmanagement E-Commerce,131,242
+2026-W42,2026-10-18,10342368840,Online Marketing Manager Advanced,Projektmanagement E-Commerce,134,242
+2026-W42,2026-10-18,10342367598,Content Marketing,Projektmanagement E-Commerce,142,242
+2026-W42,2026-10-18,10389168845,Social Media Aufbaukurs für Fortgeschrittene,Projektmanagement E-Commerce,143,242
+2026-W42,2026-10-18,10400859331,Performance Marketing Manager,Projektmanagement E-Commerce,151,242
+2026-W42,2026-10-18,10338436797,Design Thinking & Agile Methoden mit KI,Projektmanagement E-Commerce,168,242
+2026-W42,2026-10-18,10392169985,KI- und Online Marketing Manager,Projektmanagement E-Commerce,173,242
+2026-W42,2026-10-18,10392170073,KI- und Online Marketing Manager Advanced,Projektmanagement E-Commerce,176,242
+2026-W42,2026-10-18,10338435794,KI-Anwendung & Agile Arbeitsmethoden,Projektmanagement E-Commerce,223,242
+2026-W42,2026-10-18,10338433889,KI Strategie & Implementierung & Agile Methoden,Projektmanagement E-Commerce,228,242
+2026-W42,2026-10-18,10338433139,KI-Manager:in,Projektmanagement E-Commerce,229,242
+2026-W42,2026-10-18,10396797754,Content Creator Kurs,Projektmanager Kurs,148,2269
+2026-W42,2026-10-18,10406613931,Suchmaschinenmarketing,SEA,417,1410
+2026-W42,2026-10-18,10392169985,KI- und Online Marketing Manager,SEO Manager KI,83,492
+2026-W42,2026-10-18,10392170073,KI- und Online Marketing Manager Advanced,SEO Manager KI,93,492
+2026-W42,2026-10-18,10406116564,Online Marketing Manager,SEO Manager KI,128,492
+2026-W42,2026-10-18,10400859331,Performance Marketing Manager,SEO Manager KI,131,492
+2026-W42,2026-10-18,10338427958,E-Commerce Manager,SEO Manager KI,140,492
+2026-W42,2026-10-18,10412039578,Social Media Manager,SEO Manager KI,160,492
+2026-W42,2026-10-18,10342368840,Online Marketing Manager Advanced,SEO Manager KI,169,492
+2026-W42,2026-10-18,10342367598,Content Marketing,SEO Manager KI,374,492
+2026-W42,2026-10-18,10338431266,Inbound Marketing Experte,SEO Manager KI,377,492
+2026-W42,2026-10-18,10338428017,Performance Marketing Experte,SEO Manager KI,400,492
+2026-W42,2026-10-18,10338427958,E-Commerce Manager,Shop Manager,11,438
+2026-W42,2026-10-18,10338426390,E-Commerce Shops und Online Plattformen,Shop Manager,214,438
+2026-W42,2026-10-18,10338431266,Inbound Marketing Experte,Sistrix,69,225
+2026-W42,2026-10-18,10338428017,Performance Marketing Experte,Sistrix,121,225
+2026-W42,2026-10-18,10338427958,E-Commerce Manager,Sistrix,174,225
+2026-W42,2026-10-18,10412038324,Social Media Advertising Expert:in,Social Media Advertising,9,546
+2026-W42,2026-10-18,10406612551,Social Media Advertising Manager,Social Media Advertising,10,546
+2026-W42,2026-10-18,10361929245,Online Advertising im Online Marketing,Social Media Advertising,27,546
+2026-W42,2026-10-18,10395150822,PPC Marketing Expert,Social Media Advertising,196,546
+2026-W42,2026-10-18,10406116564,Online Marketing Manager,Social Media Advertising,240,546
+2026-W42,2026-10-18,10338428017,Performance Marketing Experte,Social Media Advertising,243,546
+2026-W42,2026-10-18,10400859331,Performance Marketing Manager,Social Media Advertising,248,546
+2026-W42,2026-10-18,10338427958,E-Commerce Manager,Social Media Advertising,448,546
+2026-W42,2026-10-18,10412038324,Social Media Advertising Expert:in,Social Media Experte,2,414
+2026-W42,2026-10-18,10408927165,Social Media Creation Experte,Social Media Experte,3,414
+2026-W42,2026-10-18,10338428017,Performance Marketing Experte,Social Media Experte,12,414
+2026-W42,2026-10-18,10395150822,PPC Marketing Expert,Social Media Experte,13,414
+2026-W42,2026-10-18,10338426390,E-Commerce Shops und Online Plattformen,Social Media Experte,51,414
+2026-W42,2026-10-18,10396797754,Content Creator Kurs,Social Media Experte,144,414
+2026-W42,2026-10-18,10396773986,Weiterbildung im E-Commerce mit KI,Social Media Experte,306,414
+2026-W42,2026-10-18,10412039578,Social Media Manager,Social Media Marketing Manager,4,1425
+2026-W42,2026-10-18,10406612551,Social Media Advertising Manager,Social Media Marketing Manager,12,1425
+2026-W42,2026-10-18,10406116564,Online Marketing Manager,Social Media Marketing Manager,64,1425
+2026-W42,2026-10-18,10400859331,Performance Marketing Manager,Social Media Marketing Manager,70,1425
+2026-W42,2026-10-18,10342368840,Online Marketing Manager Advanced,Social Media Marketing Manager,137,1425
+2026-W42,2026-10-18,10389168845,Social Media Aufbaukurs für Fortgeschrittene,Social Media Marketing Manager,331,1425
+2026-W42,2026-10-18,10412038324,Social Media Advertising Expert:in,Social Media Marketing Manager,360,1425
+2026-W42,2026-10-18,10408927165,Social Media Creation Experte,Social Media Marketing Manager,365,1425
+2026-W42,2026-10-18,10342367598,Content Marketing,Social Media Marketing Manager,400,1425
+2026-W42,2026-10-18,10338428017,Performance Marketing Experte,Social Media Marketing Manager,498,1425
+2026-W42,2026-10-18,10412039578,Social Media Manager,Social Media Marketing Manager Weiterbildung,5,1110
+2026-W42,2026-10-18,10406612551,Social Media Advertising Manager,Social Media Marketing Manager Weiterbildung,12,1110
+2026-W42,2026-10-18,10400859331,Performance Marketing Manager,Social Media Marketing Manager Weiterbildung,43,1110
+2026-W42,2026-10-18,10406116564,Online Marketing Manager,Social Media Marketing Manager Weiterbildung,66,1110
+2026-W42,2026-10-18,10342368840,Online Marketing Manager Advanced,Social Media Marketing Manager Weiterbildung,103,1110
+2026-W42,2026-10-18,10389168845,Social Media Aufbaukurs für Fortgeschrittene,Social Media Marketing Manager Weiterbildung,278,1110
+2026-W42,2026-10-18,10412038324,Social Media Advertising Expert:in,Social Media Marketing Manager Weiterbildung,288,1110
+2026-W42,2026-10-18,10408927165,Social Media Creation Experte,Social Media Marketing Manager Weiterbildung,297,1110
+2026-W42,2026-10-18,10342367598,Content Marketing,Social Media Marketing Manager Weiterbildung,337,1110
+2026-W42,2026-10-18,10338428017,Performance Marketing Experte,Social Media Marketing Manager Weiterbildung,424,1110
+2026-W42,2026-10-18,10408510489,Google Ads Spezialist,Social Media Marketing Manager Weiterbildung,431,1110
+2026-W42,2026-10-18,10408510295,Meta Ads Spezialist,Social Media Marketing Manager Weiterbildung,440,1110
+2026-W42,2026-10-18,10395150822,PPC Marketing Expert,Social Media Marketing Manager Weiterbildung,441,1110
+2026-W42,2026-10-18,10361929245,Online Advertising im Online Marketing,Social Media Marketing Manager Weiterbildung,476,1110
+2026-W42,2026-10-18,10338426390,E-Commerce Shops und Online Plattformen,Social Media Plattformen,14,1996
+2026-W42,2026-10-18,10412039578,Social Media Manager,Social Media Plattformen,106,1996
+2026-W42,2026-10-18,10412038324,Social Media Advertising Expert:in,Social Media Plattformen,197,1996
+2026-W42,2026-10-18,10406612551,Social Media Advertising Manager,Social Media Plattformen,393,1996
+2026-W42,2026-10-18,10361929245,Online Advertising im Online Marketing,Strategisches Online Marketing,18,1766
+2026-W42,2026-10-18,10406116564,Online Marketing Manager,Strategisches Online Marketing,41,1766
+2026-W42,2026-10-18,10408511196,Amazon & Marktplatz Marketing,Strategisches Online Marketing,235,1766
+2026-W42,2026-10-18,10342367598,Content Marketing,Strategisches Online Marketing,416,1766
+2026-W42,2026-10-18,10400963945,Social Media Marketing & Content Management,Strategisches Online Marketing,466,1766
+2026-W42,2026-10-18,10406613931,Suchmaschinenmarketing,Suchmaschinenmarketing,3,804
+2026-W42,2026-10-18,10406613931,Suchmaschinenmarketing,Suchmaschinenmarketing und Google Ads,16,287
+2026-W42,2026-10-18,10389167442,Wordpress,Suchmaschinenoptimierung,346,1669
+2026-W42,2026-10-18,10412039578,Social Media Manager,Suchmaschinenoptimierung,471,1669
+2026-W42,2026-10-18,10395150822,PPC Marketing Expert,Suchmaschinenwerbung,44,543
+2026-W42,2026-10-18,10406613931,Suchmaschinenmarketing,Suchmaschinenwerbung,46,543
+2026-W42,2026-10-18,10408510489,Google Ads Spezialist,Suchmaschinenwerbung,79,543
+2026-W42,2026-10-18,10392169985,KI- und Online Marketing Manager,Suchmaschinenwerbung,175,543
+2026-W42,2026-10-18,10392170073,KI- und Online Marketing Manager Advanced,Suchmaschinenwerbung,192,543
+2026-W42,2026-10-18,10338428017,Performance Marketing Experte,Suchmaschinenwerbung,346,543
+2026-W42,2026-10-18,10400859331,Performance Marketing Manager,Suchmaschinenwerbung,388,543
+2026-W42,2026-10-18,10338427958,E-Commerce Manager,Suchmaschinenwerbung,440,543
+2026-W42,2026-10-18,10404755106,KI im Büroalltag - ChatGPT & Co.,Texterstellung mit KI,64,344
+2026-W42,2026-10-18,10411631827,Prompt Engineering im Berufsalltag,Texterstellung mit KI,83,344
+2026-W42,2026-10-18,10384706783,KI-Manager:in mit Vibe Coding und KI-Agenten,Texterstellung mit KI,90,344
+2026-W42,2026-10-18,10414983676,KI Anwendung & Implementierung,Texterstellung mit KI,103,344
+2026-W42,2026-10-18,10338435794,KI-Anwendung & Agile Arbeitsmethoden,Texterstellung mit KI,107,344
+2026-W42,2026-10-18,10338433139,KI-Manager:in,Texterstellung mit KI,118,344
+2026-W42,2026-10-18,10389168845,Social Media Aufbaukurs für Fortgeschrittene,Texterstellung mit KI,276,344
+2026-W42,2026-10-18,10396797754,Content Creator Kurs,Usability Kurs,4,1662
+2026-W42,2026-10-18,10389167442,Wordpress,Usability Kurs,271,1662
+2026-W42,2026-10-18,10396775639,Bild- und Videoerstellung mit Canva & KI,Videos bearbeiten,16,311
+2026-W42,2026-10-18,10396797754,Content Creator Kurs,Webdesign Kurs,2,2325
+2026-W42,2026-10-18,10396773986,Weiterbildung im E-Commerce mit KI,Weiterbildung Digital Marketing,48,4411
+2026-W42,2026-10-18,10396773986,Weiterbildung im E-Commerce mit KI,Weiterbildung im E-Commerce,25,1522
+2026-W42,2026-10-18,10338427958,E-Commerce Manager,Weiterbildung im E-Commerce,119,1522
+2026-W42,2026-10-18,10408511090,E-Commerce für Gründer:innen,Weiterbildung im E-Commerce,156,1522
+2026-W42,2026-10-18,10338426390,E-Commerce Shops und Online Plattformen,Weiterbildung im E-Commerce,239,1522
+2026-W42,2026-10-18,10408511196,Amazon & Marktplatz Marketing,Weiterbildung im E-Commerce,445,1522
+2026-W42,2026-10-18,10396773986,Weiterbildung im E-Commerce mit KI,Weiterbildung KI,6,10000
+2026-W42,2026-10-18,10384706783,KI-Manager:in mit Vibe Coding und KI-Agenten,Weiterbildung KI,410,10000
+2026-W42,2026-10-18,10406700278,KI-Automatisierung mit n8n,Weiterbildung KI,419,10000
+2026-W42,2026-10-18,10396773986,Weiterbildung im E-Commerce mit KI,Weiterbildung Marketing,23,8194
+2026-W42,2026-10-18,10342367598,Content Marketing,Weiterbildung Marketing,386,8194
+2026-W42,2026-10-18,10400859331,Performance Marketing Manager,Weiterbildung Marketing,434,8194
+2026-W42,2026-10-18,10406613931,Suchmaschinenmarketing,Weiterbildung Suchmaschinenmarketing,1,585
+2026-W42,2026-10-18,10389167442,Wordpress,WordPress,3,1043
+2026-W42,2026-10-18,10389167442,Wordpress,Wordpress Kurs,2,463
+2026-W42,2026-10-18,10342367598,Content Marketing,Wordpress Kurs,301,463
+2026-W42,2026-10-18,10342368840,Online Marketing Manager Advanced,Wordpress Kurs,317,463
+2026-W42,2026-10-18,10392170073,KI- und Online Marketing Manager Advanced,Wordpress Kurs,350,463
+2026-W42,2026-10-18,10389167442,Wordpress,Wordpress Lernen,2,284
+2026-W42,2026-10-18,10392169985,KI- und Online Marketing Manager,Wordpress Lernen,61,284
+2026-W42,2026-10-18,10392170073,KI- und Online Marketing Manager Advanced,Wordpress Lernen,64,284
+2026-W42,2026-10-18,10406116564,Online Marketing Manager,Wordpress Lernen,117,284
+2026-W42,2026-10-18,10342367598,Content Marketing,Wordpress Lernen,145,284
+2026-W42,2026-10-18,10408511196,Amazon & Marktplatz Marketing,amazon,37,561
+2026-W42,2026-10-18,10396773986,Weiterbildung im E-Commerce mit KI,amazon,143,561
+2026-W42,2026-10-18,10338426390,E-Commerce Shops und Online Plattformen,amazon,157,561
+2026-W42,2026-10-18,10338427958,E-Commerce Manager,amazon,231,561
+2026-W42,2026-10-18,10342368840,Online Marketing Manager Advanced,amazon,369,561
+2026-W42,2026-10-18,10408511196,Amazon & Marktplatz Marketing,amazon marketing,2,90
+2026-W42,2026-10-18,10342368840,Online Marketing Manager Advanced,amazon marketing,59,90
+2026-W42,2026-10-18,10338426390,E-Commerce Shops und Online Plattformen,amazon marketing,62,90
+2026-W42,2026-10-18,10338427958,E-Commerce Manager,amazon marketing,67,90
+2026-W42,2026-10-18,10396773986,Weiterbildung im E-Commerce mit KI,amazon marketing,69,90
+2026-W42,2026-10-18,10408511196,Amazon & Marktplatz Marketing,amazon marktplatz,2,41
+2026-W42,2026-10-18,10396773986,Weiterbildung im E-Commerce mit KI,amazon marktplatz,34,41
+2026-W42,2026-10-18,10396775639,Bild- und Videoerstellung mit Canva & KI,canva marketing,1,511
+2026-W42,2026-10-18,10342367598,Content Marketing,canva marketing,11,511
+2026-W42,2026-10-18,10400963945,Social Media Marketing & Content Management,canva marketing,18,511
+2026-W42,2026-10-18,10408510192,Social Media Marketing für Redakteure,canva marketing,19,511
+2026-W42,2026-10-18,10389168845,Social Media Aufbaukurs für Fortgeschrittene,canva marketing,138,511
+2026-W42,2026-10-18,10338427958,E-Commerce Manager,canva marketing,188,511
+2026-W42,2026-10-18,10404755106,KI im Büroalltag - ChatGPT & Co.,canva marketing,292,511
+2026-W42,2026-10-18,10338435794,KI-Anwendung & Agile Arbeitsmethoden,canva marketing,375,511
+2026-W42,2026-10-18,10414983676,KI Anwendung & Implementierung,canva marketing,382,511
+2026-W42,2026-10-18,10338433139,KI-Manager:in,canva marketing,409,511
+2026-W42,2026-10-18,10408927165,Social Media Creation Experte,bildgestaltung,87,299
+2026-W42,2026-10-18,10342368840,Online Marketing Manager Advanced,bildgestaltung,137,299
+2026-W42,2026-10-18,10396797754,Content Creator Kurs,content creator,71,456
+2026-W42,2026-10-18,10406613460,Design Thinking für Content Creator,content creator,117,456
+2026-W42,2026-10-18,10408511262,Video Marketing Spezialist,content creator,343,456
+2026-W42,2026-10-18,10342367598,Content Marketing,marketing,152,10000
+2026-W42,2026-10-18,10338431266,Inbound Marketing Experte,marketing,282,10000
+2026-W42,2026-10-18,10400859331,Performance Marketing Manager,marketing,467,10000
+2026-W42,2026-10-18,10338428017,Performance Marketing Experte,marketing,469,10000
+2026-W42,2026-10-18,10406116564,Online Marketing Manager,marketing,470,10000
+2026-W42,2026-10-18,10411632037,CRM Spezialist,CRM,65,3016
+2026-W42,2026-10-18,10411632441,Online Marketing für Websites und Shops,Kundenbeziehung,52,650
+2026-W42,2026-10-18,10411631827,Prompt Engineering im Berufsalltag,Kundenbeziehung,488,650
+2026-W42,2026-10-18,10411632037,CRM Spezialist,Kundenbeziehung,498,650
+2026-W42,2026-10-18,10338433889,KI Strategie & Implementierung & Agile Methoden,agile methoden mit ki,6,4970
+2026-W42,2026-10-18,10338436797,Design Thinking & Agile Methoden mit KI,agile methoden mit ki,14,4970
+2026-W42,2026-10-18,10338435794,KI-Anwendung & Agile Arbeitsmethoden,agile methoden mit ki,253,4970
+2026-W42,2026-10-18,10338436797,Design Thinking & Agile Methoden mit KI,design thinking & agile methoden,3,1042
+2026-W42,2026-10-18,10338433889,KI Strategie & Implementierung & Agile Methoden,design thinking & agile methoden,195,1042
+2026-W42,2026-10-18,10338435794,KI-Anwendung & Agile Arbeitsmethoden,design thinking & agile methoden,326,1042
+2026-W42,2026-10-18,10406613460,Design Thinking für Content Creator,design thinking für content creator,1,58
+2026-W42,2026-10-18,10338427958,E-Commerce Manager,e-commerce aufbauen,27,736
+2026-W42,2026-10-18,10408511090,E-Commerce für Gründer:innen,e-commerce aufbauen,43,736
+2026-W42,2026-10-18,10338426390,E-Commerce Shops und Online Plattformen,e-commerce aufbauen,96,736
+2026-W42,2026-10-18,10396773986,Weiterbildung im E-Commerce mit KI,e-commerce aufbauen,98,736
+2026-W42,2026-10-18,10411632441,Online Marketing für Websites und Shops,e-commerce aufbauen,169,736
+2026-W42,2026-10-18,10412038324,Social Media Advertising Expert:in,e-commerce aufbauen,394,736
+2026-W42,2026-10-18,10342368840,Online Marketing Manager Advanced,e-commerce aufbauen,416,736
+2026-W42,2026-10-18,10412039578,Social Media Manager,e-commerce aufbauen,425,736
+2026-W42,2026-10-18,10389168845,Social Media Aufbaukurs für Fortgeschrittene,e-commerce aufbauen,428,736
+2026-W42,2026-10-18,10406612551,Social Media Advertising Manager,e-commerce aufbauen,429,736
+2026-W42,2026-10-18,10389167442,Wordpress,e-commerce aufbauen,439,736
+2026-W42,2026-10-18,10342367598,Content Marketing,e-commerce aufbauen,443,736
+2026-W42,2026-10-18,10338428017,Performance Marketing Experte,e-commerce aufbauen,446,736
+2026-W42,2026-10-18,10338431266,Inbound Marketing Experte,e-commerce aufbauen,447,736
+2026-W42,2026-10-18,10400859331,Performance Marketing Manager,e-commerce aufbauen,451,736
+2026-W42,2026-10-18,10395150822,PPC Marketing Expert,e-commerce aufbauen,463,736
+2026-W42,2026-10-18,10361929245,Online Advertising im Online Marketing,e-commerce aufbauen,467,736
+2026-W42,2026-10-18,10408927165,Social Media Creation Experte,e-commerce aufbauen,472,736
+2026-W42,2026-10-18,10396775639,Bild- und Videoerstellung mit Canva & KI,e-commerce aufbauen,476,736
+2026-W42,2026-10-18,10396797754,Content Creator Kurs,e-commerce aufbauen,480,736
+2026-W42,2026-10-18,10396773986,Weiterbildung im E-Commerce mit KI,e commerce lernen,2,792
+2026-W42,2026-10-18,10338426390,E-Commerce Shops und Online Plattformen,e commerce lernen,103,792
+2026-W42,2026-10-18,10392169985,KI- und Online Marketing Manager,e commerce lernen,356,792
+2026-W42,2026-10-18,10392170073,KI- und Online Marketing Manager Advanced,e commerce lernen,362,792
+2026-W42,2026-10-18,10412038324,Social Media Advertising Expert:in,e commerce lernen,399,792
+2026-W42,2026-10-18,10338426390,E-Commerce Shops und Online Plattformen,e-commerce shops,2,996
+2026-W42,2026-10-18,10411632441,Online Marketing für Websites und Shops,e-commerce shops,6,996
+2026-W42,2026-10-18,10338427958,E-Commerce Manager,e-commerce shops,73,996
+2026-W42,2026-10-18,10408511090,E-Commerce für Gründer:innen,e-commerce shops,128,996
+2026-W42,2026-10-18,10396773986,Weiterbildung im E-Commerce mit KI,e-commerce shops,497,996
+2026-W42,2026-10-18,10338426390,E-Commerce Shops und Online Plattformen,online plattformen,3,2217
+2026-W42,2026-10-18,10361929245,Online Advertising im Online Marketing,online plattformen,39,2217
+2026-W42,2026-10-18,10342368840,Online Marketing Manager Advanced,online plattformen,83,2217
+2026-W42,2026-10-18,10411632441,Online Marketing für Websites und Shops,online plattformen,92,2217
+2026-W42,2026-10-18,10408511196,Amazon & Marktplatz Marketing,online plattformen,225,2217
+2026-W42,2026-10-18,10338427958,E-Commerce Manager,online plattformen,242,2217
+2026-W42,2026-10-18,10412039578,Social Media Manager,online plattformen,448,2217
+2026-W42,2026-10-18,10361929245,Online Advertising im Online Marketing,google advertising,14,286
+2026-W42,2026-10-18,10395150822,PPC Marketing Expert,google advertising,76,286
+2026-W42,2026-10-18,10338428017,Performance Marketing Experte,google advertising,141,286
+2026-W42,2026-10-18,10406116564,Online Marketing Manager,google advertising,168,286
+2026-W42,2026-10-18,10400859331,Performance Marketing Manager,google advertising,197,286
+2026-W42,2026-10-18,10338427958,E-Commerce Manager,google advertising,213,286
+2026-W42,2026-10-18,10408510489,Google Ads Spezialist,google werbung,16,786
+2026-W42,2026-10-18,10338427958,E-Commerce Manager,google werbung,106,786
+2026-W42,2026-10-18,10406613931,Suchmaschinenmarketing,google werbung,133,786
+2026-W42,2026-10-18,10338428017,Performance Marketing Experte,google werbung,134,786
+2026-W42,2026-10-18,10395150822,PPC Marketing Expert,google werbung,151,786
+2026-W42,2026-10-18,10361929245,Online Advertising im Online Marketing,google werbung,165,786
+2026-W42,2026-10-18,10342368840,Online Marketing Manager Advanced,google werbung,176,786
+2026-W42,2026-10-18,10406116564,Online Marketing Manager,google werbung,182,786
+2026-W42,2026-10-18,10400859331,Performance Marketing Manager,google werbung,185,786
+2026-W42,2026-10-18,10342367598,Content Marketing,google werbung,197,786
+2026-W42,2026-10-18,10389168845,Social Media Aufbaukurs für Fortgeschrittene,google werbung,223,786
+2026-W42,2026-10-18,10411632441,Online Marketing für Websites und Shops,google werbung,229,786
+2026-W42,2026-10-18,10392169985,KI- und Online Marketing Manager,google werbung,340,786
+2026-W42,2026-10-18,10338431266,Inbound Marketing Experte,inbound marketing experte,1,20
+2026-W42,2026-10-18,10338428017,Performance Marketing Experte,inbound marketing experte,2,20
+2026-W42,2026-10-18,10338431266,Inbound Marketing Experte,inbound marketing weiterbildung,2,203
+2026-W42,2026-10-18,10338428017,Performance Marketing Experte,inbound marketing weiterbildung,8,203
+2026-W42,2026-10-18,10411632037,CRM Spezialist,inbound marketing weiterbildung,29,203
+2026-W42,2026-10-18,10338427958,E-Commerce Manager,inbound marketing weiterbildung,154,203
+2026-W42,2026-10-18,10414983676,KI Anwendung & Implementierung,ki implementierung,3,5011
+2026-W42,2026-10-18,10408927215,KI Strategie & Implementierung,ki implementierung,4,5011
+2026-W42,2026-10-18,10338433889,KI Strategie & Implementierung & Agile Methoden,ki implementierung,21,5011
+2026-W42,2026-10-18,10384706783,KI-Manager:in mit Vibe Coding und KI-Agenten,ki implementierung,230,5011
+2026-W42,2026-10-18,10404251965,KI Coach,ki implementierung,260,5011
+2026-W42,2026-10-18,10392169985,KI- und Online Marketing Manager,ki implementierung,419,5011
+2026-W42,2026-10-18,10392170073,KI- und Online Marketing Manager Advanced,ki implementierung,500,5011
+2026-W42,2026-10-18,10414983676,KI Anwendung & Implementierung,ki anwendung & implementierung,1,3951
+2026-W42,2026-10-18,10408927215,KI Strategie & Implementierung,ki anwendung & implementierung,6,3951
+2026-W42,2026-10-18,10338433889,KI Strategie & Implementierung & Agile Methoden,ki anwendung & implementierung,14,3951
+2026-W42,2026-10-18,10384706783,KI-Manager:in mit Vibe Coding und KI-Agenten,ki anwendung & implementierung,319,3951
+2026-W42,2026-10-18,10404251965,KI Coach,ki anwendung & implementierung,334,3951
+2026-W42,2026-10-18,10338433139,KI-Manager:in,ki anwendung & implementierung,396,3951
+2026-W42,2026-10-18,10392169985,KI- und Online Marketing Manager,ki anwendung & implementierung,455,3951
+2026-W42,2026-10-18,10404755106,KI im Büroalltag - ChatGPT & Co.,ki im büroalltag chatgpt,1,104
+2026-W42,2026-10-18,10408927215,KI Strategie & Implementierung,ki strategie & implementierung,1,2410
+2026-W42,2026-10-18,10338433889,KI Strategie & Implementierung & Agile Methoden,ki strategie & implementierung,5,2410
+2026-W42,2026-10-18,10414983676,KI Anwendung & Implementierung,ki strategie & implementierung,10,2410
+2026-W42,2026-10-18,10404251965,KI Coach,ki strategie & implementierung,306,2410
+2026-W42,2026-10-18,10384706783,KI-Manager:in mit Vibe Coding und KI-Agenten,ki strategie & implementierung,385,2410
+2026-W42,2026-10-18,10392169985,KI- und Online Marketing Manager,ki strategie & implementierung,398,2410
+2026-W42,2026-10-18,10392170073,KI- und Online Marketing Manager Advanced,ki strategie & implementierung,436,2410
+2026-W42,2026-10-18,10338433139,KI-Manager:in,ki strategie & implementierung,438,2410
+2026-W42,2026-10-18,10338433889,KI Strategie & Implementierung & Agile Methoden,ki agile methoden,6,4970
+2026-W42,2026-10-18,10338436797,Design Thinking & Agile Methoden mit KI,ki agile methoden,14,4970
+2026-W42,2026-10-18,10338435794,KI-Anwendung & Agile Arbeitsmethoden,ki agile methoden,253,4970
+2026-W42,2026-10-18,10392169985,KI- und Online Marketing Manager,ki & online marketing,8,2323
+2026-W42,2026-10-18,10392170073,KI- und Online Marketing Manager Advanced,ki & online marketing,20,2323
+2026-W42,2026-10-18,10406116564,Online Marketing Manager,ki & online marketing,64,2323
+2026-W42,2026-10-18,10342368840,Online Marketing Manager Advanced,ki & online marketing,157,2323
+2026-W42,2026-10-18,10396775639,Bild- und Videoerstellung mit Canva & KI,ki & online marketing,390,2323
+2026-W42,2026-10-18,10396773986,Weiterbildung im E-Commerce mit KI,ki & online marketing,490,2323
+2026-W42,2026-10-18,10406116564,Online Marketing Manager,online marketing manager,6,1900
+2026-W42,2026-10-18,10342368840,Online Marketing Manager Advanced,online marketing manager,21,1900
+2026-W42,2026-10-18,10392169985,KI- und Online Marketing Manager,online marketing manager,37,1900
+2026-W42,2026-10-18,10392170073,KI- und Online Marketing Manager Advanced,online marketing manager,73,1900
+2026-W42,2026-10-18,10338427958,E-Commerce Manager,online marketing manager,120,1900
+2026-W42,2026-10-18,10400859331,Performance Marketing Manager,online marketing manager,134,1900
+2026-W42,2026-10-18,10361929245,Online Advertising im Online Marketing,online marketing manager,136,1900
+2026-W42,2026-10-18,10412039578,Social Media Manager,online marketing manager,197,1900
+2026-W42,2026-10-18,10406612551,Social Media Advertising Manager,online marketing manager,260,1900
+2026-W42,2026-10-18,10406613931,Suchmaschinenmarketing,online marketing manager,433,1900
+2026-W42,2026-10-18,10338433139,KI-Manager:in,ai manager,10,2469
+2026-W42,2026-10-18,10392169985,KI- und Online Marketing Manager,ai manager,64,2469
+2026-W42,2026-10-18,10392170073,KI- und Online Marketing Manager Advanced,ai manager,103,2469
+2026-W42,2026-10-18,10384706783,KI-Manager:in mit Vibe Coding und KI-Agenten,ai manager,108,2469
+2026-W42,2026-10-18,10406116402,KI (Künstliche Intelligenz) im Projektmangement,ai manager,344,2469
+2026-W42,2026-10-18,10392169985,KI- und Online Marketing Manager,ki- und online marketing,8,2323
+2026-W42,2026-10-18,10392170073,KI- und Online Marketing Manager Advanced,ki- und online marketing,20,2323
+2026-W42,2026-10-18,10406116564,Online Marketing Manager,ki- und online marketing,64,2323
+2026-W42,2026-10-18,10342368840,Online Marketing Manager Advanced,ki- und online marketing,157,2323
+2026-W42,2026-10-18,10396775639,Bild- und Videoerstellung mit Canva & KI,ki- und online marketing,390,2323
+2026-W42,2026-10-18,10396773986,Weiterbildung im E-Commerce mit KI,ki- und online marketing,490,2323
+2026-W42,2026-10-18,10392170073,KI- und Online Marketing Manager Advanced,ki manager advanced,2,156
+2026-W42,2026-10-18,10342368840,Online Marketing Manager Advanced,ki manager advanced,9,156
+2026-W42,2026-10-18,10384706783,KI-Manager:in mit Vibe Coding und KI-Agenten,ki manager advanced,44,156
+2026-W42,2026-10-18,10338435794,KI-Anwendung & Agile Arbeitsmethoden,ki- anwendung & agile arbeitsmethoden,1,135
+2026-W42,2026-10-18,10392169985,KI- und Online Marketing Manager,ki- anwendung & agile arbeitsmethoden,16,135
+2026-W42,2026-10-18,10338436797,Design Thinking & Agile Methoden mit KI,ki- anwendung & agile arbeitsmethoden,17,135
+2026-W42,2026-10-18,10392170073,KI- und Online Marketing Manager Advanced,ki- anwendung & agile arbeitsmethoden,18,135
+2026-W42,2026-10-18,10406117728,KI-Assistenten mit Microsoft Copilot Studio,KI-Assistent,9,984
+2026-W42,2026-10-18,10406117728,KI-Assistenten mit Microsoft Copilot Studio,copilot,434,2108
+2026-W42,2026-10-18,10406117728,KI-Assistenten mit Microsoft Copilot Studio,ki assisten mit copilot,71,1752
+2026-W42,2026-10-18,10384706783,KI-Manager:in mit Vibe Coding und KI-Agenten,ki assisten mit copilot,472,1752
+2026-W42,2026-10-18,10414983676,KI Anwendung & Implementierung,ki assisten mit copilot,482,1752
+2026-W42,2026-10-18,10408927215,KI Strategie & Implementierung,ki assisten mit copilot,483,1752
+2026-W42,2026-10-18,10406116402,KI (Künstliche Intelligenz) im Projektmangement,ki assisten mit copilot,494,1752
+2026-W42,2026-10-18,10406700278,KI-Automatisierung mit n8n,ki-automatisierung mit n8n,2,871
+2026-W42,2026-10-18,10384706783,KI-Manager:in mit Vibe Coding und KI-Agenten,ki-automatisierung mit n8n,216,871
+2026-W42,2026-10-18,10392170073,KI- und Online Marketing Manager Advanced,ki-automatisierung mit n8n,258,871
+2026-W42,2026-10-18,10408927215,KI Strategie & Implementierung,ki-automatisierung mit n8n,267,871
+2026-W42,2026-10-18,10404251965,KI Coach,ki-automatisierung mit n8n,283,871
+2026-W42,2026-10-18,10414983676,KI Anwendung & Implementierung,ki-automatisierung mit n8n,290,871
+2026-W42,2026-10-18,10392169985,KI- und Online Marketing Manager,ki-automatisierung mit n8n,296,871
+2026-W42,2026-10-18,10338433889,KI Strategie & Implementierung & Agile Methoden,ki-automatisierung mit n8n,320,871
+2026-W42,2026-10-18,10338433139,KI-Manager:in,ki-automatisierung mit n8n,327,871
+2026-W42,2026-10-18,10406700278,KI-Automatisierung mit n8n,ki-automatisierung,12,9852
+2026-W42,2026-10-18,10406700278,KI-Automatisierung mit n8n,n8n,7,1030
+2026-W42,2026-10-18,10384706783,KI-Manager:in mit Vibe Coding und KI-Agenten,n8n,135,1030
+2026-W42,2026-10-18,10392170073,KI- und Online Marketing Manager Advanced,n8n,196,1030
+2026-W42,2026-10-18,10406117728,KI-Assistenten mit Microsoft Copilot Studio,n8n,232,1030
+2026-W42,2026-10-18,10406117703,Vibe Coding,n8n,236,1030
+2026-W42,2026-10-18,10411633110,Mit Künstlicher Intelligenz programmieren,n8n,248,1030
+2026-W42,2026-10-18,10406613460,Design Thinking für Content Creator,n8n,251,1030
+2026-W42,2026-10-18,10411631827,Prompt Engineering im Berufsalltag,n8n,254,1030
+2026-W42,2026-10-18,10406116402,KI (Künstliche Intelligenz) im Projektmangement,n8n,263,1030
+2026-W42,2026-10-18,10392169985,KI- und Online Marketing Manager,n8n,298,1030
+2026-W42,2026-10-18,10338436797,Design Thinking & Agile Methoden mit KI,n8n,387,1030
+2026-W42,2026-10-18,10396775639,Bild- und Videoerstellung mit Canva & KI,n8n,390,1030
+2026-W42,2026-10-18,10408927215,KI Strategie & Implementierung,n8n,432,1030
+2026-W42,2026-10-18,10404251965,KI Coach,n8n,449,1030
+2026-W42,2026-10-18,10404755106,KI im Büroalltag - ChatGPT & Co.,n8n,471,1030
+2026-W42,2026-10-18,10408927165,Social Media Creation Experte,ki content creation,52,467
+2026-W42,2026-10-18,10408927165,Social Media Creation Experte,ki content creation für social media,18,344
+2026-W42,2026-10-18,10342368840,Online Marketing Manager Advanced,social media und web,272,963
+2026-W42,2026-10-18,10342367598,Content Marketing,social media und web,286,963
+2026-W42,2026-10-18,10361929245,Online Advertising im Online Marketing,social media und web,289,963
+2026-W42,2026-10-18,10338431266,Inbound Marketing Experte,ki manager expert,230,760
+2026-W42,2026-10-18,10338428017,Performance Marketing Experte,ki manager expert,259,760
+2026-W42,2026-10-18,10412038324,Social Media Advertising Expert:in,ki manager expert,264,760
+2026-W42,2026-10-18,10408927165,Social Media Creation Experte,ki manager expert,265,760
+2026-W42,2026-10-18,10414983676,KI Anwendung & Implementierung,ki manager expert,424,760
+2026-W42,2026-10-18,10338433889,KI Strategie & Implementierung & Agile Methoden,ki manager expert,427,760
+2026-W42,2026-10-18,10338435794,KI-Anwendung & Agile Arbeitsmethoden,ki manager expert,457,760
+2026-W42,2026-10-18,10408510295,Meta Ads Spezialist,meta ads,23,403
+2026-W42,2026-10-18,10412038324,Social Media Advertising Expert:in,meta ads,110,403
+2026-W42,2026-10-18,10395150822,PPC Marketing Expert,meta ads,111,403
+2026-W42,2026-10-18,10361929245,Online Advertising im Online Marketing,meta ads,120,403
+2026-W42,2026-10-18,10338428017,Performance Marketing Experte,meta ads,134,403
+2026-W42,2026-10-18,10400859331,Performance Marketing Manager,meta ads,179,403
+2026-W42,2026-10-18,10338427958,E-Commerce Manager,meta ads,271,403
+2026-W42,2026-10-18,10406612551,Social Media Advertising Manager,meta ads,310,403
+2026-W42,2026-10-18,10412038324,Social Media Advertising Expert:in,meta advertising,27,160
+2026-W42,2026-10-18,10361929245,Online Advertising im Online Marketing,meta advertising,38,160
+2026-W42,2026-10-18,10406612551,Social Media Advertising Manager,meta advertising,59,160
+2026-W42,2026-10-18,10395150822,PPC Marketing Expert,meta advertising,75,160
+2026-W42,2026-10-18,10338428017,Performance Marketing Experte,meta advertising,91,160
+2026-W42,2026-10-18,10400859331,Performance Marketing Manager,meta advertising,104,160
+2026-W42,2026-10-18,10338427958,E-Commerce Manager,meta advertising,128,160
+2026-W42,2026-10-18,10408510295,Meta Ads Spezialist,meta werbung,2,174
+2026-W42,2026-10-18,10412038324,Social Media Advertising Expert:in,meta werbung,44,174
+2026-W42,2026-10-18,10338427958,E-Commerce Manager,meta werbung,45,174
+2026-W42,2026-10-18,10395150822,PPC Marketing Expert,meta werbung,46,174
+2026-W42,2026-10-18,10338428017,Performance Marketing Experte,meta werbung,55,174
+2026-W42,2026-10-18,10361929245,Online Advertising im Online Marketing,meta werbung,57,174
+2026-W42,2026-10-18,10400859331,Performance Marketing Manager,meta werbung,63,174
+2026-W42,2026-10-18,10406612551,Social Media Advertising Manager,meta werbung,77,174
+2026-W42,2026-10-18,10411633110,Mit Künstlicher Intelligenz programmieren,mit ki programmieren,36,5143
+2026-W42,2026-10-18,10338433139,KI-Manager:in,mit ki programmieren,65,5143
+2026-W42,2026-10-18,10414983676,KI Anwendung & Implementierung,mit ki programmieren,105,5143
+2026-W42,2026-10-18,10404755106,KI im Büroalltag - ChatGPT & Co.,mit ki programmieren,183,5143
+2026-W42,2026-10-18,10404251965,KI Coach,mit ki programmieren,231,5143
+2026-W42,2026-10-18,10384706783,KI-Manager:in mit Vibe Coding und KI-Agenten,mit ki programmieren,256,5143
+2026-W42,2026-10-18,10406700278,KI-Automatisierung mit n8n,mit ki programmieren,350,5143
+2026-W42,2026-10-18,10411633110,Mit Künstlicher Intelligenz programmieren,apps erstellen,146,888
+2026-W42,2026-10-18,10406117703,Vibe Coding,apps erstellen,158,888
+2026-W42,2026-10-18,10411631827,Prompt Engineering im Berufsalltag,apps erstellen,165,888
+2026-W42,2026-10-18,10338433139,KI-Manager:in,ai lernen,105,6387
+2026-W42,2026-10-18,10414983676,KI Anwendung & Implementierung,ai lernen,136,6387
+2026-W42,2026-10-18,10404755106,KI im Büroalltag - ChatGPT & Co.,ai lernen,218,6387
+2026-W42,2026-10-18,10406700278,KI-Automatisierung mit n8n,ai lernen,371,6387
+2026-W42,2026-10-18,10384706783,KI-Manager:in mit Vibe Coding und KI-Agenten,ai lernen,392,6387
+2026-W42,2026-10-18,10404251965,KI Coach,ai lernen,424,6387
+2026-W42,2026-10-18,10411633110,Mit Künstlicher Intelligenz programmieren,mit ai programmieren,70,3232
+2026-W42,2026-10-18,10338433139,KI-Manager:in,mit ai programmieren,97,3232
+2026-W42,2026-10-18,10414983676,KI Anwendung & Implementierung,mit ai programmieren,135,3232
+2026-W42,2026-10-18,10404755106,KI im Büroalltag - ChatGPT & Co.,mit ai programmieren,209,3232
+2026-W42,2026-10-18,10406700278,KI-Automatisierung mit n8n,mit ai programmieren,385,3232
+2026-W42,2026-10-18,10384706783,KI-Manager:in mit Vibe Coding und KI-Agenten,mit ai programmieren,401,3232
+2026-W42,2026-10-18,10404251965,KI Coach,mit ai programmieren,421,3232
+2026-W42,2026-10-18,10396773986,Weiterbildung im E-Commerce mit KI,online marketing weiterbildung,64,3916
+2026-W42,2026-10-18,10361929245,Online Advertising im Online Marketing,online marketing weiterbildung,81,3916
+2026-W42,2026-10-18,10406116564,Online Marketing Manager,online marketing weiterbildung,143,3916
+2026-W42,2026-10-18,10342368840,Online Marketing Manager Advanced,online marketing weiterbildung,173,3916
+2026-W42,2026-10-18,10392169985,KI- und Online Marketing Manager,online marketing weiterbildung,226,3916
+2026-W42,2026-10-18,10411632441,Online Marketing für Websites und Shops,online marketing weiterbildung,305,3916
+2026-W42,2026-10-18,10392170073,KI- und Online Marketing Manager Advanced,online marketing weiterbildung,368,3916
+2026-W42,2026-10-18,10361929245,Online Advertising im Online Marketing,online marketing für webs,22,955
+2026-W42,2026-10-18,10342368840,Online Marketing Manager Advanced,online marketing für webs,45,955
+2026-W42,2026-10-18,10342367598,Content Marketing,online marketing für webs,302,955
+2026-W42,2026-10-18,10411632441,Online Marketing für Websites und Shops,online websites,1,1026
+2026-W42,2026-10-18,10406116564,Online Marketing Manager,online websites,64,1026
+2026-W42,2026-10-18,10342368840,Online Marketing Manager Advanced,online websites,69,1026
+2026-W42,2026-10-18,10338427958,E-Commerce Manager,online websites,200,1026
+2026-W42,2026-10-18,10389167442,Wordpress,online websites,205,1026
+2026-W42,2026-10-18,10406613931,Suchmaschinenmarketing,online websites,295,1026
+2026-W42,2026-10-18,10342367598,Content Marketing,online websites,327,1026
+2026-W42,2026-10-18,10389168845,Social Media Aufbaukurs für Fortgeschrittene,online websites,359,1026
+2026-W42,2026-10-18,10338431266,Inbound Marketing Experte,online websites,386,1026
+2026-W42,2026-10-18,10406612551,Social Media Advertising Manager,online websites,394,1026
+2026-W42,2026-10-18,10338428017,Performance Marketing Experte,online websites,481,1026
+2026-W42,2026-10-18,10338426390,E-Commerce Shops und Online Plattformen,online shops,4,1031
+2026-W42,2026-10-18,10411632441,Online Marketing für Websites und Shops,online shops,6,1031
+2026-W42,2026-10-18,10338427958,E-Commerce Manager,online shops,164,1031
+2026-W42,2026-10-18,10408511090,E-Commerce für Gründer:innen,online shops,235,1031
+2026-W42,2026-10-18,10408511196,Amazon & Marktplatz Marketing,online shops,252,1031
+2026-W42,2026-10-18,10392169985,KI- und Online Marketing Manager,marketing lernen,36,5260
+2026-W42,2026-10-18,10392170073,KI- und Online Marketing Manager Advanced,marketing lernen,70,5260
+2026-W42,2026-10-18,10396773986,Weiterbildung im E-Commerce mit KI,marketing lernen,248,5260
+2026-W42,2026-10-18,10342367598,Content Marketing,marketing lernen,278,5260
+2026-W42,2026-10-18,10408510192,Social Media Marketing für Redakteure,marketing lernen,449,5260
+2026-W42,2026-10-18,10406116564,Online Marketing Manager,marketing lernen,480,5260
+2026-W42,2026-10-18,10342368840,Online Marketing Manager Advanced,online marketing manager advanced,1,39
+2026-W42,2026-10-18,10392170073,KI- und Online Marketing Manager Advanced,online marketing manager advanced,7,39
+2026-W42,2026-10-18,10400859331,Performance Marketing Manager,performance marketing,98,3019
+2026-W42,2026-10-18,10338428017,Performance Marketing Experte,performance marketing,104,3019
+2026-W42,2026-10-18,10338428017,Performance Marketing Experte,performance marketing experte,1,283
+2026-W42,2026-10-18,10395150822,PPC Marketing Expert,performance marketing experte,11,283
+2026-W42,2026-10-18,10412038324,Social Media Advertising Expert:in,performance marketing experte,17,283
+2026-W42,2026-10-18,10395150822,PPC Marketing Expert,ppc marketing,2,60
+2026-W42,2026-10-18,10338428017,Performance Marketing Experte,ppc marketing,30,60
+2026-W42,2026-10-18,10400859331,Performance Marketing Manager,ppc marketing,33,60
+2026-W42,2026-10-18,10338427958,E-Commerce Manager,ppc marketing,41,60
+2026-W42,2026-10-18,10411631827,Prompt Engineering im Berufsalltag,prompt engineering,32,6317
+2026-W42,2026-10-18,10411631827,Prompt Engineering im Berufsalltag,prompt engineering im berufsalltag,1,700
+2026-W42,2026-10-18,10408510489,Google Ads Spezialist,social media ads,40,1046
+2026-W42,2026-10-18,10408510295,Meta Ads Spezialist,social media ads,43,1046
+2026-W42,2026-10-18,10412038324,Social Media Advertising Expert:in,social media ads,77,1046
+2026-W42,2026-10-18,10412039578,Social Media Manager,social media ads,133,1046
+2026-W42,2026-10-18,10406612551,Social Media Advertising Manager,social media ads,238,1046
+2026-W42,2026-10-18,10395150822,PPC Marketing Expert,social media ads,398,1046
+2026-W42,2026-10-18,10338428017,Performance Marketing Experte,social media ads,408,1046
+2026-W42,2026-10-18,10361929245,Online Advertising im Online Marketing,social media ads,438,1046
+2026-W42,2026-10-18,10400859331,Performance Marketing Manager,social media ads,449,1046
+2026-W42,2026-10-18,10406116564,Online Marketing Manager,social media ads,491,1046
+2026-W42,2026-10-18,10412039578,Social Media Manager,social media werbung,27,1818
+2026-W42,2026-10-18,10406612551,Social Media Advertising Manager,social media werbung,35,1818
+2026-W42,2026-10-18,10412038324,Social Media Advertising Expert:in,social media werbung,36,1818
+2026-W42,2026-10-18,10389168845,Social Media Aufbaukurs für Fortgeschrittene,social media werbung,39,1818
+2026-W42,2026-10-18,10408927165,Social Media Creation Experte,social media werbung,40,1818
+2026-W42,2026-10-18,10408510192,Social Media Marketing für Redakteure,social media werbung,42,1818
+2026-W42,2026-10-18,10400963945,Social Media Marketing & Content Management,social media werbung,47,1818
+2026-W42,2026-10-18,10408510295,Meta Ads Spezialist,social media werbung,71,1818
+2026-W42,2026-10-18,10342367598,Content Marketing,social media werbung,84,1818
+2026-W42,2026-10-18,10338428017,Performance Marketing Experte,social media werbung,218,1818
+2026-W42,2026-10-18,10406116564,Online Marketing Manager,social media werbung,223,1818
+2026-W42,2026-10-18,10400859331,Performance Marketing Manager,social media werbung,234,1818
+2026-W42,2026-10-18,10395150822,PPC Marketing Expert,social media werbung,243,1818
+2026-W42,2026-10-18,10408510489,Google Ads Spezialist,social media werbung,263,1818
+2026-W42,2026-10-18,10361929245,Online Advertising im Online Marketing,social media werbung,343,1818
+2026-W42,2026-10-18,10342368840,Online Marketing Manager Advanced,social media werbung,348,1818
+2026-W42,2026-10-18,10412039578,Social Media Manager,social media weiterbildung,210,3467
+2026-W42,2026-10-18,10412038324,Social Media Advertising Expert:in,social media weiterbildung,285,3467
+2026-W42,2026-10-18,10408510192,Social Media Marketing für Redakteure,social media weiterbildung,299,3467
+2026-W42,2026-10-18,10408927165,Social Media Creation Experte,social media weiterbildung,308,3467
+2026-W42,2026-10-18,10406612551,Social Media Advertising Manager,social media weiterbildung,318,3467
+2026-W42,2026-10-18,10389168845,Social Media Aufbaukurs für Fortgeschrittene,social media weiterbildung,340,3467
+2026-W42,2026-10-18,10400963945,Social Media Marketing & Content Management,social media weiterbildung,392,3467
+2026-W42,2026-10-18,10389168845,Social Media Aufbaukurs für Fortgeschrittene,social media aufbaukurs,1,381
+2026-W42,2026-10-18,10389168845,Social Media Aufbaukurs für Fortgeschrittene,social media für fortgeschrittene,2,306
+2026-W42,2026-10-18,10411632441,Online Marketing für Websites und Shops,social media für fortgeschrittene,63,306
+2026-W42,2026-10-18,10412039578,Social Media Manager,social media kurs,224,2864
+2026-W42,2026-10-18,10400963945,Social Media Marketing & Content Management,social media kurs,302,2864
+2026-W42,2026-10-18,10389168845,Social Media Aufbaukurs für Fortgeschrittene,social media kurs,337,2864
+2026-W42,2026-10-18,10408927165,Social Media Creation Experte,social media creation,2,418
+2026-W42,2026-10-18,10396797754,Content Creator Kurs,social media creation,268,418
+2026-W42,2026-10-18,10412039578,Social Media Manager,social media manager,46,1537
+2026-W42,2026-10-18,10406612551,Social Media Advertising Manager,social media manager,78,1537
+2026-W42,2026-10-18,10406116564,Online Marketing Manager,social media manager,241,1537
+2026-W42,2026-10-18,10400859331,Performance Marketing Manager,social media manager,248,1537
+2026-W42,2026-10-18,10342368840,Online Marketing Manager Advanced,social media manager,332,1537
+2026-W42,2026-10-18,10389168845,Social Media Aufbaukurs für Fortgeschrittene,social media manager,436,1537
+2026-W42,2026-10-18,10412038324,Social Media Advertising Expert:in,social media manager,457,1537
+2026-W42,2026-10-18,10408927165,Social Media Creation Experte,social media manager,466,1537
+2026-W42,2026-10-18,10408510192,Social Media Marketing für Redakteure,social media marketing,183,4201
+2026-W42,2026-10-18,10400963945,Social Media Marketing & Content Management,social media marketing,207,4201
+2026-W42,2026-10-18,10412039578,Social Media Manager,social media marketing,249,4201
+2026-W42,2026-10-18,10406612551,Social Media Advertising Manager,social media marketing,340,4201
+2026-W42,2026-10-18,10412038324,Social Media Advertising Expert:in,social media marketing,349,4201
+2026-W42,2026-10-18,10389168845,Social Media Aufbaukurs für Fortgeschrittene,social media marketing,365,4201
+2026-W42,2026-10-18,10408927165,Social Media Creation Experte,social media marketing,373,4201
+2026-W42,2026-10-18,10400963945,Social Media Marketing & Content Management,social media marketing & content management,1,2055
+2026-W42,2026-10-18,10342367598,Content Marketing,social media marketing & content management,52,2055
+2026-W42,2026-10-18,10412039578,Social Media Manager,social media marketing & content management,312,2055
+2026-W42,2026-10-18,10408510192,Social Media Marketing für Redakteure,social media marketing & content management,329,2055
+2026-W42,2026-10-18,10389168845,Social Media Aufbaukurs für Fortgeschrittene,social media marketing & content management,382,2055
+2026-W42,2026-10-18,10408927165,Social Media Creation Experte,social media marketing & content management,404,2055
+2026-W42,2026-10-18,10406612551,Social Media Advertising Manager,social media marketing & content management,458,2055
+2026-W42,2026-10-18,10408510192,Social Media Marketing für Redakteure,social media marketing für redakteure,2,68
+2026-W42,2026-10-18,10396773986,Weiterbildung im E-Commerce mit KI,seo lernen,335,1744
+2026-W42,2026-10-18,10392169985,KI- und Online Marketing Manager,seo lernen,350,1744
+2026-W42,2026-10-18,10392170073,KI- und Online Marketing Manager Advanced,seo lernen,370,1744
+2026-W42,2026-10-18,10406116564,Online Marketing Manager,seo lernen,497,1744
+2026-W42,2026-10-18,10392169985,KI- und Online Marketing Manager,sea lernen,195,814
+2026-W42,2026-10-18,10392170073,KI- und Online Marketing Manager Advanced,sea lernen,201,814
+2026-W42,2026-10-18,10406613931,Suchmaschinenmarketing,sea lernen,258,814
+2026-W42,2026-10-18,10406117703,Vibe Coding,vibe coding mit ki,34,220
+2026-W42,2026-10-18,10384706783,KI-Manager:in mit Vibe Coding und KI-Agenten,vibe coding mit ki,46,220
+2026-W42,2026-10-18,10404251965,KI Coach,vibe coding mit ki,88,220
+2026-W42,2026-10-18,10392170073,KI- und Online Marketing Manager Advanced,vibe coding mit ki,96,220
+2026-W42,2026-10-18,10406117703,Vibe Coding,vibe coding,34,230
+2026-W42,2026-10-18,10384706783,KI-Manager:in mit Vibe Coding und KI-Agenten,vibe coding,61,230
+2026-W42,2026-10-18,10404251965,KI Coach,vibe coding,120,230
+2026-W42,2026-10-18,10392170073,KI- und Online Marketing Manager Advanced,vibe coding,128,230
+2026-W42,2026-10-18,10406117703,Vibe Coding,apps ohne programmierkenntnisse,15,61
+2026-W42,2026-10-18,10406117703,Vibe Coding,web ohne programmierkenntnisse,104,158
+2026-W42,2026-10-18,10406117703,Vibe Coding,vibe coding mit ai,9,107
+2026-W42,2026-10-18,10384706783,KI-Manager:in mit Vibe Coding und KI-Agenten,vibe coding mit ai,13,107
+2026-W42,2026-10-18,10404251965,KI Coach,vibe coding mit ai,46,107
+2026-W42,2026-10-18,10392170073,KI- und Online Marketing Manager Advanced,vibe coding mit ai,50,107
+2026-W42,2026-10-18,10406117703,Vibe Coding,vibe coding apps,2,22
+2026-W42,2026-10-18,10392170073,KI- und Online Marketing Manager Advanced,vibe coding apps,15,22
+2026-W42,2026-10-18,10406117703,Vibe Coding,vibe coding ohne programmierkenntnisse,9,32
+2026-W42,2026-10-18,10408511262,Video Marketing Spezialist,video marketing,3,703
+2026-W42,2026-10-18,10342367598,Content Marketing,video marketing,111,703
+2026-W42,2026-10-18,10412038324,Social Media Advertising Expert:in,video marketing,130,703
+2026-W42,2026-10-18,10342368840,Online Marketing Manager Advanced,video marketing,153,703
+2026-W42,2026-10-18,10400963945,Social Media Marketing & Content Management,video marketing,167,703
+2026-W42,2026-10-18,10389168845,Social Media Aufbaukurs für Fortgeschrittene,video marketing,174,703
+2026-W42,2026-10-18,10408927165,Social Media Creation Experte,video marketing,199,703
+2026-W42,2026-10-18,10406612551,Social Media Advertising Manager,video marketing,251,703
+2026-W42,2026-10-18,10338427958,E-Commerce Manager,video marketing,336,703
+2026-W42,2026-10-18,10396773986,Weiterbildung im E-Commerce mit KI,e-commerce mit ki,6,799
+2026-W42,2026-10-18,10338427958,E-Commerce Manager,e-commerce mit ki,79,799
+2026-W42,2026-10-18,10392169985,KI- und Online Marketing Manager,e-commerce mit ki,391,799
+2026-W42,2026-10-18,10392170073,KI- und Online Marketing Manager Advanced,e-commerce mit ki,399,799
+2026-W42,2026-10-18,10396775639,Bild- und Videoerstellung mit Canva & KI,e-commerce mit ki,408,799
+2026-W42,2026-10-18,10412038324,Social Media Advertising Expert:in,e-commerce mit ki,440,799
+2026-W42,2026-10-18,10396773986,Weiterbildung im E-Commerce mit KI,weiterbildung online marketing,64,3916
+2026-W42,2026-10-18,10361929245,Online Advertising im Online Marketing,weiterbildung online marketing,81,3916
+2026-W42,2026-10-18,10406116564,Online Marketing Manager,weiterbildung online marketing,143,3916
+2026-W42,2026-10-18,10342368840,Online Marketing Manager Advanced,weiterbildung online marketing,173,3916
+2026-W42,2026-10-18,10392169985,KI- und Online Marketing Manager,weiterbildung online marketing,226,3916
+2026-W42,2026-10-18,10411632441,Online Marketing für Websites und Shops,weiterbildung online marketing,305,3916
+2026-W42,2026-10-18,10392170073,KI- und Online Marketing Manager Advanced,weiterbildung online marketing,368,3916
+2026-W42,2026-10-18,10411632441,Online Marketing für Websites und Shops,Website aufbauen,10,645
+2026-W42,2026-10-18,10389167442,Wordpress,Website aufbauen,30,645
+2026-W42,2026-10-18,10342368840,Online Marketing Manager Advanced,Website aufbauen,54,645
+2026-W42,2026-10-18,10389168845,Social Media Aufbaukurs für Fortgeschrittene,Website aufbauen,156,645
+2026-W42,2026-10-18,10406613931,Suchmaschinenmarketing,Website aufbauen,178,645
+2026-W42,2026-10-18,10406116564,Online Marketing Manager,Website aufbauen,213,645
+2026-W42,2026-10-18,10342367598,Content Marketing,Website aufbauen,252,645
+2026-W42,2026-10-18,10406612551,Social Media Advertising Manager,Website aufbauen,266,645
+2026-W42,2026-10-18,10338431266,Inbound Marketing Experte,Website aufbauen,344,645
+2026-W42,2026-10-18,10338428017,Performance Marketing Experte,Website aufbauen,358,645
+2026-W42,2026-10-18,10338427958,E-Commerce Manager,Website aufbauen,364,645
+2026-W42,2026-10-18,10400859331,Performance Marketing Manager,Website aufbauen,407,645
+2026-W42,2026-10-18,10396775639,Bild- und Videoerstellung mit Canva & KI,Website aufbauen,410,645
